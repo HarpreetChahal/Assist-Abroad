@@ -10,7 +10,7 @@
 
 :root{
   --primaryColor: #6D81FE; 
-  --hoverColor: #8b8e9b; 
+  --hoverColor: #eaedf7; 
   --whiteColor: #fff;
   --blackColor: hsl(0,0%,18%);
   --greyText: hsl(0,0%,75%);
@@ -70,12 +70,13 @@ img.video{
 
 }
 .btn{
-    border: none;
+    /* border: 2px dotted; */
+    background-color: var(--primaryColor);
     outline: none;
     cursor: pointer;
-    border-radius: 8px;
-    padding: .8rem 1 rem;
-    color: var(--primaryColor);
+    border-radius: 10px;
+    padding: .8rem 1rem;
+    color: var(--whiteColor);
 
 }
 
@@ -84,6 +85,6 @@ img.video{
 }
 .btn:hover{
     color: var(--hoverColor);
-    background-color: var(--primaryColor) ;
+    background-color: #23314c ;
     
 }
