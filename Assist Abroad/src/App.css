@@ -9,7 +9,27 @@
 }
 
 :root{
-  --primaryColor: #6D81FE;  
+  --primaryColor: #6D81FE; 
+  --hoverColor: #8b8e9b; 
+  --whiteColor: #fff;
+  --blackColor: hsl(0,0%,18%);
+  --greyText: hsl(0,0%,75%);
+  --bgColor: #F6F7FC;
+  --inputColor:#4F5C78;
+
+
+  --biggestFontSize: 2.5rem;
+  --h1FontSize: 1.5rem;
+  --h2FontSize: 1.25rem;
+  --h3FontSize: 1rem;
+  --normalFontSize: .925rem;
+  --smallFontSize: .825rem;
+  --smallestFontsSize: .75rem;  
+
+
+
+
+
 }
 .flex{
     display: flex;
@@ -55,7 +75,7 @@ img.video{
     cursor: pointer;
     border-radius: 8px;
     padding: .8rem 1 rem;
-    color: grey;
+    color: var(--primaryColor);
 
 }
 
@@ -63,6 +83,7 @@ img.video{
     margin-left: .5rem;
 }
 .btn:hover{
-    color: aqua;
-    background-color: palegreen ;
+    color: var(--hoverColor);
+    background-color: var(--primaryColor) ;
+    
 }

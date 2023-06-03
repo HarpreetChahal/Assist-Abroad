@@ -3,7 +3,11 @@ import './Register.css'
 
 const Register = () => {
     return(
-        <div>Register</div>
+        <div>
+            <a href="/"> Login page</a>
+            <br/>
+            We are on register page
+        </div>
     )
 }
 export default Register

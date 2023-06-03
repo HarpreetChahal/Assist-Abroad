@@ -2,7 +2,7 @@ import React from 'react'
 import './Home.css'
 const Home = () => {
     return(
-        <div>Home</div>
+        <a href="/"> Logout </a>
     )
 }
 export default Home
