@@ -49,12 +49,14 @@ const Navbar = () => {
           </div>
           {/* mobile version */}
           <div className=" lg:hidden w-full">
-            <div className=" w-full pr-7 px-3 flex items-center justify-between white-4">
-              <div className="py-4">
+            {/* <div className=" w-full pr-7 px-3 flex items-center justify-between white-4"> */}
+            <div className=" w-full  flex items-center justify-between white-4">
+                <div className=" flex items-center" >
+              {/* <div className="py-4">
                 <Link to="/" className="text-pr text-2xl">
                 Assist Abroad
                 </Link>
-              </div>
+              </div> */}
               {open === false ? (
                 <FaBars
                   onClick={() => setOpen(true)}
@@ -66,7 +68,23 @@ const Navbar = () => {
                   className="w-6 h-6 cursor-pointer text-pr"
                 />
               )}
+              <div className="py-4">
+                <Link to="/" className="text-pr ml-2 text-2xl">
+                Assist Abroad
+                </Link>
+              </div>
+              </div>
+
+
+              <div className=" flex items-center" >
+              <div><Link to="/sign-up" className=" text-pr border border-pr  px-10 mt-2 rounded-md py-1 font_ab">
+                Join
+                </Link></div>
+                </div>
             </div>
+
+
+            
             {open && (
               <div className=" grid grid-cols-1 bg-white  shadow-md px-3 items-center gap-4 justify-center text-gray-500 pb-5">
                     <>
@@ -91,9 +109,9 @@ const Navbar = () => {
                 Sign In
                 </Link>
              <div>
-             <Link to="/sign-up" className=" text-pr border border-pr  px-10 mt-2 rounded-md py-1 font_ab">
+             {/* <Link to="/sign-up" className=" text-pr border border-pr  px-10 mt-2 rounded-md py-1 font_ab">
                 Join
-                </Link>
+                </Link> */}
              </div>
             
                   </>
