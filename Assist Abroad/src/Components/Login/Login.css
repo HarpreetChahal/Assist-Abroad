@@ -21,7 +21,7 @@
     display: flex;
     flex-basis: 50%;
     width: 70%;
-    height: 100%;
+    height: 80%;
     padding: 0 1.5rem;
     text-align: center;
     justify-content: center;
@@ -32,35 +32,39 @@
 
 }
 
+
+
+
+
 /* image & img */
-image, .footerDiv{
+img, .footerDiv{
 
     position:relative;
 }
 
 image{
-    height: 100%;
+    height: 100vh;
     width:100%;
     object-fit: cover;
     top: 0;
-    bottom: 0;
+    bottom: 10;
     left: 0;
     right: 0;
 
 }
-.textDiv{
-    position: relative;
-}
+/* .textDiv{
+    position: absolute;
+} */
 .title{
     color: #6D81FE;
     font-size: 35px;
     font-weight: 800;
 }
 .footerDiv{
-    top:80px;
+    /* top:80px; */
     bottom: 10px;
     padding: 0 1rem;
-    height: 60px;
+    /* height: 60px; */
     background: rgba(200, 188, 188, 0.248);
     left: 10;
     right: 10;
@@ -70,11 +74,19 @@ image{
     
 
 }
+
 .btn{
    padding: .8rem 1.5rem;
    border-radius: 10px;
    font-weight: 400;
    transition: .3s ease; 
+   align-items: center;
+   margin: auto;
+   justify-content: center;
+   font-size: 16px;
+   width: 100%;
+   gap: 0.5rem;
+   transition: -3s ease;
 
    
 }
@@ -84,4 +96,143 @@ image{
     flex-direction: column;
     gap: 1.5rem;
     transform: translateY(-1rem);
+}
+.headerDiv{
+    text-align: center;
+    padding: 1.5rem 0;
+
+  
+    
+}
+.imageLogo{
+    width: 60px;
+    padding-bottom: .5rem;
+    
+}
+h1{
+    font-size: 60px;
+    font-family: 'Montserrat', sans-serif;
+    color: #6D81FE;
+}
+h3{
+ font-size: 25px;   
+ font-weight: 600;
+}
+.form{
+    gap: 1rem;
+}
+.icon{
+color: #6D81FE;
+}
+input{
+    margin-left: 5px;
+    background: none;
+    height: 25px;
+    outline: none;
+    border: none;
+    width: 250px;
+}
+label{
+    font-weight: 400;
+    font-size: 17px;
+    display: block;
+   
+}
+.input{
+    gap: .5rem;
+    
+    padding: 1rem;
+    border-radius: 10px;
+    background: #ffffff;
+}
+
+
+.forgotPassword{
+    font-size: 16px;
+
+}
+a{
+    text-decoration: underline;
+    cursor: pointer;
+}
+.message{
+    display: none;
+}
+
+.showMessage{
+    display: block;
+    color: #ffffff;
+    font-size: 15px;
+    padding: 15px;
+    background: #23314c;
+    border-radius: 3px;
+    text-align: center;
+}
+.google{
+    justify-content: center;
+    padding: 12px;
+}
+.signInGoogle{
+    margin-left: 5px;
+    font-size: 15px;
+
+}
+
+@media screen and (max-width :990px) {
+    .loginPage {
+        .container{
+            height: 100%;
+            width:100%;
+            flex-direction: column;
+            padding: 1.5rem;
+
+            .imageDiv{
+                width: 100%;
+                .textDiv{
+                    .title{
+                        font-size: 20px;
+                    }
+
+                    p{
+                        padding:1rem;
+                    }
+                }
+                .footerDiv
+                {
+                 .text{
+                    font-size: 10px;
+                 }
+                 .btn{
+                    padding: .4rem 1.5rem;
+                 }
+            }
+        }
+        .formDiv{
+            gap:1rem;
+            transform: translateY(-.5rem);
+
+            .headerDiv{
+                padding: 1rem 0;
+
+                img{
+                    width:40px;
+
+                }
+                h3{
+                    font-size: 20px;
+                }
+
+            }
+            .form{
+                gap: .5rem;
+
+                .inputDiv{
+                    input{
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
 }

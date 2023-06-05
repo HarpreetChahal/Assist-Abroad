@@ -1,11 +1,13 @@
 import React from 'react'
 import './Login.css'
+import '../../App.css'
 import {Link} from 'react-router-dom'
 
 
 //Assets
 import image from '../../Assets/LOGIN.png'
 import logo from '../../Assets/LOGO.png'
+
 
 //Icons 
 import {FcGoogle} from 'react-icons/Fc'
@@ -15,17 +17,19 @@ import {RiLockPasswordFill} from 'react-icons/Ri'
 
 const Login = () => {
     return(
+        
         <div className='loginPage flex'>
             <div className='container flex'>
 
 
                 <div className='imageDiv'>
                     <img src={image} alt="Login Image"></img>
+                    
 
-                    <div className='textDiv'>
+                    {/* <div className='textDiv'>
                         <h2 className='title'>ASSIST ABROAD</h2>
                         <p>Welcome Back</p>
-                    </div>
+                    </div> */}
                     <div className='footerDiv flex'>
                         <span className='text'> Don't have an account?</span>
                     <Link to={'/register'}>
@@ -36,19 +40,20 @@ const Login = () => {
 
                 <div className='formDiv flex'>
                     <div className='headerDiv'>
-                        <img src={logo} alt="Logo Image"></img>
-                        <h2>Welcome Back</h2>
+                        {/* <img className='imageLogo' src={logo} alt="Logo Image"></img> */}
+                        <span className='logoName'>Assist Abroad</span>
+                        <h3>Welcome Back</h3>
                        
                     </div>
                     
 
                     <form action='' className='form grid'>
-                        <span> Authetication error display</span>
+                        <span className='showMessage'> Authetication error display</span>
 
 
                         <button className='google flex'>
                         <FcGoogle className='icon'/>
-                            <span>Sign in with Google</span>
+                            <span className='signInGoogle'>Sign in with Google</span>
 
                         </button>
                         
