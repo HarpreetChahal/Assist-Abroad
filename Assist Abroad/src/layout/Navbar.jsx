@@ -69,7 +69,7 @@ const Navbar = () => {
                 />
               )}
               <div className="py-4">
-                <Link to="/" className="text-pr ml-2 text-2xl">
+                <Link to="/" className="text-pr ml-2  text-2xl">
                 Assist Abroad
                 </Link>
               </div>
@@ -77,7 +77,7 @@ const Navbar = () => {
 
 
               <div className=" flex items-center" >
-              <div><Link to="/sign-up" className=" text-pr border border-pr  px-10 mt-2 rounded-md py-1 font_ab">
+              <div><Link to="/sign-up" className=" text-pr border border-pr  px-6 mt-2 rounded-md py-1.5 font_ab">
                 Join
                 </Link></div>
                 </div>
