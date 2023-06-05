@@ -7,7 +7,7 @@
     box-shadow: 0 7px 50px rgb(214,223,213);
 }
 
-.container{
+.container_login{
    height: 80vh;
    width: 60%;
    margin: auto;
@@ -112,7 +112,7 @@ image{
 h1{
     font-size: 60px;
     font-family: 'Montserrat', sans-serif;
-    color: #6D81FE;
+ 
 }
 h3{
  font-size: 25px;   
@@ -127,9 +127,7 @@ color: #6D81FE;
 input{
     margin-left: 5px;
     background: none;
-    height: 25px;
-    outline: none;
-    border: none;
+
     width: 250px;
 }
 label{
@@ -180,7 +178,7 @@ a{
 
 @media screen and (max-width :990px) {
     .loginPage {
-        .container{
+        .container_login{
             height: 100%;
             width:100%;
             flex-direction: column;

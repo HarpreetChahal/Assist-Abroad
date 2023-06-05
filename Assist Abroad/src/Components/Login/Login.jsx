@@ -19,7 +19,7 @@ const Login = () => {
     return(
         
         <div className='loginPage flex'>
-            <div className='container flex'>
+            <div className='container_login flex'>
 
 
                 <div className='imageDiv'>
