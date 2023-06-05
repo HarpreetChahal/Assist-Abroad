@@ -32,7 +32,7 @@ const Login = () => {
                     </div> */}
                     <div className='footerDiv flex'>
                         <span className='text'> Don't have an account?</span>
-                    <Link to={'/register'}>
+                    <Link to={'/home'}>
                     <button className='btn'>Sign Up</button></Link>
                     </div>
                 </div>
