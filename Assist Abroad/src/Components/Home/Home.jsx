@@ -16,8 +16,8 @@ const Home = () => {
       >
         <div className="bg-white mx-auto w-full lg:max-w-7xl gap-10 px-5 lg:px-10 py-10 grid grid-cols-1 lg:grid-cols-2 ">
           <div>
-            <h1 className=" text-3xl lg:text-4xl font_ab">
-              <span>Moving to a new <br className=" lg:hidden" /> country ? </span>
+            <h1 className=" text-3xl text-[#6D81FE] lg:text-4xl font_ab">
+              <span>Moving to a new <br className=" lg:hidden"  /> country ? </span>
               <br /> Let us help you
             </h1>
             <button className="px-8 py-2 bg-pr text-white  mt-10 text-lg font_ab rounded-md">
