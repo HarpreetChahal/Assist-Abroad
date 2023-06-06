@@ -8,7 +8,7 @@
 }
 
 .container_login{
-   height: 80vh;
+   height: 75vh;
    width: 60%;
    margin: auto;
    justify-content: space-between;
@@ -17,11 +17,12 @@
 
 }
 
-.imageDiv{
+.videoDiv{
+    position: relative;
     display: flex;
     flex-basis: 50%;
     width: 70%;
-    height: 80%;
+    height: 100%;
     padding: 0 1.5rem;
     text-align: center;
     justify-content: center;
@@ -37,44 +38,53 @@
 
 
 /* image & img */
-img, .footerDiv{
+video, .footerDiv{
 
-    position:relative;
+    position:absolute;
 }
 
-image{
-    height: 100vh;
+video{
+    height: 100%;
     width:100%;
     object-fit: cover;
     top: 0;
     bottom: 10;
-    left: 0;
     right: 0;
+    left: 0;
 
 }
-/* .textDiv{
-    position: absolute;
-} */
+.textDiv{
+    position: relative;
+    color:#fff;
+}
 .title{
-    color: #6D81FE;
+    color: #fff;
     font-size: 35px;
     font-weight: 800;
 }
+
+/* p{
+    color: #fff;
+    padding: 1rem;
+    font-weight: 400;
+} */
 .footerDiv{
     /* top:80px; */
     bottom: 10px;
     padding: 0 1rem;
-    /* height: 60px; */
-    background: rgba(200, 188, 188, 0.248);
-    left: 10;
-    right: 10;
+    height: 60px;
+    background: #eddcdc;
+    left: 10px;
+    right: 10px;
     justify-content: space-between;
     backdrop-filter: blur(1px);
     border-radius: 10px;
     
 
 }
-
+.text{
+    color: #23314c;
+}
 .btn{
    padding: .8rem 1.5rem;
    border-radius: 10px;
@@ -104,19 +114,25 @@ image{
   
     
 }
-.imageLogo{
+img{
+    width: 400px;
+    padding-bottom: .5rem;
+}
+/* .imageLogo{
     width: 60px;
     padding-bottom: .5rem;
     
-}
-h1{
+} */
+/* h1{
     font-size: 60px;
     font-family: 'Montserrat', sans-serif;
  
-}
+} */
 h3{
  font-size: 25px;   
  font-weight: 600;
+ font-family: 'Montserrat',sans-serif;
+ color: #23314c;
 }
 .form{
     gap: 1rem;
@@ -176,7 +192,7 @@ a{
 
 }
 
-@media screen and (max-width :990px) {
+@media screen and (max-width :602px) {
     .loginPage {
         .container_login{
             height: 100%;
@@ -184,7 +200,7 @@ a{
             flex-direction: column;
             padding: 1.5rem;
 
-            .imageDiv{
+            .videoDiv{
                 width: 100%;
                 .textDiv{
                     .title{
@@ -231,6 +247,58 @@ a{
                 }
             }
         }
+    }
+}
+}
+@media screen and (max-width :678px) {
+    .loginPage {
+        .container_login{
+            .videoDiv{
+                .textDiv{
+                    .title{
+                        font-size: 25px;
+                    }
+
+                    p{
+                        padding:1rem;
+                    }
+                }
+                .footerDiv
+                {
+                 .text{
+                    font-size: 10px;
+                 }
+                 .btn{
+                    padding: .8rem 1.5rem;
+                 }
+            }
+        }
+        .formDiv{
+            .headerDiv{
+                padding: 1.5rem 0;
+
+
+                h3{
+                    font-size: 20px;
+                }
+
+            }
+            .form{
+                .inputDiv{
+                    input{
+                        width: 100%;
+                        max-width: 200px;
+                    }
+                }
+            }
+        }
+    }
+}
+}
+@media screen and (max-width :927px) {
+    .loginPage {
+        .container_login{
+            width: 85%;
     }
 }
 }

@@ -7,6 +7,7 @@ import {Link} from 'react-router-dom'
 //Assets
 import image from '../../Assets/LOGIN.png'
 import logo from '../../Assets/LOGO.png'
+import video from '../../Assets/video.mp4'
 
 
 //Icons 
@@ -22,14 +23,14 @@ const Login = () => {
             <div className='container_login flex'>
 
 
-                <div className='imageDiv'>
-                    <img src={image} alt="Login Image"></img>
+                <div className='videoDiv'>
+                    <video src={video} autoPlay muted loop alt="Login Image"></video>
                     
 
-                    {/* <div className='textDiv'>
+                    <div className='textDiv'>
                         <h2 className='title'>ASSIST ABROAD</h2>
                         <p>Welcome Back</p>
-                    </div> */}
+                    </div>
                     <div className='footerDiv flex'>
                         <span className='text'> Don't have an account?</span>
                     <Link to={'/home'}>
@@ -40,8 +41,9 @@ const Login = () => {
 
                 <div className='formDiv flex'>
                     <div className='headerDiv'>
+                    <img  src={logo} alt="Logo Image"></img>
                         {/* <img className='imageLogo' src={logo} alt="Logo Image"></img> */}
-                        <span className='logoName'>Assist Abroad</span>
+                        {/* <span className='logoName'>Assist Abroad</span> */}
                         <h3>Welcome Back</h3>
                        
                     </div>
@@ -51,17 +53,17 @@ const Login = () => {
                         <span className='showMessage'> Authetication error display</span>
 
 
-                        <button className='google flex'>
+                        {/* <button className='google flex'>
                         <FcGoogle className='icon'/>
                             <span className='signInGoogle'>Sign in with Google</span>
 
-                        </button>
+                        </button> */}
                         
                         <div className='inputDiv'>
                          <label htmlFor='username'>Username</label>
                          <div className='input flex'>
                          <MdEmail className='icon'/>
-                         <input type='text' id='email' placeholder='Enter your email id'></input>
+                         <input type='text' id='email' placeholder='Enter your name'></input>
                             </div>   
                         </div>
                         <div className='inputDiv'>
@@ -78,7 +80,7 @@ const Login = () => {
                         </button>
 
                         <span className='forgotPassword'>Forgot your password? <a href="">Click here</a></span>
-                    </form>
+                    </form>   
                 </div>
 
 
