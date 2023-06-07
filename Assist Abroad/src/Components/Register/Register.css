@@ -110,10 +110,13 @@ video{
 }
 .headerDiv{
     text-align: center;
-    padding: 1.5rem 0;
+    padding: 1.0rem 0;
 
-  
+
     
+}
+.logoRegister{
+margin-top: 30px;
 }
 img{
     width: 300px;
@@ -141,9 +144,10 @@ color: #6D81FE;
 }
 input{
     margin-left: 5px;
-    background: none;
-
-    width: 250px;
+    /* background: none; */
+    border: none;
+    outline: none;
+    width: 280px;
 }
 label{
     font-weight: 400;
@@ -152,11 +156,10 @@ label{
    
 }
 .input{
-    gap: .5rem;
-    border: none;
-
-    padding: 1rem;
-    border-radius: 10px;
+    gap: .3rem;
+    
+    padding: .6rem;
+    border-radius: 10px ;
     background: #ffffff;
 }
 
@@ -235,6 +238,7 @@ a{
                     width:40px;
 
                 }
+                
                 h3{
                     font-size: 10px;
                 }
@@ -251,6 +255,9 @@ a{
             }
         }
     }
+    .logoRegister{
+        margin-top: 5px;
+        }
 }
 }
 @media screen and (max-width :678px) {

@@ -44,10 +44,10 @@ const Register = () => {
 
                 <div className='formDiv flex'>
                     <div className='headerDiv'>
-                    <img  src={logo} alt="Logo Image"></img>
+                    <img className='logoRegister' src={logo} alt="Logo Image"></img>
                        
                         {/* <span className='logoName'>Assist Abroad</span> */}
-                        <h3>Welcome Back</h3>
+                        <h3>Lets get started</h3>
                         <img className='imageLogo' src={imageLogo} alt="Logo Image"></img>
                     </div>
                     
@@ -77,10 +77,10 @@ const Register = () => {
                             </div>   
                         </div>
                         <div className='inputDiv'>
-                         <label htmlFor='password'>Date Of Birth</label>
+                         <label htmlFor='dateOfBirth'>Date Of Birth</label>
                          <div className='input flex'>
                          <RiLockPasswordFill className='icon'/>
-                         <input type='password' id='password' placeholder='Enter your password'></input>
+                         <input type='date' id='dateOfBirth' placeholder='Enter your date of birth'></input>
                             </div>   
                         </div>
                         <div className='inputDiv'>
