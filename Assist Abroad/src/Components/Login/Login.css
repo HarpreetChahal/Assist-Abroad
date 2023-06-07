@@ -3,7 +3,7 @@
     width: 100%;
     margin: auto;
     border-radius: 10px;
-    overflow: hidden;
+    /* overflow: hidden; */
     box-shadow: 0 7px 50px rgb(214,223,213);
 }
 
@@ -102,7 +102,7 @@ video{
 }
 .formDiv{
     flex-basis: 50%;
-    margin: auto;
+    /* margin: auto; */
     flex-direction: column;
     gap: 1.5rem;
     transform: translateY(-1rem);
@@ -115,14 +115,12 @@ video{
     
 }
 img{
-    width: 400px;
+    width: 500px;
     padding-bottom: .5rem;
+    /* position: relative; */
 }
-/* .imageLogo{
-    width: 60px;
-    padding-bottom: .5rem;
-    
-} */
+
+
 /* h1{
     font-size: 60px;
     font-family: 'Montserrat', sans-serif;
@@ -154,7 +152,8 @@ label{
 }
 .input{
     gap: .5rem;
-    
+    border: none;
+
     padding: 1rem;
     border-radius: 10px;
     background: #ffffff;
@@ -192,32 +191,35 @@ a{
 
 }
 
-@media screen and (max-width :602px) {
+@media screen and (max-width :926px) {
+    
     .loginPage {
+        width: 100%;
         .container_login{
+            margin-top: 70px;
             height: 100%;
             width:100%;
             flex-direction: column;
             padding: 1.5rem;
 
             .videoDiv{
-                width: 100%;
+                display: none;
                 .textDiv{
                     .title{
                         font-size: 20px;
                     }
-
-                    p{
-                        padding:1rem;
-                    }
                 }
                 .footerDiv
                 {
+                   display: none;
+                    
                  .text{
-                    font-size: 10px;
+                    /* font-size: 20px; */
+                    display: none;
                  }
                  .btn{
-                    padding: .4rem 1.5rem;
+                    padding: 2px;
+                    font-size: 8px;
                  }
             }
         }
@@ -233,7 +235,7 @@ a{
 
                 }
                 h3{
-                    font-size: 20px;
+                    font-size: 10px;
                 }
 
             }
@@ -251,6 +253,7 @@ a{
 }
 }
 @media screen and (max-width :678px) {
+    
     .loginPage {
         .container_login{
             .videoDiv{
@@ -294,11 +297,15 @@ a{
         }
     }
 }
+
 }
-@media screen and (max-width :927px) {
+@media screen and (min-width :927px) {
     .loginPage {
         .container_login{
-            width: 85%;
+            width: 70%;
     }
+    .imageLogo {
+        display: none;
+      }
 }
 }

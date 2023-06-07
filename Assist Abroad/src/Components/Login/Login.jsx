@@ -2,10 +2,12 @@ import React from 'react'
 import './Login.css'
 import '../../App.css'
 import {Link} from 'react-router-dom'
+import Navbar from "../../layout/Navbar";
 
 
 //Assets
 import image from '../../Assets/LOGIN.png'
+import imageLogo from '../../Assets/LoginPageLogoMobile.png'
 import logo from '../../Assets/LOGO.png'
 import video from '../../Assets/video.mp4'
 
@@ -18,7 +20,8 @@ import {RiLockPasswordFill} from 'react-icons/Ri'
 
 const Login = () => {
     return(
-        
+        <>
+        <Navbar />
         <div className='loginPage flex'>
             <div className='container_login flex'>
 
@@ -28,8 +31,8 @@ const Login = () => {
                     
 
                     <div className='textDiv'>
-                        <h2 className='title'>ASSIST ABROAD</h2>
-                        <p>Welcome Back</p>
+                        {/* <h2 className='title'>ASSIST ABROAD</h2> */}
+                        {/* <p>Welcome Back</p> */}
                     </div>
                     <div className='footerDiv flex'>
                         <span className='text'> Don't have an account?</span>
@@ -42,10 +45,10 @@ const Login = () => {
                 <div className='formDiv flex'>
                     <div className='headerDiv'>
                     <img  src={logo} alt="Logo Image"></img>
-                        {/* <img className='imageLogo' src={logo} alt="Logo Image"></img> */}
+                       
                         {/* <span className='logoName'>Assist Abroad</span> */}
                         <h3>Welcome Back</h3>
-                       
+                        <img className='imageLogo' src={imageLogo} alt="Logo Image"></img>
                     </div>
                     
 
@@ -87,6 +90,7 @@ const Login = () => {
             </div>
        
         </div>
+        </>
     )
 }
 export default Login
