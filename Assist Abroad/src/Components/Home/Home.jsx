@@ -5,6 +5,7 @@ import love from "/src/Assets/love.png";
 import rocket from "/src/Assets/rocket.png";
 import thunder from "/src/Assets/thunder.png";
 import Footer from "../../layout/Footer";
+import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <div className="bg-[#F6F7FC] relative min-h-screen">
@@ -20,9 +21,10 @@ const Home = () => {
               <span>Moving to a new <br className=" lg:hidden"  /> country ? </span>
               <br /> Let us help you
             </h1>
+            <Link to={'/quiz'}>
             <button className="px-8 py-2 bg-pr text-white  mt-10 text-lg font_ab rounded-md">
               Get Started
-            </button>
+            </button></Link>
           </div>
           <div>
             <img src={hero} alt="" />
@@ -46,7 +48,7 @@ const Home = () => {
               the readable content of a page when looking at its layout. The
               point of using Lorem Ipsum is that it has a more-or-less normal
               distribution of letters, as opposed to using 'Content here,
-              content here', making it look like readable English.
+              content here&apos; making it look like readable English.
             </p>
           </div>
           <div className="bg-white border-2 px-5 py-10 rounded-xl  ">
@@ -61,7 +63,7 @@ const Home = () => {
               the readable content of a page when looking at its layout. The
               point of using Lorem Ipsum is that it has a more-or-less normal
               distribution of letters, as opposed to using 'Content here,
-              content here', making it look like readable English.
+              content here&apos; making it look like readable English.
             </p>
           </div>
           <div className="bg-white border-2 px-5 py-10 rounded-xl  ">
@@ -76,7 +78,7 @@ const Home = () => {
               the readable content of a page when looking at its layout. The
               point of using Lorem Ipsum is that it has a more-or-less normal
               distribution of letters, as opposed to using 'Content here,
-              content here', making it look like readable English.
+              content here&apos; making it look like readable English.
             </p>
           </div>
           <div className="bg-white border-2 px-5 py-10 rounded-xl  ">
@@ -91,7 +93,7 @@ const Home = () => {
               the readable content of a page when looking at its layout. The
               point of using Lorem Ipsum is that it has a more-or-less normal
               distribution of letters, as opposed to using 'Content here,
-              content here', making it look like readable English.
+              content here&apos; making it look like readable English.
             </p>
           </div>
           <div className="bg-white border-2 px-5 py-10 rounded-xl  ">
@@ -106,7 +108,7 @@ const Home = () => {
               the readable content of a page when looking at its layout. The
               point of using Lorem Ipsum is that it has a more-or-less normal
               distribution of letters, as opposed to using 'Content here,
-              content here', making it look like readable English.
+              content here&apos; making it look like readable English.
             </p>
           </div>
           <div className="bg-white border-2 px-5 py-10 rounded-xl  ">
@@ -121,7 +123,7 @@ const Home = () => {
               the readable content of a page when looking at its layout. The
               point of using Lorem Ipsum is that it has a more-or-less normal
               distribution of letters, as opposed to using 'Content here,
-              content here', making it look like readable English.
+              content here&apos; making it look like readable English.
             </p>
           </div>
         </div>

@@ -2,6 +2,7 @@ import './App.css'
 import Home from './Components/Home/Home'
 import Login from './Components/Login/Login'
 import Register from './Components/Register/Register'
+import Quiz from './Components/Quiz/Quiz'
 
 //React router dom import
 import {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
   {
     path:'/home',
     element: <div><Home/></div>
+  },
+  {
+    path:'/quiz',
+    element: <div><Quiz/></div>
   }
 ])
 

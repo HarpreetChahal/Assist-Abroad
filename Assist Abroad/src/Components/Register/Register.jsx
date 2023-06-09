@@ -36,7 +36,7 @@ const Register = () => {
                     </div>
                     <div className='footerDiv flex'>
                         <span className='text'> Already have an account?</span>
-                    <Link to={'/home'}>
+                    <Link to={'/'}>
                     <button className='btn'>Log In</button></Link>
                     </div>
                 </div>
@@ -63,17 +63,17 @@ const Register = () => {
                         </button> */}
                         
                         <div className='inputDiv'>
-                         <label htmlFor='username'>Name</label>
+                         <label htmlFor='name'>Name</label>
                          <div className='input flex'>
                          <MdEmail className='icon'/>
-                         <input type='text' id='email' placeholder='Enter your name'></input>
+                         <input type='text' id='name' placeholder='Enter your name'></input>
                             </div>   
                         </div>
                         <div className='inputDiv'>
-                         <label htmlFor='password'>Email</label>
+                         <label htmlFor='email'>Email</label>
                          <div className='input flex'>
                          <RiLockPasswordFill className='icon'/>
-                         <input type='password' id='password' placeholder='Enter your password'></input>
+                         <input type='text' id='email' placeholder='Enter your email'></input>
                             </div>   
                         </div>
                         <div className='inputDiv'>
@@ -91,10 +91,10 @@ const Register = () => {
                             </div>   
                         </div>
                         <div className='inputDiv'>
-                         <label htmlFor='password'>Confirm Password</label>
+                         <label htmlFor='confirmPassword'>Confirm Password</label>
                          <div className='input flex'>
                          <RiLockPasswordFill className='icon'/>
-                         <input type='password' id='password' placeholder='Enter your password'></input>
+                         <input type='password' id='confirmPassword' placeholder='Confirm your password'></input>
                             </div>   
                         </div>
 
@@ -102,8 +102,9 @@ const Register = () => {
                             <span>Sign Up</span>
 
                         </button>
+                        <br/>
 
-                        <span className='forgotPassword'>Forgot your password? <a href="">Click here</a></span>
+                        {/* <span className='forgotPassword'>Forgot your password? <a href="">Click here</a></span> */}
                     </form>   
                 </div>
 

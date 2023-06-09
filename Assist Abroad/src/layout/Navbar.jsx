@@ -24,18 +24,18 @@ const Navbar = () => {
                 <Link to="/home" className=" text-[#23314C] hover:text-pr text-lg font_ab">
                 Home
                 </Link>
-         
+                <div onClick={()=>{
+                  window.scrollTo(0,470)
+                }} className=" text-[#23314C] cursor-pointer hover:text-pr text-lg font_ab">
+                Services
+                </div>
             
                 <div onClick={()=>{
                   window.scrollTo(0,1370)
                 }} className=" text-[#23314C] cursor-pointer hover:text-pr text-lg font_ab">
                  Contact
                 </div>
-                <div onClick={()=>{
-                  window.scrollTo(0,470)
-                }} className=" text-[#23314C] cursor-pointer hover:text-pr text-lg font_ab">
-                Services
-                </div>
+               
             
                 <Link to="/" className=" text-[#23314C] hover:text-pr text-lg font_ab">
                 Sign In
@@ -91,18 +91,19 @@ const Navbar = () => {
                     <Link to="/home" className=" text-[#23314C] hover:text-pr font_ab">
                 Home
                 </Link>
-                <div onClick={()=>{
-                  window.scrollTo(0,3270)
-                  setOpen(false)
-                }}  className=" text-[#23314C] cursor-pointer hover:text-pr font_ab">
-                Contact
-                </div>
+               
             
                 <div onClick={()=>{
                   window.scrollTo(0,470)
                   setOpen(false)
                 }}  className=" text-[#23314C] cursor-pointer hover:text-pr font_ab">
                 Services
+                </div>
+                <div onClick={()=>{
+                  window.scrollTo(0,3270)
+                  setOpen(false)
+                }}  className=" text-[#23314C] cursor-pointer hover:text-pr font_ab">
+                Contact
                 </div>
             
                 <Link to="/" className=" text-[#23314C] hover:text-pr font_ab">
