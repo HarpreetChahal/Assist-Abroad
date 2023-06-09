@@ -97,8 +97,13 @@ const Quiz = () => {
             </fieldset>
           </form>
 
-          
-            
+          <div className=" mt-10 flex items-center justify-between">
+            <button className="px-10 py-2 bg-pr text-white rounded-md">
+              Previous
+            </button>
+            <button className="px-10 py-2 bg-pr text-white rounded-md">
+              Next
+            </button>
              
           </div>
         </div>
