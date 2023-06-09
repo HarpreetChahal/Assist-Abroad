@@ -106,9 +106,19 @@ const Quiz = () => {
             </button>
              
           </div>
+         
+          <div className="flex items-center justify-center mt-10">
+            {/* Reset button */}
+            <button className="px-10 py-2 bg-white text-pr rounded-md border border-2 border-pr hover:bg-tc hover:text-[#ffffff]">
+  Reset
+</button>
+
+
+          </div>
+            
         </div>
       </section>
-    <p className=" mt-96 text-center text-[#23314C]">© 2023 Assist Abroad , Inc. All Rights Reserved.</p>
+    <p className=" mt-28 text-center text-[#23314C]">© 2023 Assist Abroad , Inc. All Rights Reserved.</p>
     </div>
   );
 };

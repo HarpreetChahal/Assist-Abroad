@@ -7,7 +7,8 @@ export default {
   theme: {
     extend: {
       colors:{
-        pr: "#6D81FE"
+        pr: "#6D81FE",
+        tc : "#23314c",
       }
     },
   },
