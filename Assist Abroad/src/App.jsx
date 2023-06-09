@@ -3,7 +3,7 @@ import Home from './Components/Home/Home'
 import Login from './Components/Login/Login'
 import Register from './Components/Register/Register'
 import Quiz from './Components/Quiz/Quiz'
-// import Payment from './Components/Payment/Payment'
+import Payment from './Components/Payment/Payment'
 
 //React router dom import
 import {
@@ -29,10 +29,10 @@ const router = createBrowserRouter([
     path:'/quiz',
     element: <div><Quiz/></div>
   },
-  // {
-  //   path:'/payment',
-  //   element: <div><Payment/></div>
-  // }
+  {
+    path:'/payment',
+    element: <div><Payment/></div>
+  }
 ])
 
 function App() {

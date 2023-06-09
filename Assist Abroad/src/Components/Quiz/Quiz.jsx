@@ -101,6 +101,7 @@ const Quiz = () => {
             <button className="px-10 py-2 bg-pr text-white rounded-md">
               Previous
             </button>
+           
             <button className="px-10 py-2 bg-pr text-white rounded-md">
               Next
             </button>
@@ -109,9 +110,10 @@ const Quiz = () => {
          
           <div className="flex items-center justify-center mt-10">
             {/* Reset button */}
+            <Link to={'/payment'}>
             <button className="px-10 py-2 bg-white text-pr rounded-md border border-2 border-pr hover:bg-tc hover:text-[#ffffff]">
   Reset
-</button>
+</button></Link>
 
 
           </div>
