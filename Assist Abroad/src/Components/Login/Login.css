@@ -38,15 +38,31 @@
 
 
 /* image & img */
-video, .footerDiv{
+/* video, .footerDiv{
 
     position:absolute;
-}
+} */
 
-video{
+/* .imageLogoLeft, .footerDiv{
+
+    position:absolute;
+} */
+
+/* video{
     height: 100%;
     width:100%;
     object-fit: cover;
+    top: 0;
+    bottom: 10;
+    right: 0;
+    left: 0;
+
+} */
+
+.imageLogoLeft{
+    height: 100%;
+    width:100%;
+    object-fit:contain;
     top: 0;
     bottom: 10;
     right: 0;

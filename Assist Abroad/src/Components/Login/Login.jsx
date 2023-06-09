@@ -27,8 +27,8 @@ const Login = () => {
 
 
                 <div className='videoDiv'>
-                    <video src={video} autoPlay muted loop alt="Login Image"></video>
-                    
+                    {/* <video src={video} autoPlay muted loop alt="Login Image"></video> */}
+                    <img className="imageLogoLeft"src={image} alt='Login Image'></img>
 
                     <div className='textDiv'>
                         {/* <h2 className='title'>ASSIST ABROAD</h2> */}
