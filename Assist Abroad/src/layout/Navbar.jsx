@@ -77,7 +77,7 @@ const Navbar = () => {
 
 
               <div className=" flex items-center" >
-              <div><Link to="/" className=" text-pr border border-pr  px-6 mt-2 rounded-md py-1.5 font_ab">
+              <div><Link to="/register" className=" text-pr border border-pr  px-6 mt-2 rounded-md py-1.5 font_ab">
                 Join
                 </Link></div>
                 </div>
