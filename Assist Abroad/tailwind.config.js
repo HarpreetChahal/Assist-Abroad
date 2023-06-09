@@ -9,6 +9,7 @@ export default {
       colors:{
         pr: "#6D81FE",
         tc : "#23314c",
+        wt: "#ffffff",
       }
     },
   },
