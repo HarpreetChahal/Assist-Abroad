@@ -7,7 +7,7 @@ const Quiz = () => {
     <div className="bg-[#F6F7FC] relative min-h-screen">
       <Navbar />
       <section
-        className="w-full pt-72 px-5 lg:mx-0
+        className="w-full pt-32 lg:pt-52 px-5 lg:mx-0
         "
       >
         <div className="bg-white mx-auto shadow-md w-full border rounded-xl lg:max-w-7xl py-9  px-5 lg:px-10  ">
