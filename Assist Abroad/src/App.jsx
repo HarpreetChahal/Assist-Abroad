@@ -6,6 +6,14 @@ import Quiz from "./Components/Quiz/Quiz";
 import Payment from "./Components/Payment/Payment";
 import Arrival from "./Components/Arrival/Arrival";
 import Profile from "./Components/Profile/Profile";
+import { Route, Routes } from "react-router-dom";
+
+
+
+import { useNavigate } from "react-router";
+import { useContext } from "react";
+import { Context } from "./Components/context/Context";
+
 
 //React router dom import
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -71,9 +79,21 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
+  const { user, dispatch, token } = useContext(Context);
+  const navigate = useNavigate();
   return (
     <div>
-      <RouterProvider router={router} />
+      <Routes>
+       
+        <Route
+          exact
+          path="/register"
+          element={
+            <Register />
+          }
+        />
+
+            </Routes>
     </div>
   );
 }
