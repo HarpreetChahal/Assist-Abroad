@@ -2,10 +2,7 @@ import React, { useState } from "react";
 import Navbar from "../../layout/Navbar";
 import { Fragment, useRef } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-// import Rating from "@mui/material/Rating";
-
-import { Rating } from '@mui/material';
-
+import Rating from "@mui/material/Rating";
 const Arrival = () => {
   const [active, setActive] = useState(false);
   const [open, setOpen] = useState(false);
@@ -42,36 +39,36 @@ const Arrival = () => {
           </div>
           {!active && (
             <div className="mt-20 max-w-7xl mx-auto bg-whittext-base lg:text-2xle border-2 rounded-2xl p-4 lg:p-10">
-              <h1 className="text-xl lg:text-3xl text-center font-bold pb-10">
+              <h1 className="text-3xl text-center font-bold">
                 PRE-ARRIVAL FORM
               </h1>
 
               <div className="flex items-center justify-center flex-col ">
                 <div className="mt-6 space-y-3">
-                  <div className="relative flex items-center  lg:gap-x-6">
-                    <p className="text-base lg:text-2xl w-32 lg:w-40">Date of Arrival</p>
+                  <div className="relative flex items-center  gap-x-6">
+                    <p className="text-base lg:text-2xl lg:w-40 ">Date of Arrival</p>
                     <input
                       type="text"
                       className="border px-2 py-2 lg:w-80 rounded-md outline-none bg-[#F8F8FA]"
                     />
                   </div>
-                  <div className="relative flex items-center lg:gap-x-6">
-                    <p className="text-base lg:text-2xl w-32 lg:w-40">Flight Ticket</p>
+                  <div className="relative flex items-center gap-x-6">
+                    <p className="text-base lg:text-2xl lg:w-40">Flight Ticket</p>
                     <input
                       type="text"
                       className="border px-2 py-2 lg:w-80 rounded-md outline-none bg-[#F8F8FA]"
                     />
                   </div>
-                  <div className="relative flex items-center lg:gap-x-6">
-                    <p className="text-base lg:text-2xl w-32 lg:w-40">Arrival Time</p>
+                  <div className="relative flex items-center gap-x-6">
+                    <p className="text-base lg:text-2xl lg:w-40">Arrival Time</p>
                     <input
                       type="text"
                       className="border px-2 py-2 lg:w-80 rounded-md outline-none bg-[#F8F8FA]"
                     />
                   </div>
 
-                  <div className="relative flex items-center lg:gap-x-6">
-                    <p className="text-base lg:text-2xl w-32 lg:w-40">Airport</p>
+                  <div className="relative flex items-center gap-x-6">
+                    <p className="text-base lg:text-2xl lg:w-40">Airport</p>
                     <input
                       type="text"
                       className="border px-2 py-2 lg:w-80 rounded-md outline-none bg-[#F8F8FA]"
