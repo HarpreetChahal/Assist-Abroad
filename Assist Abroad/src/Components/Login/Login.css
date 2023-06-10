@@ -1,41 +1,35 @@
-.loginPage{
-    height: 100vh;
-    width: 100%;
-    margin: auto;
-    border-radius: 10px;
-    /* overflow: hidden; */
-    box-shadow: 0 7px 50px rgb(214,223,213);
+.loginPage {
+  height: 100vh;
+  width: 100%;
+  margin: auto;
+  border-radius: 10px;
+  /* overflow: hidden; */
+  box-shadow: 0 7px 50px rgb(214, 223, 213);
 }
 
-.container_login{
-   height: 75vh;
-   width: 60%;
-   margin: auto;
-   justify-content: space-between;
-   border-radius: 10px;
-   background: #f8f8fa;
-
+.container_login {
+  height: 75vh;
+  width: 60%;
+  margin: auto;
+  justify-content: space-between;
+  border-radius: 10px;
+  background: #f8f8fa;
 }
 
-.videoDiv{
-    position: relative;
-    display: flex;
-    flex-basis: 50%;
-    width: 70%;
-    height: 100%;
-    padding: 0 1.5rem;
-    text-align: center;
-    justify-content: center;
-    flex-direction: column;
-    margin: auto;
-    border-radius: 10px;
-    overflow: hidden;
-
+.videoDiv {
+  position: relative;
+  display: flex;
+  flex-basis: 50%;
+  width: 70%;
+  height: 100%;
+  padding: 0 1.5rem;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: auto;
+  border-radius: 10px;
+  overflow: hidden;
 }
-
-
-
-
 
 /* image & img */
 /* video, .footerDiv{
@@ -59,24 +53,23 @@
 
 } */
 
-.imageLogoLeft{
-    height: 100%;
-    width:100%;
-    object-fit:contain;
-    top: 0;
-    bottom: 10;
-    right: 0;
-    left: 0;
-
+.imageLogoLeft {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  top: 0;
+  bottom: 10;
+  right: 0;
+  left: 0;
 }
-.textDiv{
-    position: relative;
-    color:#fff;
+.textDiv {
+  position: relative;
+  color: #fff;
 }
-.title{
-    color: #fff;
-    font-size: 35px;
-    font-weight: 800;
+.title {
+  color: #fff;
+  font-size: 35px;
+  font-weight: 800;
 }
 
 /* p{
@@ -84,244 +77,255 @@
     padding: 1rem;
     font-weight: 400;
 } */
-.footerDiv{
-    /* top:80px; */
-    bottom: 10px;
-    padding: 0 1rem;
-    height: 60px;
-    background: #eddcdc;
-    left: 10px;
-    right: 10px;
-    justify-content: space-between;
-    backdrop-filter: blur(1px);
+.footerDivLog {
+  /* top:80px; */
+  margin-bottom: 10px;
+  padding: 0 1rem;
+  height: 60px;
+  background: #23314c;
+  left: 10px;
+  right: 10px;
+  justify-content: space-between;
+  backdrop-filter: blur(1px);
+  border-radius: 10px;
+}
+.textDont {
+  color: #fff;
+}
+.btnLogin {
+    /* border: 2px dotted; */
+    background-color: var(--primaryColor);
+    /* outline: none; */
+    /* cursor: pointer; */
     border-radius: 10px;
-    
-
+    padding: .8rem 1.5rem;
+    font-family: 400;
+    color: var(--whiteColor);
+  margin-top: 5px;
+  border-radius: 10px;
+  font-weight: 400;
+  transition: 0.3s ease;
+  align-items: center;
+  /* margin: auto; */
+  justify-content: center;
+  font-size: 16px;
+  width: 100%;
+  gap: 0.5rem;
+  transition: -3s ease;
 }
-.text{
-    color: #23314c;
+.btnSignup {
+  border: 2px solid #6d81fe;
+  background-color: #fff;
+  /* outline: none; */
+  /* cursor: pointer; */
+  border-radius: 10px;
+  padding: 0.8rem 1.5rem;
+  font-family: 400;
+  color: #6d81fe;
+  font-weight: 400;
+  transition: 0.3s ease;
+  align-items: center;
+  /* margin: auto; */
+  justify-content: center;
+  font-size: 16px;
+  width: 100%;
+  gap: 0.5rem;
+  transition: -3s ease;
+  margin-bottom: 10px;
 }
-.btn{
-   padding: .8rem 1.5rem;
-   border-radius: 10px;
-   font-weight: 400;
-   transition: .3s ease; 
-   align-items: center;
-   margin: auto;
-   justify-content: center;
-   font-size: 16px;
-   width: 100%;
-   gap: 0.5rem;
-   transition: -3s ease;
-
-   
+.btnSignup:hover{
+    color: var(--hoverColor);
+    background-color: #23314c ;
 }
-.formDiv{
-    flex-basis: 50%;
-    /* margin: auto; */
-    flex-direction: column;
-    gap: 1.5rem;
-    transform: translateY(-1rem);
+.formDiv {
+  flex-basis: 50%;
+  /* margin: auto; */
+  flex-direction: column;
+  gap: 1.5rem;
+  transform: translateY(-1rem);
 }
-.headerDiv{
-    text-align: center;
-    padding: 1.5rem 0;
-
-  
-    
+.headerDiv {
+  text-align: center;
+  padding: 1.5rem 0;
 }
-img{
-    width: 500px;
-    padding-bottom: .5rem;
-    /* position: relative; */
+img {
+  width: 500px;
+  padding-bottom: 0.5rem;
+  /* position: relative; */
 }
-
 
 /* h1{
     font-size: 60px;
     font-family: 'Montserrat', sans-serif;
  
 } */
-h3{
- font-size: 25px;   
- font-weight: 600;
- font-family: 'Montserrat',sans-serif;
- color: #23314c;
+h3 {
+  font-size: 25px;
+  font-weight: 600;
+  font-family: "Montserrat", sans-serif;
+  color: #23314c;
 }
-.form{
-    gap: 1rem;
+.form {
+  gap: 1rem;
 }
-.icon{
-color: #6D81FE;
+.icon {
+  color: #6d81fe;
 }
-input{
-    margin-left: 5px;
-    background: none;
+input {
+  margin-left: 5px;
+  background: none;
 
-    width: 250px;
+  width: 250px;
 }
-label{
-    font-weight: 400;
-    font-size: 17px;
-    display: block;
-   
+label {
+  font-weight: 400;
+  font-size: 17px;
+  display: block;
 }
-.input{
-    gap: .5rem;
-    border: none;
+.input {
+  gap: 0.5rem;
+  border: none;
 
-    padding: 1rem;
-    border-radius: 10px;
-    background: #ffffff;
-}
-
-
-.forgotPassword{
-    font-size: 16px;
-
-}
-a{
-    text-decoration: underline;
-    cursor: pointer;
-}
-.message{
-    display: none;
+  padding: 1rem;
+  border-radius: 10px;
+  background: #ffffff;
 }
 
-.showMessage{
-    display: block;
-    color: #ffffff;
-    font-size: 15px;
-    padding: 15px;
-    background: #23314c;
-    border-radius: 3px;
-    text-align: center;
+.forgotPassword {
+  font-size: 16px;
 }
-.google{
-    justify-content: center;
-    padding: 12px;
+a {
+  text-decoration: underline;
+  cursor: pointer;
 }
-.signInGoogle{
-    margin-left: 5px;
-    font-size: 15px;
-
+.message {
+  display: none;
 }
 
-@media screen and (max-width :926px) {
-    
-    .loginPage {
-        width: 100%;
-        .container_login{
-            margin-top: 70px;
-            height: 100%;
-            width:100%;
-            flex-direction: column;
-            padding: 1.5rem;
+.showMessage {
+  display: block;
+  color: #ffffff;
+  font-size: 15px;
+  padding: 15px;
+  background: #23314c;
+  border-radius: 3px;
+  text-align: center;
+}
+.google {
+  justify-content: center;
+  padding: 12px;
+}
+.signInGoogle {
+  margin-left: 5px;
+  font-size: 15px;
+}
 
-            .videoDiv{
-                display: none;
-                .textDiv{
-                    .title{
-                        font-size: 20px;
-                    }
-                }
-                .footerDiv
-                {
-                   display: none;
-                    
-                 .text{
-                    /* font-size: 20px; */
-                    display: none;
-                 }
-                 .btn{
-                    padding: 2px;
-                    font-size: 8px;
-                 }
-            }
+@media screen and (max-width: 926px) {
+  .loginPage {
+    width: 100%;
+    .container_login {
+      margin-top: 70px;
+      height: 100%;
+      width: 100%;
+      flex-direction: column;
+      padding: 1.5rem;
+
+      .videoDiv {
+        display: none;
+        .textDiv {
+          .title {
+            font-size: 20px;
+          }
         }
-        .formDiv{
-            gap:1rem;
-            transform: translateY(-.5rem);
+        .footerDiv {
+          display: none;
 
-            .headerDiv{
-                padding: 1rem 0;
-
-                img{
-                    width:40px;
-
-                }
-                h3{
-                    font-size: 10px;
-                }
-
-            }
-            .form{
-                gap: .5rem;
-
-                .inputDiv{
-                    input{
-                        width: 100%;
-                    }
-                }
-            }
+          .text {
+            /* font-size: 20px; */
+            display: none;
+          }
+          .btn {
+            padding: 2px;
+            font-size: 8px;
+          }
         }
+      }
+      .formDiv {
+        gap: 1rem;
+        transform: translateY(-0.5rem);
+
+        .headerDiv {
+          padding: 1rem 0;
+
+          img {
+            width: 40px;
+          }
+          h3 {
+            font-size: 10px;
+          }
+        }
+        .form {
+          gap: 0.5rem;
+
+          .inputDiv {
+            input {
+              width: 100%;
+            }
+          }
+        }
+      }
     }
+  }
 }
-}
-@media screen and (max-width :678px) {
-    
-    .loginPage {
-        .container_login{
-            .videoDiv{
-                .textDiv{
-                    .title{
-                        font-size: 25px;
-                    }
+@media screen and (max-width: 678px) {
+  .loginPage {
+    .container_login {
+      .videoDiv {
+        .textDiv {
+          .title {
+            font-size: 25px;
+          }
 
-                    p{
-                        padding:1rem;
-                    }
-                }
-                .footerDiv
-                {
-                 .text{
-                    font-size: 10px;
-                 }
-                 .btn{
-                    padding: .8rem 1.5rem;
-                 }
-            }
+          p {
+            padding: 1rem;
+          }
         }
-        .formDiv{
-            .headerDiv{
-                padding: 1.5rem 0;
-
-
-                h3{
-                    font-size: 20px;
-                }
-
-            }
-            .form{
-                .inputDiv{
-                    input{
-                        width: 100%;
-                        max-width: 200px;
-                    }
-                }
-            }
+        .footerDiv {
+          .text {
+            font-size: 10px;
+          }
+          .btn {
+            padding: 0.8rem 1.5rem;
+          }
         }
+      }
+      .formDiv {
+        .headerDiv {
+          padding: 1.5rem 0;
+
+          h3 {
+            font-size: 20px;
+          }
+        }
+        .form {
+          .inputDiv {
+            input {
+              width: 100%;
+              max-width: 200px;
+            }
+          }
+        }
+      }
     }
+  }
 }
-
-}
-@media screen and (min-width :927px) {
-    .loginPage {
-        .container_login{
-            width: 70%;
+@media screen and (min-width: 927px) {
+  .loginPage {
+    .container_login {
+      width: 70%;
     }
     .imageLogo {
-        display: none;
-      }
-}
+      display: none;
+    }
+  }
 }

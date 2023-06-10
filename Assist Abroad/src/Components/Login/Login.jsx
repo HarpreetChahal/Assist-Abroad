@@ -34,11 +34,11 @@ const Login = () => {
                         {/* <h2 className='title'>ASSIST ABROAD</h2> */}
                         {/* <p>Welcome Back</p> */}
                     </div>
-                    <div className='footerDiv flex'>
-                        <span className='text'> Don't have an account?</span>
+                    {/* <div className='footerDivLog flex'>
+                        <span className='textDont'> Don't have an account?</span>
                     <Link to={'/register'}>
                     <button className='btn'>Sign Up</button></Link>
-                    </div>
+                    </div> */}
                 </div>
 
 
@@ -77,12 +77,19 @@ const Login = () => {
                             </div>   
                         </div>
 
-                        <button type='submit' className='btn flex'>
+                        <button type='submit' className='btnLogin flex'>
                             <span>Login</span>
 
                         </button>
 
                         <span className='forgotPassword'>Forgot your password? <a href="">Click here</a></span>
+                        <Link to="/register">
+                        <button type='submit' className='btnSignup flex'>
+                            <span>Signup</span>
+                           
+
+                        </button>
+                        </Link>
                     </form>   
                 </div>
 
