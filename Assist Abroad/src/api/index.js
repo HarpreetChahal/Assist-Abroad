@@ -2,7 +2,7 @@ import axios from "axios";
 import qs from "qs";
 import Toast from "./toast";
 
-const baseUrl = "http://127.0.0.1:5173/";
+const baseUrl = "http://localhost:3000/";
 const GET = "GET";
 const DELETE = "DELETE";
 const POST = "POST";
@@ -70,7 +70,7 @@ function handleError(error) {
 
   const { MESSAGE } = response.data || {};
 
-  MESSAGE && Toast.error(MESSAGE);
+//   MESSAGE && Toast.error(MESSAGE);
 
   return Promise.reject(error);
 }
