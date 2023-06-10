@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "../../layout/Navbar";
+import { Link } from "react-router-dom";
 
 const Payment = () => {
     return(
@@ -129,9 +130,11 @@ const Payment = () => {
       </div>
   </div>
   <div className=" mt-5 mb-20 flex items-center justify-center">
+  <Link to={'/arrival-form'}>
           <button className="text-white bg-pr px-5 font-medium text-lg py-3 border border-pr rounded-md">
             Continue to payment
           </button>
+          </Link>
         </div>
 </section>
 </div>

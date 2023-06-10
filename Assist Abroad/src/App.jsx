@@ -4,6 +4,7 @@ import Login from './Components/Login/Login'
 import Register from './Components/Register/Register'
 import Quiz from './Components/Quiz/Quiz'
 import Payment from './Components/Payment/Payment'
+import Arrival from './Components/Arrival/Arrival'
 
 //React router dom import
 import {
@@ -32,7 +33,11 @@ const router = createBrowserRouter([
   {
     path:'/payment',
     element: <div><Payment/></div>
-  }
+  },
+  {
+    path: "/arrival-form",
+    element: <div><Arrival /></div>
+  },
 ])
 
 function App() {
