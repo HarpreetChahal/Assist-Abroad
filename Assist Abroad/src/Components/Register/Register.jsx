@@ -19,11 +19,12 @@ import React, { useState, useContext, useEffect } from "react";
 import { Context } from "../../Components/context/Context";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { TextField } from "@mui/material";
-
+import { Button, TextField } from "@mui/material";
+import commonApi from "../../api/common";
+import { useNavigate } from "react-router-dom";
 const Register = () => {
   const { dispatch, isFetching } = useContext(Context);
-
+const navigate=useNavigate()
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -47,7 +48,7 @@ const Register = () => {
           data: value
         })
           .then(({ DATA = {}, MESSAGE }) => {
-          
+          console.log("heheh",DATA)
             navigate("/");
           })
           .catch((error) => {
@@ -196,9 +197,9 @@ const Register = () => {
                 </div>
               </div>
 
-              <button type="submit" className="btn flex">
-                <span>Sign Up</span>
-              </button>
+              <Button type="submit" className="btn flex"  disabled={!(formik.isValid && formik.dirty)}>
+                Sign Up
+              </Button>
               <br />
 
               {/* <span className='forgotPassword'>Forgot your password? <a href="">Click here</a></span> */}

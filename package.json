@@ -1,8 +1,0 @@
-{
-  "dependencies": {
-    "bootstrap-icons": "^1.10.5",
-    "moment": "^2.29.4",
-    "react-icons": "^4.9.0",
-    "react-router-dom": "^6.11.2"
-  }
-}
