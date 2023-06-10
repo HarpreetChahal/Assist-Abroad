@@ -100,7 +100,7 @@ const Login = () => {
                          <label htmlFor='email'>Email</label>
                          <div className='input flex'>
                          <MdEmail className='icon'/>
-                         <TextField
+                         <TextField className='inputField'
                     type="text"
                     id="email"
                     placeholder="Enter your email"
@@ -116,7 +116,7 @@ const Login = () => {
                          <label htmlFor='password'>Password</label>
                          <div className='input flex'>
                          <RiLockPasswordFill className='icon'/>
-                         <TextField
+                         <TextField className='inputField'
                     type="password"
                     id="password"
                     placeholder="Enter your password"
@@ -129,7 +129,7 @@ const Login = () => {
                             </div>   
                         </div>
 
-                        <Button type='submit' className='btnLogin flex'>
+                        <Button type='submit' className='btnLogin flex' style={{ backgroundColor: '#6d81fe' , color: '#fff',borderRadius : 10}}>
                             Login
                         </Button>
 

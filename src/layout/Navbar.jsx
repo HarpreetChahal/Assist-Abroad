@@ -41,7 +41,7 @@ const Navbar = () => {
                 </Link>
                
             
-                <Link to="/" className=" text-[#23314C] hover:text-pr text-lg font_ab">
+                <Link to="/login" className=" text-[#23314C] hover:text-pr text-lg font_ab">
                 Sign In
                 </Link>
                 <Link to='/register' className=" text-pr border border-pr px-7 text-lg hover:bg-pr hover:text-white rounded-md py-1 font_ab">

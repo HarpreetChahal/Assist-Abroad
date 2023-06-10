@@ -84,7 +84,13 @@ function App() {
   return (
     <div>
       <Routes>
-       
+      <Route
+          exact
+          path="/"
+          element={
+            <Home />
+          }
+        />
         <Route
           exact
           path="/register"
@@ -97,6 +103,20 @@ function App() {
           path="/login"
           element={
             <Login />
+          }
+        />
+        <Route
+          exact
+          path="/quiz"
+          element={
+            <Quiz />
+          }
+        />
+        <Route
+          exact
+          path="/payment"
+          element={
+            <Payment />
           }
         />
 

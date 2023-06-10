@@ -171,7 +171,8 @@ h3 {
 .icon {
   color: #6d81fe;
 }
-input {
+
+.inputField {
   margin-left: 5px;
   background: none;
 
