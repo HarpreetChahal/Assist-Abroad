@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Navbar from "../../layout/Navbar";
+import { Link } from "react-router-dom";
 import { Fragment, useRef } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import Rating from "@mui/material/Rating";
@@ -75,9 +76,11 @@ const Arrival = () => {
                     />
                   </div>
                 </div>
+                <Link to={'/profile'}>
                 <button className="text-white mt-16 bg-pr px-7 py-2 rounded-md">
                   SUBMIT
                 </button>
+                </Link>
               </div>
             </div>
           )}

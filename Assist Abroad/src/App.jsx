@@ -5,7 +5,7 @@ import Register from "./Components/Register/Register";
 import Quiz from "./Components/Quiz/Quiz";
 import Payment from "./Components/Payment/Payment";
 import Arrival from "./Components/Arrival/Arrival";
-import Profile from "./Components/Payment/Payment";
+import Profile from "./Components/Profile/Profile";
 
 //React router dom import
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
