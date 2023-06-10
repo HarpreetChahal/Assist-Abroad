@@ -1,8 +1,8 @@
-import React from 'react'
 import './Login.css'
 import '../../App.css'
 import {Link} from 'react-router-dom'
 import Navbar from "../../layout/Navbar";
+import moment from "moment";
 
 
 //Assets
@@ -17,8 +17,42 @@ import {FcGoogle} from 'react-icons/Fc'
 import {MdEmail} from 'react-icons/Md'
 import {RiLockPasswordFill} from 'react-icons/Ri'
 
+import React, { useState, useContext, useEffect } from "react";
+import { Context } from "../../Components/context/Context";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { Button, TextField } from "@mui/material";
+import commonApi from "../../api/common";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+    const { dispatch, isFetching } = useContext(Context);
+    const navigate=useNavigate()
+      const formik = useFormik({
+        initialValues: {
+          email: "",
+          password: "",
+        },
+        validationSchema: Yup.object({
+          password: Yup.string().required("Required"),
+          email: Yup.string().email("Invalid email address").required("Required"),
+        }),
+        onSubmit: async (values) => {
+            await commonApi({
+              action: "login",
+              data: values
+            })
+              .then(({ DATA = {}, MESSAGE }) => {
+              console.log("heheh",DATA)
+                navigate("/");
+              })
+              .catch((error) => {
+                dispatch({ type: "LOGIN_FAILURE" });
+              
+                console.error(error);
+              });
+        },
+      });
     return(
         <>
         <Navbar />
@@ -52,7 +86,7 @@ const Login = () => {
                     </div>
                     
 
-                    <form action='' className='form grid'>
+                    <form onSubmit={formik.handleSubmit} className='form grid'>
                         <span className='showMessage'> Authetication error display</span>
 
 
@@ -63,24 +97,41 @@ const Login = () => {
                         </button> */}
                         
                         <div className='inputDiv'>
-                         <label htmlFor='username'>Username</label>
+                         <label htmlFor='email'>Email</label>
                          <div className='input flex'>
                          <MdEmail className='icon'/>
-                         <input type='text' id='email' placeholder='Enter your name'></input>
+                         <TextField
+                    type="text"
+                    id="email"
+                    placeholder="Enter your email"
+                    name="email"
+                    error={formik.touched.email && formik.errors.email}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.email}
+                  ></TextField>
                             </div>   
                         </div>
                         <div className='inputDiv'>
                          <label htmlFor='password'>Password</label>
                          <div className='input flex'>
                          <RiLockPasswordFill className='icon'/>
-                         <input type='password' id='password' placeholder='Enter your password'></input>
+                         <TextField
+                    type="password"
+                    id="password"
+                    placeholder="Enter your password"
+                    name="password"
+                    error={formik.touched.password && formik.errors.password}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.password}
+                  ></TextField>
                             </div>   
                         </div>
 
-                        <button type='submit' className='btnLogin flex'>
-                            <span>Login</span>
-
-                        </button>
+                        <Button type='submit' className='btnLogin flex'>
+                            Login
+                        </Button>
 
                         <span className='forgotPassword'>Forgot your password? <a href="">Click here</a></span>
                         <Link to="/register">
