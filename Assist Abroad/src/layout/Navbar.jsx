@@ -36,9 +36,9 @@ const Navbar = () => {
                  Contact
                 </div>
 
-                <div className=" text-[#23314C] cursor-pointer hover:text-pr text-lg font_ab">
+                <Link to="/profile" className=" text-[#23314C] cursor-pointer hover:text-pr text-lg font_ab">
                  Profile
-                </div>
+                </Link>
                
             
                 <Link to="/" className=" text-[#23314C] hover:text-pr text-lg font_ab">
@@ -109,9 +109,9 @@ const Navbar = () => {
                 }}  className=" text-[#23314C] cursor-pointer hover:text-pr font_ab">
                 Contact
                 </div>
-                <div className=" text-[#23314C] cursor-pointer hover:text-pr font_ab">
+                <Link to="/profile" className=" text-[#23314C] cursor-pointer hover:text-pr font_ab">
                 Profile
-                </div>
+                </Link>
                 <Link to="/" className=" text-[#23314C] hover:text-pr font_ab">
                 Sign In
                 </Link>
