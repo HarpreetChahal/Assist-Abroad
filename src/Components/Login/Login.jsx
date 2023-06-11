@@ -54,6 +54,9 @@ const Login = () => {
   return (
     <>
       <Navbar />
+      <div class="bg"></div>
+      <div class="bg bg2"></div>
+      <div class="bg bg3"></div>
       <div className="loginPage flex">
         <div className="container_login flex">
           <div className="videoDiv">
@@ -107,7 +110,7 @@ const Login = () => {
                     value={formik.values.email}
                   ></TextField>
                 </div>
-                <span>Email is not registered or incorrect</span>
+                <p className="authError">Email is not registered or incorrect!</p>
               </div>
               <div className="inputDiv">
                 <label htmlFor="password">Password</label>
@@ -126,6 +129,7 @@ const Login = () => {
                     value={formik.values.password}
                   ></TextField>
                 </div>
+                <p className="authError">Password is incorrect!</p>
               </div>
 
               <Button
@@ -154,6 +158,7 @@ const Login = () => {
           </div>
         </div>
       </div>
+      
     </>
   );
 };
