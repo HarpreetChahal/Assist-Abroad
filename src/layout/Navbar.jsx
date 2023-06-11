@@ -21,7 +21,7 @@ const Navbar = () => {
               </div>
             </div>
             <div className="flex items-center gap-10 justify-end text-gray-500">
-                <Link to="/home" className=" text-[#23314C] hover:text-pr text-lg font_ab">
+                <Link to="/" className=" text-[#23314C] hover:text-pr text-lg font_ab">
                 Home
                 </Link>
                 <div onClick={()=>{

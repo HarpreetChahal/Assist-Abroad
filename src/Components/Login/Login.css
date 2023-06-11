@@ -183,14 +183,14 @@ label {
   font-size: 17px;
   display: block;
 }
-.input {
+/* .input {
   gap: 0.5rem;
   border: none;
 
-  padding: 1rem;
+  padding: .5rem;
   border-radius: 10px;
   background: #ffffff;
-}
+} */
 
 .forgotPassword {
   font-size: 16px;

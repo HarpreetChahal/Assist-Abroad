@@ -129,7 +129,7 @@ const Login = () => {
                             </div>   
                         </div>
 
-                        <Button type='submit' className='btnLogin flex' style={{ backgroundColor: '#6d81fe' , color: '#fff',borderRadius : 10}}>
+                        <Button type='submit' className='btnLogin flex' style={{ backgroundColor: '#6d81fe' , color: '#fff',borderRadius : 10, padding: 15,marginTop:10}}>
                             Login
                         </Button>
 
