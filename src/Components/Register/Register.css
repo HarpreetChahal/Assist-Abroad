@@ -1,4 +1,4 @@
-.loginPage{
+.registerPage{
     height: 100vh;
     width: 100%;
     margin: auto;
@@ -7,11 +7,12 @@
     box-shadow: 0 7px 50px rgb(214,223,213);
 }
 
-.container_login{
-   height: 90vh;
+.container_register{
+   height: 80vh;
    width: 60%;
-   /* margin: auto; */
-   margin-top: 5vh;
+   
+   margin: auto;
+   /* margin-top: 5vh; */
    justify-content: space-between;
    border-radius: 10px;
    background: #f8f8fa;

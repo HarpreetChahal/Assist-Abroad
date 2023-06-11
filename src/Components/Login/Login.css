@@ -1,3 +1,4 @@
+/*  */
 .loginPage {
   height: 100vh;
   width: 100%;
@@ -5,12 +6,15 @@
   border-radius: 10px;
   /* overflow: hidden; */
   box-shadow: 0 7px 50px rgb(214, 223, 213);
+  
 }
 
 .container_login {
-  height: 75vh;
+  height: 80vh;
   width: 60%;
-  margin: auto;
+  margin-top: 80px;
+  margin-left: auto;
+  margin-right: auto;
   justify-content: space-between;
   border-radius: 10px;
   background: #f8f8fa;
@@ -150,7 +154,7 @@
 }
 img {
   width: 500px;
-  padding-bottom: 0.5rem;
+  /* padding-bottom: 0.5rem; */
   /* position: relative; */
 }
 
@@ -183,14 +187,14 @@ label {
   font-size: 17px;
   display: block;
 }
-/* .input {
+.inputLogin {
   gap: 0.5rem;
   border: none;
 
   padding: .5rem;
   border-radius: 10px;
   background: #ffffff;
-} */
+}
 
 .forgotPassword {
   font-size: 16px;
@@ -222,6 +226,9 @@ a {
 }
 
 @media screen and (max-width: 926px) {
+  body{
+    background-color: #f8f8fa;
+  }
   .loginPage {
     width: 100%;
     .container_login {

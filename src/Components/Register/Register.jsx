@@ -62,8 +62,8 @@ const navigate=useNavigate()
   return (
     <>
       <Navbar />
-      <div className="loginPage flex">
-        <div className="container_login flex">
+      <div className="registerPage flex">
+        <div className="container_register flex">
           <div className="videoDiv">
             <video src={video} autoPlay muted loop alt="Login Image"></video>
 
@@ -99,7 +99,7 @@ const navigate=useNavigate()
 
               <div className="inputDiv">
                 <label htmlFor="name">Name</label>
-                <div className="input flex">
+                <div className="inputRegister flex">
                   <MdEmail className="icon" />
                   <TextField
                     type="text"
@@ -115,7 +115,7 @@ const navigate=useNavigate()
               </div>
               <div className="inputDiv">
                 <label htmlFor="email">Email</label>
-                <div className="input flex">
+                <div className="inputRegister flex">
                   <RiLockPasswordFill className="icon" />
                   <TextField
                     type="text"
