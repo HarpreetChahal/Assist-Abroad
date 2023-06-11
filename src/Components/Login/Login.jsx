@@ -112,6 +112,7 @@ const Login = () => {
                 </div>
                 <p className="authError">Email is not registered or incorrect!</p>
               </div>
+              
               <div className="inputDiv">
                 <label htmlFor="password">Password</label>
                 <div className="inputLogin flex">

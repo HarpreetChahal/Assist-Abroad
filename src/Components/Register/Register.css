@@ -1,17 +1,67 @@
+html {
+    height:100%;
+  }
+  
+  body {
+    margin:0;
+  }
+  
+  .bg {
+    animation:slide 3s ease-in-out infinite alternate;
+    background-image: linear-gradient(-60deg, #6d81fe 30%, #fff 50%);
+    bottom:0;
+    left:-50%;
+    opacity:.5;
+    position:fixed;
+    right:-50%;
+    top:0;
+    z-index:-1;
+  }
+  
+  .bg2 {
+    animation-direction:alternate-reverse;
+    animation-duration:4s;
+  }
+  
+  .bg3 {
+    animation-duration:5s;
+  }
+  
+  h1 {
+    font-family:monospace;
+  }
+  
+  @keyframes slide {
+    0% {
+      transform:translateX(-25%);
+    }
+    100% {
+      transform:translateX(25%);
+    }
+  }
 .registerPage{
     height: 100vh;
     width: 100%;
     margin: auto;
     border-radius: 10px;
     /* overflow: hidden; */
-    box-shadow: 0 7px 50px rgb(214,223,213);
+    /* box-shadow: 0 7px 50px rgb(214,223,213); */
 }
+.authErrorReg{
+    margin-top: 2px;
+    color:red;
+    opacity: 80%;
+    font-size: 13px;
+  }
 
 .container_register{
    height: 80vh;
    width: 60%;
+   margin-top: 10vh;
+   margin-left: auto;
+   margin-right: auto;
+   overflow: auto;
    
-   margin: auto;
    /* margin-top: 5vh; */
    justify-content: space-between;
    border-radius: 10px;
@@ -34,13 +84,28 @@
     overflow: hidden;
 
 }
+.imageContainer {
+    position: fixed;
+    top: 180px; /* Adjust the top position as needed */
+    left: 300px; /* Adjust the left position as needed */
+    width: 500px; /* Adjust the width as needed */
+    height: 500px; /* Adjust the height as needed */
+    overflow:hidden;
+  }
+  
 
-
+.imageLogoLeftReg {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+   margin: auto;
+   
+  }
 
 
 
 /* image & img */
-video, .footerDiv{
+/* video, .footerDiv{
 
     position:absolute;
 }
@@ -54,7 +119,7 @@ video{
     right: 0;
     left: 0;
 
-}
+} */
 .textDiv{
     position: relative;
     color:#fff;
@@ -70,7 +135,7 @@ video{
     padding: 1rem;
     font-weight: 400;
 } */
-.footerDiv{
+.footerDivReg{
     /* top:80px; */
     bottom: 10px;
     padding: 0 1rem;
@@ -102,6 +167,7 @@ video{
 
    
 }
+
 .formDiv{
     flex-basis: 50%;
     /* margin: auto; */
@@ -143,6 +209,20 @@ h3{
 .icon{
 color: #6D81FE;
 }
+.inputRegister
+{
+        gap: 0.5rem;
+        border: none;
+        padding: .5rem;
+        border-radius: 10px;
+        background: #ffffff;
+}
+.inputField {
+    margin-left: 5px;
+    background: none;
+  
+    width: 250px;
+  }
 input{
     margin-left: 5px;
     /* background: none; */
@@ -196,11 +276,11 @@ a{
 
 }
 
-@media screen and (max-width :926px) {
+@media screen and (max-width :1268px) {
     
-    .loginPage {
+    .registerPage {
         width: 100%;
-        .container_login{
+        .container_register{
             margin-top: 70px;
             height: 100%;
             width:100%;
@@ -263,8 +343,8 @@ a{
 }
 @media screen and (max-width :678px) {
     
-    .loginPage {
-        .container_login{
+    .registerPage {
+        .container_register{
             .videoDiv{
                 .textDiv{
                     .title{
@@ -308,13 +388,33 @@ a{
 }
 
 }
-@media screen and (min-width :927px) {
-    .loginPage {
-        .container_login{
+@media screen and (min-width :1267px) {
+    .registerPage {
+        .container_register{
             width: 70%;
     }
-    .imageLogo {
+    .imageLogoRegister {
         display: none;
       }
 }
 }
+/* @media screen and (max-width: 1468px) {
+    
+    .imageLogoLeftReg {
+      width: calc(100% - 100px); 
+    }
+  }
+  @media screen and (max-width: 1368px) {
+   
+    .imageLogoLeftReg {
+      width: calc(100% - 200px); 
+    }
+  }
+  
+  @media screen and (max-width: 1268px) {
+    
+    .imageLogoLeftReg {
+      width: calc(100% - 50px);
+    }
+  } */
+ 

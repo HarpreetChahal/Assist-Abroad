@@ -16,7 +16,7 @@ import { MdEmail } from "react-icons/Md";
 import { RiLockPasswordFill } from "react-icons/Ri";
 
 import React, { useState, useContext, useEffect } from "react";
-import { Context } from "../../Components/context/Context";
+import { Context } from "../context/Context";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Button, TextField } from "@mui/material";
@@ -62,21 +62,26 @@ const navigate=useNavigate()
   return (
     <>
       <Navbar />
+      <div class="bg"></div>
+      <div class="bg bg2"></div>
+      <div class="bg bg3"></div>
       <div className="registerPage flex">
         <div className="container_register flex">
           <div className="videoDiv">
-            <video src={video} autoPlay muted loop alt="Login Image"></video>
-
+            {/* <video src={video} autoPlay muted loop alt="Login Image"></video> */}
+            {/* <div class="imageContainer"> */}
+            <img className="imageLogoLeftReg" src={image} alt="Login Image"></img>
+            {/* </div> */}
             <div className="textDiv">
               {/* <h2 className='title'>ASSIST ABROAD</h2> */}
               {/* <p>Welcome Back</p> */}
             </div>
-            <div className="footerDiv flex">
+            {/* <div className="footerDiv flex">
               <span className="text"> Already have an account?</span>
               <Link to={"/"}>
                 <button className="btn">Log In</button>
               </Link>
-            </div>
+            </div> */}
           </div>
 
           <div className="formDiv flex">
@@ -85,11 +90,11 @@ const navigate=useNavigate()
 
               {/* <span className='logoName'>Assist Abroad</span> */}
               <h3>Lets get started</h3>
-              <img className="imageLogo" src={imageLogo} alt="Logo Image"></img>
+              <img className="imageLogoRegister" src={imageLogo} alt="Logo Image"></img>
             </div>
 
             <form onSubmit={formik.handleSubmit} className="form grid">
-              <span className="showMessage"> Authetication error display</span>
+              {/* <span className="showMessage"> Authetication error display</span> */}
 
               {/* <button className='google flex'>
                         <FcGoogle className='icon'/>
@@ -102,6 +107,9 @@ const navigate=useNavigate()
                 <div className="inputRegister flex">
                   <MdEmail className="icon" />
                   <TextField
+                  className="inputField"
+                  //  sx={{"& fieldset" : {border:'none'},}}
+                  size="small"
                     type="text"
                     id="firstName"
                     placeholder="Enter your name"
@@ -112,12 +120,16 @@ const navigate=useNavigate()
                     value={formik.values.firstName}
                   ></TextField>
                 </div>
+                <p className="authErrorReg">Email is not registered or incorrect!</p>
               </div>
               <div className="inputDiv">
                 <label htmlFor="email">Email</label>
                 <div className="inputRegister flex">
                   <RiLockPasswordFill className="icon" />
                   <TextField
+                  className="inputField"
+                  //  sx={{"& fieldset" : {border:'none'},}}
+                  size="small"
                     type="text"
                     id="email"
                     placeholder="Enter your email"
@@ -128,12 +140,16 @@ const navigate=useNavigate()
                     value={formik.values.email}
                   ></TextField>
                 </div>
+                <p className="authErrorReg">Email is not registered or incorrect!</p>
               </div>
               <div className="inputDiv">
                 <label htmlFor="phone">Phone Number</label>
-                <div className="input flex">
+                <div className="inputRegister flex">
                   <RiLockPasswordFill className="icon" />
                   <TextField
+                  className="inputField"
+                  //  sx={{"& fieldset" : {border:'none'},}}
+                  size="small"
                     type="number"
                     id="phone"
                     placeholder="Enter your phone number"
@@ -144,12 +160,16 @@ const navigate=useNavigate()
                     value={formik.values.phone}
                   ></TextField>
                 </div>
+                <p className="authErrorReg">Email is not registered or incorrect!</p>
               </div>
               <div className="inputDiv">
                 <label htmlFor="dateOfBirth">Date Of Birth</label>
-                <div className="input flex">
+                <div className="inputRegister flex">
                   <RiLockPasswordFill className="icon" />
                   <TextField
+                  className="inputField"
+                  //  sx={{"& fieldset" : {border:'none'},}}
+                  size="small"
                     type="date"
                     id="dob"
                     placeholder="Enter your date of birth"
@@ -160,12 +180,16 @@ const navigate=useNavigate()
                     value={formik.values.dob}
                   ></TextField>
                 </div>
+                <p className="authErrorReg">Email is not registered or incorrect!</p>
               </div>
               <div className="inputDiv">
                 <label htmlFor="password">Password</label>
-                <div className="input flex">
+                <div className="inputRegister flex">
                   <RiLockPasswordFill className="icon" />
                   <TextField
+                  className="inputField"
+                  //  sx={{"& fieldset" : {border:'none'},}}
+                  size="small"
                     type="password"
                     id="password"
                     placeholder="Enter your password"
@@ -176,12 +200,16 @@ const navigate=useNavigate()
                     value={formik.values.password}
                   ></TextField>
                 </div>
+                <p className="authErrorReg">Email is not registered or incorrect!</p>
               </div>
               <div className="inputDiv">
                 <label htmlFor="confirmPassword">Confirm Password</label>
-                <div className="input flex">
+                <div className="inputRegister flex">
                   <RiLockPasswordFill className="icon" />
                   <TextField
+                  className="inputField"
+                  //  sx={{"& fieldset" : {border:'none'},}}
+                  size="small"
                     type="password"
                     id="confirmPassword"
                     placeholder="Confirm your password"
@@ -195,12 +223,27 @@ const navigate=useNavigate()
                     value={formik.values.confirmPassword}
                   ></TextField>
                 </div>
+                <p className="authErrorReg">Email is not registered or incorrect!</p>
               </div>
 
-              <Button type="submit" className="btn flex"  disabled={!(formik.isValid && formik.dirty)}>
+              <Button type="submit" className="btn flex"  disabled={!(formik.isValid && formik.dirty)}
+              style={{
+                backgroundColor: "#6d81fe",
+                color: "#fff",
+                borderRadius: 10,
+                padding: 15,
+                marginTop: 10,
+              }}>
                 Sign Up
               </Button>
-              <br />
+              <span className="forgotPassword">
+                Already have an account? 
+              </span>
+              <Link to="/login">
+                <button type="submit" className="btnSignup flex">
+                  <span>Login</span>
+                </button>
+              </Link>
 
               {/* <span className='forgotPassword'>Forgot your password? <a href="">Click here</a></span> */}
             </form>
