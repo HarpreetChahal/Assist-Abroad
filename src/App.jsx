@@ -9,6 +9,7 @@ import Profile from "./Components/Profile/Profile";
 import AgentHome from "./Components/AgentHome/AgentHome";
 import AgentTask from "./Components/AgentTask/AgentTask";
 import PaymentCard from "./Components/PaymentCard/PaymentCard";
+import PageNotFound from "./Components/PageNotFound/PageNotFound"
 import { Route, Routes } from "react-router-dom";
 
 
@@ -154,6 +155,13 @@ function App() {
           path="/agent-task/:id"
           element={
             <AgentTask />
+          }
+          />
+           <Route
+          exact
+          path="/page-not-found"
+          element={
+            <PageNotFound />
           }
           />
 
