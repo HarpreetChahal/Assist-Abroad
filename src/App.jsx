@@ -6,6 +6,8 @@ import Quiz from "./Components/Quiz/Quiz";
 import Payment from "./Components/Payment/Payment";
 import Arrival from "./Components/Arrival/Arrival";
 import Profile from "./Components/Profile/Profile";
+import AgentHome from "./Components/AgentHome/AgentHome";
+import AgentTask from "./Components/AgentTask/AgentTask";
 import { Route, Routes } from "react-router-dom";
 
 
@@ -131,8 +133,21 @@ function App() {
           path="/arrival-form"
           element={
             <Arrival />
+          }/>
+          <Route
+          exact
+          path="/agent-home"
+          element={
+            <AgentHome />
           }
-        />
+          />
+          <Route
+          exact
+          path="/agent-task/:id"
+          element={
+            <AgentTask />
+          }
+          />
 
             </Routes>
     </div>
