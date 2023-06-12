@@ -12,7 +12,11 @@ import video from "../../Assets/video.mp4";
 
 //Icons
 import { FcGoogle } from "react-icons/Fc";
+import { FaUserCircle } from "react-icons/fa";
+import { FaBirthdayCake } from "react-icons/fa";
 import { MdEmail } from "react-icons/Md";
+import { HiPhone } from "react-icons/hi";
+
 import { RiLockPasswordFill } from "react-icons/Ri";
 
 import React, { useState, useContext, useEffect } from "react";
@@ -69,9 +73,9 @@ const navigate=useNavigate()
         <div className="container_register flex">
           <div className="videoDiv">
             {/* <video src={video} autoPlay muted loop alt="Login Image"></video> */}
-            {/* <div class="imageContainer"> */}
+            <div class="imageContainer">
             <img className="imageLogoLeftReg" src={image} alt="Login Image"></img>
-            {/* </div> */}
+            </div>
             <div className="textDiv">
               {/* <h2 className='title'>ASSIST ABROAD</h2> */}
               {/* <p>Welcome Back</p> */}
@@ -105,7 +109,7 @@ const navigate=useNavigate()
               <div className="inputDiv">
                 <label htmlFor="name">Name</label>
                 <div className="inputRegister flex">
-                  <MdEmail className="icon" />
+                  <FaUserCircle className="icon" />
                   <TextField
                   className="inputField"
                   //  sx={{"& fieldset" : {border:'none'},}}
@@ -120,12 +124,12 @@ const navigate=useNavigate()
                     value={formik.values.firstName}
                   ></TextField>
                 </div>
-                <p className="authErrorReg">Email is not registered or incorrect!</p>
+                <p className="authErrorReg">Enter your full name!</p>
               </div>
               <div className="inputDiv">
                 <label htmlFor="email">Email</label>
                 <div className="inputRegister flex">
-                  <RiLockPasswordFill className="icon" />
+                  <MdEmail className="icon" />
                   <TextField
                   className="inputField"
                   //  sx={{"& fieldset" : {border:'none'},}}
@@ -140,12 +144,12 @@ const navigate=useNavigate()
                     value={formik.values.email}
                   ></TextField>
                 </div>
-                <p className="authErrorReg">Email is not registered or incorrect!</p>
+                <p className="authErrorReg">Email is not valid or incorrect!</p>
               </div>
               <div className="inputDiv">
                 <label htmlFor="phone">Phone Number</label>
                 <div className="inputRegister flex">
-                  <RiLockPasswordFill className="icon" />
+                  <HiPhone className="icon" />
                   <TextField
                   className="inputField"
                   //  sx={{"& fieldset" : {border:'none'},}}
@@ -160,12 +164,12 @@ const navigate=useNavigate()
                     value={formik.values.phone}
                   ></TextField>
                 </div>
-                <p className="authErrorReg">Email is not registered or incorrect!</p>
+                <p className="authErrorReg">Phone number is not valid!</p>
               </div>
               <div className="inputDiv">
                 <label htmlFor="dateOfBirth">Date Of Birth</label>
                 <div className="inputRegister flex">
-                  <RiLockPasswordFill className="icon" />
+                  <FaBirthdayCake className="icon" />
                   <TextField
                   className="inputField"
                   //  sx={{"& fieldset" : {border:'none'},}}
@@ -180,7 +184,7 @@ const navigate=useNavigate()
                     value={formik.values.dob}
                   ></TextField>
                 </div>
-                <p className="authErrorReg">Email is not registered or incorrect!</p>
+                <p className="authErrorReg">Date of birth is in incorrect format!</p>
               </div>
               <div className="inputDiv">
                 <label htmlFor="password">Password</label>
@@ -200,7 +204,7 @@ const navigate=useNavigate()
                     value={formik.values.password}
                   ></TextField>
                 </div>
-                <p className="authErrorReg">Email is not registered or incorrect!</p>
+                <p className="authErrorReg">Use a combination of letter and numbers!</p>
               </div>
               <div className="inputDiv">
                 <label htmlFor="confirmPassword">Confirm Password</label>
@@ -223,16 +227,19 @@ const navigate=useNavigate()
                     value={formik.values.confirmPassword}
                   ></TextField>
                 </div>
-                <p className="authErrorReg">Email is not registered or incorrect!</p>
+                <p className="authErrorReg">Passwords dont match!</p>
               </div>
 
-              <Button type="submit" className="btn flex"  disabled={!(formik.isValid && formik.dirty)}
+              <Button type="submit" className="btn flex"  
+              disabled={!(formik.isValid && formik.dirty)}
               style={{
                 backgroundColor: "#6d81fe",
                 color: "#fff",
                 borderRadius: 10,
                 padding: 15,
                 marginTop: 10,
+                textTransform: 'none',
+                fontSize:15,
               }}>
                 Sign Up
               </Button>

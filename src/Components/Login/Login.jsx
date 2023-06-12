@@ -142,6 +142,8 @@ const Login = () => {
                   borderRadius: 10,
                   padding: 15,
                   marginTop: 10,
+                  textTransform: 'none',
+                  fontSize:15,
                 }}
               >
                 Login
