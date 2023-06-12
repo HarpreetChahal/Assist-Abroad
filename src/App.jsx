@@ -8,6 +8,7 @@ import Arrival from "./Components/Arrival/Arrival";
 import Profile from "./Components/Profile/Profile";
 import AgentHome from "./Components/AgentHome/AgentHome";
 import AgentTask from "./Components/AgentTask/AgentTask";
+import PaymentCard from "./Components/PaymentCard/PaymentCard";
 import { Route, Routes } from "react-router-dom";
 
 
@@ -119,6 +120,13 @@ function App() {
           path="/payment"
           element={
             <Payment />
+          }
+        />
+        <Route
+          exact
+          path="/payment-card"
+          element={
+            <PaymentCard />
           }
         />
         <Route
