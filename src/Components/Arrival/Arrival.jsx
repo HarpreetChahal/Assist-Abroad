@@ -3,10 +3,15 @@ import Navbar from "../../layout/Navbar";
 import { Link } from "react-router-dom";
 import { Fragment, useRef } from "react";
 import { Dialog, Transition } from "@headlessui/react";
+import {  useEffect } from "react";
 import Rating from "@mui/material/Rating";
 const Arrival = () => {
   const [active, setActive] = useState(false);
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to the top of the page on component mount
+  }, []);
 
   return (
     <div className=" min-h-screen px-4">

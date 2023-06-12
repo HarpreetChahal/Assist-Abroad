@@ -1,9 +1,13 @@
 import React from "react";
 import Navbar from "../../layout/Navbar";
 import agent from "/src/Assets/agent.png";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 const Profile = () => {
   const [edit, setEdit] = useState(false);
+  
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to the top of the page on component mount
+  }, []);
   return (
     <div>
       <Navbar />

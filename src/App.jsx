@@ -126,6 +126,13 @@ function App() {
             <Profile />
           }
         />
+         <Route
+          exact
+          path="/arrival-form"
+          element={
+            <Arrival />
+          }
+        />
 
             </Routes>
     </div>
