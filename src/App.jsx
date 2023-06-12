@@ -119,6 +119,13 @@ function App() {
             <Payment />
           }
         />
+        <Route
+          exact
+          path="/profile"
+          element={
+            <Profile />
+          }
+        />
 
             </Routes>
     </div>
