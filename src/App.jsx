@@ -10,6 +10,7 @@ import AgentHome from "./Components/AgentHome/AgentHome";
 import AgentTask from "./Components/AgentTask/AgentTask";
 import PaymentCard from "./Components/PaymentCard/PaymentCard";
 import PageNotFound from "./Components/PageNotFound/PageNotFound"
+import BecomeAgent from "./Components/BecomeAgent/BecomeAgent";
 import { Route, Routes } from "react-router-dom";
 
 
@@ -21,6 +22,7 @@ import { Context } from "./Components/context/Context";
 
 //React router dom import
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
 
 //Creating a route
 const router = createBrowserRouter([
@@ -162,6 +164,13 @@ function App() {
           path="/page-not-found"
           element={
             <PageNotFound />
+          }
+          />
+             <Route
+          exact
+          path="/become-agent"
+          element={
+            <BecomeAgent />
           }
           />
 

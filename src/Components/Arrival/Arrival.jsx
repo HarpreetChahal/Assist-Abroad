@@ -3,10 +3,9 @@ import Navbar from "../../layout/Navbar";
 import { Link } from "react-router-dom";
 import { Fragment, useRef } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import {  useEffect } from "react";
+import { useEffect } from "react";
 import Rating from "@mui/material/Rating";
 import { Button, TextField } from "@mui/material";
-
 
 const Arrival = () => {
   const [active, setActive] = useState(false);
@@ -16,11 +15,10 @@ const Arrival = () => {
     window.scrollTo(0, 0); // Scroll to the top of the page on component mount
   }, []);
 
-
   return (
     <div className=" min-h-screen px-4">
       <Navbar />
-      <Modal open={open} setOpen={setOpen}/>
+      <Modal open={open} setOpen={setOpen} />
       <div className=" mt-28">
         <div className="max-w-7xl mx-auto ">
           <div className="flex items-center justify-between">
@@ -56,39 +54,57 @@ const Arrival = () => {
               <div className="flex items-center justify-center flex-col ">
                 <div className="mt-6 space-y-3">
                   <div className="relative flex items-center  gap-x-6">
-                    <p className="text-base lg:text-2xl lg:w-40 ">Date of Arrival</p>
+                    <p className="text-base lg:text-2xl lg:w-40 ">
+                      Date of Arrival
+                    </p>
                     {/* <input
                       type="text"
                       className="border px-2 py-2 lg:w-80 rounded-md outline-none bg-[#F8F8FA]"
                     /> */}
-                    <TextField className="inputField"
-      variant="outlined"  size="small" sx={{backgroundColor:'#f8f8fa' }}
-    />
+                    <TextField
+                      className="inputField"
+                      variant="outlined"
+                      size="small"
+                      sx={{ backgroundColor: "#f8f8fa" }}
+                    />
                   </div>
                   <div className="relative flex items-center gap-x-6">
-                    <p className="text-base lg:text-2xl lg:w-40">Flight Ticket</p>
-                    <TextField className="inputField"
-      variant="outlined"  size="small" sx={{backgroundColor:'#f8f8fa' }}
-    />
+                    <p className="text-base lg:text-2xl lg:w-40">
+                      Flight Ticket
+                    </p>
+                    <TextField
+                      className="inputField"
+                      variant="outlined"
+                      size="small"
+                      sx={{ backgroundColor: "#f8f8fa" }}
+                    />
                   </div>
                   <div className="relative flex items-center gap-x-6">
-                    <p className="text-base lg:text-2xl lg:w-40">Arrival Time</p>
-                    <TextField className="inputField"
-      variant="outlined"  size="small" sx={{backgroundColor:'#f8f8fa' }}
-    />
+                    <p className="text-base lg:text-2xl lg:w-40">
+                      Arrival Time
+                    </p>
+                    <TextField
+                      className="inputField"
+                      variant="outlined"
+                      size="small"
+                      sx={{ backgroundColor: "#f8f8fa" }}
+                    />
                   </div>
 
                   <div className="relative flex items-center gap-x-6">
                     <p className="text-base lg:text-2xl lg:w-40">Airport</p>
-                    <TextField className="inputField"
-      variant="outlined"  size="small" sx={{backgroundColor:'#f8f8fa' }}
-    />
+                    <TextField
+                      className="inputField"
+                      variant="outlined"
+                      size="small"
+                      sx={{ backgroundColor: "#f8f8fa" }}
+                    />
                   </div>
                 </div>
-                <Link to={'/profile'}>
-                <button className="text-white mt-16 bg-pr px-7 py-2 rounded-md">
-                  SUBMIT
-                </button>
+                <Link to={"/profile"}>
+                  <button className="text-white mt-16 bg-pr px-7 py-2 rounded-md">
+                    SUBMIT
+                  </button>
                 </Link>
               </div>
             </div>
@@ -99,7 +115,9 @@ const Arrival = () => {
               <div className="py-10 lg:pl-32">
                 <p className="text-sm lg:text-lg">Client : Happy Singh</p>
                 <p className="text-sm lg:text-lg">Contact : 306-***-**96</p>
-                <p className="text-sm lg:text-lg">Email: dead******@gmail.com</p>
+                <p className="text-sm lg:text-lg">
+                  Email: dead******@gmail.com
+                </p>
                 <p className="text-sm lg:text-lg">Address: #2, 875 Regina</p>
               </div>
               <div className="flex items-center justify-center flex-col">
@@ -195,7 +213,10 @@ const Arrival = () => {
                     </div>
                   </div>
                 </div>
-                <button onClick={()=>setOpen(true)} className="text-white mt-16 bg-pr px-7 py-2 rounded-md">
+                <button
+                  onClick={() => setOpen(true)}
+                  className="text-white mt-16 bg-pr px-7 py-2 rounded-md"
+                >
                   Give Feedback
                 </button>
               </div>
@@ -207,8 +228,7 @@ const Arrival = () => {
   );
 };
 
-function Modal({open, setOpen}) {
-
+function Modal({ open, setOpen }) {
   const cancelButtonRef = useRef(null);
   const [value, setValue] = React.useState(0);
   const [value1, setValue1] = React.useState(0);
@@ -276,7 +296,9 @@ function Modal({open, setOpen}) {
                           </div>
                         </div>
                         <div className="flex items-center justify-between lg:grid grid-cols-2 mt-4  gap-2 lg:gap-8">
-                          <p className="text-sm lg:text-xl text-gray-500">Hotel Stay</p>
+                          <p className="text-sm lg:text-xl text-gray-500">
+                            Hotel Stay
+                          </p>
                           <div className="flex items-center  gap-4">
                             <Rating
                               name="simple-controlled"
@@ -291,7 +313,9 @@ function Modal({open, setOpen}) {
                           </div>
                         </div>
                         <div className="flex items-center justify-between lg:grid grid-cols-2 mt-4 l gap-2 lg:gap-8">
-                          <p className="text-sm lg:text-xl text-gray-500">Bus Pass</p>
+                          <p className="text-sm lg:text-xl text-gray-500">
+                            Bus Pass
+                          </p>
                           <div className="flex items-center  gap-4">
                             <Rating
                               name="simple-controlled"
@@ -307,7 +331,7 @@ function Modal({open, setOpen}) {
                         </div>
                         <div className="flex items-center justify-between lg:grid grid-cols-2 mt-4  gap-2 lg:gap-8">
                           <p className="text-sm lg:text-xl text-gray-500">
-                            Government Id 
+                            Government Id
                           </p>
                           <div className="flex items-center  gap-4">
                             <Rating
@@ -323,7 +347,9 @@ function Modal({open, setOpen}) {
                           </div>
                         </div>
                         <div className="flex items-center justify-between lg:grid grid-cols-2 mt-4  gap-2 lg:gap-8">
-                          <p className="text-sm lg:text-xl text-gray-500">Health Card</p>
+                          <p className="text-sm lg:text-xl text-gray-500">
+                            Health Card
+                          </p>
                           <div className="flex items-center  gap-4">
                             <Rating
                               name="simple-controlled"
@@ -338,7 +364,9 @@ function Modal({open, setOpen}) {
                           </div>
                         </div>
                         <div className="mt-4">
-                          <p className="text-gray-500 text-left">Write your feedback here:</p>
+                          <p className="text-gray-500 text-left">
+                            Write your feedback here:
+                          </p>
                           <textarea
                             className="border outline-none rounded-md mt-2 bg-transparent w-full"
                             name=""
@@ -348,9 +376,9 @@ function Modal({open, setOpen}) {
                           ></textarea>
                         </div>
                         <div className="flex items-center justify-end">
-                        <button className="text-white mt-4 bg-pr px-7 py-2 rounded-md">
-                  Give Feedback
-                </button>
+                          <button className="text-white mt-4 bg-pr px-7 py-2 rounded-md">
+                            Give Feedback
+                          </button>
                         </div>
                       </div>
                     </div>
