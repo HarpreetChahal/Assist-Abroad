@@ -65,7 +65,7 @@ return <li class="flex items-center space-x-3">
       </div>
   </div>
   <div className=" mt-5 mb-20 flex items-center justify-center">
-  <Link to={'/arrival-form'}>
+  <Link to={'/payment-card'}>
           <button className="text-white bg-pr px-5 font-medium text-lg py-3 border border-pr rounded-md mb-5">
             Continue to payment
           </button>

@@ -187,7 +187,7 @@ const navigate=useNavigate()
                 fontSize:15,
                 width:100,
               }}>
-                Sign Up
+                Submit
               </Button>
                 </Link>
               </div>

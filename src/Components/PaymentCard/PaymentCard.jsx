@@ -83,7 +83,9 @@ const PaymentCard = () => {
                         {/* <!-- Form footer --> */}
                         <div class="mt-6">
                             <div class="mb-4">
+                            <Link to={'/arrival-form'}>
                                 <button class="font-medium text-sm inline-flex items-center justify-center px-3 py-2 border border-transparent rounded leading-5 shadow-sm transition duration-150 ease-in-out w-full bg-indigo-500 hover:bg-indigo-600 text-white focus:outline-none focus-visible:ring-2">Pay $253.00</button>
+                            </Link>
                             </div>
                             <div class="text-xs text-gray-500 italic text-center">You'll be charged $253, including $48 for VAT in Italy</div>
                         </div>
