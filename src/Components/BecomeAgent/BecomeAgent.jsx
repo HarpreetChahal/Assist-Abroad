@@ -18,7 +18,7 @@ import { useNavigate } from "react-router-dom";
 import "./BecomeAgent.css";
 const BecomeAgent = () => {
   //   const [edit, setEdit] = useState(false);
-
+  const fileInput = React.useRef();
   useEffect(() => {
     window.scrollTo(0, 0); // Scroll to the top of the page on component mount
   }, []);
@@ -73,18 +73,29 @@ const BecomeAgent = () => {
                 <h1 className="text-lg mt-1 mb-4 text-[#23314C]">
                   Member Since : 2020
                 </h1>
-                <input
-                  type="file"
-                  className="hidden"
-                  name="myfile"
-                  id="myfile"
-                />
-                <label
+                <div className=" items-center text-center justify-center rounded-md">
+                <Button 
+        variant="contained" 
+        
+        onClick={()=>fileInput.current.click()}
+        sx={{color:"#ffffff", bgcolor:"#6D81FC",textTransform:"none"}}
+      >
+        Choose Image
+      </Button>
+
+                
+      <input 
+        ref={fileInput} 
+        type="file" 
+        style={{ display: 'none' }} 
+      />
+                {/* <label
                   htmlFor="myfile"
                   className="text-white mt-8 text-center items-center bg-pr px-7 py-2 rounded-md"
                 >
                   Choose image
-                </label>
+                </label> */}
+                </div>
               </div>
             </div>
           </div>
