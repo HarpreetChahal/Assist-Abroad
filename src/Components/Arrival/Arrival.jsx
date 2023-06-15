@@ -1,11 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
+
 import Navbar from "../../layout/Navbar";
+import moment from "moment";
 import { Link } from "react-router-dom";
 import { Fragment, useRef } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { useEffect } from "react";
 import Rating from "@mui/material/Rating";
 import { Button, TextField } from "@mui/material";
+import  { useState, useContext, useEffect } from "react";
+
+import { Context } from "../../Components/context/Context";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import commonApi from "../../api/common";
+import { useNavigate } from "react-router-dom";
 
 const Arrival = () => {
   const [active, setActive] = useState(false);
@@ -15,6 +23,39 @@ const Arrival = () => {
     window.scrollTo(0, 0); // Scroll to the top of the page on component mount
   }, []);
 
+  const { dispatch, isFetching } = useContext(Context);
+const navigate=useNavigate()
+  const formik = useFormik({
+    initialValues: {
+      dateOfArrival: "",
+      flightTicket: "",
+      arrivalTime: "",
+      airport: "",
+  
+    },
+    validationSchema: Yup.object({
+      dateOfArrival: Yup.string().required("Required"),
+      flightTicket: Yup.string().required("Required"),
+      arrivalTime: Yup.string().required("Required"),
+      airport: Yup.string().required("Required"),
+    }),
+    onSubmit: async (values) => {
+      let {confirmPassword,...value}=values
+        await commonApi({
+          action: "arrival",
+          data: value
+        })
+          .then(({ DATA = {}, MESSAGE }) => {
+          console.log("heheh",DATA)
+            navigate("/");
+          })
+          .catch((error) => {
+            dispatch({ type: "ARRIVAL_INFO_FAIL" });
+          
+            console.error(error);
+          });
+    },
+  });
   return (
     <div className=" min-h-screen px-4">
       <Navbar />
@@ -62,10 +103,18 @@ const Arrival = () => {
                       className="border px-2 py-2 lg:w-80 rounded-md outline-none bg-[#F8F8FA]"
                     /> */}
                     <TextField
+                    
                       className="inputField"
                       variant="outlined"
                       size="small"
                       sx={{ backgroundColor: "#f8f8fa" }}
+                      id="dateOfArrival"
+                    placeholder="Enter arrival date"
+                    name="dateOfArrival"
+                    error={formik.touched.dateOfArrival && formik.errors.dateOfArrival}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.dateOfArrival}
                     />
                   </div>
                   <div className="relative flex items-center gap-x-6">
@@ -77,6 +126,13 @@ const Arrival = () => {
                       variant="outlined"
                       size="small"
                       sx={{ backgroundColor: "#f8f8fa" }}
+                      id="flightTicket"
+                    placeholder="Enter flight ticket no"
+                    name="flightTicket"
+                    error={formik.touched.flightTicket && formik.errors.flightTicket}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.flightTicket}
                     />
                   </div>
                   <div className="relative flex items-center gap-x-6">
@@ -88,6 +144,13 @@ const Arrival = () => {
                       variant="outlined"
                       size="small"
                       sx={{ backgroundColor: "#f8f8fa" }}
+                      id="arrivalTime"
+                    placeholder="Enter flight arrival time"
+                    name="arrivalTime"
+                    error={formik.touched.arrivalTime && formik.errors.arrivalTime}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.arrivalTime}
                     />
                   </div>
 
@@ -98,13 +161,34 @@ const Arrival = () => {
                       variant="outlined"
                       size="small"
                       sx={{ backgroundColor: "#f8f8fa" }}
+                      id="airport"
+                      placeholder="Enter airport name"
+                      name="airport"
+                      error={formik.touched.airport && formik.errors.airport}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.airport}
                     />
                   </div>
                 </div>
                 <Link to={"/profile"}>
-                  <button className="text-white mt-16 bg-pr px-7 py-2 rounded-md">
+                  {/* <button className="text-white mt-16 bg-pr px-7 py-2 rounded-md">
                     SUBMIT
-                  </button>
+                  </button> */}
+                  <Button type="submit"   
+              disabled={!(formik.isValid && formik.dirty)}
+              style={{
+                backgroundColor: "#6d81fe",
+                color: "#fff",
+                borderRadius: 5,
+                padding: 8,
+                marginTop: 20,
+                textTransform: 'none',
+                fontSize:15,
+                width:100,
+              }}>
+                Sign Up
+              </Button>
                 </Link>
               </div>
             </div>
@@ -219,6 +303,20 @@ const Arrival = () => {
                 >
                   Give Feedback
                 </button>
+                 {/* <Button type="submit"  onClick={() => setOpen(true)} 
+             
+              style={{
+                backgroundColor: "#6d81fe",
+                color: "#fff",
+                borderRadius: 5,
+                padding: 8,
+                marginTop: 20,
+                textTransform: 'none',
+                fontSize:15,
+                width:180,
+              }}>
+                Give Feedback
+              </Button> */}
               </div>
             </div>
           )}

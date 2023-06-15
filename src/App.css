@@ -66,10 +66,10 @@ li{
     font-size: 1.25rem;
     cursor: pointer;
 }
-img, video{
+/* img, video{
     height: auto;
     width: 100%;
-}
+} */
 .message{
     display: none;
 }

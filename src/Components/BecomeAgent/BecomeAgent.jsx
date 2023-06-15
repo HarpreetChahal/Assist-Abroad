@@ -2,11 +2,19 @@ import React from "react";
 import Navbar from "../../layout/Navbar";
 import agent from "/src/Assets/agent.png";
 import { Button, TextField } from "@mui/material";
+import { Fragment, useRef } from "react";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
+
+import { Context } from "../../Components/context/Context";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import commonApi from "../../api/common";
+import { useNavigate } from "react-router-dom";
+
 
 import "./BecomeAgent.css";
 const BecomeAgent = () => {
@@ -15,6 +23,44 @@ const BecomeAgent = () => {
   useEffect(() => {
     window.scrollTo(0, 0); // Scroll to the top of the page on component mount
   }, []);
+
+
+  const { dispatch, isFetching } = useContext(Context);
+  const navigate=useNavigate()
+    const formik = useFormik({
+      initialValues: {
+        address:"",
+        city: "",
+        accountNo: "",
+        bank: "",
+        sin: "",
+    
+      },
+      validationSchema: Yup.object({
+        address: Yup.string().required("Required"),
+        city: Yup.string().required("Required"),
+        accountNo: Yup.string().required("Required"),
+        bank: Yup.string().required("Required"),
+        sin: Yup.string().required("Required"),
+      }),
+      onSubmit: async (values) => {
+        let {confirmPassword,...value}=values
+          await commonApi({
+            action: "become-agent",
+            data: value
+          })
+            .then(({ DATA = {}, MESSAGE }) => {
+            console.log("heheh",DATA)
+              navigate("/");
+            })
+            .catch((error) => {
+              dispatch({ type: "BECOME_AGENT_INFO_FAIL" });
+            
+              console.error(error);
+            });
+      },
+    });
+
   return (
     <div>
       <Navbar />
@@ -138,6 +184,10 @@ const BecomeAgent = () => {
                         id="address"
                         placeholder="Address"
                         sx={{ backgroundColor: "#ffffff" }}
+                        error={formik.touched.address && formik.errors.address}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.address}
                       />
                     </div>
                   </div>
@@ -156,6 +206,10 @@ const BecomeAgent = () => {
                         id="city"
                         placeholder="City"
                         sx={{ backgroundColor: "#ffffff" }}
+                        error={formik.touched.city && formik.errors.city}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.city}
                       />
                     </div>
                   </div>
@@ -214,6 +268,10 @@ const BecomeAgent = () => {
                         id="accountNo"
                         placeholder="Account No"
                         sx={{ backgroundColor: "#ffffff" }}
+                        error={formik.touched.accountNo && formik.errors.accountNo}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.accountNo}
                       />
                     </div>
                   </div>
@@ -230,8 +288,12 @@ const BecomeAgent = () => {
                         type="text"
                         name="bank"
                         id="bank"
-                        placeholder="Bank name"
+                        placeholder="Bank Name"
                         sx={{ backgroundColor: "#ffffff" }}
+                        error={formik.touched.bank && formik.errors.bank}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.bank}
                       />
                     </div>
                   </div>
@@ -250,6 +312,11 @@ const BecomeAgent = () => {
                     name="sin"
                     id="sin"
                     placeholder="Sin"
+                    sx={{ backgroundColor: "#ffffff" }}
+                    error={formik.touched.sin && formik.errors.sin}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.sin}
                   />
                 </div>
 

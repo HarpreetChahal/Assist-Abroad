@@ -76,7 +76,7 @@ const Login = () => {
 
           <div className="formDiv flex">
             <div className="headerDiv">
-              <img src={logo} alt="Logo Image"></img>
+              <img src={logo} className="loginLogoName" alt="Logo Image"></img>
 
               {/* <span className='logoName'>Assist Abroad</span> */}
               <h3>Welcome Back</h3>

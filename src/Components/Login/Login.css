@@ -199,10 +199,14 @@ h1 {
   text-align: center;
   padding: 1.5rem 0;
 }
-img {
-  width: 500px;
-  /* padding-bottom: 0.5rem; */
-  /* position: relative; */
+/* img {
+  width: 500px; 
+  padding-bottom: 0.5rem;
+  position: relative;
+} */
+.loginLogoName{
+  width: 300px; 
+  padding-bottom: 0.5rem;
 }
 
 /* h1{

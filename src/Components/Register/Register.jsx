@@ -90,7 +90,7 @@ const navigate=useNavigate()
 
           <div className="formDiv flex">
             <div className="headerDiv">
-              <img className="logoRegister" src={logo} alt="Logo Image"></img>
+              <img className="registerLogoName" src={logo} alt="Logo Image"></img>
 
               {/* <span className='logoName'>Assist Abroad</span> */}
               <h3>Lets get started</h3>
@@ -236,7 +236,7 @@ const navigate=useNavigate()
                 backgroundColor: "#6d81fe",
                 color: "#fff",
                 borderRadius: 10,
-                padding: 15,
+                padding: 12,
                 marginTop: 10,
                 textTransform: 'none',
                 fontSize:15,
