@@ -19,6 +19,8 @@ import "./BecomeAgent.css";
 const BecomeAgent = () => {
   //   const [edit, setEdit] = useState(false);
   const fileInput = React.useRef();
+
+  
   useEffect(() => {
     window.scrollTo(0, 0); // Scroll to the top of the page on component mount
   }, []);
@@ -194,12 +196,21 @@ const BecomeAgent = () => {
                       About
                     </label>
                     <div class="mt-2">
-                      <textarea
+                    <TextField
+                    fullWidth
+          id="outlined-multiline-static"
+          
+          multiline
+          rows={3}
+          
+         
+        />
+                      {/* <textarea
                         id="about"
                         name="about"
                         rows="3"
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      ></textarea>
+                      ></textarea> */}
                     </div>
                     
                   </div>
@@ -212,12 +223,17 @@ const BecomeAgent = () => {
               </svg>
               <div class="mt-4 flex text-sm leading-6 text-gray-600">
                 <label for="file-upload" class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
-                  <span>Upload a file</span>
-                  <input id="file-upload" name="file-upload" type="file" class="sr-only"/>
+                  {/* <span>Upload a file</span> */}
+                  <Button 
+        variant="contained" 
+        
+        onClick={()=>fileInput.current.click()}
+        sx={{color:"#ffffff", bgcolor:"#6D81FC",textTransform:"none"}}
+      >
+        Choose files
+      </Button>
                 </label>
-                <p class="pl-1">or drag and drop</p>
               </div>
-              <p class="text-xs leading-5 text-gray-600">PNG, JPG, GIF up to 10MB</p>
             </div>
           </div>
         </div>
@@ -242,13 +258,15 @@ const BecomeAgent = () => {
                       First name
                     </label>
                     <div class="mt-2">
-                      <input
+                      {/* <input
                         type="text"
                         name="first-name"
                         id="first-name"
                         autocomplete="given-name"
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      />
+                      /> */}
+
+<TextField fullWidth size="small" id="outlined-basic"  variant="outlined" />
                     </div>
                   </div>
 
@@ -260,13 +278,14 @@ const BecomeAgent = () => {
                       Last name
                     </label>
                     <div class="mt-2">
-                      <input
+                      {/* <input
                         type="text"
                         name="last-name"
                         id="last-name"
                         autocomplete="family-name"
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      />
+                      /> */}
+                      <TextField fullWidth size="small" id="outlined-basic"  variant="outlined" />
                     </div>
                   </div>
 
@@ -278,13 +297,14 @@ const BecomeAgent = () => {
                       Email address
                     </label>
                     <div class="mt-2">
-                      <input
+                      {/* <input
                         id="email"
                         name="email"
                         type="email"
                         autocomplete="email"
                          class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      />
+                      /> */}
+                      <TextField fullWidth size="small" id="outlined-basic"  variant="outlined" />
                     </div>
                   </div>
 
@@ -296,7 +316,7 @@ const BecomeAgent = () => {
                       Country
                     </label>
                     <div class="mt-2">
-                      <select
+                      {/* <select
                         id="country"
                         name="country"
                         autocomplete="country-name"
@@ -305,7 +325,8 @@ const BecomeAgent = () => {
                         <option>United States</option>
                         <option>Canada</option>
                         <option>Mexico</option>
-                      </select>
+                      </select> */}
+                      <TextField fullWidth size="small" id="outlined-basic"  variant="outlined" />
                     </div>
                   </div>
 
@@ -317,13 +338,14 @@ const BecomeAgent = () => {
                       Street address
                     </label>
                     <div class="mt-2">
-                      <input
+                      {/* <input
                         type="text"
                         name="street-address"
                         id="street-address"
                         autocomplete="street-address"
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      />
+                      /> */}
+                      <TextField fullWidth size="small" id="outlined-basic"  variant="outlined" />
                     </div>
                   </div>
 
@@ -335,13 +357,14 @@ const BecomeAgent = () => {
                       City
                     </label>
                     <div class="mt-2">
-                      <input
+                      {/* <input
                         type="text"
                         name="city"
                         id="city"
                         autocomplete="address-level2"
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      />
+                      /> */}
+                      <TextField fullWidth size="small" id="outlined-basic"  variant="outlined" />
                     </div>
                   </div>
 
@@ -353,13 +376,14 @@ const BecomeAgent = () => {
                       State / Province
                     </label>
                     <div class="mt-2">
-                      <input
+                      {/* <input
                         type="text"
                         name="region"
                         id="region"
                         autocomplete="address-level1"
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      />
+                      /> */}
+                      <TextField fullWidth size="small" id="outlined-basic"  variant="outlined" />
                     </div>
                   </div>
 
@@ -371,13 +395,14 @@ const BecomeAgent = () => {
                       ZIP / Postal code
                     </label>
                     <div class="mt-2">
-                      <input
+                      {/* <input
                         type="text"
                         name="postal-code"
                         id="postal-code"
                         autocomplete="postal-code"
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      />
+                      /> */}
+                      <TextField fullWidth size="small" id="outlined-basic"  variant="outlined" />
                     </div>
                   </div>
                 </div>
