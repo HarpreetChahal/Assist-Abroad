@@ -3,11 +3,12 @@ import React from "react";
 import Navbar from "../../layout/Navbar";
 import moment from "moment";
 import { Link } from "react-router-dom";
+import agent from "/src/Assets/agent.png";
 import { Fragment, useRef } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import Rating from "@mui/material/Rating";
 import { Button, TextField } from "@mui/material";
-import  { useState, useContext, useEffect } from "react";
+import { useState, useContext, useEffect } from "react";
 
 import { Context } from "../../Components/context/Context";
 import { useFormik } from "formik";
@@ -24,14 +25,13 @@ const Arrival = () => {
   }, []);
 
   const { dispatch, isFetching } = useContext(Context);
-const navigate=useNavigate()
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       dateOfArrival: "",
       flightTicket: "",
       arrivalTime: "",
       airport: "",
-  
     },
     validationSchema: Yup.object({
       dateOfArrival: Yup.string().required("Required"),
@@ -40,20 +40,20 @@ const navigate=useNavigate()
       airport: Yup.string().required("Required"),
     }),
     onSubmit: async (values) => {
-      let {confirmPassword,...value}=values
-        await commonApi({
-          action: "arrival",
-          data: value
+      let { confirmPassword, ...value } = values;
+      await commonApi({
+        action: "arrival",
+        data: value,
+      })
+        .then(({ DATA = {}, MESSAGE }) => {
+          console.log("heheh", DATA);
+          navigate("/");
         })
-          .then(({ DATA = {}, MESSAGE }) => {
-          console.log("heheh",DATA)
-            navigate("/");
-          })
-          .catch((error) => {
-            dispatch({ type: "ARRIVAL_INFO_FAIL" });
-          
-            console.error(error);
-          });
+        .catch((error) => {
+          dispatch({ type: "ARRIVAL_INFO_FAIL" });
+
+          console.error(error);
+        });
     },
   });
   return (
@@ -87,7 +87,7 @@ const navigate=useNavigate()
             </div>
           </div>
           {!active && (
-            <div className="mt-20 max-w-7xl mx-auto bg-whittext-base lg:text-2xle border-2 rounded-2xl p-4 lg:p-10">
+            <div className="mt-20 max-w-7xl mx-auto bg-white text-base lg:text-2xle border-2 rounded-2xl p-4 lg:p-10">
               <h1 className="text-3xl text-center font-bold">
                 PRE-ARRIVAL FORM
               </h1>
@@ -103,18 +103,20 @@ const navigate=useNavigate()
                       className="border px-2 py-2 lg:w-80 rounded-md outline-none bg-[#F8F8FA]"
                     /> */}
                     <TextField
-                    
                       className="inputField"
                       variant="outlined"
                       size="small"
                       sx={{ backgroundColor: "#f8f8fa" }}
                       id="dateOfArrival"
-                    placeholder="Enter arrival date"
-                    name="dateOfArrival"
-                    error={formik.touched.dateOfArrival && formik.errors.dateOfArrival}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.dateOfArrival}
+                      placeholder="Enter arrival date"
+                      name="dateOfArrival"
+                      error={
+                        formik.touched.dateOfArrival &&
+                        formik.errors.dateOfArrival
+                      }
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.dateOfArrival}
                     />
                   </div>
                   <div className="relative flex items-center gap-x-6">
@@ -127,12 +129,15 @@ const navigate=useNavigate()
                       size="small"
                       sx={{ backgroundColor: "#f8f8fa" }}
                       id="flightTicket"
-                    placeholder="Enter flight ticket no"
-                    name="flightTicket"
-                    error={formik.touched.flightTicket && formik.errors.flightTicket}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.flightTicket}
+                      placeholder="Enter flight ticket no"
+                      name="flightTicket"
+                      error={
+                        formik.touched.flightTicket &&
+                        formik.errors.flightTicket
+                      }
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.flightTicket}
                     />
                   </div>
                   <div className="relative flex items-center gap-x-6">
@@ -145,12 +150,14 @@ const navigate=useNavigate()
                       size="small"
                       sx={{ backgroundColor: "#f8f8fa" }}
                       id="arrivalTime"
-                    placeholder="Enter flight arrival time"
-                    name="arrivalTime"
-                    error={formik.touched.arrivalTime && formik.errors.arrivalTime}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.arrivalTime}
+                      placeholder="Enter flight arrival time"
+                      name="arrivalTime"
+                      error={
+                        formik.touched.arrivalTime && formik.errors.arrivalTime
+                      }
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.arrivalTime}
                     />
                   </div>
 
@@ -189,32 +196,208 @@ const navigate=useNavigate()
               }}>
                 Submit
               </Button> */}
-               <Button
-              variant="contained"
-              sx={{
-                color: "#ffffff",
-                bgcolor: "#6D81FC",
-                textTransform: "none",
-                marginTop:3,
-              }}
-            >
-              Submit
-            </Button>
+                  <Button
+                    variant="contained"
+                    sx={{
+                      color: "#ffffff",
+                      bgcolor: "#6D81FC",
+                      textTransform: "none",
+                      marginTop: 3,
+                    }}
+                  >
+                    Submit
+                  </Button>
                 </Link>
               </div>
             </div>
           )}
           {active && (
-            <div className="mt-20 max-w-7xl mx-auto bg-white border-2 rounded-2xl p-10">
+            <div className="mt-20 max-w-7xl mx-auto bg-[#ffffff] border-2 rounded-2xl p-5">
               <h1 className="text-3xl text-center font-bold">TASKS</h1>
-              <div className="py-10 lg:pl-32">
+              <div class="container px-5 py-5 mx-auto bg-white rounded-2xl">
+                <div class="p-5 bg-white flex items-center mx-auto  border-2 mb-5  rounded-lg sm:flex-row flex-col">
+                  <div class="sm:w-48 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center flex-shrink-0">
+                    <img src={agent} />
+                  </div>
+                  <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
+                    <h1 class="text-black text-2xl title-font font-bold mb-2">
+                      Agents Details
+                    </h1>
+                    
+                    {/* <div class="py-4">
+                      <div class=" inline-block mr-2">
+                        <div class="flex  pr-2 h-full items-center">
+                          <svg
+                            class="text-yellow-500 w-6 h-6 mr-1"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            stroke-width="2"
+                            stroke="currentColor"
+                            fill="none"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          >
+                            <path stroke="none" d="M0 0h24v24H0z" />
+                            <circle cx="12" cy="12" r="9" />
+                            <path d="M9 12l2 2l4 -4" />
+                          </svg>
+                          <p class="title-font font-medium">Python</p>
+                        </div>
+                      </div>
+                      <div class="inline-block mr-2">
+                        <div class="flex  pr-2 h-full items-center">
+                          <svg
+                            class="text-yellow-500 w-6 h-6 mr-1"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            stroke-width="2"
+                            stroke="currentColor"
+                            fill="none"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          >
+                            <path stroke="none" d="M0 0h24v24H0z" />
+                            <circle cx="12" cy="12" r="9" />
+                            <path d="M9 12l2 2l4 -4" />
+                          </svg>
+                          <p class="title-font font-medium">C</p>
+                        </div>
+                      </div>
+                      <div class=" inline-block mr-2">
+                        <div class="flex  pr-2 h-full items-center">
+                          <svg
+                            class="text-yellow-500 w-6 h-6 mr-1"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            stroke-width="2"
+                            stroke="currentColor"
+                            fill="none"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          >
+                            <path stroke="none" d="M0 0h24v24H0z" />
+                            <circle cx="12" cy="12" r="9" />
+                            <path d="M9 12l2 2l4 -4" />
+                          </svg>
+                          <p class="title-font font-medium">Php</p>
+                        </div>
+                      </div>
+                      <div class=" inline-block mr-2">
+                        <div class="flex  pr-2 h-full items-center">
+                          <svg
+                            class="text-gray-500 w-6 h-6 mr-1"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          >
+                            <circle cx="12" cy="12" r="10" />
+                            <line x1="15" y1="9" x2="9" y2="15" />
+                            <line x1="9" y1="9" x2="15" y2="15" />
+                          </svg>
+                          <p class="title-font font-medium">Swift</p>
+                        </div>
+                      </div>
+
+                      <div class=" inline-block mr-2">
+                        <div class="flex  pr-2 h-full items-center">
+                          <svg
+                            class="text-gray-500 w-6 h-6 mr-1"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          >
+                            <circle cx="12" cy="12" r="10" />
+                            <line x1="15" y1="9" x2="9" y2="15" />
+                            <line x1="9" y1="9" x2="15" y2="15" />
+                          </svg>
+                          <p class="title-font font-medium">Java</p>
+                        </div>
+                      </div>
+                      <div class=" inline-block mr-2">
+                        <div class="flex  pr-2 h-full items-center">
+                          <svg
+                            class="text-gray-500 w-6 h-6 mr-1"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          >
+                            <circle cx="12" cy="12" r="10" />
+                            <line x1="15" y1="9" x2="9" y2="15" />
+                            <line x1="9" y1="9" x2="15" y2="15" />
+                          </svg>
+                          <p class="title-font font-medium">Javascript</p>
+                        </div>
+                      </div>
+                    </div> */}
+                    <div class="md:flex font-bold text-gray-800">
+                      <div class="w-full md:w-1/2 flex space-x-3">
+                        <div class="w-1/2">
+                          <h2 class="text-gray-500">Name</h2>
+                          <p>Samar Dahiya</p>
+                        </div>
+                        <div class="w-1/2">
+                          <h2 class="text-gray-500">Email</h2>
+                          <p>had@gmail.com</p>
+                        </div>
+                      </div>
+                      <div class="w-full md:w-1/2 flex space-x-3">
+                        <div class="w-1/2">
+                          <h2 class="text-gray-500">Title</h2>
+                          <p>description</p>
+                        </div>
+                        <div class="w-1/2">
+                          <h2 class="text-gray-500">Title</h2>
+                          <p>description</p>
+                        </div>
+                      </div>
+                      
+                    </div>
+                    <div class="flex mt-5">
+                          <h2 class="text-gray-500 mr-2 font-bold" >Last Activity: </h2>
+                          <p>Samar Dahiya</p>
+                        </div>
+                        <div class="flex mt-">
+                          <h2 class="text-gray-500 mr-2 font-bold" >Hotel Stay: </h2>
+                          <p>JW Marriot, Regina</p>
+                        </div>
+                    <a class="mt-3 text-indigo-500 inline-flex items-center">
+                     View Profile
+                      <svg
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        class="w-4 h-4 ml-2"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M5 12h14M12 5l7 7-7 7"></path>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              {/* <div className="py-10 lg:pl-32">
+                
                 <p className="text-sm lg:text-lg">Client : Happy Singh</p>
                 <p className="text-sm lg:text-lg">Contact : 306-***-**96</p>
                 <p className="text-sm lg:text-lg">
                   Email: dead******@gmail.com
                 </p>
                 <p className="text-sm lg:text-lg">Address: #2, 875 Regina</p>
-              </div>
+              </div> */}
               <div className="flex items-center justify-center flex-col">
                 <div className="mt-6 space-y-3">
                   <div className="relative flex gap-x-3">
@@ -314,7 +497,7 @@ const navigate=useNavigate()
                 >
                   Give Feedback
                 </button>
-                 {/* <Button type="submit"  onClick={() => setOpen(true)} 
+                {/* <Button type="submit"  onClick={() => setOpen(true)} 
              
               style={{
                 backgroundColor: "#6d81fe",
