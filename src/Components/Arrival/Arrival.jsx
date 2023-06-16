@@ -343,30 +343,48 @@ const Arrival = () => {
                     </div> */}
                     <div class="md:flex font-bold text-gray-800">
                       <div class="w-full md:w-1/2 flex space-x-3">
-                        <div class="w-1/2">
+                        <div class="w-full">
                           <h2 class="text-gray-500">Name</h2>
                           <p>Samar Dahiya</p>
                         </div>
-                        <div class="w-1/2">
-                          <h2 class="text-gray-500">Email</h2>
-                          <p>had@gmail.com</p>
-                        </div>
+                    
                       </div>
                       <div class="w-full md:w-1/2 flex space-x-3">
-                        <div class="w-1/2">
-                          <h2 class="text-gray-500">Title</h2>
-                          <p>description</p>
+                        <div class="w-full">
+                          <h2 class="text-gray-500">Contact</h2>
+                          <p>510-555-9451</p>
                         </div>
-                        <div class="w-1/2">
-                          <h2 class="text-gray-500">Title</h2>
-                          <p>description</p>
-                        </div>
+                        
                       </div>
+                      <div class="w-full md:w-1/2 flex space-x-3">
+                        <div class="w-full">
+                          <h2 class="text-gray-500">Car Plate</h2>
+                          <p>SAM 741</p>
+                        </div>
+                    
+                      </div>
+                      <div class="w-full md:w-1/2 flex space-x-3">
+                        <div class="w-full">
+                          <h2 class="text-gray-500">Email</h2>
+                          <p>dahiya@gmail.com</p>
+                        </div>
+                        
+                      </div>
+                      {/* <div class="w-full md:w-1/2 flex space-x-3">
+                        <div class="w-1/2">
+                          <h2 class="text-gray-500">Contact</h2>
+                          <p>520-210-5789</p>
+                        </div>
+                        <div class="w-1/2">
+                          <h2 class="text-gray-500">Car plate</h2>
+                          <p>HXB 521</p>
+                        </div>
+                      </div> */}
                       
                     </div>
                     <div class="flex mt-5">
                           <h2 class="text-gray-500 mr-2 font-bold" >Last Activity: </h2>
-                          <p>Samar Dahiya</p>
+                          <p>Airport Pickup</p>
                         </div>
                         <div class="flex mt-">
                           <h2 class="text-gray-500 mr-2 font-bold" >Hotel Stay: </h2>
