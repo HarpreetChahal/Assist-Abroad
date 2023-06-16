@@ -1,6 +1,39 @@
 import React from "react";
 import Navbar from "../../layout/Navbar";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import { styled } from "@mui/material/styles";
+import RadioGroup, { useRadioGroup } from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Radio from "@mui/material/Radio";
+import { Button, TextField } from "@mui/material";
+
+const StyledFormControlLabel = styled((props) => (
+  <FormControlLabel {...props} />
+))(({ theme, checked }) => ({
+  ".MuiFormControlLabel-label": checked && {
+    color: theme.palette.primary.main,
+  },
+}));
+
+function MyFormControlLabel(props) {
+  const radioGroup = useRadioGroup();
+
+  let checked = false;
+
+  if (radioGroup) {
+    checked = radioGroup.value === props.value;
+  }
+
+  return <StyledFormControlLabel checked={checked} {...props} />;
+}
+
+MyFormControlLabel.propTypes = {
+  /**
+   * The value of the component.
+   */
+  value: PropTypes.any,
+};
 
 const Quiz = () => {
   return (
@@ -18,7 +51,7 @@ const Quiz = () => {
             <fieldset>
               <div className="mt-6 space-y-6">
                 <div className="flex items-center gap-x-3">
-                  <input
+                  {/* <input
                     id="english"
                     name="push-notifications"
                     type="radio"
@@ -29,9 +62,71 @@ const Quiz = () => {
                     className="block text-xl font_ab font-medium leading-6 text-[#23314C]"
                   >
                     English
-                  </label>
+                  </label> */}
+                  <RadioGroup name="use-radio-group" defaultValue="">
+                    <MyFormControlLabel
+                      sx={{
+                        "& .MuiSvgIcon-root": {
+                          fontSize: 24,
+                          color: "#23314c",
+                        },
+                        "& .MuiFormControlLabel-label": {
+                          fontSize: "20px",
+                          color: "#23314c",
+                        },
+                      }}
+                      value="First"
+                      label="First"
+                      control={<Radio />}
+                    />
+                    <MyFormControlLabel
+                      sx={{
+                        "& .MuiSvgIcon-root": {
+                          fontSize: 24,
+                          color: "#23314c",
+                        },
+                        "& .MuiFormControlLabel-label": {
+                          fontSize: "20px",
+                          color: "#23314c",
+                        },
+                      }}
+                      value="Second"
+                      label="Second"
+                      control={<Radio />}
+                    />
+                    <MyFormControlLabel
+                      sx={{
+                        "& .MuiSvgIcon-root": {
+                          fontSize: 24,
+                          color: "#23314c",
+                        },
+                        "& .MuiFormControlLabel-label": {
+                          fontSize: "20px",
+                          color: "#23314c",
+                        },
+                      }}
+                      value="Third"
+                      label="Third"
+                      control={<Radio />}
+                    />
+                    <MyFormControlLabel
+                      sx={{
+                        "& .MuiSvgIcon-root": {
+                          fontSize: 24,
+                          color: "#23314c",
+                        },
+                        "& .MuiFormControlLabel-label": {
+                          fontSize: "20px",
+                          color: "#23314c",
+                        },
+                      }}
+                      value="Fourth"
+                      label="Fourth"
+                      control={<Radio />}
+                    />
+                  </RadioGroup>
                 </div>
-                <div className="flex items-center gap-x-3">
+                {/* <div className="flex items-center gap-x-3">
                   <input
                     id="french"
                     name="push-notifications"
@@ -92,35 +187,56 @@ const Quiz = () => {
                     className="bg-[#FEFEFE] px-2 py-2 border outline-none w-40 rounded-md"
                     placeholder="Type here"
                   />
-                </div>
+                </div> */}
               </div>
             </fieldset>
-          </form>
+          
 
           <div className=" mt-10 flex items-center justify-between">
-            <button className="px-10 py-2 bg-pr text-white rounded-md">
+            <Button
+              variant="contained"
+              sx={{
+                color: "#ffffff",
+                bgcolor: "#6D81FC",
+                textTransform: "none",
+              }}
+            >
               Previous
-            </button>
-           
-            <button className="px-10 py-2 bg-pr text-white rounded-md">
+            </Button>
+
+            <Button
+              variant="contained"
+              sx={{
+                color: "#ffffff",
+                bgcolor: "#6D81FC",
+                textTransform: "none",
+              }}
+            >
               Next
-            </button>
-             
+            </Button>
           </div>
-         
+
           <div className="flex items-center justify-center mt-10">
             {/* Reset button */}
-            <Link to={'/payment'}>
-            <button className="px-10 py-2 bg-white text-pr rounded-md border border-2 border-pr hover:bg-tc hover:text-[#ffffff]">
-  Reset
-</button></Link>
-
-
+            <Link to={"/payment"}>
+              <Button
+                variant="contained"
+                sx={{
+                  color: "#ffffff",
+                  bgcolor: "#6D81FC",
+                  textTransform: "none",
+                }}
+              >
+                Submit
+              </Button>
+            </Link>
           </div>
-            
+          </form>
         </div>
       </section>
-    <p className=" mt-28 text-center text-[#23314C]">© 2023 Assist Abroad , Inc. All Rights Reserved.</p>
+      <p className=" mt-28 text-center text-[#23314C]">
+        © 2023 Assist Abroad , Inc. All Rights Reserved.
+      </p>
     </div>
   );
 };

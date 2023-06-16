@@ -6,6 +6,7 @@ import rocket from "/src/Assets/rocket.png";
 import thunder from "/src/Assets/thunder.png";
 import Footer from "../../layout/Footer";
 import { Link } from "react-router-dom";
+import { Button, TextField } from "@mui/material";
 const Home = () => {
   return (
     <div className="bg-[#F6F7FC] relative min-h-screen">
@@ -17,14 +18,24 @@ const Home = () => {
       >
         <div className="bg-white mx-auto w-full lg:max-w-7xl gap-10 px-5 lg:px-10 py-10 grid grid-cols-1 lg:grid-cols-2 ">
           <div>
-            <h1 className=" text-3xl text-[#6D81FE] lg:text-4xl font_ab">
+            <h1 className=" text-3xl text-[#6D81FE] lg:text-4xl font_ab mb-5">
               <span>Moving to a new <br className=" lg:hidden"  /> country ? </span>
               <br /> Let us help you
             </h1>
+            <div >
             <Link to={'/quiz'}>
-            <button className="px-8 py-2 bg-pr text-white  mt-10 text-lg font_ab rounded-md">
-              Get Started
-            </button></Link>
+            <Button
+              variant="contained"
+              sx={{
+                color: "#ffffff",
+                bgcolor: "#6D81FC",
+                textTransform: "none",
+                
+              }}
+            >
+             Get started
+            </Button></Link>
+            </div>
           </div>
           <div>
             <img src={hero} alt="" />
@@ -32,7 +43,7 @@ const Home = () => {
         </div>
       </section>
       <section id="#service" className=" mt-10 mx-5 lg:mx-0">
-        <h1 className="text-3xl text-[#23314C] text-center font-bold">
+        <h1 className="text-3xl text-[#23314C] text-center font-bold font_ab">
           Services
         </h1>
         <div className="mx-auto mt-10 grid grid-cols-1 pb-10 lg:grid-cols-3 gap-x-16 gap-y-10 w-full lg:max-w-7xl">
@@ -129,7 +140,7 @@ const Home = () => {
         </div>
       </section>
       <section className="mt-10 pb-20 mx-5 lg:mx-0">
-        <h1 className="text-3xl text-[#23314C] text-center font-bold">
+        <h1 className="text-3xl text-[#23314C] text-center font-bold font_ab">
           Contact Us
         </h1>
         <div className="mx-auto lg:max-w-7xl mt-10 grid grid-cols-1 lg:grid-cols-2 gap-5">

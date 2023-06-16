@@ -2,9 +2,10 @@ import React from "react";
 import Navbar from "../../layout/Navbar";
 import agent from "/src/Assets/agent.png";
 import { useState, useEffect } from "react";
+import { Button, TextField } from "@mui/material";
 const Profile = () => {
   const [edit, setEdit] = useState(false);
-  
+
   useEffect(() => {
     window.scrollTo(0, 0); // Scroll to the top of the page on component mount
   }, []);
@@ -35,15 +36,24 @@ const Profile = () => {
             </div>
             <div className="flex items-center  gap-3">
               {!edit ? (
-                <button onClick={()=>setEdit(true)} className="px-4 bg-pr text-white py-2 rounded-md">
+                <button
+                  onClick={() => setEdit(true)}
+                  className="px-4 bg-pr text-white py-2 rounded-md"
+                >
                   Edit
                 </button>
               ) : (
                 <>
-                  <button onClick={()=>setEdit(false)} className="border rounded-md cursor-pointer px-4 py-2 text-gray-500">
+                  <button
+                    onClick={() => setEdit(false)}
+                    className="border rounded-md cursor-pointer px-4 py-2 text-gray-500"
+                  >
                     Cancel
                   </button>
-                  <button onClick={()=>setEdit(false)} className="px-4 bg-pr text-white py-2 rounded-md">
+                  <button
+                    onClick={() => setEdit(false)}
+                    className="px-4 bg-pr text-white py-2 rounded-md"
+                  >
                     Save
                   </button>
                 </>
@@ -52,39 +62,55 @@ const Profile = () => {
           </div>
           <div className="mt-10">
             <div className="flex items-center border-2 bg-[#F8F8FA] max-w-2xl ">
-              <p className="w-32 text-center border-r-2 text-lg  py-2 text-[#23314C]">Name</p>{" "}
+              <p className="w-32 text-center border-r-2 text-lg  py-2 text-[#23314C]">
+                Name
+              </p>{" "}
               <input
                 type="text"
                 disabled={!edit}
                 defaultValue={"Samar Dahiya"}
-                className={` outline-none border-none ${edit && ' ring-1 ring-pr'} text-xl py-2 w-full text-[#23314C] px-5 bg-transparent`}
+                className={` outline-none border-none ${
+                  edit && " ring-1 ring-pr"
+                } text-xl py-2 w-full text-[#23314C] px-5 bg-transparent`}
               />
             </div>
             <div className="flex mt-2 items-center border-2 bg-[#F8F8FA] max-w-2xl ">
-              <p className="w-32 text-center border-r-2 text-lg  py-2 text-[#23314C]">Contact</p>{" "}
+              <p className="w-32 text-center border-r-2 text-lg  py-2 text-[#23314C]">
+                Contact
+              </p>{" "}
               <input
                 type="text"
                 disabled={!edit}
                 defaultValue={"(306)***-**96"}
-                className={` outline-none border-none ${edit && ' ring-1 ring-pr'} text-xl py-2 w-full text-[#23314C] px-5 bg-transparent`}
+                className={` outline-none border-none ${
+                  edit && " ring-1 ring-pr"
+                } text-xl py-2 w-full text-[#23314C] px-5 bg-transparent`}
               />
             </div>
             <div className="flex mt-2 items-center border-2 bg-[#F8F8FA] max-w-2xl ">
-              <p className="w-32 text-center border-r-2 text-lg  py-2 text-[#23314C]">Email</p>{" "}
+              <p className="w-32 text-center border-r-2 text-lg  py-2 text-[#23314C]">
+                Email
+              </p>{" "}
               <input
                 type="email"
                 disabled={!edit}
                 defaultValue={"samar******@gmail.com"}
-                className={` outline-none border-none ${edit && ' ring-1 ring-pr'} text-xl py-2 w-full text-[#23314C] px-5 bg-transparent`}
+                className={` outline-none border-none ${
+                  edit && " ring-1 ring-pr"
+                } text-xl py-2 w-full text-[#23314C] px-5 bg-transparent`}
               />
             </div>
             <div className="flex mt-2 items-center border-2 bg-[#F8F8FA] max-w-2xl ">
-              <p className="w-32 text-center border-r-2 text-lg  py-2 text-[#23314C]">Address</p>{" "}
+              <p className="w-32 text-center border-r-2 text-lg  py-2 text-[#23314C]">
+                Address
+              </p>{" "}
               <input
                 type="text"
                 disabled={!edit}
                 defaultValue={"#2, 875 Regina"}
-                className={` outline-none border-none ${edit && ' ring-1 ring-pr'} text-xl py-2 w-full text-[#23314C] px-5 bg-transparent`}
+                className={` outline-none border-none ${
+                  edit && " ring-1 ring-pr"
+                } text-xl py-2 w-full text-[#23314C] px-5 bg-transparent`}
               />
             </div>
           </div>

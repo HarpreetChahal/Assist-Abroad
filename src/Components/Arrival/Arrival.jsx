@@ -175,7 +175,7 @@ const navigate=useNavigate()
                   {/* <button className="text-white mt-16 bg-pr px-7 py-2 rounded-md">
                     SUBMIT
                   </button> */}
-                  <Button type="submit"   
+                  {/* <Button type="submit"   
               disabled={!(formik.isValid && formik.dirty)}
               style={{
                 backgroundColor: "#6d81fe",
@@ -188,7 +188,18 @@ const navigate=useNavigate()
                 width:100,
               }}>
                 Submit
-              </Button>
+              </Button> */}
+               <Button
+              variant="contained"
+              sx={{
+                color: "#ffffff",
+                bgcolor: "#6D81FC",
+                textTransform: "none",
+                marginTop:3,
+              }}
+            >
+              Submit
+            </Button>
                 </Link>
               </div>
             </div>

@@ -20,7 +20,6 @@ const BecomeAgent = () => {
   //   const [edit, setEdit] = useState(false);
   const fileInput = React.useRef();
 
-  
   useEffect(() => {
     window.scrollTo(0, 0); // Scroll to the top of the page on component mount
   }, []);
@@ -63,11 +62,15 @@ const BecomeAgent = () => {
   return (
     <div>
       <Navbar />
-      <div className=" mt-32 lg:mt-32 px-3 ">
-        <div className=" lg:max-w-7xl w-full bg-[#F8F8FA] mx-auto p-4 lg:py-20 lg:px-20 border-2 rounded-xl  ">
+      <div className=" mt-32  lg:mt-32   px-3 ">
+        <div className=" lg:max-w-7xl w-full  mx-auto  p-4 lg:py-20 lg:px-20 border-2 rounded-xl  ">
           <div className="w-full flex items-center gap-2 justify-center">
             <div className="  items-start lg:items-center flex-col lg:flex-row gap-10 ">
-              <img className="w-32 h-32 lg:w-30 lg:h-32 mx-auto lg:items-center rounded-full" src={agent} alt="" />
+              <img
+                className="w-32 h-32 lg:w-30 lg:h-32 mx-auto lg:items-center rounded-full"
+                src={agent}
+                alt=""
+              />
               <div>
                 <h1 className="text-3xl text-center text-[#23314C]">
                   AGENT NAME
@@ -76,22 +79,24 @@ const BecomeAgent = () => {
                   Member Since : 2020
                 </h1>
                 <div className=" items-center text-center justify-center rounded-md">
-                <Button 
-        variant="contained" 
-        
-        onClick={()=>fileInput.current.click()}
-        sx={{color:"#ffffff", bgcolor:"#6D81FC",textTransform:"none"}}
-      >
-        Choose Image
-      </Button>
+                  <Button
+                    variant="contained"
+                    onClick={() => fileInput.current.click()}
+                    sx={{
+                      color: "#ffffff",
+                      bgcolor: "#6D81FC",
+                      textTransform: "none",
+                    }}
+                  >
+                    Choose Image
+                  </Button>
 
-                
-      <input 
-        ref={fileInput} 
-        type="file" 
-        style={{ display: 'none' }} 
-      />
-                {/* <label
+                  <input
+                    ref={fileInput}
+                    type="file"
+                    style={{ display: "none" }}
+                  />
+                  {/* <label
                   htmlFor="myfile"
                   className="text-white mt-8 text-center items-center bg-pr px-7 py-2 rounded-md"
                 >
@@ -186,8 +191,6 @@ const BecomeAgent = () => {
                 </p>
 
                 <div class="mt-5 grid grid-cols-1 gap-x-2 gap-y-4 sm:grid-cols-6">
-        
-
                   <div class="col-span-full">
                     <label
                       for="about"
@@ -196,15 +199,12 @@ const BecomeAgent = () => {
                       About
                     </label>
                     <div class="mt-2">
-                    <TextField
-                    fullWidth
-          id="outlined-multiline-static"
-          
-          multiline
-          rows={3}
-          
-         
-        />
+                      <TextField
+                        fullWidth
+                        id="outlined-multiline-static"
+                        multiline
+                        rows={3}
+                      />
                       {/* <textarea
                         id="about"
                         name="about"
@@ -212,32 +212,50 @@ const BecomeAgent = () => {
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       ></textarea> */}
                     </div>
-                    
                   </div>
-                  <div class="col-span-full">
-          <label for="cover-photo" class="block text-sm font-medium leading-6 text-gray-900">Add documents</label>
-          <div class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
-            <div class="text-center">
-              <svg class="mx-auto h-12 w-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path fill-rule="evenodd" d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z" clip-rule="evenodd" />
-              </svg>
-              <div class="mt-4 flex text-sm leading-6 text-gray-600">
-                <label for="file-upload" class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
-                  {/* <span>Upload a file</span> */}
-                  <Button 
-        variant="contained" 
-        
-        onClick={()=>fileInput.current.click()}
-        sx={{color:"#ffffff", bgcolor:"#6D81FC",textTransform:"none"}}
-      >
-        Choose files
-      </Button>
-                </label>
-              </div>
-            </div>
-          </div>
-        </div>
-
+                  {/* <div class="col-span-full">
+                    <label
+                      for="cover-photo"
+                      class="block text-sm font-medium leading-6 text-gray-900"
+                    >
+                      Add documents
+                    </label>
+                    <div class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
+                      <div class="text-center">
+                        <svg
+                          class="mx-auto h-12 w-12 text-gray-300"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                          aria-hidden="true"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z"
+                            clip-rule="evenodd"
+                          />
+                        </svg>
+                        <div class="mt-4 flex text-sm leading-6 text-gray-600">
+                          <label
+                            for="file-upload"
+                            class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
+                          >
+                            <span>Upload a file</span>
+                            <Button
+                              variant="contained"
+                              onClick={() => fileInput.current.click()}
+                              sx={{
+                                color: "#ffffff",
+                                bgcolor: "#6D81FC",
+                                textTransform: "none",
+                              }}
+                            >
+                              Choose files
+                            </Button>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div> */}
                 </div>
               </div>
 
@@ -266,7 +284,12 @@ const BecomeAgent = () => {
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       /> */}
 
-<TextField fullWidth size="small" id="outlined-basic"  variant="outlined" />
+                      <TextField
+                        fullWidth
+                        size="small"
+                        id="outlined-basic"
+                        variant="outlined"
+                      />
                     </div>
                   </div>
 
@@ -285,7 +308,12 @@ const BecomeAgent = () => {
                         autocomplete="family-name"
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       /> */}
-                      <TextField fullWidth size="small" id="outlined-basic"  variant="outlined" />
+                      <TextField
+                        fullWidth
+                        size="small"
+                        id="outlined-basic"
+                        variant="outlined"
+                      />
                     </div>
                   </div>
 
@@ -304,7 +332,12 @@ const BecomeAgent = () => {
                         autocomplete="email"
                          class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       /> */}
-                      <TextField fullWidth size="small" id="outlined-basic"  variant="outlined" />
+                      <TextField
+                        fullWidth
+                        size="small"
+                        id="outlined-basic"
+                        variant="outlined"
+                      />
                     </div>
                   </div>
 
@@ -326,7 +359,12 @@ const BecomeAgent = () => {
                         <option>Canada</option>
                         <option>Mexico</option>
                       </select> */}
-                      <TextField fullWidth size="small" id="outlined-basic"  variant="outlined" />
+                      <TextField
+                        fullWidth
+                        size="small"
+                        id="outlined-basic"
+                        variant="outlined"
+                      />
                     </div>
                   </div>
 
@@ -345,7 +383,12 @@ const BecomeAgent = () => {
                         autocomplete="street-address"
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       /> */}
-                      <TextField fullWidth size="small" id="outlined-basic"  variant="outlined" />
+                      <TextField
+                        fullWidth
+                        size="small"
+                        id="outlined-basic"
+                        variant="outlined"
+                      />
                     </div>
                   </div>
 
@@ -364,7 +407,12 @@ const BecomeAgent = () => {
                         autocomplete="address-level2"
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       /> */}
-                      <TextField fullWidth size="small" id="outlined-basic"  variant="outlined" />
+                      <TextField
+                        fullWidth
+                        size="small"
+                        id="outlined-basic"
+                        variant="outlined"
+                      />
                     </div>
                   </div>
 
@@ -383,7 +431,12 @@ const BecomeAgent = () => {
                         autocomplete="address-level1"
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       /> */}
-                      <TextField fullWidth size="small" id="outlined-basic"  variant="outlined" />
+                      <TextField
+                        fullWidth
+                        size="small"
+                        id="outlined-basic"
+                        variant="outlined"
+                      />
                     </div>
                   </div>
 
@@ -402,22 +455,24 @@ const BecomeAgent = () => {
                         autocomplete="postal-code"
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       /> */}
-                      <TextField fullWidth size="small" id="outlined-basic"  variant="outlined" />
+                      <TextField
+                        fullWidth
+                        size="small"
+                        id="outlined-basic"
+                        variant="outlined"
+                      />
                     </div>
                   </div>
                 </div>
               </div>
-
-              
             </div>
 
             <div class="mt-6 flex items-center justify-center gap-x-6">
-              
               <Link to={"/"}>
-                  <button className="text-white mt-16 bg-pr px-7 py-2 rounded-md">
-                    SUBMIT REQUEST
-                  </button>
-                </Link>
+                <button className="text-white mt-4 bg-pr px-7 py-2 rounded-md">
+                  SUBMIT REQUEST
+                </button>
+              </Link>
             </div>
           </form>
         </div>

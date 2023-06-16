@@ -73,7 +73,8 @@ html {
 
 }
 .container_register::-webkit-scrollbar {
-    width: 6px;
+    width: 10px;
+    
   }
   
   .container_register::-webkit-scrollbar-track {
@@ -81,12 +82,13 @@ html {
   }
   
   .container_register::-webkit-scrollbar-thumb {
-    background-color: #6d81fe;
+    background-color: #cdcdd7;
     border-radius: 3px;
+    
   }
   
   .container_register::-webkit-scrollbar-thumb:hover {
-    background-color: #4d5ce9;
+    background-color: #70717b;
   }
 
 .videoDiv{
@@ -202,6 +204,30 @@ video{
 
     
 }
+.btnSignup {
+    border: 2px solid #6d81fe;
+    background-color: #fff;
+    /* outline: none; */
+    /* cursor: pointer; */
+    border-radius: 10px;
+    padding:10px;
+    font-family: 400;
+    color: #6d81fe;
+    font-weight: 400;
+    transition: 0.3s ease;
+    align-items: center;
+    /* margin: auto; */
+    justify-content: center;
+    font-size: 16px;
+    width: 100%;
+    gap: 0.5rem;
+    transition: -3s ease;
+    margin-bottom: 10px;
+  }
+  .btnSignup:hover{
+      color: var(--hoverColor);
+      background-color: #23314c ;
+  }
 .logoRegister{
 margin-top: 30px;
 }

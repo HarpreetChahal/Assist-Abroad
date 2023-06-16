@@ -6,9 +6,9 @@
 
 /* Scrollbar hide */
 
-::-webkit-scrollbar{
+/* ::-webkit-scrollbar{
     display: none;
-}
+} */
 
 *{
     padding: 0;

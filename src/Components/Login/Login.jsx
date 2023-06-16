@@ -140,10 +140,10 @@ const Login = () => {
                   backgroundColor: "#6d81fe",
                   color: "#fff",
                   borderRadius: 10,
-                  padding: 15,
+                  padding: 10,
                   marginTop: 10,
                   textTransform: 'none',
-                  fontSize:15,
+                  fontSize:14,
                 }}
               >
                 Login
@@ -153,7 +153,7 @@ const Login = () => {
                 Forgot your password? <a href="">Click here</a>
               </span>
               <Link to="/register">
-                <button type="submit" className="btnSignup flex">
+                <button type="submit" className="btnSignupLogin flex">
                   <span>Signup</span>
                 </button>
               </Link>

@@ -134,6 +134,7 @@ const navigate=useNavigate()
                   className="inputField"
                   //  sx={{"& fieldset" : {border:'none'},}}
                   size="small"
+                 
                     type="text"
                     id="email"
                     placeholder="Enter your email"
@@ -236,10 +237,10 @@ const navigate=useNavigate()
                 backgroundColor: "#6d81fe",
                 color: "#fff",
                 borderRadius: 10,
-                padding: 12,
+                padding: 10,
                 marginTop: 10,
                 textTransform: 'none',
-                fontSize:15,
+                fontSize:14,
               }}>
                 Sign Up
               </Button>

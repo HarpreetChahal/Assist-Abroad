@@ -164,13 +164,13 @@ h1 {
   gap: 0.5rem;
   transition: -3s ease;
 }
-.btnSignup {
+.btnSignupLogin {
   border: 2px solid #6d81fe;
   background-color: #fff;
   /* outline: none; */
   /* cursor: pointer; */
   border-radius: 10px;
-  padding: 0.8rem 1.5rem;
+  padding: 10px;
   font-family: 400;
   color: #6d81fe;
   font-weight: 400;
@@ -178,13 +178,13 @@ h1 {
   align-items: center;
   /* margin: auto; */
   justify-content: center;
-  font-size: 16px;
+  font-size: 14px;
   width: 100%;
   gap: 0.5rem;
   transition: -3s ease;
   margin-bottom: 10px;
 }
-.btnSignup:hover{
+.btnSignupLogin:hover{
     color: var(--hoverColor);
     background-color: #23314c ;
 }
