@@ -220,7 +220,7 @@ const Arrival = () => {
                     <img src={agent} />
                   </div>
                   <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
-                    <h1 class="text-black text-2xl title-font font-bold mb-2">
+                    <h1 class="text-black text-2xl title-font font-bold font_ab mb-2">
                       Agents Details
                     </h1>
                     

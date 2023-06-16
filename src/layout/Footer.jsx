@@ -11,22 +11,22 @@ const Footer = () => {
 
             <div className="w-10 h-[1px] bg-white"></div>
             <p className="text-white font_ab italic mt-4">
-              XYZ, Lorem ipsum street
+            University of Regina
             </p>
-            <p className="text-white font_ab italic">US, X1Y ZZZ</p>
+            <p className="text-white font_ab italic">Regina, Canada</p>
             <p className="text-white font_ab italic mt-4">
               Tel: +1 999 999 9999{" "}
             </p>
             <p className="text-white font_ab italic">Fax: +1 999 999 9999</p>
           </div>
           <div className="flex items-center gap-3 mt-5 lg:mt-0">
-            <a target="_blank" href="">
+            <a target="_blank" href="https://settleout.onrender.com/login">
               <FaLinkedin className="w-12 h-12 text-white" />
             </a>
-            <a target="_blank" href="">
+            <a target="_blank" href="https://settleout.onrender.com/login">
               <FaFacebookSquare className="w-12 h-12 text-white" />
             </a>
-            <a target="_blank" href="">
+            <a target="_blank" href="https://settleout.onrender.com/login">
   <FaTwitterSquare className="w-12 h-12 text-white"/>
 </a>
           </div>

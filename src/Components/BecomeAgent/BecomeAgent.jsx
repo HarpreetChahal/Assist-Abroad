@@ -60,10 +60,10 @@ const BecomeAgent = () => {
   });
 
   return (
-    <div>
+    <div className="  bg-[#f8f8fa]">
       <Navbar />
-      <div className=" mt-32  lg:mt-32   px-3 ">
-        <div className=" lg:max-w-7xl w-full  mx-auto  p-4 lg:py-20 lg:px-20 border-2 rounded-xl  ">
+      <div className="   pt-32 lg:pt-32 lg:pb-12  px-3 ">
+        <div className=" lg:max-w-7xl w-full  mx-auto  p-4 lg:py-10 lg:px-10 border-2 rounded-xl bg-white ">
           <div className="w-full flex items-center gap-2 justify-center">
             <div className="  items-start lg:items-center flex-col lg:flex-row gap-10 ">
               <img
@@ -273,7 +273,7 @@ const BecomeAgent = () => {
                       for="first-name"
                       class="block text-sm font-medium leading-6 text-gray-900"
                     >
-                      First name
+                      Name
                     </label>
                     <div class="mt-2">
                       {/* <input
@@ -287,7 +287,7 @@ const BecomeAgent = () => {
                       <TextField
                         fullWidth
                         size="small"
-                        id="outlined-basic"
+                        id="firstname"
                         variant="outlined"
                       />
                     </div>
@@ -298,7 +298,101 @@ const BecomeAgent = () => {
                       for="last-name"
                       class="block text-sm font-medium leading-6 text-gray-900"
                     >
-                      Last name
+                      Email
+                    </label>
+                    <div class="mt-2">
+                      {/* <input
+                        type="text"
+                        name="last-name"
+                        id="last-name"
+                        autocomplete="family-name"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      /> */}
+                      <TextField
+                        fullWidth
+                        size="small"
+                        id="outlined-basic"
+                        variant="outlined"
+                      />
+                    </div>
+                  </div>
+                  <div class="sm:col-span-3">
+                    <label
+                      for="first-name"
+                      class="block text-sm font-medium leading-6 text-gray-900"
+                    >
+                      Contact
+                    </label>
+                    <div class="mt-2">
+                      {/* <input
+                        type="text"
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      /> */}
+
+                      <TextField
+                        fullWidth
+                        size="small"
+                        id="firstname"
+                        variant="outlined"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="sm:col-span-3">
+                    <label
+                      for="last-name"
+                      class="block text-sm font-medium leading-6 text-gray-900"
+                    >
+                      Date of birth
+                    </label>
+                    <div class="mt-2">
+                      {/* <input
+                        type="text"
+                        name="last-name"
+                        id="last-name"
+                        autocomplete="family-name"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      /> */}
+                      <TextField
+                        fullWidth
+                        size="small"
+                        id="outlined-basic"
+                        variant="outlined"
+                      />
+                    </div>
+                  </div>
+                  <div class="sm:col-span-3">
+                    <label
+                      for="last-name"
+                      class="block text-sm font-medium leading-6 text-gray-900"
+                    >
+                      Car Plate
+                    </label>
+                    <div class="mt-2">
+                      {/* <input
+                        type="text"
+                        name="last-name"
+                        id="last-name"
+                        autocomplete="family-name"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      /> */}
+                      <TextField
+                        fullWidth
+                        size="small"
+                        id="outlined-basic"
+                        variant="outlined"
+                      />
+                    </div>
+                  </div>
+                  <div class="sm:col-span-3">
+                    <label
+                      for="last-name"
+                      class="block text-sm font-medium leading-6 text-gray-900"
+                    >
+                      Country
                     </label>
                     <div class="mt-2">
                       {/* <input
@@ -317,56 +411,9 @@ const BecomeAgent = () => {
                     </div>
                   </div>
 
-                  <div class="sm:col-span-full">
-                    <label
-                      for="email"
-                      class="block text-sm font-medium leading-6 text-gray-900"
-                    >
-                      Email address
-                    </label>
-                    <div class="mt-2">
-                      {/* <input
-                        id="email"
-                        name="email"
-                        type="email"
-                        autocomplete="email"
-                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      /> */}
-                      <TextField
-                        fullWidth
-                        size="small"
-                        id="outlined-basic"
-                        variant="outlined"
-                      />
-                    </div>
-                  </div>
 
-                  <div class="sm:col-span-3">
-                    <label
-                      for="country"
-                      class="block text-sm font-medium leading-6 text-gray-900"
-                    >
-                      Country
-                    </label>
-                    <div class="mt-2">
-                      {/* <select
-                        id="country"
-                        name="country"
-                        autocomplete="country-name"
-                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
-                      >
-                        <option>United States</option>
-                        <option>Canada</option>
-                        <option>Mexico</option>
-                      </select> */}
-                      <TextField
-                        fullWidth
-                        size="small"
-                        id="outlined-basic"
-                        variant="outlined"
-                      />
-                    </div>
-                  </div>
+
+                  
 
                   <div class="col-span-full">
                     <label
@@ -467,11 +514,18 @@ const BecomeAgent = () => {
               </div>
             </div>
 
-            <div class="mt-6 flex items-center justify-center gap-x-6">
+            <div class="mt-2 flex items-center justify-center gap-x-6">
               <Link to={"/"}>
-                <button className="text-white mt-4 bg-pr px-7 py-2 rounded-md">
-                  SUBMIT REQUEST
-                </button>
+              <Button
+                    variant="contained"
+                    sx={{
+                      color: "#ffffff",
+                      bgcolor: "#6D81FC",
+                      textTransform: "none",
+                    }}
+                  >
+                    Submit Request
+                  </Button>
               </Link>
             </div>
           </form>
