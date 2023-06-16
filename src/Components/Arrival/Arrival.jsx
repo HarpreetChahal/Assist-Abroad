@@ -372,6 +372,7 @@ const Arrival = () => {
                           <h2 class="text-gray-500 mr-2 font-bold" >Hotel Stay: </h2>
                           <p>JW Marriot, Regina</p>
                         </div>
+                        <Link to={"/view-profile"}>
                     <a class="mt-3 text-indigo-500 inline-flex items-center">
                      View Profile
                       <svg
@@ -386,6 +387,7 @@ const Arrival = () => {
                         <path d="M5 12h14M12 5l7 7-7 7"></path>
                       </svg>
                     </a>
+                    </Link>
                   </div>
                 </div>
               </div>

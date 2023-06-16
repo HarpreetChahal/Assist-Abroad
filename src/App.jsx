@@ -22,6 +22,7 @@ import { Context } from "./Components/context/Context";
 
 //React router dom import
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import ViewProfile from "./Components/ViewProfile/ViewProfile";
 
 
 //Creating a route
@@ -171,6 +172,13 @@ function App() {
           path="/become-agent"
           element={
             <BecomeAgent />
+          }
+          />
+           <Route
+          exact
+          path="/view-profile"
+          element={
+            <ViewProfile />
           }
           />
 
