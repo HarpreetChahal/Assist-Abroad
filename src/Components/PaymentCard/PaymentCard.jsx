@@ -83,21 +83,8 @@ const PaymentCard = () => {
                   <h1 class="text-xl text-pr font-semibold mt-15 mb-2 font_ab px:4 ">
                     Pay now
                   </h1>
-                  {/* <div class="text-sm">
-                            Learn how to create real web apps using HTML & CSS. Code templates included.
-                        </div> */}
+                  
                 </div>
-
-                {/* <!-- Toggle --> */}
-                {/* <div class="flex justify-center mb-6">
-                        <div class="relative flex w-full p-1 bg-gray-50 rounded">
-                            <span class="absolute inset-0 m-1 pointer-events-none" aria-hidden="true">
-                                <span class="absolute inset-0  bg-white rounded border border-gray-200 shadow-sm transform transition duration-150 ease-in-out" ></span>
-                            </span>
-                            <button class="relative flex-1 text-sm font-medium p-1 transition duration-150 ease-in-out focus:outline-none focus-visible:ring-2">Pay With Card</button>
-                            <button class="relative flex-1 text-sm font-medium p-1 transition duration-150 ease-in-out focus:outline-none focus-visible:ring-2">Pay With PayPal</button>
-                        </div>
-                    </div> */}
 
                 {/* // <!-- Card form --> */}
                 <div x-show="card">
