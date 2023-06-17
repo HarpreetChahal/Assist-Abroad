@@ -6,10 +6,12 @@ import { AiOutlineUser } from "react-icons/ai";
 import { AiOutlineRobot } from "react-icons/ai";
 import { FiLogOut } from "react-icons/fi";
 import { AiOutlineDown } from "react-icons/ai";
-
+import { useContext } from "react";
+import { Context } from "../Components/context/Context";
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
+  const { user, dispatch, token } = useContext(Context);
 
   const toggleProfileDropdown = () => {
     setProfileOpen(!profileOpen);
@@ -98,18 +100,18 @@ const Navbar = () => {
               )}
             </Link>
 
-            <Link
+          {!(user && token) ?  <Link
               to="/login"
               className=" text-[#23314C] hover:text-pr text-lg font_ab"
             >
               Sign In
-            </Link>
-            <Link
+            </Link>:null}
+            {!(user && token) ?  <Link
               to="/register"
               className=" text-pr border border-pr px-7 text-lg hover:bg-pr hover:text-white rounded-md py-1 font_ab"
             >
               Join
-            </Link>
+            </Link>:null}
           </div>
         </div>
         {/* mobile version */}
