@@ -14,6 +14,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import commonApi from "../../api/common";
 import { useNavigate } from "react-router-dom";
+import moment from "moment";
 
 import "./BecomeAgent.css";
 const BecomeAgent = () => {
@@ -28,18 +29,35 @@ const BecomeAgent = () => {
   const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
-      address: "",
-      city: "",
+      about:"",
+      firstname: "",
+      email:"",
+      phone: "",
+      dob: moment().format("yyyy-MM-DD"),
+      carPlate:"",
+      country:"",
+      stAddress: "",
+      city:"",
+      state:"",
+      zip:"",
       accountNo: "",
-      bank: "",
-      sin: "",
+      bankName: "",
+      passportNo: "",
     },
     validationSchema: Yup.object({
-      address: Yup.string().required("Required"),
+      about: Yup.string().required("Required"),
+      firstname: Yup.string().required("Required"),
+      email: Yup.string().required("Required"),
+      phone: Yup.string().required("Required"),
+      carPlate: Yup.string().required("Required"),
+      country: Yup.string().required("Required"),
+      stAddress: Yup.string().required("Required"),
       city: Yup.string().required("Required"),
+      state: Yup.string().required("Required"),
+      zip: Yup.string().required("Required"),
       accountNo: Yup.string().required("Required"),
-      bank: Yup.string().required("Required"),
-      sin: Yup.string().required("Required"),
+      bankName: Yup.string().required("Required"),
+      passportNo: Yup.string().required("Required"),
     }),
     onSubmit: async (values) => {
       let { confirmPassword, ...value } = values;
@@ -67,7 +85,7 @@ const BecomeAgent = () => {
           <div className="w-full flex items-center gap-2 justify-center">
             <div className="  items-start lg:items-center flex-col lg:flex-row gap-10 ">
               <img
-                className="w-32 h-32 lg:w-30 lg:h-32 mx-auto lg:items-center rounded-full"
+                className="w-32 h-32 lg:w-30 lg:h-32 mx-auto lg:items-center "
                 src={agent}
                 alt=""
               />
@@ -201,9 +219,14 @@ const BecomeAgent = () => {
                     <div class="mt-2">
                       <TextField
                         fullWidth
-                        id="outlined-multiline-static"
+                        id="about"
                         multiline
                         rows={3}
+                        name="about"
+                    error={formik.touched.about && formik.errors.about}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.about}
                       />
                       {/* <textarea
                         id="about"
@@ -289,6 +312,11 @@ const BecomeAgent = () => {
                         size="small"
                         id="firstname"
                         variant="outlined"
+                        name="firstname"
+                    error={formik.touched.firstname && formik.errors.firstname}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.firstname}
                       />
                     </div>
                   </div>
@@ -311,8 +339,13 @@ const BecomeAgent = () => {
                       <TextField
                         fullWidth
                         size="small"
-                        id="outlined-basic"
+                        id="email"
                         variant="outlined"
+                        name="email"
+                    error={formik.touched.email && formik.errors.email}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.email}
                       />
                     </div>
                   </div>
@@ -335,8 +368,13 @@ const BecomeAgent = () => {
                       <TextField
                         fullWidth
                         size="small"
-                        id="firstname"
+                        id="phone"
                         variant="outlined"
+                        name="phone"
+                    error={formik.touched.phone && formik.errors.phone}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.phone}
                       />
                     </div>
                   </div>
@@ -359,11 +397,17 @@ const BecomeAgent = () => {
                       <TextField
                         fullWidth
                         size="small"
-                        id="outlined-basic"
+                        id="dob"
                         variant="outlined"
+                        name="dob"
+                    error={formik.touched.dob && formik.errors.dob}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.dob}
                       />
                     </div>
                   </div>
+                  
                   <div class="sm:col-span-3">
                     <label
                       for="last-name"
@@ -382,8 +426,13 @@ const BecomeAgent = () => {
                       <TextField
                         fullWidth
                         size="small"
-                        id="outlined-basic"
+                        id="carplate"
                         variant="outlined"
+                        name="carPlate"
+                    error={formik.touched.carPlate && formik.errors.carPlate}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.carPlate}
                       />
                     </div>
                   </div>
@@ -405,8 +454,13 @@ const BecomeAgent = () => {
                       <TextField
                         fullWidth
                         size="small"
-                        id="outlined-basic"
+                        id="country"
                         variant="outlined"
+                        name="country"
+                        error={formik.touched.country && formik.errors.country}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.country}
                       />
                     </div>
                   </div>
@@ -433,8 +487,13 @@ const BecomeAgent = () => {
                       <TextField
                         fullWidth
                         size="small"
-                        id="outlined-basic"
+                        id="stAddress"
                         variant="outlined"
+                        name="stAddress"
+                        error={formik.touched.stAddress && formik.errors.stAddress}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.stAddress}
                       />
                     </div>
                   </div>
@@ -457,8 +516,13 @@ const BecomeAgent = () => {
                       <TextField
                         fullWidth
                         size="small"
-                        id="outlined-basic"
+                        id="city"
                         variant="outlined"
+                        name="city"
+                        error={formik.touched.city && formik.errors.city}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.city}
                       />
                     </div>
                   </div>
@@ -481,8 +545,13 @@ const BecomeAgent = () => {
                       <TextField
                         fullWidth
                         size="small"
-                        id="outlined-basic"
+                        id="state"
                         variant="outlined"
+                        name="state"
+                        error={formik.touched.state && formik.errors.state}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.state}
                       />
                     </div>
                   </div>
@@ -505,8 +574,99 @@ const BecomeAgent = () => {
                       <TextField
                         fullWidth
                         size="small"
-                        id="outlined-basic"
+                        id="zip"
                         variant="outlined"
+                        name="zip"
+                        error={formik.touched.zip && formik.errors.zip}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.zip}
+                      />
+                    </div>
+                  </div>
+                  <div class="sm:col-span-2 sm:col-start-1">
+                    <label
+                      for="city"
+                      class="block text-sm font-medium leading-6 text-gray-900"
+                    >
+                      Account No
+                    </label>
+                    <div class="mt-2">
+                      {/* <input
+                        type="text"
+                        name="city"
+                        id="city"
+                        autocomplete="address-level2"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      /> */}
+                      <TextField
+                        fullWidth
+                        size="small"
+                        id="accountNo"
+                        variant="outlined"
+                        name="accountNo"
+                        error={formik.touched.accountNo && formik.errors.accountNo}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.accountNo}
+                      />
+                    </div>
+                  </div>
+
+                  <div class="sm:col-span-2">
+                    <label
+                      for="region"
+                      class="block text-sm font-medium leading-6 text-gray-900"
+                    >
+                      Bank Name
+                    </label>
+                    <div class="mt-2">
+                      {/* <input
+                        type="text"
+                        name="region"
+                        id="region"
+                        autocomplete="address-level1"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      /> */}
+                      <TextField
+                        fullWidth
+                        size="small"
+                        id="bankName"
+                        variant="outlined"
+                        name="bankName"
+                        error={formik.touched.bankName && formik.errors.bankName}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.bankName}
+                      />
+                    </div>
+                  </div>
+
+                  <div class="sm:col-span-2">
+                    <label
+                      for="postal-code"
+                      class="block text-sm font-medium leading-6 text-gray-900"
+                    >
+                      Passport No
+                    </label>
+                    <div class="mt-2">
+                      {/* <input
+                        type="text"
+                        name="postal-code"
+                        id="postal-code"
+                        autocomplete="postal-code"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      /> */}
+                      <TextField
+                        fullWidth
+                        size="small"
+                        id="passportNo"
+                        variant="outlined"
+                        name="passportNo"
+                        error={formik.touched.passportNo && formik.errors.passportNo}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.passportNo}
                       />
                     </div>
                   </div>
