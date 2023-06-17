@@ -12,7 +12,7 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const { user, dispatch, token } = useContext(Context);
-
+console.log("user",user)
   const toggleProfileDropdown = () => {
     setProfileOpen(!profileOpen);
   };
@@ -82,13 +82,13 @@ const Navbar = () => {
                     <AiOutlineUser className="mr-2" />
                     Profile
                   </Link>
-                  <Link
+                  {!user.hasRequested &&   <Link
                     to="/become-agent"
                     className="flex items-start justify-start text-[#23314C] hover:text-pr text-lg font_ab px-1 py-1  mt-1  rounded-md hover:bg-[#6D81FE] hover:text-white"
                   >
                     <AiOutlineRobot className="mr-2" />
                     Become Agent
-                  </Link>
+                  </Link>}
                   <Link
                     to="/"
                     className="flex  items-start justify-start text-[#23314C] hover:text-pr text-lg font_ab px-1 py-1  mt-1 rounded-md hover:bg-[#6D81FE] hover:text-white"
@@ -188,12 +188,12 @@ const Navbar = () => {
                 >
                   Profile
                 </Link>
-                <Link
+              {!user.hasRequested &&  <Link
                   to="/become-agent"
                   className=" text-[#23314C] cursor-pointer hover:text-pr font_ab"
                 >
                   Become Agent
-                </Link>
+                </Link>}
                 <Link
                   to="/"
                   className=" text-[#23314C] cursor-pointer hover:text-pr font_ab"

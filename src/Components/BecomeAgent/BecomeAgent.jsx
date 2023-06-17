@@ -25,24 +25,25 @@ const BecomeAgent = () => {
     window.scrollTo(0, 0); // Scroll to the top of the page on component mount
   }, []);
 
-  const { dispatch, isFetching } = useContext(Context);
+  const { dispatch, isFetching ,user} = useContext(Context);
   const navigate = useNavigate();
+
   const formik = useFormik({
     initialValues: {
-      about:"",
-      firstname: "",
-      email:"",
-      phone: "",
-      dob: moment().format("yyyy-MM-DD"),
-      carPlate:"",
-      country:"",
-      stAddress: "",
-      city:"",
-      state:"",
-      zip:"",
-      accountNo: "",
-      bankName: "",
-      passportNo: "",
+      about:user?.bio||"",
+      firstname: user.name?.firstName || "",
+      email:user.email ||"",
+      phone: user?.phone?.phone || "",
+      dob:user.dob|| moment().format("yyyy-MM-DD"),
+      carPlate:user?.vehicleInfo?.numberPlate||"",
+      country:user?.address?.country||"",
+      stAddress:user?.address?.streetAdress|| "",
+      city:user?.address?.city||"",
+      state:user?.address?.state||"",
+      zip:user?.address?.postalCode||"",
+      accountNo: user?.bankDetails?.accountNo|| "",
+      bankName:  user?.bankDetails?.name|| "",
+      passportNo: user?.sinNo || "",
     },
     validationSchema: Yup.object({
       about: Yup.string().required("Required"),
@@ -60,18 +61,34 @@ const BecomeAgent = () => {
       passportNo: Yup.string().required("Required"),
     }),
     onSubmit: async (values) => {
-      let { confirmPassword, ...value } = values;
+      let data={
+        about:values.bio,
+        firstname: values.firstName ,
+        email:values.email ,
+        phone: values.phone ,
+        dob:values.dob,
+        carPlate:values.vehicleInfo?.numberPlate,
+        country:values.address?.country,
+        stAddress:values.address?.streetAdress,
+        city:values.address?.city,
+        state:values.address?.state,
+        zip:values.address?.postalCode,
+        accountNo: values.bankDetails?.accountNo,
+        bankName:  values.bankDetails?.name,
+        passportNo: values.sinNo,
+      }
       await commonApi({
-        action: "become-agent",
-        data: value,
+        action: "becomeAgent",
+        data: data,
+        config: {
+          authToken: true,
+        },
       })
         .then(({ DATA = {}, MESSAGE }) => {
-          console.log("heheh", DATA);
-          navigate("/");
+          dispatch({ type: "UPDATE_USER", payload: DATA });
+          navigate("/arrival-form")
         })
         .catch((error) => {
-          dispatch({ type: "BECOME_AGENT_INFO_FAIL" });
-
           console.error(error);
         });
     },
@@ -90,11 +107,9 @@ const BecomeAgent = () => {
                 alt=""
               />
               <div>
-                <h1 className="text-3xl text-center text-[#23314C]">
-                  AGENT NAME
-                </h1>
+                
                 <h1 className="text-lg mt-1 mb-4 text-[#23314C]">
-                  Member Since : 2020
+                  {/* Member Since : 2020 */}
                 </h1>
                 <div className=" items-center text-center justify-center rounded-md">
                   <Button
@@ -202,7 +217,7 @@ const BecomeAgent = () => {
                 </Link>
               </div> */}
           {/* <!-- component --> */}
-          <form>
+          <form onSubmit={formik.handleSubmit}>
             <div class="space-y-4">
               <div class="">
                 <h2 class="text-base font-semibold leading-7 text-gray-900">
@@ -652,7 +667,7 @@ const BecomeAgent = () => {
                       for="postal-code"
                       class="block text-sm font-medium leading-6 text-gray-900"
                     >
-                      Passport No
+                      SIN No
                     </label>
                     <div class="mt-2">
                       {/* <input
@@ -680,8 +695,9 @@ const BecomeAgent = () => {
             </div>
 
             <div class="mt-2 flex items-center justify-center gap-x-6">
-              <Link to={"/"}>
+          
               <Button
+              type="submit"
                     variant="contained"
                     sx={{
                       color: "#ffffff",
@@ -695,7 +711,7 @@ const BecomeAgent = () => {
                   >
                     Submit Request
                   </Button>
-              </Link>
+              
             </div>
           </form>
         </div>

@@ -59,10 +59,8 @@ const Arrival = () => {
         },
       })
         .then(({ DATA = {}, MESSAGE }) => {
-          dispatch({ type: "UPDATE_USER", payload: data });
-          
-          // console.log("heheh", DATA);
-          // navigate("/");
+          dispatch({ type: "UPDATE_USER", payload: DATA });
+          setActive(true)
         })
         .catch((error) => {
        

@@ -27,6 +27,10 @@ const apiList = {
       arrival:{
         url:()=>"web/api/v1/user/pre-arrival",
         method:"post"
+      },
+      becomeAgent:{
+        url:()=>"web/api/v1/user/agent-form",
+        method:"post"
       }
   };
   export default apiList;
