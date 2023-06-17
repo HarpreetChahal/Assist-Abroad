@@ -16,6 +16,10 @@ const apiList = {
         url: () => "web/api/v1/master/",
         method: "post"
       },
+      getQuestionnaire:{
+        url:()=>"web/api/v1/questionnaire",
+        method:"post"
+      }
   };
   export default apiList;
   

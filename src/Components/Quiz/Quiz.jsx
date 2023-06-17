@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import Navbar from "../../layout/Navbar";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
@@ -7,7 +7,7 @@ import RadioGroup, { useRadioGroup } from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Radio from "@mui/material/Radio";
 import { Button, TextField } from "@mui/material";
-
+import commonApi from "../../api/common";
 const StyledFormControlLabel = styled((props) => (
   <FormControlLabel {...props} />
 ))(({ theme, checked }) => ({
@@ -36,16 +36,38 @@ MyFormControlLabel.propTypes = {
 };
 
 const Quiz = () => {
+
+  const [questions,setQuestions]=useState([])
+  
+  const [currentIndex, setCurrentIndex] = useState(0);
+  useEffect(()=>{
+const getQuestions=async()=>{
+  await commonApi({
+    action: "getQuestionnaire",
+    data: "",
+  })
+    .then(({ DATA = {}, MESSAGE }) => {
+      setQuestions(DATA.data)
+      setCurrentIndex(0)
+      console.log("values",questions)
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
+getQuestions()
+  },[])
   return (
     <div className="bg-[#F6F7FC] relative min-h-screen">
       <Navbar />
-      <section
+      
+ 
+        <section
         className="w-full pt-32 lg:pt-52 px-5 lg:mx-0
         "
-      >
-        <div className="bg-white mx-auto shadow-md w-full border rounded-xl lg:max-w-7xl py-9  px-5 lg:px-10  ">
+      ><div className="bg-white mx-auto shadow-md w-full border rounded-xl lg:max-w-7xl py-9  px-5 lg:px-10  ">
           <h1 className="text-3xl text-[#23314C] font_ab">
-            Q1. What languages do you know?
+            {questions[currentIndex]?.prompt}
           </h1>
           <form action="">
             <fieldset>
@@ -64,7 +86,8 @@ const Quiz = () => {
                     English
                   </label> */}
                   <RadioGroup name="use-radio-group" defaultValue="">
-                    <MyFormControlLabel
+                   {questions[currentIndex]?.options.map((option,index) => {return <MyFormControlLabel
+                   key={index}
                       sx={{
                         "& .MuiSvgIcon-root": {
                           fontSize: 24,
@@ -75,55 +98,12 @@ const Quiz = () => {
                           color: "#23314c",
                         },
                       }}
-                      value="First"
-                      label="First"
+                      value={option}
+                      label={option}
                       control={<Radio />}
                     />
-                    <MyFormControlLabel
-                      sx={{
-                        "& .MuiSvgIcon-root": {
-                          fontSize: 24,
-                          color: "#23314c",
-                        },
-                        "& .MuiFormControlLabel-label": {
-                          fontSize: "20px",
-                          color: "#23314c",
-                        },
-                      }}
-                      value="Second"
-                      label="Second"
-                      control={<Radio />}
-                    />
-                    <MyFormControlLabel
-                      sx={{
-                        "& .MuiSvgIcon-root": {
-                          fontSize: 24,
-                          color: "#23314c",
-                        },
-                        "& .MuiFormControlLabel-label": {
-                          fontSize: "20px",
-                          color: "#23314c",
-                        },
-                      }}
-                      value="Third"
-                      label="Third"
-                      control={<Radio />}
-                    />
-                    <MyFormControlLabel
-                      sx={{
-                        "& .MuiSvgIcon-root": {
-                          fontSize: 24,
-                          color: "#23314c",
-                        },
-                        "& .MuiFormControlLabel-label": {
-                          fontSize: "20px",
-                          color: "#23314c",
-                        },
-                      }}
-                      value="Fourth"
-                      label="Fourth"
-                      control={<Radio />}
-                    />
+                    })}
+                    
                   </RadioGroup>
                 </div>
                 {/* <div className="flex items-center gap-x-3">
@@ -193,12 +173,17 @@ const Quiz = () => {
           
 
           <div className=" mt-10 flex items-center justify-between">
+            
             <Button
               variant="contained"
               sx={{
                 color: "#ffffff",
                 bgcolor: "#6D81FC",
                 textTransform: "none",
+              }}
+              disabled={currentIndex==0}
+              onClick={()=>{
+                setCurrentIndex(currentIndex-1)
               }}
             >
               Previous
@@ -211,6 +196,10 @@ const Quiz = () => {
                 bgcolor: "#6D81FC",
                 textTransform: "none",
               }}
+              disabled={currentIndex==questions.length-1}
+              onClick={()=>{
+                setCurrentIndex(currentIndex+1)
+              }}
             >
               Next
             </Button>
@@ -218,7 +207,7 @@ const Quiz = () => {
 
           <div className="flex items-center justify-center mt-10">
             {/* Reset button */}
-            <Link to={"/payment"}>
+            {currentIndex==questions.length-1 && <Link to={"/payment"}>
               <Button
                 variant="contained"
                 sx={{
@@ -233,11 +222,14 @@ const Quiz = () => {
               >
                 Submit
               </Button>
-            </Link>
+            </Link>}
           </div>
           </form>
         </div>
-      </section>
+        
+        </section>
+    
+      
       <p className=" mt-28 text-center text-[#23314C]">
         © 2023 Assist Abroad , Inc. All Rights Reserved.
       </p>
