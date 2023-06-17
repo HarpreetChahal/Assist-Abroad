@@ -25,65 +25,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ViewProfile from "./Components/ViewProfile/ViewProfile";
 
 
-//Creating a route
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: (
-      <div>
-        <Login />
-      </div>
-    ),
-  },
-  {
-    path: "/register",
-    element: (
-      <div>
-        <Register />
-      </div>
-    ),
-  },
-  {
-    path: "/home",
-    element: (
-      <div>
-        <Home />
-      </div>
-    ),
-  },
-  {
-    path: "/quiz",
-    element: (
-      <div>
-        <Quiz />
-      </div>
-    ),
-  },
-  {
-    path: "/payment",
-    element: (
-      <div>
-        <Payment />
-      </div>
-    ),
-  },
-  {
-    path: "/arrival-form",
-    element: (
-      <div>
-        <Arrival />
-      </div>
-    ),
-  },
-  {
-    path: "/profile",
-    element: (
-      <div>
-        <Profile />
-      </div>
-    ),
-  },
-]);
+
 
 function App() {
   const { user, dispatch, token } = useContext(Context);
@@ -101,7 +43,7 @@ function App() {
           exact
           path="/register"
           element={
-            token && user ? <Home handleLogout={handleLogout} /> :   <Register />
+               <Register />
           }
         />
         <Route

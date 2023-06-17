@@ -47,13 +47,17 @@ const navigate=useNavigate()
     }),
     onSubmit: async (values) => {
       let {confirmPassword,...value}=values
+      value.name={
+        firstName:values.firstName,
+        fullName:values.firstName
+      }
         await commonApi({
           action: "register",
           data: value
         })
           .then(({ DATA = {}, MESSAGE }) => {
-          console.log("heheh",DATA)
-            navigate("/");
+          dispatch({ type: "LOGIN_SUCCESS", payload: DATA.user, token: DATA.token });
+          navigate("/");
           })
           .catch((error) => {
             dispatch({ type: "LOGIN_FAILURE" });
