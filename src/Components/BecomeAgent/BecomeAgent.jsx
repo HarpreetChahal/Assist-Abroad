@@ -80,7 +80,7 @@ const BecomeAgent = () => {
   return (
     <div className="  bg-[#f8f8fa]">
       <Navbar />
-      <div className="   pt-32 lg:pt-32 lg:pb-12  px-3 ">
+      <div className="   pt-32 pb-32 lg:pt-32 lg:pb-12  px-3 ">
         <div className=" lg:max-w-7xl w-full  mx-auto  p-4 lg:py-10 lg:px-10 border-2 rounded-xl bg-white ">
           <div className="w-full flex items-center gap-2 justify-center">
             <div className="  items-start lg:items-center flex-col lg:flex-row gap-10 ">

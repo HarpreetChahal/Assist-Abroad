@@ -62,7 +62,7 @@ const navigate=useNavigate()
   return (
     <div>
       <Navbar />
-      <div className=" mt-32 lg:mt-32 px-3">
+      <div className=" mt-32 lg:mt-32 px-3 ">
         <form>
         <div className=" lg:max-w-7xl w-full mx-auto p-4 lg:py-20 lg:px-20 border-2 rounded-xl ">
           <div className="w-full flex items-start gap-2 justify-between">

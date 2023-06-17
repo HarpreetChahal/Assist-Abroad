@@ -57,10 +57,10 @@ const Arrival = () => {
     },
   });
   return (
-    <div className=" min-h-screen px-4">
+    <div className=" min-h-screen   bg-[#f8f8fa]" >
       <Navbar />
       <Modal open={open} setOpen={setOpen} />
-      <div className=" mt-28">
+      <div className=" pt-28 ">
         <div className="max-w-7xl mx-auto ">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">

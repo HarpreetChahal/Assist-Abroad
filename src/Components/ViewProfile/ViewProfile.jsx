@@ -12,8 +12,8 @@ const ViewProfile = () => {
   return (
     <div>
       <Navbar />
-      <div className=" mt-32 mb-32 lg:mt-32 lg:mb-32 px-1">
-        <div className=" lg:max-w-7xl w-full mx-auto p-4 lg:py-20 lg:px-20 border-2 rounded-xl ">
+      <div className=" pt-32 pb-20 lg:pt-32 lg:pb-12 px-1 bg-[#f8f8fa]">
+        <div className=" lg:max-w-7xl w-full mx-auto p-4 lg:py-20 lg:px-20 border-2 rounded-xl bg-white ">
           
           <div className="w-full flex items-center gap-2 border-2 justify-center rounded-2xl">
             <div className="flex items-center lg:items-center flex-col lg:flex-col gap-5 px-4 py-4">
