@@ -5,11 +5,13 @@ import agent from "/src/Assets/agent.png";
 import { Link } from "react-router-dom";
 import commonApi from "../../api/common";
 import { Context } from "../context/Context";
+import { useNavigate } from "react-router-dom";
 
 const AgentHome = () => {
   const [active, setActive] = useState(false);
   const [appointments,setAppointments]=useState([])
   const { dispatch,user, isFetching } = useContext(Context);
+  const navigate = useNavigate();
 
   useEffect(()=>{
     const fetchAppointments=async ()=>{
@@ -71,7 +73,10 @@ const AgentHome = () => {
          {appointments.map((appointment,index)=>{
 return <div
 className="mt-10 border-2 rounded-xl flex items-center gap-10 p-9"
-key={index}
+key={index} 
+onClick={()=>{
+  navigate("/agent-task/?taskId="+appointment._id)
+}}
 >
 <img className="w-32 lg:w-auto" src={agent} alt="" />
 <div>

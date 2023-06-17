@@ -108,7 +108,7 @@ function App() {
           />
           <Route
           exact
-          path="/agent-task/:id"
+          path="/agent-task"
           element={
             token && user ? <AgentTask handleLogout={handleLogout} /> :   <Login />
           

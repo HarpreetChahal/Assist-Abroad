@@ -1,9 +1,42 @@
-import React from "react";
+import React ,{useEffect,useState}from "react";
 import Navbar from "../../layout/Navbar";
 import agent from "/src/Assets/agent.png";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import commonApi from "../../api/common";
 
 const AgentTask = () => {
+  const search = useLocation().search;
+  const name = new URLSearchParams(search).get("taskId");
+  const [appointment,setAppointment]=useState(null)
+  let fetchAppointment=async()=>{
+    let data={
+      query:{
+        _id:name
+      },
+      options:{
+      }
+    }
+    await commonApi({
+      action: "listTask",
+      data: data,
+      config: {
+        authToken: true,
+      },
+    })
+      .then(({ DATA = {}, MESSAGE }) => {
+        console.log("DATA",DATA)
+        setAppointment(DATA.data[0])
+      
+      })
+      .catch((error) => {
+     
+        console.error(error);
+      });
+  }
+  useEffect(() => {
+fetchAppointment()
+  }, []);
   return (
     <div className="w-full px-4 lg:px-0">
       <Navbar />
@@ -22,34 +55,31 @@ const AgentTask = () => {
                       <div class="w-full md:w-1/2 flex space-x-3">
                         <div class="w-1/2">
                           <h2 class="text-gray-500">Name</h2>
-                          <p>Samar Dahiya</p>
+                          <p>{appointment?.userObj?.name?.firstName}</p>
                         </div>
                         <div class="w-1/2">
                           <h2 class="text-gray-500">Email</h2>
-                          <p>had@gmail.com</p>
+                          <p>{appointment?.userObj?.email}</p>
                         </div>
                       </div>
                       <div class="w-full md:w-1/2 flex space-x-3">
                         <div class="w-1/2">
-                          <h2 class="text-gray-500">Title</h2>
-                          <p>description</p>
+                          <h2 class="text-gray-500">Contact</h2>
+                          <p>{appointment?.userObj?.phone?.phone}</p>
                         </div>
-                        <div class="w-1/2">
-                          <h2 class="text-gray-500">Title</h2>
-                          <p>description</p>
-                        </div>
+                      
                       </div>
                       
                     </div>
-                    <div class="flex mt-5">
+                    {/* <div class="flex mt-5">
                           <h2 class="text-gray-500 mr-2 font-bold" >Last Activity: </h2>
                           <p>Samar Dahiya</p>
                         </div>
                         <div class="flex mt-">
                           <h2 class="text-gray-500 mr-2 font-bold" >Hotel Stay: </h2>
                           <p>JW Marriot, Regina</p>
-                        </div>
-                        <Link to={"/view-profile"}>
+                        </div> */}
+                        {/* <Link to={"/view-profile"}>
                     <a class="mt-3 text-indigo-500 inline-flex items-center">
                      View Profile
                       <svg
@@ -64,7 +94,7 @@ const AgentTask = () => {
                         <path d="M5 12h14M12 5l7 7-7 7"></path>
                       </svg>
                     </a>
-                    </Link>
+                    </Link> */}
                   </div>
                 </div>
               </div>
@@ -79,7 +109,9 @@ const AgentTask = () => {
               </div> */}
         <div className="flex items-center justify-center flex-col">
           <div className="mt-6 space-y-3">
-            <div className="relative flex gap-x-3">
+           {appointment?.tasksList?.map((task,index)=>{
+
+           return  <div className="relative flex gap-x-3" key={index}>
               <div className="flex h-6 items-center">
                 <input
                   id="comments"
@@ -93,82 +125,11 @@ const AgentTask = () => {
                   htmlFor="comments"
                   className="font-medium text-lg text-gray-900"
                 >
-                  Airport Pickup
+                  {task.name}
                 </label>
               </div>
-            </div>
-            <div className="relative flex gap-x-3">
-              <div className="flex h-6 items-center">
-                <input
-                  id="comments"
-                  name="comments"
-                  type="checkbox"
-                  className="h-6 w-6 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                />
-              </div>
-              <div className="text-sm leading-6">
-                <label
-                  htmlFor="comments"
-                  className="font-medium text-lg text-gray-900"
-                >
-                  Hotel Stay
-                </label>
-              </div>
-            </div>
-            <div className="relative flex gap-x-3">
-              <div className="flex h-6 items-center">
-                <input
-                  id="comments"
-                  name="comments"
-                  type="checkbox"
-                  className="h-6 w-6 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                />
-              </div>
-              <div className="text-sm leading-6">
-                <label
-                  htmlFor="comments"
-                  className="font-medium text-lg text-gray-900"
-                >
-                  Bus Pass
-                </label>
-              </div>
-            </div>
-            <div className="relative flex gap-x-3">
-              <div className="flex h-6 items-center">
-                <input
-                  id="comments"
-                  name="comments"
-                  type="checkbox"
-                  className="h-6 w-6 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                />
-              </div>
-              <div className="text-sm leading-6">
-                <label
-                  htmlFor="comments"
-                  className="font-medium text-lg text-gray-900"
-                >
-                  Government Id Issue
-                </label>
-              </div>
-            </div>
-            <div className="relative flex gap-x-3">
-              <div className="flex h-6 items-center">
-                <input
-                  id="comments"
-                  name="comments"
-                  type="checkbox"
-                  className="h-6 w-6 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                />
-              </div>
-              <div className="text-sm leading-6">
-                <label
-                  htmlFor="comments"
-                  className="font-medium text-lg text-gray-900"
-                >
-                  Health Card
-                </label>
-              </div>
-            </div>
+            </div>})}
+            
           </div>
           <button className="text-white mt-16 bg-pr px-7 py-2 rounded-md">
           Completed
