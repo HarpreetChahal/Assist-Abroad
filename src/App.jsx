@@ -88,76 +88,88 @@ const router = createBrowserRouter([
 function App() {
   const { user, dispatch, token } = useContext(Context);
   const navigate = useNavigate();
+  const handleLogout = async () => {
+    localStorage.clear();
+    dispatch({ type: "LOGOUT" });
+    navigate("/login");
+  };
+
   return (
     <div>
       <Routes>
       <Route
           exact
-          path="/"
-          element={
-            <Home />
-          }
-        />
-        <Route
-          exact
           path="/register"
           element={
-            <Register />
+            token && user ? <Home handleLogout={handleLogout} /> :   <Register />
           }
         />
         <Route
           exact
           path="/login"
           element={
-            <Login />
+            token && user ? <Home handleLogout={handleLogout} /> : <Login />
           }
         />
+      <Route
+          exact
+          path="/"
+          element={
+            token && user ? <Home handleLogout={handleLogout} /> : <Login /> 
+          }
+        />
+       
         <Route
           exact
           path="/quiz"
           element={
-            <Quiz />
+            token && user ? <Quiz handleLogout={handleLogout} /> :   <Login />
           }
         />
         <Route
           exact
           path="/payment"
           element={
-            <Payment />
+            token && user ? <Payment handleLogout={handleLogout} /> :   <Login />
           }
         />
         <Route
           exact
           path="/payment-card"
           element={
-            <PaymentCard />
+            token && user ? <PaymentCard handleLogout={handleLogout} /> :   <Login />
+            
           }
         />
         <Route
           exact
           path="/profile"
           element={
-            <Profile />
+            token && user ? <Profile handleLogout={handleLogout} /> :   <Login />
+           
           }
         />
          <Route
           exact
           path="/arrival-form"
           element={
-            <Arrival />
+            token && user ? <Arrival handleLogout={handleLogout} /> :   <Login />
+            
           }/>
           <Route
           exact
           path="/agent-home"
           element={
-            <AgentHome />
+            token && user ? <AgentHome handleLogout={handleLogout} /> :   <Login />
+            
           }
           />
           <Route
           exact
           path="/agent-task/:id"
           element={
-            <AgentTask />
+            token && user ? <AgentTask handleLogout={handleLogout} /> :   <Login />
+          
           }
           />
            <Route
@@ -171,14 +183,15 @@ function App() {
           exact
           path="/become-agent"
           element={
-            <BecomeAgent />
+            token && user ? <BecomeAgent handleLogout={handleLogout} /> :   <Login />
+          
           }
           />
            <Route
           exact
           path="/view-profile"
           element={
-            <ViewProfile />
+            token && user ? <ViewProfile handleLogout={handleLogout} /> :   <Login />
           }
           />
 
