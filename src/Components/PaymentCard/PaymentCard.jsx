@@ -55,7 +55,7 @@ const PaymentCard = (params) => {
         },
       })
         .then(({ DATA = {}, MESSAGE }) => {
-          navigate("/")
+          navigate("/arrival-form")
         })
         .catch((error) => {
        

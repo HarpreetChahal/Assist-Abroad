@@ -23,6 +23,10 @@ const apiList = {
       createPayment:{
         url:()=>"web/api/v1/payment/create",
         method:"post"
+      },
+      arrival:{
+        url:()=>"web/api/v1/user/pre-arrival",
+        method:"post"
       }
   };
   export default apiList;

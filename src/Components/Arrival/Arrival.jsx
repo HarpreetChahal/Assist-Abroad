@@ -16,6 +16,7 @@ import * as Yup from "yup";
 import commonApi from "../../api/common";
 import { useNavigate } from "react-router-dom";
 
+
 const Arrival = () => {
   const [active, setActive] = useState(false);
   const [open, setOpen] = useState(false);
@@ -23,35 +24,48 @@ const Arrival = () => {
   useEffect(() => {
     window.scrollTo(0, 0); // Scroll to the top of the page on component mount
   }, []);
+  const { dispatch,user, isFetching } = useContext(Context);
 
-  const { dispatch, isFetching } = useContext(Context);
   const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
-      dateOfArrival: "",
-      flightTicket: "",
-      arrivalTime: "",
-      airport: "",
+      dateOfArrival:user?.arrival?.date || "",
+      flightNumber: user?.arrival?.flightNumber || "",
+      flightName: user?.arrival?.flightName || "",
+      arrivalTime: user?.arrival?.time || "",
+      airport: user?.arrival?.airport || "",
     },
     validationSchema: Yup.object({
       dateOfArrival: Yup.string().required("Required"),
-      flightTicket: Yup.string().required("Required"),
+      flightNumber: Yup.string().required("Required"),
+      flightName: Yup.string().required("Required"),
       arrivalTime: Yup.string().required("Required"),
       airport: Yup.string().required("Required"),
     }),
     onSubmit: async (values) => {
-      let { confirmPassword, ...value } = values;
+    
+      let data={
+       arrival:{date:values.dateOfArrival,
+        time:values.arrivalTime,
+        flightNumber:values.flightNumber,
+        flightName:values.flightName,
+        airport:values.airport}
+      }
       await commonApi({
         action: "arrival",
-        data: value,
+        data: data,
+        config: {
+          authToken: true,
+        },
       })
         .then(({ DATA = {}, MESSAGE }) => {
-          console.log("heheh", DATA);
-          navigate("/");
+          dispatch({ type: "UPDATE_USER", payload: data });
+          
+          // console.log("heheh", DATA);
+          // navigate("/");
         })
         .catch((error) => {
-          dispatch({ type: "ARRIVAL_INFO_FAIL" });
-
+       
           console.error(error);
         });
     },
@@ -87,7 +101,7 @@ const Arrival = () => {
             </div>
           </div>
           {!active && (
-            <div className="mt-20 max-w-7xl mx-auto bg-white text-base lg:text-2xle border-2 rounded-2xl p-4 lg:p-10">
+            <form className="mt-20 max-w-7xl mx-auto bg-white text-base lg:text-2xle border-2 rounded-2xl p-4 lg:p-10" onSubmit={formik.handleSubmit}>
               <h1 className="text-3xl text-center font-bold">
                 PRE-ARRIVAL FORM
               </h1>
@@ -121,23 +135,44 @@ const Arrival = () => {
                   </div>
                   <div className="relative flex items-center gap-x-6">
                     <p className="text-base lg:text-2xl lg:w-40">
-                      Flight Ticket
+                      Flight Number
                     </p>
                     <TextField
                       className="inputField"
                       variant="outlined"
                       size="small"
                       sx={{ backgroundColor: "#f8f8fa" }}
-                      id="flightTicket"
+                      id="flightNumber"
                       placeholder="Enter flight ticket no"
-                      name="flightTicket"
+                      name="flightNumber"
                       error={
-                        formik.touched.flightTicket &&
-                        formik.errors.flightTicket
+                        formik.touched.flightNumber &&
+                        formik.errors.flightNumber
                       }
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
-                      value={formik.values.flightTicket}
+                      value={formik.values.flightNumber}
+                    />
+                  </div>
+                  <div className="relative flex items-center gap-x-6">
+                    <p className="text-base lg:text-2xl lg:w-40">
+                      Flight Name
+                    </p>
+                    <TextField
+                      className="inputField"
+                      variant="outlined"
+                      size="small"
+                      sx={{ backgroundColor: "#f8f8fa" }}
+                      id="flightName"
+                      placeholder="Enter flight ticket no"
+                      name="flightName"
+                      error={
+                        formik.touched.flightName &&
+                        formik.errors.flightName
+                      }
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.flightName}
                     />
                   </div>
                   <div className="relative flex items-center gap-x-6">
@@ -178,7 +213,7 @@ const Arrival = () => {
                     />
                   </div>
                 </div>
-                <Link to={"/profile"}>
+                
                   {/* <button className="text-white mt-16 bg-pr px-7 py-2 rounded-md">
                     SUBMIT
                   </button> */}
@@ -197,6 +232,7 @@ const Arrival = () => {
                 Submit
               </Button> */}
                   <Button
+                  type="submit"
                     variant="contained"
                     sx={{
                       color: "#ffffff",
@@ -211,9 +247,9 @@ const Arrival = () => {
                   >
                     Submit
                   </Button>
-                </Link>
+                
               </div>
-            </div>
+            </form>
           )}
           {active && (
             <div className="mt-20 max-w-7xl mx-auto bg-[#ffffff] border-2 rounded-2xl p-5">
