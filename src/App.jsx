@@ -43,7 +43,7 @@ function App() {
           exact
           path="/register"
           element={
-               <Register />
+            token && user ? <Home handleLogout={handleLogout} /> :   <Register />
           }
         />
         <Route
