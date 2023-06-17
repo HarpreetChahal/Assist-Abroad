@@ -20,13 +20,42 @@ import { useNavigate } from "react-router-dom";
 const Arrival = () => {
   const [active, setActive] = useState(false);
   const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    window.scrollTo(0, 0); // Scroll to the top of the page on component mount
-  }, []);
   const { dispatch,user, isFetching } = useContext(Context);
+  const [appointment,setAppointment]=useState(null)
+
 
   const navigate = useNavigate();
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to the top of the page on component mount
+
+
+    let fetchAppointment=async()=>{
+      let data={
+        query:{
+          userId:user._id,status:"In-progress"
+        },
+        options:{
+        }
+      }
+      await commonApi({
+        action: "listTask",
+        data: data,
+        config: {
+          authToken: true,
+        },
+      })
+        .then(({ DATA = {}, MESSAGE }) => {
+          setAppointment(DATA.data[0])
+        
+        })
+        .catch((error) => {
+       
+          console.error(error);
+        });
+    }
+    fetchAppointment()
+  }, []);
+
   const formik = useFormik({
     initialValues: {
       dateOfArrival:user?.arrival?.date || "",
@@ -383,14 +412,14 @@ const Arrival = () => {
                       <div class="w-full md:w-1/2 flex space-x-3">
                         <div class="w-full">
                           <h2 class="text-gray-500">Name</h2>
-                          <p>Samar Dahiya</p>
+                          <p>{appointment?.agentObj?.name?.fullName}</p>
                         </div>
                     
                       </div>
                       <div class="w-full md:w-1/2 flex space-x-3">
                         <div class="w-full">
                           <h2 class="text-gray-500">Contact</h2>
-                          <p>510-555-9451</p>
+                          <p>{appointment?.agentObj?.phone?.phone}</p>
                         </div>
                         
                       </div>
@@ -404,7 +433,7 @@ const Arrival = () => {
                       <div class="w-full md:w-1/2 flex space-x-3">
                         <div class="w-full">
                           <h2 class="text-gray-500">Email</h2>
-                          <p>dahiya@gmail.com</p>
+                          <p>{appointment?.agentObj?.email}</p>
                         </div>
                         
                       </div>
@@ -420,14 +449,14 @@ const Arrival = () => {
                       </div> */}
                       
                     </div>
-                    <div class="flex mt-5">
+                    {/* <div class="flex mt-5">
                           <h2 class="text-gray-500 mr-2 font-bold" >Last Activity: </h2>
                           <p>Airport Pickup</p>
                         </div>
                         <div class="flex mt-">
                           <h2 class="text-gray-500 mr-2 font-bold" >Hotel Stay: </h2>
                           <p>JW Marriot, Regina</p>
-                        </div>
+                        </div> */}
                         <Link to={"/view-profile"}>
                     <a class="mt-3 text-indigo-500 inline-flex items-center">
                      View Profile
@@ -458,96 +487,22 @@ const Arrival = () => {
               </div> */}
               <div className="flex items-center justify-center flex-col">
                 <div className="mt-6 space-y-3">
-                  <div className="relative flex gap-x-3">
-                    <div className="flex h-6 items-center">
-                      <input
-                        id="comments"
-                        name="comments"
-                        type="checkbox"
-                        className="h-6 w-6 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                      />
+                 {appointment?.tasksList?.map((task,index)=>{
+
+                 return  <div className="relative flex gap-x-3">
+                    <div className="flex h-6 items-center" >
+                     {index+1}
                     </div>
-                    <div className="text-sm leading-6">
+                    <div className="text-sm leading-6" >
                       <label
                         htmlFor="comments"
                         className="font-medium text-sm lg:text-lg text-gray-900"
                       >
-                        Airport Pickup
+                        {task.name}
                       </label>
                     </div>
-                  </div>
-                  <div className="relative flex gap-x-3">
-                    <div className="flex h-6 items-center">
-                      <input
-                        id="comments"
-                        name="comments"
-                        type="checkbox"
-                        className="h-6 w-6 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                      />
-                    </div>
-                    <div className="text-sm leading-6">
-                      <label
-                        htmlFor="comments"
-                        className="font-medium text-sm lg:text-lg text-gray-900"
-                      >
-                        Hotel Stay
-                      </label>
-                    </div>
-                  </div>
-                  <div className="relative flex gap-x-3">
-                    <div className="flex h-6 items-center">
-                      <input
-                        id="comments"
-                        name="comments"
-                        type="checkbox"
-                        className="h-6 w-6 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                      />
-                    </div>
-                    <div className="text-sm leading-6">
-                      <label
-                        htmlFor="comments"
-                        className="font-medium text-sm lg:text-lg text-gray-900"
-                      >
-                        Bus Pass
-                      </label>
-                    </div>
-                  </div>
-                  <div className="relative flex gap-x-3">
-                    <div className="flex h-6 items-center">
-                      <input
-                        id="comments"
-                        name="comments"
-                        type="checkbox"
-                        className="h-6 w-6 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                      />
-                    </div>
-                    <div className="text-sm leading-6">
-                      <label
-                        htmlFor="comments"
-                        className="font-medium text-sm lg:text-lg text-gray-900"
-                      >
-                        Government Id Issue
-                      </label>
-                    </div>
-                  </div>
-                  <div className="relative flex gap-x-3">
-                    <div className="flex h-6 items-center">
-                      <input
-                        id="comments"
-                        name="comments"
-                        type="checkbox"
-                        className="h-6 w-6 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                      />
-                    </div>
-                    <div className="text-sm leading-6">
-                      <label
-                        htmlFor="comments"
-                        className="font-medium text-sm lg:text-lg text-gray-900"
-                      >
-                        Health Card
-                      </label>
-                    </div>
-                  </div>
+                  </div>})}
+                
                 </div>
                 <button
                   onClick={() => setOpen(true)}

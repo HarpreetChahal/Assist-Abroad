@@ -31,6 +31,14 @@ const apiList = {
       becomeAgent:{
         url:()=>"web/api/v1/user/agent-form",
         method:"post"
+      },
+      listTask:{
+        url:()=>"web/api/v1/appointment/",
+        method:"post"
+      },
+      updateTask:{
+        url:()=>"web/api/v1/appointemnt/task",
+        method:"post"
       }
   };
   export default apiList;
