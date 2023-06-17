@@ -33,7 +33,6 @@ const AgentTask = () => {
       },
     })
       .then(({ DATA = {}, MESSAGE }) => {
-        console.log("DTA",DATA)
         setAppointment(DATA.data[0])
       
       })
@@ -45,6 +44,24 @@ const AgentTask = () => {
   useEffect(() => {
 fetchAppointment()
   }, []);
+
+  const updateTask=async(appointmentId, taskId)=>{
+    await commonApi({
+      action: "updateTask",
+      data: {appointmentId:appointmentId,taskId:taskId},
+      config: {
+        authToken: true,
+      },
+    })
+      .then(({ DATA = {}, MESSAGE }) => {
+       
+        fetchAppointment()
+      })
+      .catch((error) => {
+     
+        console.error(error);
+      });
+  }
   return (
     <div className="w-full px-4 lg:px-0">
       <Navbar />
@@ -138,6 +155,11 @@ fetchAppointment()
                   id="comments"
                   name="comments"
                   type="checkbox"
+                  onClick={()=>{
+                    if(!task.completed)
+                   { updateTask(appointment._id,task._id)}
+                  }}
+                  checked={task.completed}
                   className="h-6 w-6 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
                 />
               </div>

@@ -37,8 +37,8 @@ const apiList = {
         method:"post"
       },
       updateTask:{
-        url:()=>"web/api/v1/appointemnt/task",
-        method:"post"
+        url:()=>"web/api/v1/appointment/task",
+        method:"put"
       },
       updateProfile:{
         url:()=>"web/api/v1/user/profile",

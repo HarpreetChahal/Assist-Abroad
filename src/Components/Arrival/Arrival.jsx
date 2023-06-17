@@ -498,7 +498,8 @@ const Arrival = () => {
                         htmlFor="comments"
                         className="font-medium text-sm lg:text-lg text-gray-900"
                       >
-                        {task.name}
+                       {task.completed ? <s>{task.name}</s> : task.name} 
+                       
                       </label>
                     </div>
                   </div>})}
