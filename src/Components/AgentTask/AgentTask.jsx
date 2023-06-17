@@ -15,6 +15,14 @@ const AgentTask = () => {
         _id:name
       },
       options:{
+        populate:[{
+          "path":"userId",
+          "model":"user",
+          "select":[
+            "name","arrival","email","phone"
+
+          ]
+        }]
       }
     }
     await commonApi({
@@ -25,7 +33,7 @@ const AgentTask = () => {
       },
     })
       .then(({ DATA = {}, MESSAGE }) => {
-        console.log("DATA",DATA)
+        console.log("DTA",DATA)
         setAppointment(DATA.data[0])
       
       })
@@ -59,26 +67,39 @@ fetchAppointment()
                         </div>
                         <div class="w-1/2">
                           <h2 class="text-gray-500">Email</h2>
-                          <p>{appointment?.userObj?.email}</p>
+                          <p>{appointment?.userId?.email}</p>
                         </div>
                       </div>
                       <div class="w-full md:w-1/2 flex space-x-3">
                         <div class="w-1/2">
                           <h2 class="text-gray-500">Contact</h2>
-                          <p>{appointment?.userObj?.phone?.phone}</p>
+                          <p>{appointment?.userId?.phone?.phone}</p>
                         </div>
                       
                       </div>
                       
                     </div>
-                    {/* <div class="flex mt-5">
-                          <h2 class="text-gray-500 mr-2 font-bold" >Last Activity: </h2>
-                          <p>Samar Dahiya</p>
+                    <div class="flex mt-5">
+                          <h2 class="text-gray-500 mr-2 font-bold" >Arrival Date </h2>
+                          <p>{appointment?.userId?.arrival?.date}</p>
                         </div>
                         <div class="flex mt-">
-                          <h2 class="text-gray-500 mr-2 font-bold" >Hotel Stay: </h2>
-                          <p>JW Marriot, Regina</p>
-                        </div> */}
+                          <h2 class="text-gray-500 mr-2 font-bold" >Arrival Time </h2>
+                          <p>{appointment?.userId?.arrival?.time}</p>
+                        </div>
+
+                        <div class="flex mt-5">
+                          <h2 class="text-gray-500 mr-2 font-bold" >FLight Number </h2>
+                          <p>{appointment?.userId?.arrival?.flightNumber}</p>
+                        </div>
+                        <div class="flex mt-">
+                          <h2 class="text-gray-500 mr-2 font-bold" >Flight Name </h2>
+                          <p>{appointment?.userId?.arrival?.flightName}</p>
+                        </div>
+                        <div class="flex mt-">
+                          <h2 class="text-gray-500 mr-2 font-bold" >Airport </h2>
+                          <p>{appointment?.userId?.arrival?.airport}</p>
+                        </div>
                         {/* <Link to={"/view-profile"}>
                     <a class="mt-3 text-indigo-500 inline-flex items-center">
                      View Profile
