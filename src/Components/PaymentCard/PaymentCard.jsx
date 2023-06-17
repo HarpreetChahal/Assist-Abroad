@@ -37,8 +37,16 @@ const PaymentCard = (params) => {
       cardEmail: Yup.string().required("Required"),
     }),
     onSubmit: async (values) => {
-      let data=values
-      console.log("data",data)
+      let data={cardDetails:{
+        ...values,
+        number:values.cardNumber,
+        exp_month:values.expiryDate.slice(0,2),
+        exp_year:values.expiryDate.slice(2),
+        cvc:values.cvv
+      },
+      membershipId:membershipId
+    }
+      
       await commonApi({
         action: "createPayment",
         data: data,
@@ -47,8 +55,7 @@ const PaymentCard = (params) => {
         },
       })
         .then(({ DATA = {}, MESSAGE }) => {
-          
-   
+          navigate("/")
         })
         .catch((error) => {
        
@@ -95,7 +102,7 @@ const PaymentCard = (params) => {
                 </div>
 
                 {/* // <!-- Card form --> */}
-                <div x-show="card">
+                <form x-show="card" onSubmit={formik.handleSubmit}>
                   <div class="space-y-4">
                     {/* <!-- Card Number --> */}
                     <div>
@@ -229,6 +236,7 @@ const PaymentCard = (params) => {
                               color: "#ffffff",
                             },
                           }}
+                          type="submit"
                         >
                           Pay ${price}
                         </Button>
@@ -239,7 +247,7 @@ const PaymentCard = (params) => {
                     </div>
                     */}
                   </div>
-                </div>
+                </form>
 
                 {/* <!-- PayPal form --> 
                 <div x-show="!card" x-cloak>

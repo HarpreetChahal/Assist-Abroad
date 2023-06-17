@@ -21,7 +21,7 @@ const apiList = {
         method:"post"
       },
       createPayment:{
-        url:()=>"web/api/v1/stripe/create",
+        url:()=>"web/api/v1/payment/create",
         method:"post"
       }
   };
