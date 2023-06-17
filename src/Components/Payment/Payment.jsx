@@ -5,9 +5,13 @@ import commonApi from "../../api/common";
 import { Button, TextField } from "@mui/material";
 
 import { useState, useContext, useEffect } from "react";
-
+import { useNavigate } from "react-router-dom";
 const Payment = () => {
+  const navigate = useNavigate();
   const [membership, setMembership] = useState([]);
+  const [selectedMemberShip,setSelectedMembership]=useState(null)
+  const [price,setSelectedPrice]=useState(null)
+
   const fetchMembership = async () => {
     await commonApi({
       action: "getMembership",
@@ -15,16 +19,24 @@ const Payment = () => {
     })
       .then(({ DATA = {}, MESSAGE }) => {
         setMembership(DATA.data);
+        
+        for(let i=0;i<DATA.data.length;i++)
+        {
+          if(membership[i]?.featured==true)
+          {
+            setSelectedMembership(membership[i]._id)
+            setSelectedPrice(membership[i].price)
+          }
+
+        }
+
       })
       .catch((error) => {
-        dispatch({ type: "LOGIN_FAILURE" });
-
         console.error(error);
       });
   };
   useEffect(() => {
     fetchMembership();
-    console.log(membership);
   }, []);
   return (
     <div className="bg-[#F6F7FC] min-h-screen">
@@ -43,7 +55,7 @@ const Payment = () => {
             {/* <!-- Pricing Card --> */}
             {membership.map((mem, index) => {
               return (
-                <div class=" flex flex-col  mx-auto  text-center text-tc bg-white  border border-pr shadow">
+                <div class=" flex flex-col  mx-auto  text-center text-tc bg-white  border border-pr shadow" key={index}>
                   <h3 class="w-full   text-2xl font-semibold text-wt bg-tc p-6 ">
                     {mem.name}
                   </h3>
@@ -82,6 +94,10 @@ const Payment = () => {
                   <a
                     href="#"
                     class="text-wt bg-pr hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-8 py-2.5 text-center mb-4"
+                    onClick={()=>{
+                      setSelectedMembership(mem._id)
+                      setSelectedPrice(mem.price)
+                    }}
                   >
                     Select
                   </a>
@@ -91,7 +107,7 @@ const Payment = () => {
           </div>
         </div>
         <div className=" mt-5 mb-20 flex items-center justify-center">
-          <Link to={"/payment-card"}>
+          
             <Button
               variant="contained"
               sx={{
@@ -104,10 +120,15 @@ const Payment = () => {
                   color: "#ffffff",
                 },
               }}
+              disabled={!selectedMemberShip}
+              onClick={()=>{
+                
+                navigate("/payment-card",{state:{membershipId:selectedMemberShip,price:price}})
+              }}
             >
               Continue to payment
             </Button>
-          </Link>
+         
         </div>
       </section>
     </div>

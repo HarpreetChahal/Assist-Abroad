@@ -13,10 +13,14 @@ import * as Yup from "yup";
 
 import commonApi from "../../api/common";
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
-const PaymentCard = () => {
+const PaymentCard = (params) => {
   const { dispatch, isFetching } = useContext(Context);
   const navigate = useNavigate();
+  
+  const {membershipId,price} = useLocation().state;
+
   const formik = useFormik({
     initialValues: {
       cardNumber: "",
@@ -26,24 +30,28 @@ const PaymentCard = () => {
       cardEmail: "",
     },
     validationSchema: Yup.object({
-      cardNumber: Yup.string().required("Required"),
+      cardNumber: Yup.number().required("Required"),
       expiryDate: Yup.string().required("Required"),
       cvv: Yup.string().required("Required"),
       cardName: Yup.string().required("Required"),
       cardEmail: Yup.string().required("Required"),
     }),
     onSubmit: async (values) => {
+      let data=values
+      console.log("data",data)
       await commonApi({
-        action: "login",
-        data: values,
+        action: "createPayment",
+        data: data,
+        config: {
+          authToken: true,
+        },
       })
         .then(({ DATA = {}, MESSAGE }) => {
-          console.log("heheh", DATA);
-          navigate("/");
+          
+   
         })
         .catch((error) => {
-          dispatch({ type: "PAYMENT_FAILURE" });
-
+       
           console.error(error);
         });
     },
@@ -208,7 +216,7 @@ const PaymentCard = () => {
                   {/* <!-- Form footer --> */}
                   <div class="mt-6">
                     <div class="mb-4">
-                      <Link to={"/arrival-form"}>
+                 
                         <Button
                           fullWidth
                           variant="contained"
@@ -222,17 +230,18 @@ const PaymentCard = () => {
                             },
                           }}
                         >
-                          Pay $253.00
+                          Pay ${price}
                         </Button>
-                      </Link>
+                      
                     </div>
-                    <div class="text-xs text-gray-500 italic text-center">
+                   {/* <div class="text-xs text-gray-500 italic text-center">
                       You'll be charged $253, including $48 for VAT{" "}
                     </div>
+                    */}
                   </div>
                 </div>
 
-                {/* <!-- PayPal form --> */}
+                {/* <!-- PayPal form --> 
                 <div x-show="!card" x-cloak>
                   <div>
                     <div class="mb-4 mt-4">
@@ -258,6 +267,7 @@ const PaymentCard = () => {
                     </div>
                   </div>
                 </div>
+                */}
               </div>
             </div>
           </div>

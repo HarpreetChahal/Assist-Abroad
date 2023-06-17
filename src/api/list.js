@@ -19,6 +19,10 @@ const apiList = {
       getQuestionnaire:{
         url:()=>"web/api/v1/questionnaire",
         method:"post"
+      },
+      createPayment:{
+        url:()=>"web/api/v1/stripe/create",
+        method:"post"
       }
   };
   export default apiList;
