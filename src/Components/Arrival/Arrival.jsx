@@ -69,7 +69,7 @@ const Arrival = () => {
                 className={
                   !active
                     ? "bg-pr px-10 py-2 rounded-md text-white text-sm lg:text-lg"
-                    : "border border-pr font-medium px-10 py-2 rounded-md  text-sm lg:text-lg"
+                    : "border border-pr text-pr font-medium px-10 py-2 rounded-md  text-sm lg:text-lg"
                 }
               >
                 Pre-arrival Form
@@ -79,7 +79,7 @@ const Arrival = () => {
                 className={
                   active
                     ? "bg-pr px-10 py-2 rounded-md text-white text-sm lg:text-lg"
-                    : "border border-pr font-medium px-10 py-2 rounded-md  text-sm lg:text-lg"
+                    : "border border-pr text-pr font-medium px-10 py-2 rounded-md  text-sm lg:text-lg"
                 }
               >
                 Tasks
@@ -203,6 +203,10 @@ const Arrival = () => {
                       bgcolor: "#6D81FC",
                       textTransform: "none",
                       marginTop: 3,
+                      "&:hover": {
+                        bgcolor: "#6d81fc",
+                        color: "#ffffff",
+                      },
                     }}
                   >
                     Submit

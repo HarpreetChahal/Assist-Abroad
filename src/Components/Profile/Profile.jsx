@@ -80,6 +80,10 @@ const navigate=useNavigate()
                       bgcolor: "#ffffff",
                       textTransform: "none",
                       border: 2,
+                      "&:hover": {
+                        bgcolor: "#6d81fc",
+                        color: "#ffffff",
+                      },
                     }}
                   >
                     Choose Image
@@ -114,6 +118,10 @@ const navigate=useNavigate()
                     color: "#ffffff",
                     bgcolor: "#6D81FC",
                     textTransform: "none",
+                    "&:hover": {
+                      bgcolor: "#6d81fc",
+                      color: "#ffffff",
+                    },
                   }}
                 >
                   Edit
@@ -128,6 +136,11 @@ const navigate=useNavigate()
                       bgcolor: "#ffffff",
                       textTransform: "none",
                       border: 2,
+                      "&:hover": {
+                        bgcolor: "#ffffff",
+                        color: "#6d81fc",
+                        
+                      },
                     }}
                   >
                     Cancel
@@ -139,6 +152,10 @@ const navigate=useNavigate()
                       color: "#ffffff",
                       bgcolor: "#6D81FC",
                       textTransform: "none",
+                      "&:hover": {
+                        bgcolor: "#6d81fc",
+                        color: "#ffffff",
+                      },
                     }}
                   >
                     Save

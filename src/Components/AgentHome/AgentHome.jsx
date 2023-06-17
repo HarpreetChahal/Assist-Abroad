@@ -17,7 +17,7 @@ const AgentHome = () => {
                 className={
                   !active
                     ? "bg-pr px-10 py-2 rounded-md text-white text-lg"
-                    : "border border-pr font-medium px-10 py-2 rounded-md  text-lg"
+                    : "border border-pr text-pr font-medium px-10 py-2 rounded-md  text-lg"
                 }
               >
                 Ongoing
@@ -27,7 +27,7 @@ const AgentHome = () => {
                 className={
                   active
                     ? "bg-pr px-10 py-2 rounded-md text-white text-lg"
-                    : "border border-pr font-medium px-10 py-2 rounded-md  text-lg"
+                    : "border border-pr text-pr font-medium px-10 py-2 rounded-md  text-lg"
                 }
               >
                 Completed

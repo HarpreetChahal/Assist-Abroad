@@ -30,6 +30,10 @@ const Home = () => {
                 color: "#ffffff",
                 bgcolor: "#6D81FC",
                 textTransform: "none",
+                "&:hover": {
+                  bgcolor: "#6d81fc",
+                  color: "#ffffff",
+                },
                 
               }}
             >

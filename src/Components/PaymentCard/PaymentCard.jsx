@@ -216,6 +216,10 @@ const PaymentCard = () => {
                             color: "#ffffff",
                             bgcolor: "#6D81FC",
                             textTransform: "none",
+                            "&:hover": {
+                              bgcolor: "#6d81fc",
+                              color: "#ffffff",
+                            },
                           }}
                         >
                           Pay $253.00
@@ -239,9 +243,14 @@ const PaymentCard = () => {
                           color: "#ffffff",
                           bgcolor: "#6D81FC",
                           textTransform: "none",
+                          "&:hover": {
+                            bgcolor: "#6d81fc",
+                            color: "#ffffff",
+                          },
                         }}
                       >
                         Pay $253.00 with paypal
+                        
                       </Button>
                     </div>
                     <div class="text-xs text-gray-500 italic text-center">

@@ -101,9 +101,14 @@ const BecomeAgent = () => {
                     variant="contained"
                     onClick={() => fileInput.current.click()}
                     sx={{
-                      color: "#ffffff",
-                      bgcolor: "#6D81FC",
+                      color: "#6d81fc",
+                      bgcolor: "#ffffff",
                       textTransform: "none",
+                      border: 2,
+                      "&:hover": {
+                        bgcolor: "#6d81fc",
+                        color: "#ffffff",
+                      },
                     }}
                   >
                     Choose Image
@@ -682,6 +687,10 @@ const BecomeAgent = () => {
                       color: "#ffffff",
                       bgcolor: "#6D81FC",
                       textTransform: "none",
+                      "&:hover": {
+                        bgcolor: "#6d81fc",
+                        color: "#ffffff",
+                      },
                     }}
                   >
                     Submit Request
