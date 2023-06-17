@@ -84,6 +84,7 @@ key={index}
 </div>
 </div>
          }) }
+         {appointments.length ==0 && <div>No Appointments</div>}
          
         </div>
       </div>
