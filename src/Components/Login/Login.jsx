@@ -41,7 +41,8 @@ const Login = () => {
         data: values,
       })
         .then(({ DATA = {}, MESSAGE }) => {
-          console.log("heheh", DATA);
+          let { token, ...data } = DATA;
+          dispatch({ type: "LOGIN_SUCCESS", payload: data, token: token });
           navigate("/");
         })
         .catch((error) => {
