@@ -21,36 +21,46 @@ const Profile = () => {
   }, []);
 
   
-  const { dispatch, isFetching } = useContext(Context);
-const navigate=useNavigate()
+  const { dispatch, isFetching,user } = useContext(Context);
+  
+
   const formik = useFormik({
     initialValues: {
-      firstname: "",
-      email:"",
-      phone: "",
-      dob: moment().format("yyyy-MM-DD"),
-      password: "",
-      confirmPassword: "",
+      firstname:user?.name?.firstName ||  "",
+      email:user?.email ||  "",
+      phone: user?.phone?.phone ||  "",
+      dob: user?.dob || moment().format("yyyy-MM-DD"),
+   
       
     },
     validationSchema: Yup.object({
     
-      password: Yup.string().required("Required"),
-      confirmPassword: Yup.string().required("Required"),
+  
       phone: Yup.string().required("Required"),
       firstName: Yup.string().required("Required"),
       email: Yup.string().email("Invalid email address").required("Required"),
       
     }),
     onSubmit: async (values) => {
-      let {confirmPassword,...value}=values
+      console.log("values",values)
+      let data={
+        name:{
+          firstName:values.firstname,
+          fullName:values.firstname
+        },
+        phone:{
+          countryCode:"+1",
+          phone:values.phone
+        },
+        dob:values.dob
+      }
         await commonApi({
-          action: "profile",
-          data: value
+          action: "updateProfile",
+          data: data
         })
           .then(({ DATA = {}, MESSAGE }) => {
-          console.log("heheh",DATA)
-            navigate("/");
+            dispatch({ type: "UPDATE_USER", payload: DATA });
+            setEdit(false)
           })
           .catch((error) => {
             dispatch({ type: "LOGIN_FAILURE" });
@@ -63,13 +73,13 @@ const navigate=useNavigate()
     <div>
       <Navbar />
       <div className=" mt-32 lg:mt-32 px-3 ">
-        <form>
+        <form onSubmit={formik.handleSubmit}>
         <div className=" lg:max-w-7xl w-full mx-auto p-4 lg:py-20 lg:px-20 border-2 rounded-xl ">
           <div className="w-full flex items-start gap-2 justify-between">
             <div className="flex items-start lg:items-center flex-col lg:flex-row gap-10 ">
               <img className="w-32 lg:w-auto" src={agent} alt="" />
               <div>
-                <h1 className="text-3xl">SAMAR DAHIYA</h1>
+                <h1 className="text-3xl">{user?.name?.firstName}</h1>
                 <h1 className="text-lg mt-1 mb-4">Member Since : 2020</h1>
                 <div className=" items-center  rounded-md">
                   <Button
@@ -146,8 +156,9 @@ const navigate=useNavigate()
                     Cancel
                   </Button>
                   <Button
+                 type="submit"
                     variant="contained"
-                    onClick={() => setEdit(false)}
+                    onClick={formik.handleSubmit}
                     sx={{
                       color: "#ffffff",
                       bgcolor: "#6D81FC",
@@ -203,7 +214,7 @@ const navigate=useNavigate()
                         size="small"
                         id="email"
                         variant="outlined"
-                        disabled={!edit}
+                        disabled={true}
                         // defaultValue="sam@gmail.com"
                         name="email"
                     error={formik.touched.email && formik.errors.email}
@@ -255,7 +266,7 @@ const navigate=useNavigate()
                       />
                     </div>
                   </div>
-                  <div class="flex space-x-4">
+                  {/* <div class="flex space-x-4">
                     <div class="flex-1">
                       <label
                         class="block text-sm font-medium mb-1"
@@ -299,7 +310,7 @@ const navigate=useNavigate()
                     value={formik.values.confirmPassword}
                       />
                     </div>
-                  </div>
+                  </div> */}
                 </div>
                 {/* <!-- Form footer --> */}
               </div>

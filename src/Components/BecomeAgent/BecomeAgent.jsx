@@ -65,7 +65,10 @@ const BecomeAgent = () => {
         about:values.bio,
         firstname: values.firstName ,
         email:values.email ,
-        phone: values.phone ,
+        phone: {
+          countryCode:"+1",
+          phone:values.phone
+        } ,
         dob:values.dob,
         carPlate:values.vehicleInfo?.numberPlate,
         country:values.address?.country,

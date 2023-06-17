@@ -39,6 +39,10 @@ const apiList = {
       updateTask:{
         url:()=>"web/api/v1/appointemnt/task",
         method:"post"
+      },
+      updateProfile:{
+        url:()=>"web/api/v1/user/profile",
+        method:"put"
       }
   };
   export default apiList;

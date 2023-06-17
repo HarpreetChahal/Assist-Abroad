@@ -12,7 +12,7 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const { user, dispatch, token } = useContext(Context);
-console.log("user",user)
+
   const toggleProfileDropdown = () => {
     setProfileOpen(!profileOpen);
   };

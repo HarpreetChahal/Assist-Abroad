@@ -49,7 +49,7 @@ const getQuestions=async()=>{
     .then(({ DATA = {}, MESSAGE }) => {
       setQuestions(DATA.data)
       setCurrentIndex(0)
-      console.log("values",questions)
+   
     })
     .catch((error) => {
       console.error(error);
