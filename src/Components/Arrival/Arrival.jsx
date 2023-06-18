@@ -17,27 +17,24 @@ import * as Yup from "yup";
 import commonApi from "../../api/common";
 import { useNavigate } from "react-router-dom";
 
-
 const Arrival = () => {
   const [active, setActive] = useState(false);
   const [open, setOpen] = useState(false);
-  const { dispatch,user, isFetching } = useContext(Context);
-  const [appointment,setAppointment]=useState(null)
-
+  const { dispatch, user, isFetching } = useContext(Context);
+  const [appointment, setAppointment] = useState(null);
 
   const navigate = useNavigate();
   useEffect(() => {
     window.scrollTo(0, 0); // Scroll to the top of the page on component mount
 
-
-    let fetchAppointment=async()=>{
-      let data={
-        query:{
-          userId:user._id,status:"In-progress"
+    let fetchAppointment = async () => {
+      let data = {
+        query: {
+          userId: user._id,
+          status: "In-progress",
         },
-        options:{
-        }
-      }
+        options: {},
+      };
       await commonApi({
         action: "listTask",
         data: data,
@@ -46,20 +43,18 @@ const Arrival = () => {
         },
       })
         .then(({ DATA = {}, MESSAGE }) => {
-          setAppointment(DATA.data[0])
-        
+          setAppointment(DATA.data[0]);
         })
         .catch((error) => {
-       
           console.error(error);
         });
-    }
-    fetchAppointment()
+    };
+    fetchAppointment();
   }, []);
 
   const formik = useFormik({
     initialValues: {
-      dateOfArrival:user?.arrival?.date || "",
+      dateOfArrival: user?.arrival?.date || "",
       flightNumber: user?.arrival?.flightNumber || "",
       flightName: user?.arrival?.flightName || "",
       arrivalTime: user?.arrival?.time || "",
@@ -73,14 +68,15 @@ const Arrival = () => {
       airport: Yup.string().required("Required"),
     }),
     onSubmit: async (values) => {
-    
-      let data={
-       arrival:{date:values.dateOfArrival,
-        time:values.arrivalTime,
-        flightNumber:values.flightNumber,
-        flightName:values.flightName,
-        airport:values.airport}
-      }
+      let data = {
+        arrival: {
+          date: values.dateOfArrival,
+          time: values.arrivalTime,
+          flightNumber: values.flightNumber,
+          flightName: values.flightName,
+          airport: values.airport,
+        },
+      };
       await commonApi({
         action: "arrival",
         data: data,
@@ -90,16 +86,15 @@ const Arrival = () => {
       })
         .then(({ DATA = {}, MESSAGE }) => {
           dispatch({ type: "UPDATE_USER", payload: DATA });
-          setActive(true)
+          setActive(true);
         })
         .catch((error) => {
-       
           console.error(error);
         });
     },
   });
   return (
-    <div className=" min-h-screen   bg-[#f8f8fa]" >
+    <div className=" min-h-screen   bg-[#f8f8fa]">
       <Navbar />
       <Modal open={open} setOpen={setOpen} />
       <div className=" pt-28 p-4">
@@ -129,148 +124,144 @@ const Arrival = () => {
             </div>
           </div>
           {!active && (
-            
-  
-            <form className="mt-16 max-w-7xl  bg-white text-base  border-2 rounded-2xl" onSubmit={formik.handleSubmit}>
- <h1 className="text-3xl text-center mt-5 font-bold">
+            <form
+              className="mt-16 max-w-7xl  bg-white text-base  border-2 rounded-2xl"
+              onSubmit={formik.handleSubmit}
+            >
+              <h1 className="text-3xl text-center mt-5 font-bold">
                 PRE-ARRIVAL FORM
               </h1>
-<div className="flex  ">
-  
-            {/* Dummy Image */}
-            <div className="w-1/2 hidden md:block">
-              <img src={arrivalForm} alt="Agent" className="w-full "  />
-            </div>
-              
+              <div className="flex  ">
+                {/* Dummy Image */}
+                <div className="w-1/2 hidden md:block">
+                  <img src={arrivalForm} alt="Agent" className="w-full " />
+                </div>
 
-            <div className="w-full sm:w-1/2 flex items-center justify-center flex-col px-5 " >
-             
-                <div className="mt-6 space-y-3 w-full ml-24">
-                  <div className=" flex-1 items-center  gap-x-6 ">
-                    
-                  <label
-                          class="block text-sm font-medium mb-1"
-                          for="card-expiry"
-                        >
-                          Date of arrival<span class="text-red-500">*</span>
-                        </label>
-                    {/* <input
+                <div className="w-full sm:w-1/2 flex items-center justify-center flex-col px-5 ">
+                  <div className="mt-6 space-y-3 w-full ml-24">
+                    <div className=" flex-1 items-center  gap-x-6 ">
+                      <label
+                        class="block text-sm font-medium mb-1"
+                        for="card-expiry"
+                      >
+                        Date of arrival<span class="text-red-500">*</span>
+                      </label>
+                      {/* <input
                       type="text"
                       className="border px-2 py-2 lg:w-80 rounded-md outline-none bg-[#F8F8FA]"
                     /> */}
-                    <TextField
-                    
-                      className="inputField"
-                      variant="outlined"
-                      size="small"
-                      sx={{ backgroundColor: "#f8f8fa" ,width:'70%'  }}
-                      id="dateOfArrival"
-                      placeholder="Enter arrival date"
-                      name="dateOfArrival"
-                      error={
-                        formik.touched.dateOfArrival &&
-                        formik.errors.dateOfArrival
-                      }
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      value={formik.values.dateOfArrival}
-                    />
-                  </div>
-                  <div className="relative flex-1 items-center gap-x-6">
-                  <label
-                          class="block text-sm font-medium mb-1"
-                          for="card-expiry"
-                        >
-                          Flight Number<span class="text-red-500">*</span>
-                        </label>
-                    <TextField
-                      className="inputField"
-                      variant="outlined"
-                      size="small"
-                      sx={{ backgroundColor: "#f8f8fa"  ,width:'70%'}}
-                      id="flightNumber"
-                      placeholder="Enter flight ticket no"
-                      name="flightNumber"
-                      error={
-                        formik.touched.flightNumber &&
-                        formik.errors.flightNumber
-                      }
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      value={formik.values.flightNumber}
-                    />
-                  </div>
-                  <div className="relative flex-1 items-center gap-x-6">
-                  <label
-                          class="block text-sm font-medium mb-1"
-                          for="card-expiry"
-                        >
-                          Flight Name<span class="text-red-500">*</span>
-                        </label>
-                    <TextField
-                      className="inputField"
-                      variant="outlined"
-                      size="small"
-                      sx={{ backgroundColor: "#f8f8fa"  ,width:'70%'}}
-                      id="flightName"
-                      placeholder="Enter flight ticket no"
-                      name="flightName"
-                      error={
-                        formik.touched.flightName &&
-                        formik.errors.flightName
-                      }
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      value={formik.values.flightName}
-                    />
-                  </div>
-                  <div className="relative flex-1 items-center gap-x-6">
-                  <label
-                          class="block text-sm font-medium mb-1"
-                          for="card-expiry"
-                        >
-                          Arrival Time<span class="text-red-500">*</span>
-                        </label>
-                    <TextField
-                      className="inputField"
-                      variant="outlined"
-                      size="small"
-                      sx={{ backgroundColor: "#f8f8fa" ,width:'70%' }}
-                      id="arrivalTime"
-                      placeholder="Enter flight arrival time"
-                      name="arrivalTime"
-                      error={
-                        formik.touched.arrivalTime && formik.errors.arrivalTime
-                      }
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      value={formik.values.arrivalTime}
-                    />
+                      <TextField
+                        className="inputField"
+                        variant="outlined"
+                        size="small"
+                        sx={{ backgroundColor: "#f8f8fa", width: "70%" }}
+                        id="dateOfArrival"
+                        placeholder="Enter arrival date"
+                        name="dateOfArrival"
+                        error={
+                          formik.touched.dateOfArrival &&
+                          formik.errors.dateOfArrival
+                        }
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.dateOfArrival}
+                      />
+                    </div>
+                    <div className="relative flex-1 items-center gap-x-6">
+                      <label
+                        class="block text-sm font-medium mb-1"
+                        for="card-expiry"
+                      >
+                        Flight Number<span class="text-red-500">*</span>
+                      </label>
+                      <TextField
+                        className="inputField"
+                        variant="outlined"
+                        size="small"
+                        sx={{ backgroundColor: "#f8f8fa", width: "70%" }}
+                        id="flightNumber"
+                        placeholder="Enter flight ticket no"
+                        name="flightNumber"
+                        error={
+                          formik.touched.flightNumber &&
+                          formik.errors.flightNumber
+                        }
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.flightNumber}
+                      />
+                    </div>
+                    <div className="relative flex-1 items-center gap-x-6">
+                      <label
+                        class="block text-sm font-medium mb-1"
+                        for="card-expiry"
+                      >
+                        Flight Name<span class="text-red-500">*</span>
+                      </label>
+                      <TextField
+                        className="inputField"
+                        variant="outlined"
+                        size="small"
+                        sx={{ backgroundColor: "#f8f8fa", width: "70%" }}
+                        id="flightName"
+                        placeholder="Enter flight ticket no"
+                        name="flightName"
+                        error={
+                          formik.touched.flightName && formik.errors.flightName
+                        }
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.flightName}
+                      />
+                    </div>
+                    <div className="relative flex-1 items-center gap-x-6">
+                      <label
+                        class="block text-sm font-medium mb-1"
+                        for="card-expiry"
+                      >
+                        Arrival Time<span class="text-red-500">*</span>
+                      </label>
+                      <TextField
+                        className="inputField"
+                        variant="outlined"
+                        size="small"
+                        sx={{ backgroundColor: "#f8f8fa", width: "70%" }}
+                        id="arrivalTime"
+                        placeholder="Enter flight arrival time"
+                        name="arrivalTime"
+                        error={
+                          formik.touched.arrivalTime &&
+                          formik.errors.arrivalTime
+                        }
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.arrivalTime}
+                      />
+                    </div>
+
+                    <div className="relative flex-1 items-center gap-x-6">
+                      <label
+                        class="block text-sm font-medium mb-1"
+                        for="card-expiry"
+                      >
+                        Airport<span class="text-red-500">*</span>
+                      </label>
+                      <TextField
+                        className="inputField"
+                        variant="outlined"
+                        size="small"
+                        sx={{ backgroundColor: "#f8f8fa", width: "70%" }}
+                        id="airport"
+                        placeholder="Enter airport name"
+                        name="airport"
+                        error={formik.touched.airport && formik.errors.airport}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.airport}
+                      />
+                    </div>
                   </div>
 
-                  <div className="relative flex-1 items-center gap-x-6">
-                  <label
-                          class="block text-sm font-medium mb-1"
-                          for="card-expiry"
-                        >
-                          Airport<span class="text-red-500">*</span>
-                        </label>
-                    <TextField
-                      className="inputField"
-                      variant="outlined"
-                      size="small"
-                      sx={{ backgroundColor: "#f8f8fa"  ,width:'70%'}}
-                      id="airport"
-                      placeholder="Enter airport name"
-                      name="airport"
-                      error={formik.touched.airport && formik.errors.airport}
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      value={formik.values.airport}
-                    />
-                  </div>
-                </div>
-                
                   {/* <button className="text-white mt-16 bg-pr px-7 py-2 rounded-md">
                     SUBMIT
                   </button> */}
@@ -289,263 +280,165 @@ const Arrival = () => {
                 Submit
               </Button> */}
                   <Button
-                  type="submit"
+                    type="submit"
                     variant="contained"
                     sx={{
                       color: "#ffffff",
                       bgcolor: "#6D81FC",
                       textTransform: "none",
                       alignSelf: "flex-start",
-                      marginLeft:25,
+                      marginLeft: 25,
                       marginTop: 3,
                       "&:hover": {
                         bgcolor: "#6d81fc",
                         color: "#ffffff",
-                        
                       },
                     }}
                   >
                     Submit
                   </Button>
-                  </div>
+                </div>
               </div>
             </form>
-            
           )}
           {active && (
-            <div className="mt-20 max-w-7xl mx-auto bg-[#ffffff] border-2 rounded-2xl p-5">
-              <h1 className="text-3xl text-center font-bold">TASKS</h1>
-              <div class="container px-5 py-5 mx-auto bg-white rounded-2xl">
-                <div class="p-5 bg-white flex items-center mx-auto  border-2 mb-5  rounded-lg sm:flex-row flex-col">
+            <div className="mt-10 max-w-7xl mx-auto bg-[#ffffff] border-2 rounded-2xl p-5">
+              {/* <h1 className="text-3xl text-center font-bold">TASKS</h1> */}
+              <div class="container   mx-auto bg-white rounded-2xl">
+                <div class="p-5 bg-white flex items-center mx-auto  border-2   rounded-lg sm:flex-row flex-col">
                   <div class="sm:w-48 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center flex-shrink-0">
                     <img src={agent} />
                   </div>
                   <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
-                    <h1 class="text-black text-2xl title-font font-bold font_ab mb-2">
+                    <h1 class="text-3xl font-medium font_ab mb-2">
                       Agents Details
                     </h1>
-                    
-                    {/* <div class="py-4">
-                      <div class=" inline-block mr-2">
-                        <div class="flex  pr-2 h-full items-center">
-                          <svg
-                            class="text-yellow-500 w-6 h-6 mr-1"
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            stroke-width="2"
-                            stroke="currentColor"
-                            fill="none"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          >
-                            <path stroke="none" d="M0 0h24v24H0z" />
-                            <circle cx="12" cy="12" r="9" />
-                            <path d="M9 12l2 2l4 -4" />
-                          </svg>
-                          <p class="title-font font-medium">Python</p>
-                        </div>
-                      </div>
-                      <div class="inline-block mr-2">
-                        <div class="flex  pr-2 h-full items-center">
-                          <svg
-                            class="text-yellow-500 w-6 h-6 mr-1"
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            stroke-width="2"
-                            stroke="currentColor"
-                            fill="none"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          >
-                            <path stroke="none" d="M0 0h24v24H0z" />
-                            <circle cx="12" cy="12" r="9" />
-                            <path d="M9 12l2 2l4 -4" />
-                          </svg>
-                          <p class="title-font font-medium">C</p>
-                        </div>
-                      </div>
-                      <div class=" inline-block mr-2">
-                        <div class="flex  pr-2 h-full items-center">
-                          <svg
-                            class="text-yellow-500 w-6 h-6 mr-1"
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            stroke-width="2"
-                            stroke="currentColor"
-                            fill="none"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          >
-                            <path stroke="none" d="M0 0h24v24H0z" />
-                            <circle cx="12" cy="12" r="9" />
-                            <path d="M9 12l2 2l4 -4" />
-                          </svg>
-                          <p class="title-font font-medium">Php</p>
-                        </div>
-                      </div>
-                      <div class=" inline-block mr-2">
-                        <div class="flex  pr-2 h-full items-center">
-                          <svg
-                            class="text-gray-500 w-6 h-6 mr-1"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          >
-                            <circle cx="12" cy="12" r="10" />
-                            <line x1="15" y1="9" x2="9" y2="15" />
-                            <line x1="9" y1="9" x2="15" y2="15" />
-                          </svg>
-                          <p class="title-font font-medium">Swift</p>
-                        </div>
-                      </div>
 
-                      <div class=" inline-block mr-2">
-                        <div class="flex  pr-2 h-full items-center">
-                          <svg
-                            class="text-gray-500 w-6 h-6 mr-1"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          >
-                            <circle cx="12" cy="12" r="10" />
-                            <line x1="15" y1="9" x2="9" y2="15" />
-                            <line x1="9" y1="9" x2="15" y2="15" />
-                          </svg>
-                          <p class="title-font font-medium">Java</p>
-                        </div>
-                      </div>
-                      <div class=" inline-block mr-2">
-                        <div class="flex  pr-2 h-full items-center">
-                          <svg
-                            class="text-gray-500 w-6 h-6 mr-1"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          >
-                            <circle cx="12" cy="12" r="10" />
-                            <line x1="15" y1="9" x2="9" y2="15" />
-                            <line x1="9" y1="9" x2="15" y2="15" />
-                          </svg>
-                          <p class="title-font font-medium">Javascript</p>
-                        </div>
-                      </div>
-                    </div> */}
                     <div class=" font-bold text-gray-800">
                       <div class="   space-x-3 ">
                         <div class="flex pb-2">
                           <h2 class="text-gray-500 pr-2">Name</h2>
                           <p>{appointment?.agentObj?.name?.fullName}</p>
                         </div>
-                    
                       </div>
                       <div class="w-full  space-x-3">
                         <div class="flex pb-2">
                           <h2 class="text-gray-500 pr-2">Contact</h2>
                           <p>{appointment?.agentObj?.phone?.phone}</p>
                         </div>
-                        
                       </div>
                       <div class="w-full md:w-1/2  space-x-3">
                         <div class="flex pb-2">
                           <h2 class="text-gray-500 pr-2">Car Plate</h2>
                           <p>SAM 741</p>
                         </div>
-                    
                       </div>
                       <div class="w-full md:w-1/2  space-x-3">
                         <div class="flex pb-2">
                           <h2 class="text-gray-500 pr-2">Email</h2>
                           <p>{appointment?.agentObj?.email}</p>
                         </div>
-                        
                       </div>
-                      {/* <div class="w-full md:w-1/2 flex space-x-3">
-                        <div class="w-1/2">
-                          <h2 class="text-gray-500">Contact</h2>
-                          <p>520-210-5789</p>
-                        </div>
-                        <div class="w-1/2">
-                          <h2 class="text-gray-500">Car plate</h2>
-                          <p>HXB 521</p>
-                        </div>
-                      </div> */}
-                      
                     </div>
                     {/* <div class="flex mt-5">
-                          <h2 class="text-gray-500 mr-2 font-bold" >Last Activity: </h2>
-                          <p>Airport Pickup</p>
-                        </div>
-                        <div class="flex mt-">
-                          <h2 class="text-gray-500 mr-2 font-bold" >Hotel Stay: </h2>
-                          <p>JW Marriot, Regina</p>
-                        </div> */}
-                        <Link to={"/view-profile"}>
-                    <a class="mt-3 text-indigo-500 inline-flex items-center">
-                     View Profile
-                      <svg
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        class="w-4 h-4 ml-2"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M5 12h14M12 5l7 7-7 7"></path>
-                      </svg>
-                    </a>
+                      <h2 class="text-gray-500 mr-2 font-bold">
+                        Last Activity:{" "}
+                      </h2>
+                      <p>Airport Pickup</p>
+                    </div> */}
+                    {/* <div class="flex ">
+                      <h2 class="text-gray-500 mr-2 font-bold">Hotel Stay: </h2>
+                      <p>JW Marriot, Regina</p>
+                    </div> */}
+                    <Link to={"/view-profile"}>
+                      <a class="mt-3 text-indigo-500 inline-flex items-center">
+                        View Profile
+                        <svg
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          class="w-4 h-4 ml-2"
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M5 12h14M12 5l7 7-7 7"></path>
+                        </svg>
+                      </a>
                     </Link>
                   </div>
                 </div>
               </div>
-              {/* <div className="py-10 lg:pl-32">
-                
-                <p className="text-sm lg:text-lg">Client : Happy Singh</p>
-                <p className="text-sm lg:text-lg">Contact : 306-***-**96</p>
-                <p className="text-sm lg:text-lg">
-                  Email: dead******@gmail.com
-                </p>
-                <p className="text-sm lg:text-lg">Address: #2, 875 Regina</p>
-              </div> */}
-              <div className="flex items-center justify-center flex-col">
-                <div className="mt-6 space-y-3">
-                 {appointment?.tasksList?.map((task,index)=>{
 
-                 return  <div className="relative flex gap-x-3">
-                    <div className="flex h-6 items-center" >
-                     {index+1}
-                    </div>
-                    <div className="text-sm leading-6" >
-                      <label
-                        htmlFor="comments"
-                        className="font-medium text-sm lg:text-lg text-gray-900"
-                      >
-                       {task.completed ? <s>{task.name}</s> : task.name} 
-                       
-                      </label>
-                    </div>
-                  </div>})}
-                
+              <div class="max-w-7xl mx-auto mt-5 bg-white  p-5 border-2 rounded-xl shadow shadow-slate-300">
+                <div class="flex flex-row justify-between items-center">
+                  <div>
+                    <h1 class="text-2xl font-medium font_ab">Tasks list</h1>
+                  </div>
                 </div>
-                <button
-                  onClick={() => setOpen(true)}
-                  className="text-white mt-16 bg-pr px-7 py-2 rounded-md"
-                >
-                  Give Feedback
-                </button>
-                {/* <Button type="submit"  onClick={() => setOpen(true)} 
+                <p class="text-slate-500 font-medium font_ab">
+                  Hello, here are your latest tasks
+                </p>
+                <div >
+                  <div class=" justify-between items-center py-3 px-2   ">
+                    {appointment?.tasksList?.map((task, index) => {
+                      return (
+                        <div className="flex items-center justify-between ">
+                          <div className="flex  justify-start h-10 space-x-6 ">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            class="w-6 h-6 "
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M4.5 12.75l6 6 9-13.5"
+                            />
+                          </svg>
+                          {/* {index + 1} */}
+                          {/* </div>
+
+                          <div className="justify-start text-sm "> */}
+                            <label
+                              htmlFor="comments"
+                              className="font-medium "
+                            >
+                              {task.completed ? <s>{task.name}</s> : task.name}
+                            </label>
+                          </div>
+                          <div className="justify-end">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke-width="1.5"
+                              stroke="currentColor"
+                              class="w-4 h-4  hover:text-slate-700 hover:cursor-pointer"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                              />
+                            </svg>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                  <div className="flex items-center justify-center h-10 space-x-6 ">
+                    <button
+                      onClick={() => setOpen(true)}
+                      className="text-white mt-5 bg-pr px-7 py-2 rounded-md"
+                    >
+                      Give Feedback
+                    </button>
+                  </div>
+                  {/* <Button type="submit"  onClick={() => setOpen(true)} 
              
               style={{
                 backgroundColor: "#6d81fe",
@@ -559,6 +452,7 @@ const Arrival = () => {
               }}>
                 Give Feedback
               </Button> */}
+                </div>
               </div>
             </div>
           )}
