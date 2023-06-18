@@ -30,11 +30,7 @@ import ViewProfile from "./Components/ViewProfile/ViewProfile";
 function App() {
   const { user, dispatch, token } = useContext(Context);
   const navigate = useNavigate();
-  const handleLogout = async () => {
-    localStorage.clear();
-    dispatch({ type: "LOGOUT" });
-    navigate("/login");
-  };
+ 
 
   return (
     <div>
@@ -43,21 +39,21 @@ function App() {
           exact
           path="/register"
           element={
-            token && user ? <Home handleLogout={handleLogout} /> :   <Register />
+            token && user ? <Home /> :   <Register />
           }
         />
         <Route
           exact
           path="/login"
           element={
-            token && user ? <Home handleLogout={handleLogout} /> : <Login />
+            token && user ? <Home /> : <Login />
           }
         />
       <Route
           exact
           path="/"
           element={
-            token && user ? <Home handleLogout={handleLogout} /> : <Login /> 
+            token && user ? <Home  /> : <Login /> 
           }
         />
        
@@ -65,21 +61,21 @@ function App() {
           exact
           path="/quiz"
           element={
-            token && user ? <Quiz handleLogout={handleLogout} /> :   <Login />
+            token && user ? <Quiz  /> :   <Login />
           }
         />
         <Route
           exact
           path="/payment"
           element={
-            token && user ? <Payment handleLogout={handleLogout} /> :   <Login />
+            token && user ? <Payment /> :   <Login />
           }
         />
         <Route
           exact
           path="/payment-card"
           element={
-            token && user ? <PaymentCard handleLogout={handleLogout} /> :   <Login />
+            token && user ? <PaymentCard  /> :   <Login />
             
           }
         />
@@ -87,7 +83,7 @@ function App() {
           exact
           path="/profile"
           element={
-            token && user ? <Profile handleLogout={handleLogout} /> :   <Login />
+            token && user ? <Profile /> :   <Login />
            
           }
         />
@@ -95,14 +91,14 @@ function App() {
           exact
           path="/arrival-form"
           element={
-            token && user ? <Arrival handleLogout={handleLogout} /> :   <Login />
+            token && user ? <Arrival  /> :   <Login />
             
           }/>
           <Route
           exact
           path="/agent-home"
           element={
-            token && user ? <AgentHome handleLogout={handleLogout} /> :   <Login />
+            token && user ? <AgentHome  /> :   <Login />
             
           }
           />
@@ -110,7 +106,7 @@ function App() {
           exact
           path="/agent-task"
           element={
-            token && user ? <AgentTask handleLogout={handleLogout} /> :   <Login />
+            token && user ? <AgentTask /> :   <Login />
           
           }
           />
@@ -125,7 +121,7 @@ function App() {
           exact
           path="/become-agent"
           element={
-            token && user ? <BecomeAgent handleLogout={handleLogout} /> :   <Login />
+            token && user ? <BecomeAgent /> :   <Login />
           
           }
           />
@@ -133,7 +129,7 @@ function App() {
           exact
           path="/view-profile"
           element={
-            token && user ? <ViewProfile handleLogout={handleLogout} /> :   <Login />
+            token && user ? <ViewProfile /> :   <Login />
           }
           />
 

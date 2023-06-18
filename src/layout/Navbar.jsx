@@ -17,6 +17,11 @@ const Navbar = () => {
   const toggleProfileDropdown = () => {
     setProfileOpen(!profileOpen);
   };
+   const handleLogout = async () => {
+    localStorage.clear();
+    dispatch({ type: "LOGOUT" });
+    navigate("/login");
+  };
 
   return (
     <div className=" w-full fixed top-0 left-0 z-50 shadow-sm bg-white ">
@@ -54,8 +59,7 @@ const Navbar = () => {
               Contact
             </div>
 
-            <Link
-              to="/profile"
+            <div
               className=" text-[#23314C] cursor-pointer hover:text-pr text-lg font_ab"
             >
               {/* <div> */}
@@ -91,16 +95,18 @@ const Navbar = () => {
                     <AiOutlineRobot className="mr-2" />
                     Become Agent
                   </Link>}
-                  <Link
-                    to="/"
+                 {user && token && <div
+                    onClick={
+                      handleLogout
+                    }
                     className="flex  items-start justify-start text-[#23314C] hover:text-pr text-lg font_ab px-1 py-1  mt-1 rounded-md hover:bg-[#6D81FE] hover:text-white"
                   >
                     <FiLogOut className="mr-2" />
                     Logout
-                  </Link>
+                  </div>}
                 </div>
               )}
-            </Link>
+            </div>
 
           {!(user && token) ?  <Link
               to="/login"
