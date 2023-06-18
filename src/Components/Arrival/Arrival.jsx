@@ -442,31 +442,31 @@ const Arrival = () => {
                         </div>
                       </div>
                     </div> */}
-                    <div class="md:flex font-bold text-gray-800">
-                      <div class="w-full md:w-1/2 flex space-x-3">
-                        <div class="w-full">
-                          <h2 class="text-gray-500">Name</h2>
+                    <div class=" font-bold text-gray-800">
+                      <div class="   space-x-3 ">
+                        <div class="flex pb-2">
+                          <h2 class="text-gray-500 pr-2">Name</h2>
                           <p>{appointment?.agentObj?.name?.fullName}</p>
                         </div>
                     
                       </div>
-                      <div class="w-full md:w-1/2 flex space-x-3">
-                        <div class="w-full">
-                          <h2 class="text-gray-500">Contact</h2>
+                      <div class="w-full  space-x-3">
+                        <div class="flex pb-2">
+                          <h2 class="text-gray-500 pr-2">Contact</h2>
                           <p>{appointment?.agentObj?.phone?.phone}</p>
                         </div>
                         
                       </div>
-                      <div class="w-full md:w-1/2 flex space-x-3">
-                        <div class="w-full">
-                          <h2 class="text-gray-500">Car Plate</h2>
+                      <div class="w-full md:w-1/2  space-x-3">
+                        <div class="flex pb-2">
+                          <h2 class="text-gray-500 pr-2">Car Plate</h2>
                           <p>SAM 741</p>
                         </div>
                     
                       </div>
-                      <div class="w-full md:w-1/2 flex space-x-3">
-                        <div class="w-full">
-                          <h2 class="text-gray-500">Email</h2>
+                      <div class="w-full md:w-1/2  space-x-3">
+                        <div class="flex pb-2">
+                          <h2 class="text-gray-500 pr-2">Email</h2>
                           <p>{appointment?.agentObj?.email}</p>
                         </div>
                         
@@ -491,7 +491,7 @@ const Arrival = () => {
                           <h2 class="text-gray-500 mr-2 font-bold" >Hotel Stay: </h2>
                           <p>JW Marriot, Regina</p>
                         </div> */}
-                        {/* <Link to={"/view-profile"}>
+                        <Link to={"/view-profile"}>
                     <a class="mt-3 text-indigo-500 inline-flex items-center">
                      View Profile
                       <svg
@@ -506,7 +506,7 @@ const Arrival = () => {
                         <path d="M5 12h14M12 5l7 7-7 7"></path>
                       </svg>
                     </a>
-                    </Link> */}
+                    </Link>
                   </div>
                 </div>
               </div>
