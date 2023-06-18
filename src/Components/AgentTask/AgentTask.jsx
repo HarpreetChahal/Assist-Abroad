@@ -65,31 +65,33 @@ fetchAppointment()
   return (
     <div className="w-full px-4 lg:px-0">
       <Navbar />
-      <div className="mt-40 max-w-7xl mx-auto bg-white border-2 rounded-2xl p-10">
-           <h1 className="text-3xl text-center font-bold">TASKS</h1>
-              <div class="container px-5 py-5 mx-auto bg-white rounded-2xl">
-                <div class="p-5 bg-white flex items-center mx-auto  border-2 mb-5  rounded-lg sm:flex-row flex-col">
+      <div className="mt-32 max-w-7xl mx-auto bg-white border-2 rounded-2xl p-5">
+           {/* <h1 className="text-3xl text-center font-bold">TASKS</h1> */}
+              <div class="container  mx-auto bg-white rounded-2xl">
+                <div class="p-5 bg-white flex items-center mx-auto  border-2  rounded-lg sm:flex-row flex-col">
                   <div class="sm:w-48 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center flex-shrink-0">
                     <img src={agent} />
                   </div>
                   <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
-                    <h1 class="text-black text-2xl title-font font-bold mb-2">
+                    <h1 class="text-3xl font-medium font_ab mb-2">
                       Client Details
                     </h1>
-                    <div class="md:flex font-bold text-gray-800">
-                      <div class="w-full md:w-1/2 flex space-x-3">
-                        <div class="w-1/2">
-                          <h2 class="text-gray-500">Name</h2>
+                    <div class="font-bold text-gray-800">
+                      <div class="space-x-3">
+                        <div class="flex pb-2">
+                          <h2 class="text-gray-500 pr-2">Name</h2>
                           <p>{appointment?.userObj?.name?.firstName}</p>
                         </div>
-                        <div class="w-1/2">
-                          <h2 class="text-gray-500">Email</h2>
+                        </div>
+                        <div className="w-full  space-x-3">
+                        <div class="flex pb-2">
+                          <h2 class="text-gray-500 pr-2">Email</h2>
                           <p>{appointment?.userId?.email}</p>
                         </div>
                       </div>
                       <div class="w-full md:w-1/2 flex space-x-3">
-                        <div class="w-1/2">
-                          <h2 class="text-gray-500">Contact</h2>
+                        <div class="flex pb-2">
+                          <h2 class="text-gray-500 pr-2">Contact</h2>
                           <p>{appointment?.userId?.phone?.phone}</p>
                         </div>
                       
@@ -100,20 +102,20 @@ fetchAppointment()
                           <h2 class="text-gray-500 mr-2 font-bold" >Arrival Date </h2>
                           <p>{appointment?.userId?.arrival?.date}</p>
                         </div>
-                        <div class="flex mt-">
+                        <div class="flex ">
                           <h2 class="text-gray-500 mr-2 font-bold" >Arrival Time </h2>
                           <p>{appointment?.userId?.arrival?.time}</p>
                         </div>
 
-                        <div class="flex mt-5">
+                        <div class="flex ">
                           <h2 class="text-gray-500 mr-2 font-bold" >FLight Number </h2>
                           <p>{appointment?.userId?.arrival?.flightNumber}</p>
                         </div>
-                        <div class="flex mt-">
+                        <div class="flex ">
                           <h2 class="text-gray-500 mr-2 font-bold" >Flight Name </h2>
                           <p>{appointment?.userId?.arrival?.flightName}</p>
                         </div>
-                        <div class="flex mt-">
+                        <div class="flex">
                           <h2 class="text-gray-500 mr-2 font-bold" >Airport </h2>
                           <p>{appointment?.userId?.arrival?.airport}</p>
                         </div>
@@ -145,7 +147,7 @@ fetchAppointment()
                 </p>
                 <p className="text-sm lg:text-lg">Address: #2, 875 Regina</p>
               </div> */}
-        <div className="flex items-center justify-center flex-col">
+        {/* <div className="flex items-center justify-center flex-col">
           <div className="mt-6 space-y-3">
            {appointment?.tasksList?.map((task,index)=>{
 
@@ -177,7 +179,86 @@ fetchAppointment()
           <button className="text-white mt-16 bg-pr px-7 py-2 rounded-md">
           Completed
           </button>
-        </div>
+        </div> */}
+        <div class="max-w-7xl mx-auto mt-5 bg-white  p-5 border-2 rounded-xl shadow shadow-slate-300">
+                <div class="flex flex-grow justify-between items-center">
+                  <div>
+                    <h1 class="text-2xl font-medium font_ab">Tasks list</h1>
+                  </div>
+                </div>
+                <p class="text-slate-500 font-medium font_ab">
+                  Hello, here are your latest tasks
+                </p>
+                <div >
+                  <div class=" justify-between items-center py-3 px-2   ">
+                  {appointment?.tasksList?.map((task,index)=>{
+
+return (
+                        <div className="flex items-center justify-between  key={index} ">
+                          <div className="flex  justify-start h-10 space-x-6 ">
+                          <input
+                  id="comments"
+                  name="comments"
+                  type="checkbox"
+                  onClick={()=>{
+                    if(!task.completed)
+                   { updateTask(appointment._id,task._id)}
+                  }}
+                  checked={task.completed}
+                  className="h-6 w-6 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                />
+                          {/* {index + 1} */}
+                          {/* </div>
+
+                          <div className="justify-start text-sm "> */}
+                            <label
+                              htmlFor="comments"
+                              className="font-medium "
+                            >
+                               {task.name}
+                            </label>
+                          </div>
+                          <div className="justify-end">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke-width="1.5"
+                              stroke="currentColor"
+                              class="w-4 h-4  hover:text-slate-700 hover:cursor-pointer"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                              />
+                            </svg>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                  <div className="flex items-center justify-center h-10 space-x-6 ">
+                  <button className="text-white mt-5 bg-pr px-7 py-2 rounded-md">
+          Completed
+          </button>
+                  </div>
+                  {/* <Button type="submit"  onClick={() => setOpen(true)} 
+             
+              style={{
+                backgroundColor: "#6d81fe",
+                color: "#fff",
+                borderRadius: 5,
+                padding: 8,
+                marginTop: 20,
+                textTransform: 'none',
+                fontSize:15,
+                width:180,
+              }}>
+                Give Feedback
+              </Button> */}
+                </div>
+              </div>
       </div>
     </div>
   );
