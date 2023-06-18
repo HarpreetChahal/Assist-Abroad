@@ -102,7 +102,7 @@ const Arrival = () => {
     <div className=" min-h-screen   bg-[#f8f8fa]" >
       <Navbar />
       <Modal open={open} setOpen={setOpen} />
-      <div className=" pt-28 ">
+      <div className=" pt-28 p-4">
         <div className="max-w-7xl mx-auto ">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
@@ -131,7 +131,7 @@ const Arrival = () => {
           {!active && (
             
   
-            <form className="mt-16 max-w-7xl  bg-white text-base  border-2 rounded-2xl  " onSubmit={formik.handleSubmit}>
+            <form className="mt-16 max-w-7xl  bg-white text-base  border-2 rounded-2xl" onSubmit={formik.handleSubmit}>
  <h1 className="text-3xl text-center mt-5 font-bold">
                 PRE-ARRIVAL FORM
               </h1>
@@ -145,7 +145,7 @@ const Arrival = () => {
 
             <div className="w-full sm:w-1/2 flex items-center justify-center flex-col px-5 " >
              
-                <div className="mt-6 space-y-3 w-full ">
+                <div className="mt-6 space-y-3 w-full ml-24">
                   <div className=" flex-1 items-center  gap-x-6 ">
                     
                   <label
@@ -296,6 +296,7 @@ const Arrival = () => {
                       bgcolor: "#6D81FC",
                       textTransform: "none",
                       alignSelf: "flex-start",
+                      marginLeft:25,
                       marginTop: 3,
                       "&:hover": {
                         bgcolor: "#6d81fc",
