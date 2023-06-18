@@ -15,8 +15,32 @@
     margin: 0;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
+    /* cursor: url('./Assets/droplet.svg'),auto; */
 
 }
+
+
+
+.custom-cur {
+    cursor: url('./Assets/droplet.svg');
+  }
+  
+  /* With a .cur fallback */
+  .custom-cur {
+    cursor: url('./Assets/droplet.svg'),
+    url('./Assets/droplet.svg');
+  }
+  
+  /* With a custom hotspot */
+  .custom-cur {
+    cursor: url('./Assets/droplet.svg') 10 12;
+  }
+  
+  /* With a non-custom fallback: */
+  .custom-cur {
+    cursor: url('./Assets/droplet.svg'),
+    move;
+  }
 
 :root{
   --primaryColor: #6D81FE; 

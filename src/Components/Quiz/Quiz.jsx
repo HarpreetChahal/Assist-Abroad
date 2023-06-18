@@ -230,9 +230,9 @@ getQuestions()
         </section>
     
       
-      <p className=" mt-28 text-center text-[#23314C]">
+      {/* <p className=" mt-28 text-center text-[#23314C]">
         © 2023 Assist Abroad , Inc. All Rights Reserved.
-      </p>
+      </p> */}
     </div>
   );
 };

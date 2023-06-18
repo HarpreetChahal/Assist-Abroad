@@ -7,6 +7,7 @@ import { AiOutlineRobot } from "react-icons/ai";
 import { FiLogOut } from "react-icons/fi";
 import { AiOutlineDown } from "react-icons/ai";
 import { useContext } from "react";
+import agent from "/src/Assets/agent.png";
 import { Context } from "../Components/context/Context";
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -57,21 +58,22 @@ const Navbar = () => {
               to="/profile"
               className=" text-[#23314C] cursor-pointer hover:text-pr text-lg font_ab"
             >
-              {/* <img 
+              {/* <div> */}
+              <img 
                 className={`text-[#23314C] cursor-pointer hover:text-pr text-lg font_ab w-12 h-12 rounded-full ${
                   profileOpen ? "text-pr" : ""
                 }`}
                 onClick={toggleProfileDropdown}
-                src={agent} alt="Rounded avatar"/> */}
-              <div
+                src={agent} alt="Rounded avatar"/>
+              {/* <div
                 className={`flex text-[#23314C] cursor-pointer hover:text-pr text-lg font_ab  ${
                   profileOpen ? "text-pr" : ""
                 }`}
                 onClick={toggleProfileDropdown}
-              >
-                Avatar
+              > */}
+                {/* Avatar
                 <AiOutlineDown className="ml-1" size={14} />
-              </div>
+              </div> */}
               {profileOpen && (
                 <div className="absolute mt-2 px-2 py-2 bg-white rounded-md shadow-lg bg-[#ffffff]">
                   {/* Add dropdown menu items */}

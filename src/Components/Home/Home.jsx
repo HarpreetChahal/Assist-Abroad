@@ -10,6 +10,7 @@ import { Button, TextField } from "@mui/material";
 const Home = () => {
   return (
     <div className="bg-[#F6F7FC] relative min-h-screen">
+      {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42" width="42" height="42"/> */}
       <Navbar />
       <section
       

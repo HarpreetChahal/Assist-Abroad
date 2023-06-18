@@ -3,6 +3,7 @@ import React from "react";
 import Navbar from "../../layout/Navbar";
 import moment from "moment";
 import { Link } from "react-router-dom";
+import arrivalForm from "/src/Assets/imageLogoLogin.png";
 import agent from "/src/Assets/agent.png";
 import { Fragment, useRef } from "react";
 import { Dialog, Transition } from "@headlessui/react";
@@ -128,26 +129,41 @@ const Arrival = () => {
             </div>
           </div>
           {!active && (
-            <form className="mt-20 max-w-7xl mx-auto bg-white text-base lg:text-2xle border-2 rounded-2xl p-4 lg:p-10" onSubmit={formik.handleSubmit}>
-              <h1 className="text-3xl text-center font-bold">
+            
+  
+            <form className="mt-16 max-w-7xl  bg-white text-base  border-2 rounded-2xl  " onSubmit={formik.handleSubmit}>
+ <h1 className="text-3xl text-center mt-5 font-bold">
                 PRE-ARRIVAL FORM
               </h1>
+<div className="flex  ">
+  
+            {/* Dummy Image */}
+            <div className="w-1/2 hidden md:block">
+              <img src={arrivalForm} alt="Agent" className="w-full "  />
+            </div>
+              
 
-              <div className="flex items-center justify-center flex-col ">
-                <div className="mt-6 space-y-3">
-                  <div className="relative flex items-center  gap-x-6">
-                    <p className="text-base lg:text-2xl lg:w-40 ">
-                      Date of Arrival
-                    </p>
+            <div className="w-full sm:w-1/2 flex items-center justify-center flex-col px-5 " >
+             
+                <div className="mt-6 space-y-3 w-full ">
+                  <div className=" flex-1 items-center  gap-x-6 ">
+                    
+                  <label
+                          class="block text-sm font-medium mb-1"
+                          for="card-expiry"
+                        >
+                          Date of arrival<span class="text-red-500">*</span>
+                        </label>
                     {/* <input
                       type="text"
                       className="border px-2 py-2 lg:w-80 rounded-md outline-none bg-[#F8F8FA]"
                     /> */}
                     <TextField
+                    
                       className="inputField"
                       variant="outlined"
                       size="small"
-                      sx={{ backgroundColor: "#f8f8fa" }}
+                      sx={{ backgroundColor: "#f8f8fa" ,width:'70%'  }}
                       id="dateOfArrival"
                       placeholder="Enter arrival date"
                       name="dateOfArrival"
@@ -160,15 +176,18 @@ const Arrival = () => {
                       value={formik.values.dateOfArrival}
                     />
                   </div>
-                  <div className="relative flex items-center gap-x-6">
-                    <p className="text-base lg:text-2xl lg:w-40">
-                      Flight Number
-                    </p>
+                  <div className="relative flex-1 items-center gap-x-6">
+                  <label
+                          class="block text-sm font-medium mb-1"
+                          for="card-expiry"
+                        >
+                          Flight Number<span class="text-red-500">*</span>
+                        </label>
                     <TextField
                       className="inputField"
                       variant="outlined"
                       size="small"
-                      sx={{ backgroundColor: "#f8f8fa" }}
+                      sx={{ backgroundColor: "#f8f8fa"  ,width:'70%'}}
                       id="flightNumber"
                       placeholder="Enter flight ticket no"
                       name="flightNumber"
@@ -181,15 +200,18 @@ const Arrival = () => {
                       value={formik.values.flightNumber}
                     />
                   </div>
-                  <div className="relative flex items-center gap-x-6">
-                    <p className="text-base lg:text-2xl lg:w-40">
-                      Flight Name
-                    </p>
+                  <div className="relative flex-1 items-center gap-x-6">
+                  <label
+                          class="block text-sm font-medium mb-1"
+                          for="card-expiry"
+                        >
+                          Flight Name<span class="text-red-500">*</span>
+                        </label>
                     <TextField
                       className="inputField"
                       variant="outlined"
                       size="small"
-                      sx={{ backgroundColor: "#f8f8fa" }}
+                      sx={{ backgroundColor: "#f8f8fa"  ,width:'70%'}}
                       id="flightName"
                       placeholder="Enter flight ticket no"
                       name="flightName"
@@ -202,15 +224,18 @@ const Arrival = () => {
                       value={formik.values.flightName}
                     />
                   </div>
-                  <div className="relative flex items-center gap-x-6">
-                    <p className="text-base lg:text-2xl lg:w-40">
-                      Arrival Time
-                    </p>
+                  <div className="relative flex-1 items-center gap-x-6">
+                  <label
+                          class="block text-sm font-medium mb-1"
+                          for="card-expiry"
+                        >
+                          Arrival Time<span class="text-red-500">*</span>
+                        </label>
                     <TextField
                       className="inputField"
                       variant="outlined"
                       size="small"
-                      sx={{ backgroundColor: "#f8f8fa" }}
+                      sx={{ backgroundColor: "#f8f8fa" ,width:'70%' }}
                       id="arrivalTime"
                       placeholder="Enter flight arrival time"
                       name="arrivalTime"
@@ -223,13 +248,18 @@ const Arrival = () => {
                     />
                   </div>
 
-                  <div className="relative flex items-center gap-x-6">
-                    <p className="text-base lg:text-2xl lg:w-40">Airport</p>
+                  <div className="relative flex-1 items-center gap-x-6">
+                  <label
+                          class="block text-sm font-medium mb-1"
+                          for="card-expiry"
+                        >
+                          Airport<span class="text-red-500">*</span>
+                        </label>
                     <TextField
                       className="inputField"
                       variant="outlined"
                       size="small"
-                      sx={{ backgroundColor: "#f8f8fa" }}
+                      sx={{ backgroundColor: "#f8f8fa"  ,width:'70%'}}
                       id="airport"
                       placeholder="Enter airport name"
                       name="airport"
@@ -265,18 +295,21 @@ const Arrival = () => {
                       color: "#ffffff",
                       bgcolor: "#6D81FC",
                       textTransform: "none",
+                      alignSelf: "flex-start",
                       marginTop: 3,
                       "&:hover": {
                         bgcolor: "#6d81fc",
                         color: "#ffffff",
+                        
                       },
                     }}
                   >
                     Submit
                   </Button>
-                
+                  </div>
               </div>
             </form>
+            
           )}
           {active && (
             <div className="mt-20 max-w-7xl mx-auto bg-[#ffffff] border-2 rounded-2xl p-5">
