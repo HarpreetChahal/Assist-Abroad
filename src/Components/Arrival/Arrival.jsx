@@ -385,7 +385,7 @@ const Arrival = () => {
                       return (
                         <div className="flex items-center justify-between ">
                           <div className="flex  justify-start h-10 space-x-6 ">
-                          <svg
+                          {/* <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
                             viewBox="0 0 24 24"
@@ -398,7 +398,7 @@ const Arrival = () => {
                               stroke-linejoin="round"
                               d="M4.5 12.75l6 6 9-13.5"
                             />
-                          </svg>
+                          </svg> */}
                           {/* {index + 1} */}
                           {/* </div>
 
