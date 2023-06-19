@@ -67,7 +67,7 @@ html {
    /* margin-top: 5vh; */
    justify-content: space-between;
    border-radius: 10px;
-   background: #f8f8fa;
+   background: #f5f5fb;
    /* border: 1px solid rgb(194, 194, 194);
    box-shadow: 1px 1px rgb(186, 186, 186); */
 
@@ -82,13 +82,13 @@ html {
   }
   
   .container_register::-webkit-scrollbar-thumb {
-    background-color: #cdcdd7;
+    background-color: #6D81FE;
     border-radius: 3px;
     
   }
   
   .container_register::-webkit-scrollbar-thumb:hover {
-    background-color: #70717b;
+    background-color: #6D81FE;
   }
 
 .videoDiv{

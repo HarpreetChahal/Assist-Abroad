@@ -282,7 +282,10 @@ a {
   margin-left: 5px;
   font-size: 15px;
 }
-
+.clickHere{
+  text-decoration: underline;
+  cursor: pointer;
+}
 @media screen and (max-width: 926px) {
   body{
     background-color: #f8f8fa;

@@ -62,8 +62,9 @@ const Login = () => {
         <div className="container_login flex">
           <div className="videoDiv">
             {/* <video src={video} autoPlay muted loop alt="Login Image"></video> */}
+            <div class="imageContainer">
             <img className="imageLogoLeft" src={image} alt="Login Image"></img>
-
+</div>
             <div className="textDiv">
               {/* <h2 className='title'>ASSIST ABROAD</h2> */}
               {/* <p>Welcome Back</p> */}
@@ -111,7 +112,7 @@ const Login = () => {
                     value={formik.values.email}
                   ></TextField>
                 </div>
-                <p className="authError">Email is not registered or incorrect!</p>
+                {/* <p className="authError">Email is not registered or incorrect!</p> */}
               </div>
               
               <div className="inputDiv">
@@ -131,7 +132,7 @@ const Login = () => {
                     value={formik.values.password}
                   ></TextField>
                 </div>
-                <p className="authError">Password is incorrect!</p>
+                {/* <p className="authError">Password is incorrect!</p> */}
               </div>
 
               <Button
@@ -151,7 +152,7 @@ const Login = () => {
               </Button>
 
               <span className="forgotPassword">
-                Forgot your password? <a href="">Click here</a>
+                Forgot your password? <span href="" className="clickHere">Click here</span>
               </span>
               <Link to="/register">
                 <button type="submit" className="btnSignupLogin flex">

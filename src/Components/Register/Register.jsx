@@ -5,7 +5,7 @@ import Navbar from "../../layout/Navbar";
 import moment from "moment";
 
 //Assets
-import image from "../../Assets/LOGIN.png";
+import image from "../../Assets/LOGIN5.svg";
 import imageLogo from "../../Assets/LoginPageLogoMobile.png";
 import logo from "../../Assets/LOGO.png";
 import video from "../../Assets/video.mp4";
@@ -78,7 +78,7 @@ const navigate=useNavigate()
           <div className="videoDiv">
             {/* <video src={video} autoPlay muted loop alt="Login Image"></video> */}
             <div class="imageContainer">
-            <img className="imageLogoLeftReg" src={image} alt="Login Image"></img>
+            <img className="imageLogoLeftReg" src={image} alt="Register Image"></img>
             </div>
             <div className="textDiv">
               {/* <h2 className='title'>ASSIST ABROAD</h2> */}
@@ -128,7 +128,7 @@ const navigate=useNavigate()
                     value={formik.values.firstName}
                   ></TextField>
                 </div>
-                <p className="authErrorReg">Enter your full name!</p>
+                {/* <p className="authErrorReg">Enter your full name!</p> */}
               </div>
               <div className="inputDiv">
                 <label htmlFor="email">Email</label>
@@ -149,7 +149,7 @@ const navigate=useNavigate()
                     value={formik.values.email}
                   ></TextField>
                 </div>
-                <p className="authErrorReg">Email is not valid or incorrect!</p>
+                {/* <p className="authErrorReg">Email is not valid or incorrect!</p> */}
               </div>
               <div className="inputDiv">
                 <label htmlFor="phone">Phone Number</label>
@@ -169,7 +169,7 @@ const navigate=useNavigate()
                     value={formik.values.phone}
                   ></TextField>
                 </div>
-                <p className="authErrorReg">Phone number is not valid!</p>
+                {/* <p className="authErrorReg">Phone number is not valid!</p> */}
               </div>
               <div className="inputDiv">
                 <label htmlFor="dateOfBirth">Date Of Birth</label>
@@ -189,7 +189,7 @@ const navigate=useNavigate()
                     value={formik.values.dob}
                   ></TextField>
                 </div>
-                <p className="authErrorReg">Date of birth is in incorrect format!</p>
+                {/* <p className="authErrorReg">Date of birth is in incorrect format!</p> */}
               </div>
               <div className="inputDiv">
                 <label htmlFor="password">Password</label>
@@ -209,7 +209,7 @@ const navigate=useNavigate()
                     value={formik.values.password}
                   ></TextField>
                 </div>
-                <p className="authErrorReg">Use a combination of letter and numbers!</p>
+                {/* <p className="authErrorReg">Use a combination of letter and numbers!</p> */}
               </div>
               <div className="inputDiv">
                 <label htmlFor="confirmPassword">Confirm Password</label>
@@ -232,7 +232,7 @@ const navigate=useNavigate()
                     value={formik.values.confirmPassword}
                   ></TextField>
                 </div>
-                <p className="authErrorReg">Passwords dont match!</p>
+                {/* <p className="authErrorReg">Passwords dont match!</p> */}
               </div>
 
               <Button type="submit" className="btn flex"  
