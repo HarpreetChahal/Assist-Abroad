@@ -163,9 +163,20 @@ const Home = () => {
 
           </textarea>
           <div className="lg:col-span-2 flex items-center justify-end">
-<button className="px-8 py-2 text-white bg-pr rounded-md text-xl">
-    Submit
-</button>
+
+<Button
+              variant="contained"
+              sx={{
+                color: "#ffffff",
+                bgcolor: "#6D81FC",
+                textTransform: "none",
+               
+                
+              }}
+            >
+            Submit
+            </Button>
+
           </div>
         </div>
       </section>
