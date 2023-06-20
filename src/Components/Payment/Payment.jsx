@@ -37,7 +37,8 @@ const Payment = () => {
     fetchMembership();
   }, []);
 
-  const handleSelectMembership = (memId, price, index) => {
+  const handleSelectMembership = (memId, price, index, event) => {
+    event.preventDefault(); // Prevent the default scroll behavior
     setSelectedMembership(memId);
     setSelectedPrice(price);
     setHighlightedIndex(index);
@@ -63,7 +64,7 @@ const Payment = () => {
               return (
                 <div
                   class={`flex flex-col mx-auto text-center text-tc bg-white border-2 ${
-                    isHighlighted ? "border-4 border-pr shadow-lg transform scale-110" : ""
+                    isHighlighted ? "border-4 border-pr shadow-lg transform scale-105" : ""
                   }`}
                   key={index}
                 >
@@ -99,7 +100,7 @@ const Payment = () => {
                   <a
                     href="#"
                     class="text-wt bg-pr hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-8 py-2.5 text-center mb-4"
-                    onClick={() => handleSelectMembership(mem._id, mem.price, index)}
+                    onClick={(event) => handleSelectMembership(mem._id, mem.price, index, event)}
                   >
                     Select
                   </a>
