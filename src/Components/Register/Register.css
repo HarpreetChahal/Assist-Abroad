@@ -328,6 +328,11 @@ a{
 
 }
 
+.loginBtn
+{
+    border: 2px solid #6d81fe;
+}
+
 @media screen and (max-width :1268px) {
     
     .registerPage {
