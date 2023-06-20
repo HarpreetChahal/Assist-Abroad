@@ -75,7 +75,19 @@ const Quiz = () => {
       <div className="text-1xl text-[#23314C] font_ab">{currentIndex + 1} of {questions.length} Questions</div>
       <div className="text-1xl text-[#23314C] font_ab">{Math.round(progress)}% Completed</div>
       </div>
-        <LinearProgress variant="determinate" value={progress} sx={{ width: '100%', height: 15,borderRadius:3,  backgroundColor: '#2f8f8fa' }} />
+      <LinearProgress
+  variant="determinate"
+  value={progress}
+  sx={{
+    width: '100%',
+    height: 15,
+    borderRadius: 3,
+    backgroundColor: '#2f8f8fa',
+    '& .MuiLinearProgress-bar': {
+      backgroundColor: '#6d81fe', // Updated color of the progress bar
+    },
+  }}
+/>
       
         <div className="bg-white mt-5 mx-auto shadow-md w-full border rounded-xl lg:max-w-7xl py-9 px-5 lg:px-10">
         
