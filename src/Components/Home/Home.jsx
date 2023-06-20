@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "../../layout/Navbar";
-import hero from "/src/Assets/home.png";
+import hero from "/src/Assets/HOME9.png";
 import love from "/src/Assets/love.png";
 import rocket from "/src/Assets/rocket.png";
 import thunder from "/src/Assets/thunder.png";
@@ -43,7 +43,7 @@ const Home = () => {
             </div>
           </div>
           <div>
-            <img src={hero} alt="" />
+            <img src={hero} alt="" className="h-3/4 w-3/4"/>
           </div>
         </div>
       </section>

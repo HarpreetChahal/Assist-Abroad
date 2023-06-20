@@ -5,7 +5,7 @@ import Navbar from "../../layout/Navbar";
 import moment from "moment";
 
 //Assets
-import image from "../../Assets/reg_main.svg";
+import image from "../../Assets/SIGNUP8.svg";
 import imageLogo from "../../Assets/LoginPageLogoMobile.png";
 import logo from "../../Assets/LOGO.png";
 import video from "../../Assets/video.mp4";
@@ -77,13 +77,13 @@ const navigate=useNavigate()
     <div className=" w-full">
     <Navbar />
     
-    <div className=" max-w-7xl bg-[white] mt-32   mx-auto px-5 lg:px-0 shadow-lg rounded-md  grid grid-cols-1  lg:grid-cols-2  ">
+    <div className=" max-w-7xl bg-[white] mt-32   mx-auto px-5 lg:px-0 shadow-lg border-2 rounded-md  grid grid-cols-1  lg:grid-cols-2  ">
       
       <div className="flex  items-center justify-center mx-auto h-full w-full  bg-pr  rounded-l-md">
         
        
        
-          <img src={image} alt="" className="h-96 w-96 items-center justify-center mx-auto hidden lg:block"/>
+          <img src={image} alt="" className="h-3/4 w-3/4 items-center justify-center mx-auto hidden lg:block"/>
          
         
       </div>
