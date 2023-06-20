@@ -1,4 +1,4 @@
-
+import "./Register.css";
 // import "../../App.css";
 import { Link } from "react-router-dom";
 import Navbar from "../../layout/Navbar";
@@ -15,8 +15,12 @@ import { FcGoogle } from "react-icons/Fc";
 import { FaRegAddressCard } from "react-icons/fa";
 import { MdOutlineEmail } from "react-icons/Md";
 import { BiUserPin } from "react-icons/bi";
+import { FiPhone } from "react-icons/fi";
 import { RiLockPasswordFill } from "react-icons/Ri";
 import { SlCalender } from "react-icons/sl";
+import { AiFillEyeInvisible } from "react-icons/ai";
+import { AiFillEye } from "react-icons/ai";
+
 
 import React, { useState, useContext, useEffect } from "react";
 import InputAdornment from '@mui/material/InputAdornment';
@@ -66,18 +70,20 @@ const navigate=useNavigate()
           });
     },
   });
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setConfirmPassword] = useState(false);
 
   return (
     <div className=" w-full">
     <Navbar />
     
-    <div className=" max-w-7xl bg-white mt-32   mx-auto px-5 lg:px-0 border-2 rounded-md  grid grid-cols-1  lg:grid-cols-2  ">
+    <div className=" max-w-7xl bg-[white] mt-32   mx-auto px-5 lg:px-0 shadow-lg rounded-md  grid grid-cols-1  lg:grid-cols-2  ">
       
-      <div className="flex lg:border-r-2 items-center justify-center mx-auto h-full w-full rounded-md  bg-pr  ">
+      <div className="flex  items-center justify-center mx-auto h-full w-full  bg-pr  rounded-l-md">
         
        
        
-          <img src={image} alt="" className="h-96 w-96 items-center justify-center mx-auto rounded-md border-1 hidden lg:block"/>
+          <img src={image} alt="" className="h-96 w-96 items-center justify-center mx-auto hidden lg:block"/>
          
         
       </div>
@@ -112,8 +118,9 @@ const navigate=useNavigate()
         {/* <div className="w-96 text-white rounded-md bg-gray-800 py-3 text-center">
           Authentication error display
         </div> */}
-        <div className="  text-[#4F5C78] cursor-pointer bg-[#F8F8FA] py-3 flex items-center  justify-center gap-3">
-          <FcGoogle className="w-6 h-6" />
+        <div className="  text-[#ffffff] cursor-pointer  rounded-md bg-[#23314c] py-3 flex items-center mt-5 justify-center gap-3 "
+        style={{border:"1px solid #bfbfbf"}}>
+          <FcGoogle className="w-6 h-6 "/>
           Sign up with Google
         </div>
         <div className="flex items-center  justify-center gap-1 w-full">
@@ -190,7 +197,7 @@ const navigate=useNavigate()
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <SlCalender className="w-5 h-6 text-[#4F5C78] "/>
+                    <FiPhone className="w-5 h-6 text-[#4F5C78] "/>
                   </InputAdornment>
                 ),
               }}
@@ -225,7 +232,7 @@ const navigate=useNavigate()
               className="bg-[#fff] border-none outline-none text-lg  w-full"
               //  sx={{"& fieldset" : {border:'none'},}}
               size="small"
-              type="password"
+              type={showPassword ? 'text' : 'password'}
               id="password"
               placeholder="Enter your password"
               name="password"
@@ -241,7 +248,17 @@ const navigate=useNavigate()
                 ),
                 endAdornment: (
                   <InputAdornment position="end">
-                    <RiLockPasswordFill className="w-5 h-6 text-[#4F5C78] "/>
+                    {showPassword ? (
+          <AiFillEye
+            className="w-5 h-6 text-[#4F5C78] cursor-pointer"
+            onClick={() => setShowPassword(!showPassword)} // Toggle the showPassword state
+          />
+        ) : (
+          <AiFillEyeInvisible
+            className="w-5 h-6 text-[#4F5C78] cursor-pointer"
+            onClick={() => setShowPassword(!showPassword)} // Toggle the showPassword state
+          />
+        )}
                   </InputAdornment>
                 ),
               }}
@@ -253,7 +270,7 @@ const navigate=useNavigate()
               className="bg-[#fff] border-[#f8f8fa] outline-none text-lg px-2 py-2 w-full"
               //  sx={{"& fieldset" : {border:'none'},}}
               size="small"
-              type="password"
+              type={showConfirmPassword ? 'text' : 'password'}
               id="confirmPassword"
               placeholder="Confirm your password"
               name="confirmPassword"
@@ -272,7 +289,17 @@ const navigate=useNavigate()
                 ),
                 endAdornment: (
                   <InputAdornment position="end">
-                    <RiLockPasswordFill className="w-5 h-6 text-[#4F5C78] "/>
+                   {showConfirmPassword ? (
+          <AiFillEye
+            className="w-5 h-6 text-[#4F5C78] cursor-pointer"
+            onClick={() => setConfirmPassword(!showConfirmPassword)} // Toggle the showPassword state
+          />
+        ) : (
+          <AiFillEyeInvisible
+            className="w-5 h-6 text-[#4F5C78] cursor-pointer"
+            onClick={() => setConfirmPassword(!showConfirmPassword)} // Toggle the showPassword state
+          />
+        )}
                   </InputAdornment>
                 ),
               }}
@@ -283,14 +310,14 @@ const navigate=useNavigate()
           </button> */}
           <Button
             type="submit"
-            className=" mt-8 rounded-md w-full bg-pr text-center  text-white font-medium "
+            className=" mt-8 rounded-md shadow-md w-full bg-pr text-center  text-white font-medium "
             disabled={!(formik.isValid && formik.dirty)}
             style={{
               backgroundColor: "#6d81fe",
               color: "#fff",
               borderRadius: 10,
-              padding: 10,
-              marginTop: 14,
+              padding: 8,
+              marginTop: 18,
               textTransform: "none",
               fontSize: 14,
               border: "2px solid #6d81fe",
