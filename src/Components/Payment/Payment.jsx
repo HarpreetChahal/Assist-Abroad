@@ -99,7 +99,7 @@ const Payment = () => {
                   </ul>
                   <a
                     href="#"
-                    class="text-wt bg-pr hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-8 py-2.5 text-center mb-4"
+                    class="text-wt bg-pr hover:bg-primary-700  font-medium rounded-lg text-sm px-8 py-2.5 text-center mb-4"
                     onClick={(event) => handleSelectMembership(mem._id, mem.price, index, event)}
                   >
                     Select
