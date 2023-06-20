@@ -45,11 +45,11 @@ const Payment = () => {
   };
 
   return (
-    <div className="bg-[#F6F7FC] min-h-screen">
+    <div className="bg-white min-h-screen">
       <Navbar />
       <section class="bg-white pt-20 lg:pt-12 px-5 lg:mx-0">
         <div class=" mx-auto lg:max-w-7xl py-9  px-5 lg:px-10 lg:py-16 lg:px-6">
-          <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
+          <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12" >
             <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-tc font_ab">
               Choose a package
             </h2>
