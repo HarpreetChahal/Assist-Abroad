@@ -10,6 +10,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import Rating from "@mui/material/Rating";
 import { Button, TextField } from "@mui/material";
 import { useState, useContext, useEffect } from "react";
+// import { MdReportGmailerrorred } from "react-icons/md";
 
 import { Context } from "../../Components/context/Context";
 import { useFormik } from "formik";
@@ -125,11 +126,11 @@ const Arrival = () => {
           </div>
           {!active && (
             <form
-              className="mt-16 max-w-7xl  bg-white text-base  border-2 rounded-2xl"
+              className="mt-16 max-w-7xl  bg-white text-base  shadow shadow-slate-300 rounded-2xl"
               onSubmit={formik.handleSubmit}
             >
-              <h1 className="text-3xl text-center mt-5 font-bold">
-                PRE-ARRIVAL FORM
+              <h1 className="text-3xl text-center mt-8 pt-2 font-bold font_ab">
+                Pre-Arrival Form
               </h1>
               <div className="flex  ">
                 {/* Dummy Image */}
@@ -154,7 +155,7 @@ const Arrival = () => {
                         className="inputField"
                         variant="outlined"
                         size="small"
-                        sx={{ backgroundColor: "#f8f8fa", width: "70%" }}
+                        sx={{ backgroundColor: "#fff", width: "70%" }}
                         id="dateOfArrival"
                         placeholder="Enter arrival date"
                         name="dateOfArrival"
@@ -178,7 +179,7 @@ const Arrival = () => {
                         className="inputField"
                         variant="outlined"
                         size="small"
-                        sx={{ backgroundColor: "#f8f8fa", width: "70%" }}
+                        sx={{ backgroundColor: "#fff", width: "70%" }}
                         id="flightNumber"
                         placeholder="Enter flight ticket no"
                         name="flightNumber"
@@ -202,7 +203,7 @@ const Arrival = () => {
                         className="inputField"
                         variant="outlined"
                         size="small"
-                        sx={{ backgroundColor: "#f8f8fa", width: "70%" }}
+                        sx={{ backgroundColor: "#fff", width: "70%" }}
                         id="flightName"
                         placeholder="Enter flight ticket no"
                         name="flightName"
@@ -225,7 +226,7 @@ const Arrival = () => {
                         className="inputField"
                         variant="outlined"
                         size="small"
-                        sx={{ backgroundColor: "#f8f8fa", width: "70%" }}
+                        sx={{ backgroundColor: "#fff", width: "70%" }}
                         id="arrivalTime"
                         placeholder="Enter flight arrival time"
                         name="arrivalTime"
@@ -250,7 +251,7 @@ const Arrival = () => {
                         className="inputField"
                         variant="outlined"
                         size="small"
-                        sx={{ backgroundColor: "#f8f8fa", width: "70%" }}
+                        sx={{ backgroundColor: "#fff", width: "70%" }}
                         id="airport"
                         placeholder="Enter airport name"
                         name="airport"
@@ -302,39 +303,39 @@ const Arrival = () => {
             </form>
           )}
           {active && (
-            <div className="mt-10 max-w-7xl mx-auto bg-[#ffffff] border-2 rounded-2xl p-5">
+            <div className="mt-10 max-w-7xl mx-auto bg-white shadow shadow-slate-300   mb-5 rounded-2xl p-5">
               {/* <h1 className="text-3xl text-center font-bold">TASKS</h1> */}
               <div class="container   mx-auto bg-white rounded-2xl">
                 <div class="p-5 bg-white flex items-center mx-auto  border-2   rounded-lg sm:flex-row flex-col">
-                  <div class="sm:w-48 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center flex-shrink-0">
-                    <img src={agent} />
+                  <div class="sm:w-48 sm:h-32 h-20 w-20 sm:mr-10 p-2 inline-flex items-center justify-center flex-shrink-0">
+                    <img src={agent} className="rounded-md " />
                   </div>
                   <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
-                    <h1 class="text-3xl font-medium font_ab mb-2">
+                    <h1 class="text-3xl font-medium font_ab mb-5">
                       Agents Details
                     </h1>
 
                     <div class=" font-bold text-gray-800">
                       <div class="   space-x-3 ">
-                        <div class="flex pb-2">
+                        <div class="flex pb-1">
                           <h2 class="text-gray-500 pr-2">Name</h2>
                           <p>{appointment?.agentObj?.name?.fullName}</p>
                         </div>
                       </div>
                       <div class="w-full  space-x-3">
-                        <div class="flex pb-2">
+                        <div class="flex pb-1">
                           <h2 class="text-gray-500 pr-2">Contact</h2>
                           <p>{appointment?.agentObj?.phone?.phone}</p>
                         </div>
                       </div>
                       <div class="w-full md:w-1/2  space-x-3">
-                        <div class="flex pb-2">
+                        <div class="flex pb-1">
                           <h2 class="text-gray-500 pr-2">Car Plate</h2>
                           <p>SAM 741</p>
                         </div>
                       </div>
                       <div class="w-full md:w-1/2  space-x-3">
-                        <div class="flex pb-2">
+                        <div class="flex pb-1">
                           <h2 class="text-gray-500 pr-2">Email</h2>
                           <p>{appointment?.agentObj?.email}</p>
                         </div>
@@ -350,7 +351,7 @@ const Arrival = () => {
                       <h2 class="text-gray-500 mr-2 font-bold">Hotel Stay: </h2>
                       <p>JW Marriot, Regina</p>
                     </div> */}
-                    <Link to={"/view-profile"}>
+                    {/* <Link to={"/view-profile"}>
                       <a class="mt-3 text-indigo-500 inline-flex items-center">
                         View Profile
                         <svg
@@ -365,15 +366,15 @@ const Arrival = () => {
                           <path d="M5 12h14M12 5l7 7-7 7"></path>
                         </svg>
                       </a>
-                    </Link>
+                    </Link> */}
                   </div>
                 </div>
               </div>
 
-              <div class="max-w-7xl mx-auto mt-5 bg-white  p-5 border-2 rounded-xl shadow shadow-slate-300">
+              <div class="max-w-7xl mx-auto mt-5 bg-white  p-7  rounded-xl border-2">
                 <div class="flex flex-row justify-between items-center">
                   <div>
-                    <h1 class="text-2xl font-medium font_ab">Tasks list</h1>
+                    <h1 class="text-3xl font-medium font_ab">Tasks list</h1>
                   </div>
                 </div>
                 <p class="text-slate-500 font-medium font_ab">
@@ -405,27 +406,15 @@ const Arrival = () => {
                           <div className="justify-start text-sm "> */}
                             <label
                               htmlFor="comments"
-                              className="font-medium "
+                              className="font-medium text-slate-600"
                             >
                               {task.completed ? <s>{task.name}</s> : task.name}
                             </label>
                           </div>
-                          <div className="justify-end">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke-width="1.5"
-                              stroke="currentColor"
-                              class="w-4 h-4  hover:text-slate-700 hover:cursor-pointer"
-                            >
-                              <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
-                              />
-                            </svg>
-                          </div>
+                          {/* <div className="justify-end">
+                            
+                           <MdReportGmailerrorred color="red" className="cursor-pointer w-7 h-7 "/>
+                          </div> */}
                         </div>
                       );
                     })}

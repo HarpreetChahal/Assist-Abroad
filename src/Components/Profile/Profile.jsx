@@ -65,18 +65,20 @@ const Profile = () => {
   return (
     <div>
       <Navbar />
-      <div className=" mt-32 lg:mt-32 px-3 ">
+      <div className="min-h-screen   bg-[#f8f8fa]">
+      <div className=" pt-32 pb-20 lg:pt-32 lg:pb-10 px-3  ">
         <form onSubmit={formik.handleSubmit}>
-          <div className=" lg:max-w-7xl w-full mx-auto p-4 lg:py-20 lg:px-20 border-2 rounded-xl ">
+          <div className=" lg:max-w-7xl w-full mx-auto p-4 lg:py-8 lg:px-8 shadow shadow-slate-300 bg-white rounded-xl ">
             <div className="w-full flex items-start gap-2 justify-between">
               <div className="flex items-start lg:items-center flex-col lg:flex-row gap-10 ">
                 
-                <img className="w-32 lg:w-auto" src={agent} alt="" />
+                <img className="w-32 lg:w-auto rounded-md" src={agent} alt="" />
                 <div>
-                  <h1 className="text-3xl">{user?.name?.firstName}</h1>
-                  <h1 className="text-lg mt-1 mb-4">Member Since : 2020</h1>
+                  <h1 className="text-4xl font_ab">{user?.name?.firstName}</h1>
+                  
+                  <h1 className="text-lg mt-1 mb-4 font_ab ">Member Since : 2023</h1>
                   <div className=" items-center  rounded-md">
-                    <Button
+                    {/* <Button
                       variant="contained"
                       onClick={() => fileInput.current.click()}
                       sx={{
@@ -91,7 +93,7 @@ const Profile = () => {
                       }}
                     >
                       Choose Image
-                    </Button>
+                    </Button> */}
 
                     <input
                       ref={fileInput}
@@ -169,9 +171,10 @@ const Profile = () => {
               </div>
             </div>
             <div className="mt-10">
-              <div class="bg-white  pb-6 rounded-b ">
+              <div class="bg-white   rounded-b ">
                 <div x-show="card">
                   <div class="space-y-4">
+                    <p className="font_ab text-2xl font-medium text-underline">Profile Information</p>
                     {/* <!-- Card Number --> */}
                     <div class="space-x-4">
                       <div class="flex-1">
@@ -253,6 +256,7 @@ const Profile = () => {
                           fullWidth
                           size="small"
                           id="dob"
+                          type="date"
                           variant="outlined"
                           disabled={!edit}
                           name="dob"
@@ -367,6 +371,7 @@ const Profile = () => {
           </div>
         </form>
       </div>
+    </div>
     </div>
   );
 };
