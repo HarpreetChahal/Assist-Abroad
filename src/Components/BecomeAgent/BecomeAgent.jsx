@@ -31,14 +31,44 @@ const BecomeAgent = () => {
   
 
    const [showDiv, setShowDiv] = useState(false);
+   const [countdown, setCountdown] = useState(10);
+   const toastRef = useRef(null);
 
   const handleClick = () => {
+    // Perform any necessary actions
+    // Show the notification div
     setShowDiv(true);
+
+    // Redirect to homepage after 5 seconds
+    // setTimeout(() => {
+    //   window.location.href = '/'; // Replace '/' with the actual homepage URL
+    // }, 10000);
   };
 
   const handleClose = () => {
+    // Hide the notification div
     setShowDiv(false);
+   
   };
+
+  useEffect(() => {
+    if (showDiv && countdown > 0) {
+      const timer = setTimeout(() => {
+        setCountdown((prevCountdown) => prevCountdown - 1);
+      }, 1000);
+
+      return () => {
+        clearTimeout(timer);
+      };
+    }
+  }, [showDiv, countdown]);
+
+  useEffect(() => {
+    if (showDiv) {
+      toastRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [showDiv]);
+
 
   const formik = useFormik({
     initialValues: {
@@ -263,12 +293,6 @@ const BecomeAgent = () => {
                     onBlur={formik.handleBlur}
                     value={formik.values.about}
                       />
-                      {/* <textarea
-                        id="about"
-                        name="about"
-                        rows="3"
-                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      ></textarea> */}
                     </div>
                   </div>
                   {/* <div class="col-span-full">
@@ -317,7 +341,7 @@ const BecomeAgent = () => {
                 </div>
               </div>
 
-              <div class="border-b border-gray-900/10 pb-12">
+              <div class=" pb-8">
                 <h2 class="text-base font-semibold leading-7 text-gray-900">
                   Personal Information
                 </h2>
@@ -334,14 +358,6 @@ const BecomeAgent = () => {
                       Name
                     </label>
                     <div class="mt-2">
-                      {/* <input
-                        type="text"
-                        name="first-name"
-                        id="first-name"
-                        autocomplete="given-name"
-                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      /> */}
-
                       <TextField
                         fullWidth
                         size="small"
@@ -364,13 +380,6 @@ const BecomeAgent = () => {
                       Email
                     </label>
                     <div class="mt-2">
-                      {/* <input
-                        type="text"
-                        name="last-name"
-                        id="last-name"
-                        autocomplete="family-name"
-                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      /> */}
                       <TextField
                         fullWidth
                         size="small"
@@ -392,14 +401,6 @@ const BecomeAgent = () => {
                       Contact
                     </label>
                     <div class="mt-2">
-                      {/* <input
-                        type="text"
-                        name="first-name"
-                        id="first-name"
-                        autocomplete="given-name"
-                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      /> */}
-
                       <TextField
                         fullWidth
                         size="small"
@@ -422,13 +423,6 @@ const BecomeAgent = () => {
                       Date of birth
                     </label>
                     <div class="mt-2">
-                      {/* <input
-                        type="text"
-                        name="last-name"
-                        id="last-name"
-                        autocomplete="family-name"
-                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      /> */}
                       <TextField
                         fullWidth
                         size="small"
@@ -451,13 +445,7 @@ const BecomeAgent = () => {
                       Car Plate
                     </label>
                     <div class="mt-2">
-                      {/* <input
-                        type="text"
-                        name="last-name"
-                        id="last-name"
-                        autocomplete="family-name"
-                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      /> */}
+
                       <TextField
                         fullWidth
                         size="small"
@@ -479,13 +467,6 @@ const BecomeAgent = () => {
                       Country
                     </label>
                     <div class="mt-2">
-                      {/* <input
-                        type="text"
-                        name="last-name"
-                        id="last-name"
-                        autocomplete="family-name"
-                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      /> */}
                       <TextField
                         fullWidth
                         size="small"
@@ -512,13 +493,6 @@ const BecomeAgent = () => {
                       Street address
                     </label>
                     <div class="mt-2">
-                      {/* <input
-                        type="text"
-                        name="street-address"
-                        id="street-address"
-                        autocomplete="street-address"
-                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      /> */}
                       <TextField
                         fullWidth
                         size="small"
@@ -541,13 +515,6 @@ const BecomeAgent = () => {
                       City
                     </label>
                     <div class="mt-2">
-                      {/* <input
-                        type="text"
-                        name="city"
-                        id="city"
-                        autocomplete="address-level2"
-                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      /> */}
                       <TextField
                         fullWidth
                         size="small"
@@ -570,13 +537,6 @@ const BecomeAgent = () => {
                       State / Province
                     </label>
                     <div class="mt-2">
-                      {/* <input
-                        type="text"
-                        name="region"
-                        id="region"
-                        autocomplete="address-level1"
-                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      /> */}
                       <TextField
                         fullWidth
                         size="small"
@@ -599,13 +559,6 @@ const BecomeAgent = () => {
                       ZIP / Postal code
                     </label>
                     <div class="mt-2">
-                      {/* <input
-                        type="text"
-                        name="postal-code"
-                        id="postal-code"
-                        autocomplete="postal-code"
-                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      /> */}
                       <TextField
                         fullWidth
                         size="small"
@@ -627,13 +580,6 @@ const BecomeAgent = () => {
                       Account No
                     </label>
                     <div class="mt-2">
-                      {/* <input
-                        type="text"
-                        name="city"
-                        id="city"
-                        autocomplete="address-level2"
-                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      /> */}
                       <TextField
                         fullWidth
                         size="small"
@@ -656,13 +602,6 @@ const BecomeAgent = () => {
                       Bank Name
                     </label>
                     <div class="mt-2">
-                      {/* <input
-                        type="text"
-                        name="region"
-                        id="region"
-                        autocomplete="address-level1"
-                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      /> */}
                       <TextField
                         fullWidth
                         size="small"
@@ -685,13 +624,6 @@ const BecomeAgent = () => {
                       SIN No
                     </label>
                     <div class="mt-2">
-                      {/* <input
-                        type="text"
-                        name="postal-code"
-                        id="postal-code"
-                        autocomplete="postal-code"
-                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      /> */}
                       <TextField
                         fullWidth
                         size="small"
@@ -730,22 +662,11 @@ const BecomeAgent = () => {
       </Button>
 
       {showDiv && (
-        <div id="toast-danger" className="flex items-center w-full max-w-2xl p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800" role="alert">
-        <div className="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-red-500 bg-red-100 rounded-lg dark:bg-red-800 dark:text-red-200">
-          <svg aria-hidden="true" className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-            <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd"></path>
-          </svg>
-          <span className="sr-only">Error icon</span>
-        </div>
-        <div className="ml-3 text-sm font-normal">Your request has been sent. We will get in touch with you through email. Riderecting to home in 10 seconds</div>
-        
-        <button type="button" className="ml-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700" data-dismiss-target="#toast-danger" aria-label="Close" onClick={handleClose}>
-          <span className="sr-only">Close</span>
-          <svg aria-hidden="true" className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-            <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd"></path>
-          </svg>
-        </button>
-      </div>
+      
+        <div ref={toastRef} id="toast-simple" class="flex items-center w-full max-w-xl mt-8 border-2 border-slate-200 p-4 space-x-4 text-gray-500 bg-white divide-x divide-slate-300 rounded-lg shadow shadow-slate-300 " role="alert">
+    <svg aria-hidden="true" class="w-9 h-9 text-blue-600" focusable="false" data-prefix="fas" data-icon="paper-plane" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M511.6 36.86l-64 415.1c-1.5 9.734-7.375 18.22-15.97 23.05c-4.844 2.719-10.27 4.097-15.68 4.097c-4.188 0-8.319-.8154-12.29-2.472l-122.6-51.1l-50.86 76.29C226.3 508.5 219.8 512 212.8 512C201.3 512 192 502.7 192 491.2v-96.18c0-7.115 2.372-14.03 6.742-19.64L416 96l-293.7 264.3L19.69 317.5C8.438 312.8 .8125 302.2 .0625 289.1s5.469-23.72 16.06-29.77l448-255.1c10.69-6.109 23.88-5.547 34 1.406S513.5 24.72 511.6 36.86z"></path></svg>
+    <div class="pl-4 text-sm font-small font-10 text-slate-500"> Your request has been sent. We will get in touch with you through email. Redirecting you to the homepage in {countdown} seconds.</div>
+</div>
       )}
     </div>
               
