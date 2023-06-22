@@ -11,6 +11,9 @@ import { Context } from "../../Components/context/Context";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
+import { MdPayment } from "react-icons/md";
+
+
 import commonApi from "../../api/common";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
@@ -242,40 +245,21 @@ const PaymentCard = (params) => {
                         </Button>
                       
                     </div>
-                   {/* <div class="text-xs text-gray-500 italic text-center">
-                      You'll be charged $253, including $48 for VAT{" "}
+                  </div>
+                  <div
+                    // ref={toastRef}
+                    id="toast-simple"
+                    class="flex items-center w-full max-w-xl mt-8 border-2 border-slate-200 p-4 space-x-4 text-gray-500 bg-white divide-x divide-slate-300 rounded-lg shadow shadow-slate-300 "
+                    role="alert"
+                  >
+                    <MdPayment className="w-10 h-10 text-[#6d81fe] "/>
+                   
+                    <div class="pl-4 text-sm font-small font-10 text-slate-500">
+                      {" "}
+                      Payment has been successfully processed. Ridirecting to arrival page in 10 seconds.
                     </div>
-                    */}
                   </div>
                 </form>
-
-                {/* <!-- PayPal form --> 
-                <div x-show="!card" x-cloak>
-                  <div>
-                    <div class="mb-4 mt-4">
-                      <Button
-                        fullWidth
-                        variant="contained"
-                        sx={{
-                          color: "#ffffff",
-                          bgcolor: "#6D81FC",
-                          textTransform: "none",
-                          "&:hover": {
-                            bgcolor: "#6d81fc",
-                            color: "#ffffff",
-                          },
-                        }}
-                      >
-                        Pay $253.00 with paypal
-                        
-                      </Button>
-                    </div>
-                    <div class="text-xs text-gray-500 italic text-center">
-                      You'll be charged $253, including $48 for VAT{" "}
-                    </div>
-                  </div>
-                </div>
-                */}
               </div>
             </div>
           </div>
