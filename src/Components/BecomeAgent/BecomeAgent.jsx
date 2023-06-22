@@ -25,14 +25,12 @@ const BecomeAgent = () => {
     window.scrollTo(0, 0); // Scroll to the top of the page on component mount
   }, []);
 
-  const { dispatch, isFetching ,user} = useContext(Context);
+  const { dispatch, isFetching, user } = useContext(Context);
   const navigate = useNavigate();
 
-  
-
-   const [showDiv, setShowDiv] = useState(false);
-   const [countdown, setCountdown] = useState(10);
-   const toastRef = useRef(null);
+  const [showDiv, setShowDiv] = useState(false);
+  const [countdown, setCountdown] = useState(10);
+  const toastRef = useRef(null);
 
   const handleClick = () => {
     // Perform any necessary actions
@@ -48,7 +46,6 @@ const BecomeAgent = () => {
   const handleClose = () => {
     // Hide the notification div
     setShowDiv(false);
-   
   };
 
   useEffect(() => {
@@ -69,22 +66,21 @@ const BecomeAgent = () => {
     }
   }, [showDiv]);
 
-
   const formik = useFormik({
     initialValues: {
-      about:user?.bio||"",
+      about: user?.bio || "",
       firstname: user.name?.firstName || "",
-      email:user.email ||"",
+      email: user.email || "",
       phone: user?.phone?.phone || "",
-      dob:user.dob|| moment().format("yyyy-MM-DD"),
-      carPlate:user?.vehicleInfo?.numberPlate||"",
-      country:user?.address?.country||"",
-      stAddress:user?.address?.streetAdress|| "",
-      city:user?.address?.city||"",
-      state:user?.address?.state||"",
-      zip:user?.address?.postalCode||"",
-      accountNo: user?.bankDetails?.accountNo|| "",
-      bankName:  user?.bankDetails?.name|| "",
+      dob: user.dob || moment().format("yyyy-MM-DD"),
+      carPlate: user?.vehicleInfo?.numberPlate || "",
+      country: user?.address?.country || "",
+      stAddress: user?.address?.streetAdress || "",
+      city: user?.address?.city || "",
+      state: user?.address?.state || "",
+      zip: user?.address?.postalCode || "",
+      accountNo: user?.bankDetails?.accountNo || "",
+      bankName: user?.bankDetails?.name || "",
       passportNo: user?.sinNo || "",
     },
     validationSchema: Yup.object({
@@ -103,25 +99,25 @@ const BecomeAgent = () => {
       passportNo: Yup.string().required("Required"),
     }),
     onSubmit: async (values) => {
-      let data={
-        about:values.bio,
-        firstname: values.firstName ,
-        email:values.email ,
+      let data = {
+        about: values.bio,
+        firstname: values.firstName,
+        email: values.email,
         phone: {
-          countryCode:"+1",
-          phone:values.phone
-        } ,
-        dob:values.dob,
-        carPlate:values.vehicleInfo?.numberPlate,
-        country:values.address?.country,
-        stAddress:values.address?.streetAdress,
-        city:values.address?.city,
-        state:values.address?.state,
-        zip:values.address?.postalCode,
+          countryCode: "+1",
+          phone: values.phone,
+        },
+        dob: values.dob,
+        carPlate: values.vehicleInfo?.numberPlate,
+        country: values.address?.country,
+        stAddress: values.address?.streetAdress,
+        city: values.address?.city,
+        state: values.address?.state,
+        zip: values.address?.postalCode,
         accountNo: values.bankDetails?.accountNo,
-        bankName:  values.bankDetails?.name,
+        bankName: values.bankDetails?.name,
         passportNo: values.sinNo,
-      }
+      };
       await commonApi({
         action: "becomeAgent",
         data: data,
@@ -131,7 +127,7 @@ const BecomeAgent = () => {
       })
         .then(({ DATA = {}, MESSAGE }) => {
           dispatch({ type: "UPDATE_USER", payload: DATA });
-          navigate("/arrival-form")
+          navigate("/arrival-form");
         })
         .catch((error) => {
           console.error(error);
@@ -152,7 +148,6 @@ const BecomeAgent = () => {
                 alt=""
               />
               <div>
-                
                 <h1 className="text-lg mt-1 mb-4 text-[#23314C]">
                   {/* Member Since : 2020 */}
                 </h1>
@@ -288,10 +283,10 @@ const BecomeAgent = () => {
                         multiline
                         rows={3}
                         name="about"
-                    error={formik.touched.about && formik.errors.about}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.about}
+                        error={formik.touched.about && formik.errors.about}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.about}
                       />
                     </div>
                   </div>
@@ -364,10 +359,12 @@ const BecomeAgent = () => {
                         id="firstname"
                         variant="outlined"
                         name="firstname"
-                    error={formik.touched.firstname && formik.errors.firstname}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.firstname}
+                        error={
+                          formik.touched.firstname && formik.errors.firstname
+                        }
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.firstname}
                       />
                     </div>
                   </div>
@@ -386,10 +383,10 @@ const BecomeAgent = () => {
                         id="email"
                         variant="outlined"
                         name="email"
-                    error={formik.touched.email && formik.errors.email}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.email}
+                        error={formik.touched.email && formik.errors.email}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.email}
                       />
                     </div>
                   </div>
@@ -407,10 +404,10 @@ const BecomeAgent = () => {
                         id="phone"
                         variant="outlined"
                         name="phone"
-                    error={formik.touched.phone && formik.errors.phone}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.phone}
+                        error={formik.touched.phone && formik.errors.phone}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.phone}
                       />
                     </div>
                   </div>
@@ -429,14 +426,14 @@ const BecomeAgent = () => {
                         id="dob"
                         variant="outlined"
                         name="dob"
-                    error={formik.touched.dob && formik.errors.dob}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.dob}
+                        error={formik.touched.dob && formik.errors.dob}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.dob}
                       />
                     </div>
                   </div>
-                  
+
                   <div class="sm:col-span-3">
                     <label
                       for="last-name"
@@ -445,17 +442,18 @@ const BecomeAgent = () => {
                       Car Plate
                     </label>
                     <div class="mt-2">
-
                       <TextField
                         fullWidth
                         size="small"
                         id="carplate"
                         variant="outlined"
                         name="carPlate"
-                    error={formik.touched.carPlate && formik.errors.carPlate}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.carPlate}
+                        error={
+                          formik.touched.carPlate && formik.errors.carPlate
+                        }
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.carPlate}
                       />
                     </div>
                   </div>
@@ -481,10 +479,6 @@ const BecomeAgent = () => {
                     </div>
                   </div>
 
-
-
-                  
-
                   <div class="col-span-full">
                     <label
                       for="street-address"
@@ -499,7 +493,9 @@ const BecomeAgent = () => {
                         id="stAddress"
                         variant="outlined"
                         name="stAddress"
-                        error={formik.touched.stAddress && formik.errors.stAddress}
+                        error={
+                          formik.touched.stAddress && formik.errors.stAddress
+                        }
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         value={formik.values.stAddress}
@@ -586,7 +582,9 @@ const BecomeAgent = () => {
                         id="accountNo"
                         variant="outlined"
                         name="accountNo"
-                        error={formik.touched.accountNo && formik.errors.accountNo}
+                        error={
+                          formik.touched.accountNo && formik.errors.accountNo
+                        }
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         value={formik.values.accountNo}
@@ -608,7 +606,9 @@ const BecomeAgent = () => {
                         id="bankName"
                         variant="outlined"
                         name="bankName"
-                        error={formik.touched.bankName && formik.errors.bankName}
+                        error={
+                          formik.touched.bankName && formik.errors.bankName
+                        }
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         value={formik.values.bankName}
@@ -630,7 +630,9 @@ const BecomeAgent = () => {
                         id="passportNo"
                         variant="outlined"
                         name="passportNo"
-                        error={formik.touched.passportNo && formik.errors.passportNo}
+                        error={
+                          formik.touched.passportNo && formik.errors.passportNo
+                        }
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         value={formik.values.passportNo}
@@ -642,34 +644,55 @@ const BecomeAgent = () => {
             </div>
 
             <div class="mt-2 flex items-center justify-center text-center gap-x-6">
-          
-            <div>
-      <Button
-        type="submit"
-        variant="contained"
-        sx={{
-          color: "#ffffff",
-          bgcolor: "#6D81FC",
-          textTransform: "none",
-          "&:hover": {
-            bgcolor: "#6d81fc",
-            color: "#ffffff",
-          },
-        }}
-        onClick={handleClick}
-      >
-        Submit Request
-      </Button>
+              <div>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  sx={{
+                    color: "#ffffff",
+                    bgcolor: "#6D81FC",
+                    textTransform: "none",
+                    "&:hover": {
+                      bgcolor: "#6d81fc",
+                      color: "#ffffff",
+                    },
+                  }}
+                  onClick={handleClick}
+                >
+                  Submit Request
+                </Button>
 
-      {showDiv && (
-      
-        <div ref={toastRef} id="toast-simple" class="flex items-center w-full max-w-xl mt-8 border-2 border-slate-200 p-4 space-x-4 text-gray-500 bg-white divide-x divide-slate-300 rounded-lg shadow shadow-slate-300 " role="alert">
-    <svg aria-hidden="true" class="w-9 h-9 text-blue-600" focusable="false" data-prefix="fas" data-icon="paper-plane" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M511.6 36.86l-64 415.1c-1.5 9.734-7.375 18.22-15.97 23.05c-4.844 2.719-10.27 4.097-15.68 4.097c-4.188 0-8.319-.8154-12.29-2.472l-122.6-51.1l-50.86 76.29C226.3 508.5 219.8 512 212.8 512C201.3 512 192 502.7 192 491.2v-96.18c0-7.115 2.372-14.03 6.742-19.64L416 96l-293.7 264.3L19.69 317.5C8.438 312.8 .8125 302.2 .0625 289.1s5.469-23.72 16.06-29.77l448-255.1c10.69-6.109 23.88-5.547 34 1.406S513.5 24.72 511.6 36.86z"></path></svg>
-    <div class="pl-4 text-sm font-small font-10 text-slate-500"> Your request has been sent. We will get in touch with you through email. Redirecting you to the homepage in {countdown} seconds.</div>
-</div>
-      )}
-    </div>
-              
+                {showDiv && (
+                  <div
+                    ref={toastRef}
+                    id="toast-simple"
+                    class="flex items-center w-full max-w-xl mt-8 border-2 border-slate-200 p-4 space-x-4 text-gray-500 bg-white divide-x divide-slate-300 rounded-lg shadow shadow-slate-300 "
+                    role="alert"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="w-9 h-9 text-blue-600"
+                      focusable="false"
+                      data-prefix="fas"
+                      data-icon="paper-plane"
+                      role="img"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 512 512"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M511.6 36.86l-64 415.1c-1.5 9.734-7.375 18.22-15.97 23.05c-4.844 2.719-10.27 4.097-15.68 4.097c-4.188 0-8.319-.8154-12.29-2.472l-122.6-51.1l-50.86 76.29C226.3 508.5 219.8 512 212.8 512C201.3 512 192 502.7 192 491.2v-96.18c0-7.115 2.372-14.03 6.742-19.64L416 96l-293.7 264.3L19.69 317.5C8.438 312.8 .8125 302.2 .0625 289.1s5.469-23.72 16.06-29.77l448-255.1c10.69-6.109 23.88-5.547 34 1.406S513.5 24.72 511.6 36.86z"
+                      ></path>
+                    </svg>
+                    <div class="pl-4 text-sm font-small font-10 text-slate-500">
+                      {" "}
+                      Your request has been sent. We will get in touch with you
+                      through email. Redirecting you to the homepage in{" "}
+                      {countdown} seconds.
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           </form>
         </div>
