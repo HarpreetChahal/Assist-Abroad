@@ -53,7 +53,10 @@ const PaymentCard = (params) => {
     validationSchema: Yup.object({
       cardNumber: Yup.number().required("Required"),
       expiryDate: Yup.string().required("Required"),
-      cvv: Yup.string().required("Required"),
+      cvv: Yup.string()
+      .matches(/^\d+$/, "CVV must contain only numbers")
+        .max(3, "CVV must be exactly 3 digits")
+        .required("Required"),
       cardName: Yup.string().required("Required"),
       cardEmail: Yup.string().required("Required"),
     }),
@@ -178,7 +181,7 @@ const PaymentCard = (params) => {
                           class="block text-sm font-medium mb-1"
                           for="card-cvc"
                         >
-                          CVC <span class="text-red-500">*</span>
+                          CVV <span class="text-red-500">*</span>
                         </label>
                         <TextField
                           fullWidth
@@ -191,6 +194,11 @@ const PaymentCard = (params) => {
                           onChange={formik.handleChange}
                           onBlur={formik.handleBlur}
                           value={formik.values.cvv}
+                          inputProps={{
+                            inputMode: "numeric",
+                            pattern: "[0-9]*",
+                            maxLength: 3,
+                          }}
                         />
                       </div>
                     </div>
