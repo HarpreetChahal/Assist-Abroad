@@ -11,7 +11,7 @@ import { Context } from "../../Components/context/Context";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
-import { MdPayment } from "react-icons/md";
+import { BsCreditCard } from "react-icons/bs";
 
 
 import commonApi from "../../api/common";
@@ -20,7 +20,25 @@ import { useLocation } from "react-router-dom";
 
 const PaymentCard = (params) => {
   const { dispatch, isFetching } = useContext(Context);
+  const [showDiv, setShowDiv] = useState(false);
+  
   const navigate = useNavigate();
+
+  const handleClick = () => {
+    // Perform any necessary actions
+    // Show the notification div
+    setShowDiv(true);
+
+    // Redirect to homepage after 5 seconds
+    // setTimeout(() => {
+    //   window.location.href = '/'; // Replace '/' with the actual homepage URL
+    // }, 10000);
+  };
+
+  const handleClose = () => {
+    // Hide the notification div
+    setShowDiv(false);
+  };
   
   const {membershipId,price} = useLocation().state;
 
@@ -240,25 +258,29 @@ const PaymentCard = (params) => {
                             },
                           }}
                           type="submit"
+                          onClick={handleClick}
                         >
                           Pay ${price}
                         </Button>
                       
                     </div>
                   </div>
+                  {showDiv && (
                   <div
-                    // ref={toastRef}
+                   
                     id="toast-simple"
                     class="flex items-center w-full max-w-xl mt-8 border-2 border-slate-200 p-4 space-x-4 text-gray-500 bg-white divide-x divide-slate-300 rounded-lg shadow shadow-slate-300 "
                     role="alert"
+                    onClick={handleClose}
                   >
-                    <MdPayment className="w-10 h-10 text-[#6d81fe] "/>
+                    <BsCreditCard className="w-10 h-10 text-[#6d81fe] " />
                    
                     <div class="pl-4 text-sm font-small font-10 text-slate-500">
                       {" "}
                       Payment has been successfully processed. Ridirecting to arrival page in 10 seconds.
                     </div>
                   </div>
+                  )}
                 </form>
               </div>
             </div>
