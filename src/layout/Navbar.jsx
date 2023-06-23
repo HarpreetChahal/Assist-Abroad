@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate,useLocation } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 import { AiOutlineUser } from "react-icons/ai";
@@ -13,11 +13,11 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const { user, dispatch, token } = useContext(Context);
-
+  const location=useLocation()
   const toggleProfileDropdown = () => {
     setProfileOpen(!profileOpen);
   };
-
+  console.log("Location",location)
   const handleLogout = async () => {
     localStorage.clear();
     dispatch({ type: "LOGOUT" });
@@ -115,14 +115,15 @@ const Navbar = () => {
             
 
             {!(user && token) ? (
-              <Link
-                to="/login"
+            location.pathname!="/login" &&  <Link
+            to="/login"
                 className="text-[#23314C] hover:text-pr text-lg font_ab"
               >
                 Sign In
               </Link>
             ) : null}
             {!(user && token) ? (
+              location.pathname!="/register" &&
               <Link
                 to="/register"
                 className="text-pr border border-pr px-7 text-lg hover:bg-pr hover:text-white rounded-md py-1 font_ab"
