@@ -165,7 +165,7 @@ const Profile = () => {
                       <div className="space-x-4">
                         <div className="flex-1">
                           <label className="block text-sm font-medium mb-1" htmlFor="firstname">
-                            Name <span className="text-red-500">*</span>
+                            Name 
                           </label>
                           <TextField
                             fullWidth
@@ -184,7 +184,7 @@ const Profile = () => {
                       </div>
                       <div className="flex-1">
                         <label className="block text-sm font-medium mb-1" htmlFor="email">
-                          Email <span className="text-red-500">*</span>
+                          Email 
                         </label>
                         <TextField
                           fullWidth
@@ -203,7 +203,7 @@ const Profile = () => {
                       <div className="flex space-x-4">
                         <div className="flex-1">
                           <label className="block text-sm font-medium mb-1" htmlFor="phone">
-                            Contact No <span className="text-red-500">*</span>
+                            Contact No 
                           </label>
                           <TextField
                             fullWidth
@@ -221,7 +221,7 @@ const Profile = () => {
                         </div>
                         <div className="flex-1">
                           <label className="block text-sm font-medium mb-1" htmlFor="dob">
-                            Date of Birth <span className="text-red-500">*</span>
+                            Date of Birth 
                           </label>
                           <TextField
                             fullWidth
