@@ -125,7 +125,7 @@ const Payment = () => {
           }}
           disabled={!selectedMembership}
           onClick={() => {
-            navigate("/payment-card", { state: { membershipId: selectedMembership, price: selectedPrice } });
+            navigate("/payment-card", { state: { membershipId: selectedMembership, price: selectedPrice },replace:true });
           }}
         >
           Continue to payment

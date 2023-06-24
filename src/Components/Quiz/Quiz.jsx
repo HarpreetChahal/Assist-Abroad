@@ -39,7 +39,7 @@ const Quiz = () => {
   const [questions, setQuestions] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [progress, setProgress] = useState(0);
-
+  
   useEffect(() => {
     const getQuestions = async () => {
       await commonApi({
@@ -163,6 +163,9 @@ const Quiz = () => {
                 <Link to={"/payment"}>
                   <Button
                     variant="contained"
+                    onClick={()=>{
+                      navigate("/payment",{replace:true})
+                    }}
                     sx={{
                       color: "#ffffff",
                       bgcolor: "#6D81FC",
