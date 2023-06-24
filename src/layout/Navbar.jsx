@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Link, useNavigate,useLocation } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 import { AiOutlineUser } from "react-icons/ai";
@@ -13,7 +13,7 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const { user, dispatch, token } = useContext(Context);
-  const location=useLocation()
+  const location = useLocation();
   const toggleProfileDropdown = () => {
     setProfileOpen(!profileOpen);
   };
@@ -41,37 +41,39 @@ const Navbar = () => {
             >
               Home
             </Link>
-            <div
-              onClick={() => {
-                window.scrollTo(0, 470);
-              }}
-              className="text-[#23314C] cursor-pointer hover:text-pr text-lg font_ab"
-            >
-              Services
-            </div>
-
-            <div
-              onClick={() => {
-                window.scrollTo(0, 1370);
-              }}
-              className="text-[#23314C] cursor-pointer hover:text-pr text-lg font_ab"
-            >
-              Contact
-            </div>
-
-            
-              {user && token && (
+            {((user && user.role == 0  && !user.hasRequested) || (!user)) && (
+              <>
                 <div
-                className="text-[#23314C] cursor-pointer hover:text-pr  font_ab">
-                  <img
-                    className={`text-[#23314C] cursor-pointer hover:text-pr text-lg font_ab w-12 h-12 rounded-full ${
-                      profileOpen ? "text-pr" : ""
-                    }`}
-                    onClick={toggleProfileDropdown}
-                    src={agent}
-                    alt="Rounded avatar"
-                  />
-                  {/* <div
+                  onClick={() => {
+                    window.scrollTo(0, 470);
+                  }}
+                  className="text-[#23314C] cursor-pointer hover:text-pr text-lg font_ab"
+                >
+                  Services
+                </div>
+
+                <div
+                  onClick={() => {
+                    window.scrollTo(0, 1370);
+                  }}
+                  className="text-[#23314C] cursor-pointer hover:text-pr text-lg font_ab"
+                >
+                  Contact
+                </div>
+              </>
+            )}
+
+            {user && token && (
+              <div className="text-[#23314C] cursor-pointer hover:text-pr  font_ab">
+                <img
+                  className={`text-[#23314C] cursor-pointer hover:text-pr text-lg font_ab w-12 h-12 rounded-full ${
+                    profileOpen ? "text-pr" : ""
+                  }`}
+                  onClick={toggleProfileDropdown}
+                  src={agent}
+                  alt="Rounded avatar"
+                />
+                {/* <div
                     className={`flex text-[#23314C] cursor-pointer hover:text-pr text-lg font_ab  ${
                       profileOpen ? "text-pr" : ""
                     }`}
@@ -80,56 +82,58 @@ const Navbar = () => {
                     Avatar
                     <AiOutlineDown className="ml-1" size={14} />
                   </div> */}
-                </div>
-              )}
-              {profileOpen && user && token && (
-                <div className="absolute mt-52 px-2 py-2 bg-white rounded-md shadow-lg bg-[#ffffff]">
+              </div>
+            )}
+            {profileOpen && user && token && (
+              <div className="absolute mt-52 px-2 py-2 bg-white rounded-md shadow-lg bg-[#ffffff]">
+                <Link
+                  to="/profile"
+                  className="flex items-start justify-start text-[#23314C] hover:text-pr text-lg font_ab px-1 py-1  mt-1  rounded-md hover:bg-[#6D81FE] hover:text-white"
+                >
+                  <AiOutlineUser className="mr-2" />
+                  Profile
+                </Link>
+                {user && token && !user.hasRequested && user.role == 0 && (
                   <Link
-                    to="/profile"
+                    to="/become-agent"
                     className="flex items-start justify-start text-[#23314C] hover:text-pr text-lg font_ab px-1 py-1  mt-1  rounded-md hover:bg-[#6D81FE] hover:text-white"
                   >
-                    <AiOutlineUser className="mr-2" />
-                    Profile
+                    <AiOutlineRobot className="mr-2" />
+                    Become Agent
                   </Link>
-                  {user && token && !user.hasRequested && user.role==0 && (
-                    <Link
-                      to="/become-agent"
-                      className="flex items-start justify-start text-[#23314C] hover:text-pr text-lg font_ab px-1 py-1  mt-1  rounded-md hover:bg-[#6D81FE] hover:text-white"
-                    >
-                      <AiOutlineRobot className="mr-2" />
-                      Become Agent
-                    </Link>
-                  )}
-                  {user && token && (
-                    <div
-                      onClick={handleLogout}
-                      className="flex  items-start justify-start text-[#23314C] hover:text-pr text-lg font_ab px-1 py-1  mt-1 rounded-md hover:bg-[#6D81FE] hover:text-white"
-                    >
-                      <FiLogOut className="mr-2" />
-                      Logout
-                    </div>
-                  )}
-                </div>
-              )}
-            
+                )}
+                {user && token && (
+                  <div
+                    onClick={handleLogout}
+                    className="flex  items-start justify-start text-[#23314C] hover:text-pr text-lg font_ab px-1 py-1  mt-1 rounded-md hover:bg-[#6D81FE] hover:text-white"
+                  >
+                    <FiLogOut className="mr-2" />
+                    Logout
+                  </div>
+                )}
+              </div>
+            )}
 
-            {!(user && token) ? (
-            location.pathname!="/login" &&  <Link
-            to="/login"
-                className="text-[#23314C] hover:text-pr text-lg font_ab"
-              >
-                Sign In
-              </Link>
-            ) : null}
-            {!(user && token) ? (
-              location.pathname!="/register" &&
-              <Link
-                to="/register"
-                className="text-pr border border-pr px-7 text-lg hover:bg-pr hover:text-white rounded-md py-1 font_ab"
-              >
-                Join
-              </Link>
-            ) : null}
+            {!(user && token)
+              ? location.pathname != "/login" && (
+                  <Link
+                    to="/login"
+                    className="text-[#23314C] hover:text-pr text-lg font_ab"
+                  >
+                    Sign In
+                  </Link>
+                )
+              : null}
+            {!(user && token)
+              ? location.pathname != "/register" && (
+                  <Link
+                    to="/register"
+                    className="text-pr border border-pr px-7 text-lg hover:bg-pr hover:text-white rounded-md py-1 font_ab"
+                  >
+                    Join
+                  </Link>
+                )
+              : null}
           </div>
         </div>
         {/* mobile version */}
@@ -154,27 +158,31 @@ const Navbar = () => {
               </div>
             </div>
 
-            { location.pathname=="/login" && <div className="flex items-center">
-              <div>
-                <Link
-                  to="/register"
-                  className="text-pr border border-pr  px-6 mt-2 rounded-md py-1.5 font_ab"
-                >
-                  Join
-                </Link>
+            {location.pathname == "/login" && (
+              <div className="flex items-center">
+                <div>
+                  <Link
+                    to="/register"
+                    className="text-pr border border-pr  px-6 mt-2 rounded-md py-1.5 font_ab"
+                  >
+                    Join
+                  </Link>
+                </div>
               </div>
-            </div>}
+            )}
 
-            { location.pathname=="/register" && <div className="flex items-center">
-              <div>
-                <Link
-                  to="/login"
-                  className="text-pr border border-pr  px-6 mt-2 rounded-md py-1.5 font_ab"
-                >
-                  Sing In
-                </Link>
+            {location.pathname == "/register" && (
+              <div className="flex items-center">
+                <div>
+                  <Link
+                    to="/login"
+                    className="text-pr border border-pr  px-6 mt-2 rounded-md py-1.5 font_ab"
+                  >
+                    Sing In
+                  </Link>
+                </div>
               </div>
-            </div>}
+            )}
           </div>
 
           {open && (
@@ -187,24 +195,29 @@ const Navbar = () => {
                   Home
                 </Link>
 
-                <div
-                  onClick={() => {
-                    window.scrollTo(0, 470);
-                    setOpen(false);
-                  }}
-                  className="text-[#23314C] cursor-pointer hover:text-pr font_ab"
-                >
-                  Services
-                </div>
-                <div
-                  onClick={() => {
-                    window.scrollTo(0, 3270);
-                    setOpen(false);
-                  }}
-                  className="text-[#23314C] cursor-pointer hover:text-pr font_ab"
-                >
-                  Contact
-                </div>
+                {((user && user.role == 0  && !user.hasRequested )|| (!user))&& (
+                  <>
+                    {" "}
+                    <div
+                      onClick={() => {
+                        window.scrollTo(0, 470);
+                        setOpen(false);
+                      }}
+                      className="text-[#23314C] cursor-pointer hover:text-pr font_ab"
+                    >
+                      Services
+                    </div>
+                    <div
+                      onClick={() => {
+                        window.scrollTo(0, 3270);
+                        setOpen(false);
+                      }}
+                      className="text-[#23314C] cursor-pointer hover:text-pr font_ab"
+                    >
+                      Contact
+                    </div>
+                  </>
+                )}
                 {user && token && (
                   <Link
                     to="/profile"
@@ -213,7 +226,7 @@ const Navbar = () => {
                     Profile
                   </Link>
                 )}
-                {user && token && !user.hasRequested && user.role==0 && (
+                {user && token && !user.hasRequested && user.role == 0 && (
                   <Link
                     to="/become-agent"
                     className="text-[#23314C] cursor-pointer hover:text-pr font_ab"
@@ -229,7 +242,6 @@ const Navbar = () => {
                     Logout
                   </div>
                 )}
-               
               </>
             </div>
           )}

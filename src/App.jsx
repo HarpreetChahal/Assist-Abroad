@@ -37,6 +37,7 @@ function App() {
             ) : token && user && user.role == 1 ? (
               <AgentHome />
             ) : (
+              user.hasAppoinment ?<Arrival />:
               <Home />
             )
           }
@@ -49,10 +50,10 @@ function App() {
           ) : token && user && user.role == 1 ? (
             <AgentHome />
           ) : (
-            <Home />
+            user.hasAppoinment ?<Arrival />:   <Home />
           )}
         />
-        <Route exact path="/" element={<Home />} />
+        <Route exact path="/" element={token && user && user.role == 1 ?<AgentHome/> : token && user && user.hasAppoinment ?<Arrival/> :<Home />} />
 
         <Route
           exact
