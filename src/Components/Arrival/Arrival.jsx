@@ -23,7 +23,7 @@ const Arrival = () => {
   const [open, setOpen] = useState(false);
   const { dispatch, user, isFetching } = useContext(Context);
   const [appointment, setAppointment] = useState(null);
-
+  let initialValues
   const navigate = useNavigate();
   useEffect(() => {
     window.scrollTo(0, 0); // Scroll to the top of the page on component mount
@@ -51,6 +51,14 @@ const Arrival = () => {
         });
     };
     fetchAppointment();
+
+    initialValues={
+      dateOfArrival: user?.arrival?.date || "",
+      flightNumber: user?.arrival?.flightNumber || "",
+      flightName: user?.arrival?.flightName || "",
+      arrivalTime: user?.arrival?.time || "",
+      airport: user?.arrival?.airport || "",
+    }
   }, []);
 
   const formik = useFormik({
@@ -165,7 +173,7 @@ const Arrival = () => {
                         }
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
-                        value={formik.values.dateOfArrival}
+                        value={moment(formik.values.dateOfArrival).format("DD/MM/YYYY")}
                       />
                     </div>
                     <div className="relative flex-1 items-center gap-x-6">
