@@ -27,7 +27,7 @@ const PaymentCard = () => {
               <p className="text-2xl pb-8 px-12 font-medium text-tc font_ab">
                 Looks like you've found the doorway to the great nothing
               </p>
-              <button className="bg-pr text-white font-semibold px-6 py-3 rounded-md mr-6">
+              <button className="bg-pr text-white font-semibold px-6 py-3 rounded-md mr-6" >
                 Take me home
               </button>
             </div>
