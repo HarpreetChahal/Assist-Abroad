@@ -144,7 +144,7 @@ const BecomeAgent = () => {
           <div className="w-full flex items-center gap-2 justify-center">
             <div className="  items-start lg:items-center flex-col lg:flex-row gap-10 ">
               <img
-                className="w-32 h-32 lg:w-30 lg:h-32 mx-auto lg:items-center rounded-md"
+                className="w-32 h-32 lg:w-30 lg:h-32 mx-auto lg:items-center rounded-full"
                 src={agent}
                 alt=""
               />

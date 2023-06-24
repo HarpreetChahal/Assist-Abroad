@@ -75,7 +75,7 @@ const Navbar = () => {
             {user && token && (
               <div className="text-[#23314C] cursor-pointer hover:text-pr  font_ab">
                 <img
-                  className={`text-[#23314C] cursor-pointer hover:text-pr text-lg font_ab w-12 h-12 rounded-full ${
+                  className={`text-[#23314C] cursor-pointer hover:text-pr text-lg font_ab w-10 h-10 rounded-full ${
                     profileOpen ? "text-pr" : ""
                   }`}
                   onClick={toggleProfileDropdown}
