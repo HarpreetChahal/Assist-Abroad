@@ -49,7 +49,7 @@ const navigate=useNavigate()
       firstName: Yup.string().required("Required"),
       email: Yup.string().email("Invalid email address").required("Required"),
     }),
-    onSubmit: async (values) => {
+    onSubmit: async (values,{ setErrors }) => {
       let {confirmPassword,...value}=values
       value.name={
         firstName:values.firstName,
@@ -60,12 +60,15 @@ const navigate=useNavigate()
           data: value
         })
           .then(({ DATA = {}, MESSAGE }) => {
-          dispatch({ type: "LOGIN_SUCCESS", payload: DATA.user, token: DATA.token });
-          navigate("/");
+          // dispatch({ type: "LOGIN_SUCCESS", payload: DATA.user, token: DATA.token });
+          // navigate("/");
           })
           .catch((error) => {
             dispatch({ type: "LOGIN_FAILURE" });
-          
+            if(error?.response?.data?.MESSAGE == "EMAIL")
+            {
+              setErrors({ email: "Email already exists" });
+            }
             console.error(error);
           });
     },
@@ -156,6 +159,8 @@ const navigate=useNavigate()
                 ),
               }}
             ></TextField>
+           { formik.touched.firstName && formik.errors.firstName && 
+           <div>{formik.errors.firstName}</div>}
           </div>
           <div className="flex items-center mt-4 rounded-md">
             {/* <MdOutlineEmail className="w-6 h-6 text-[#4F5C78]" /> */}
@@ -180,6 +185,8 @@ const navigate=useNavigate()
               }}
             ></TextField>
           </div>
+          { formik.touched.email && formik.errors.email && 
+           <div>{formik.errors.email}</div>}
           <div className="flex items-center mt-4 rounded-md">
             {/* <SlCalender className="w-6 h-6 text-[#4F5C78]" /> */}
             <TextField
