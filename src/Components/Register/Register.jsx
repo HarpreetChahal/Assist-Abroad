@@ -60,8 +60,8 @@ const navigate=useNavigate()
           data: value
         })
           .then(({ DATA = {}, MESSAGE }) => {
-          // dispatch({ type: "LOGIN_SUCCESS", payload: DATA.user, token: DATA.token });
-          // navigate("/");
+          dispatch({ type: "LOGIN_SUCCESS", payload: DATA.user, token: DATA.token });
+          navigate("/");
           })
           .catch((error) => {
             dispatch({ type: "LOGIN_FAILURE" });

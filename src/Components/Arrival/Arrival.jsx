@@ -62,10 +62,12 @@ const Arrival = () => {
       airport: user?.arrival?.airport || "",
     }
 
-    if(user?.arrival?.date!="")
+    if(user?.arrival?.flightNumber=="")
     {
+      setEdit(true)
       setButtonValue(true)
     }
+   
   }, []);
 
   const formik = useFormik({
@@ -104,7 +106,10 @@ const Arrival = () => {
           dispatch({ type: "UPDATE_USER", payload: DATA });
           setEdit(false)
 
-        
+        if(buttonValue)
+        {
+          setActive(true)
+        }
         })
         .catch((error) => {
           console.error(error);
@@ -184,7 +189,7 @@ const Arrival = () => {
                         }
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
-                        value={moment(formik.values.dateOfArrival).format("DD/MM/YYYY")}
+                        value={formik.values.dateOfArrival!=""? moment(formik.values.dateOfArrival).format("DD/MM/YYYY"):""}
                       />
                     </div>
                     <div className="relative flex-1 items-center gap-x-6">
