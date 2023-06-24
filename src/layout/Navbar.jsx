@@ -67,7 +67,7 @@ const Navbar = () => {
 {user && token && (
                   <Link
                     to="/profile"
-                    className="text-[#23314C] cursor-pointer hover:text-pr font_ab"
+                    className="text-[#23314C] cursor-pointer hover:text-pr text-lg font_ab"
                   >
                     Profile
                   </Link>
@@ -187,7 +187,7 @@ const Navbar = () => {
                     to="/login"
                     className="text-pr border border-pr  px-6 mt-2 rounded-md py-1.5 font_ab"
                   >
-                    Sing In
+                    Sign In
                   </Link>
                 </div>
               </div>

@@ -263,7 +263,7 @@ const AgentTask = () => {
             </div>
             {showCompleted && (
               <div className="flex items-center justify-center h-10 space-x-6 ">
-                <button className={`text-white mt-5 ${appointment.status =="Completed" ?"bg-[green]" :"bg-pr"} px-7 py-2 rounded-md`} onClick={()=>{
+                <button className={`text-white mt-5 ${appointment.status =="Completed" ?"bg-[#23314c]" :"bg-pr"} px-7 py-2 rounded-md`} onClick={()=>{
                   completeAppiointment(appointment._id)
                 }}>
                   Completed

@@ -178,7 +178,7 @@ const Arrival = () => {
                         class="block text-sm font-medium mb-1"
                         for="card-expiry"
                       >
-                        Date of arrival<span class="text-red-500">*</span>
+                        Date of arrival
                       </label>
                       {/* <input
                       type="text"
@@ -187,6 +187,7 @@ const Arrival = () => {
                       <TextField
                         className="inputField"
                         variant="outlined"
+                        
                         size="small"
                         disabled={!edit}
                         sx={{ backgroundColor: "#fff", width: "70%" }}
@@ -213,7 +214,7 @@ const Arrival = () => {
                         class="block text-sm font-medium mb-1"
                         for="card-expiry"
                       >
-                        Flight Number<span class="text-red-500">*</span>
+                        Flight Number
                       </label>
                       <TextField
                         className="inputField"
@@ -238,7 +239,7 @@ const Arrival = () => {
                         class="block text-sm font-medium mb-1"
                         for="card-expiry"
                       >
-                        Flight Name<span class="text-red-500">*</span>
+                        Flight Name
                       </label>
                       <TextField
                         className="inputField"
@@ -262,7 +263,7 @@ const Arrival = () => {
                         class="block text-sm font-medium mb-1"
                         for="card-expiry"
                       >
-                        Arrival Time<span class="text-red-500">*</span>
+                        Arrival Time
                       </label>
                       <TextField
                         className="inputField"
@@ -288,7 +289,7 @@ const Arrival = () => {
                         class="block text-sm font-medium mb-1"
                         for="card-expiry"
                       >
-                        Airport<span class="text-red-500">*</span>
+                        Airport
                       </label>
                       <TextField
                         className="inputField"
@@ -475,7 +476,7 @@ const Arrival = () => {
                               htmlFor="comments"
                               className="font-medium text-slate-600"
                             >
-                              {task.completed ? <s>{task.name}</s> : task.name}
+                              {task.completed ? <s className="text-pr">{task.name}</s> : task.name}
                             </label>
                           </div>
                           {/* <div className="justify-end">
@@ -658,9 +659,9 @@ function Modal({ open, setOpen, appointment }) {
                           </div>
                         </div> */}
                         <div className="flex items-center justify-between lg:grid grid-cols-2 mt-4  gap-2 lg:gap-8">
-                          {/* <p className="text-sm lg:text-xl text-gray-500">
-                            Health Card
-                          </p> */}
+                          <p className="text-sm lg:text-xl text-gray-500">
+                            Rate the agent 
+                          </p>
                           <div className="flex items-center  gap-4">
                             <Rating
                               name="simple-controlled"

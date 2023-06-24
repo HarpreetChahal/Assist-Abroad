@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Navbar from "../../layout/Navbar";
 import { Link } from "react-router-dom";
 import commonApi from "../../api/common";
@@ -8,6 +8,8 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Payment = () => {
+  const scrollRef = useRef(null);
+
   const navigate = useNavigate();
   const [membership, setMembership] = useState([]);
   const [selectedMembership, setSelectedMembership] = useState(null);
@@ -42,6 +44,7 @@ const Payment = () => {
     setSelectedMembership(memId);
     setSelectedPrice(price);
     setHighlightedIndex(index);
+    scrollRef.current.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -49,7 +52,7 @@ const Payment = () => {
       <Navbar />
       <section class="bg-white pt-20 lg:pt-12 px-5 lg:mx-0">
         <div class=" mx-auto lg:max-w-7xl py-9  px-5 lg:px-10 lg:py-16 lg:px-6">
-          <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12" >
+          <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
             <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-tc font_ab">
               Choose a package
             </h2>
@@ -64,16 +67,22 @@ const Payment = () => {
               return (
                 <div
                   class={`flex flex-col mx-auto text-center text-tc bg-white border-2 ${
-                    isHighlighted ? "border-4 border-pr shadow-lg transform scale-105" : ""
+                    isHighlighted
+                      ? "border-4 border-pr shadow-lg transform scale-105"
+                      : ""
                   }`}
                   key={index}
                 >
-                  <h3 class="w-full text-2xl font-semibold text-wt bg-tc p-6">{mem.name}</h3>
+                  <h3 class="w-full text-2xl font-semibold text-wt bg-tc p-6">
+                    {mem.name}
+                  </h3>
                   <p class="w-full font-light sm:text-lg text-wt bg-pr p-4">
                     Best option for personal use & for your next project.
                   </p>
                   <div class="flex justify-center items-baseline my-8">
-                    <span class="mr-2 text-5xl font-extrabold">${mem.price}</span>
+                    <span class="mr-2 text-5xl font-extrabold">
+                      ${mem.price}
+                    </span>
                     <span class="text-gray-500">/month</span>
                   </div>
                   {/* List */}
@@ -99,8 +108,11 @@ const Payment = () => {
                   </ul>
                   <a
                     href="#"
+                    
                     class="text-wt bg-pr hover:bg-primary-700  font-medium rounded-lg text-sm px-8 py-2.5 text-center mb-4"
-                    onClick={(event) => handleSelectMembership(mem._id, mem.price, index, event)}
+                    onClick={(event) =>
+                      handleSelectMembership(mem._id, mem.price, index, event)
+                    }
                   >
                     Select
                   </a>
@@ -110,7 +122,10 @@ const Payment = () => {
           </div>
         </div>
       </section>
-      <div className="mt-5 mb-20 flex items-center justify-center">
+      <div
+        className="mt-5 mb-20 flex items-center justify-center"
+        ref={scrollRef}
+      >
         <Button
           variant="contained"
           sx={{
@@ -125,7 +140,10 @@ const Payment = () => {
           }}
           disabled={!selectedMembership}
           onClick={() => {
-            navigate("/payment-card", { state: { membershipId: selectedMembership, price: selectedPrice },replace:true });
+            navigate("/payment-card", {
+              state: { membershipId: selectedMembership, price: selectedPrice },
+              replace: true,
+            });
           }}
         >
           Continue to payment

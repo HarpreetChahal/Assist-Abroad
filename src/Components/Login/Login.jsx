@@ -56,7 +56,7 @@ const Login = () => {
           if(error?.response?.data?.MESSAGE == "INCORRECT")
           {
             
-            setErrors({ password: "Incorrect Email or Password" ,email: "Incorrect Email or Password"});
+            setErrors({ password: "Email or Password is incorrect" ,email: " Email or password is incorrect"});
 
           }
           console.error(error);
@@ -94,8 +94,8 @@ const Login = () => {
           </div>
         </div>
         <div className="flex flex-col items-center justify-center lg:mt-0">
-          <form onSubmit={formik.handleSubmit} className="form grid">
-            {/* <form onSubmit="" className="form grid"> */}
+          <form onSubmit={formik.handleSubmit} className="form grid " id="form">
+          
 
             <div className="hidden lg:block">
               <div className="text-pr text-4xl text-center lg:text-6xl font_ab mt-10 ">
@@ -105,9 +105,7 @@ const Login = () => {
                 Welcome back
               </h3>
             </div>
-            {/* <div className="w-96 text-white rounded-md bg-gray-800 py-3 text-center">
-          Authentication error display
-        </div> */}
+           
             <div
               className="  text-[#ffffff] cursor-pointer  rounded-md bg-[#23314c] py-3 flex items-center mt-10 justify-center gap-3 "
               style={{ border: "1px solid #bfbfbf" }}
@@ -115,7 +113,7 @@ const Login = () => {
               <FcGoogle className="w-6 h-6 " />
               Sign In with Google
             </div>
-            <div className="flex items-center  justify-center gap-1 w-full">
+            <div className="flex items-center mt-2 justify-center gap-1 w-full">
               <div
                 className="w-44 h-[1px] "
                 style={{ border: "1px solid rgba(0, 0, 0, 0.1)" }}
@@ -128,11 +126,11 @@ const Login = () => {
             </div>
             <div className="  ">
               
-              <div className="flex items-center mt-4 rounded-md">
-                {/* <MdOutlineEmail className="w-6 h-6 text-[#4F5C78]" /> */}
+              <div className="flex items-center mt-2 rounded-md">
+              
                 <TextField
                   className="bg-[#fff] border-none outline-none text-lg px-2 py-2 w-full"
-                  //  sx={{"& fieldset" : {border:'none'},}}
+                 
                   size="small"
                   type="text"
                   id="email"
@@ -152,13 +150,12 @@ const Login = () => {
                 ></TextField>
               </div>
               
-              { formik.touched.email && formik.errors.email && 
-           <div>{formik.errors.email}</div>}
+              {/* { formik.touched.email && formik.errors.email && 
+           <div className="text-[red]">{formik.errors.email}</div>} */}
               <div className="flex mt-4 items-center  rounded-md">
-                {/* <RiLockPasswordFill className="w-6 h-6 text-[#4F5C78]" /> */}
+              
                 <TextField
                   className="bg-[#fff] border-none outline-none text-lg  w-full"
-                  //  sx={{"& fieldset" : {border:'none'},}}
                   size="small"
                   type={showPassword ? "text" : "password"}
                   id="password"
@@ -179,12 +176,12 @@ const Login = () => {
                         {showPassword ? (
                           <AiFillEye
                             className="w-5 h-6 text-[#4F5C78] cursor-pointer"
-                            onClick={() => setShowPassword(!showPassword)} // Toggle the showPassword state
+                            onClick={() => setShowPassword(!showPassword)} 
                           />
                         ) : (
                           <AiFillEyeInvisible
                             className="w-5 h-6 text-[#4F5C78] cursor-pointer"
-                            onClick={() => setShowPassword(!showPassword)} // Toggle the showPassword state
+                            onClick={() => setShowPassword(!showPassword)}
                           />
                         )}
                       </InputAdornment>
@@ -193,13 +190,13 @@ const Login = () => {
                 ></TextField>
               </div>
               { formik.touched.password && formik.errors.password && 
-           <div>{formik.errors.password}</div>}
-              {/* <button className="mt-8 rounded-md w-full bg-pr text-center py-3 text-white font-medium">
-            Sign Up
-          </button> */}
+           <div className="text-[red] mt-2 font-medium"
+         
+           >{formik.errors.password}</div>}
+             
               <Button
                 type="submit"
-                className=" mt-8 rounded-md shadow-md w-full bg-pr text-center  text-white font-medium "
+                className=" mt-8 rounded-md shadow-md w-full bg-pr text-center  text-white font-medium cursor-pointer"
                 disabled={!(formik.isValid && formik.dirty)}
                 style={{
                   backgroundColor: "#6d81fe",
@@ -211,6 +208,7 @@ const Login = () => {
                   fontSize: 14,
                   border: "2px solid #6d81fe",
                   marginBottom: 30,
+                
                 }}
               >
                 Log In

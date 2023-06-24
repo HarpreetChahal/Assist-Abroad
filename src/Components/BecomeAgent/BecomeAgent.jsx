@@ -38,9 +38,9 @@ const BecomeAgent = () => {
     setShowDiv(true);
 
     // Redirect to homepage after 5 seconds
-    setTimeout(() => {
-      window.location.href = '/'; 
-    }, 10000);
+    // setTimeout(() => {
+    //   window.location.href = '/'; 
+    // }, 10000);
   };
 
   const handleClose = () => {
@@ -144,7 +144,7 @@ const BecomeAgent = () => {
           <div className="w-full flex items-center gap-2 justify-center">
             <div className="  items-start lg:items-center flex-col lg:flex-row gap-10 ">
               <img
-                className="w-32 h-32 lg:w-30 lg:h-32 mx-auto lg:items-center "
+                className="w-32 h-32 lg:w-30 lg:h-32 mx-auto lg:items-center rounded-md"
                 src={agent}
                 alt=""
               />
@@ -153,7 +153,7 @@ const BecomeAgent = () => {
                   {/* Member Since : 2020 */}
                 </h1>
                 <div className=" items-center text-center justify-center rounded-md">
-                  <Button
+                  {/* <Button
                     variant="contained"
                     onClick={() => fileInput.current.click()}
                     sx={{
@@ -168,7 +168,7 @@ const BecomeAgent = () => {
                     }}
                   >
                     Choose Image
-                  </Button>
+                  </Button> */}
 
                   <input
                     ref={fileInput}
@@ -672,7 +672,7 @@ const BecomeAgent = () => {
                   >
                     <svg
                       aria-hidden="true"
-                      class="w-9 h-9 text-blue-600"
+                      class="w-7 h-7 text-blue-600"
                       focusable="false"
                       data-prefix="fas"
                       data-icon="paper-plane"
@@ -688,8 +688,8 @@ const BecomeAgent = () => {
                     <div class="pl-4 text-sm font-small font-10 text-slate-500">
                       {" "}
                       Your request has been sent. We will get in touch with you
-                      through email. Redirecting you to the homepage in{" "}
-                      {countdown} seconds.
+                      through email.
+                       {/* Redirecting you to the homepage in{" "}{countdown} seconds. */}
                     </div>
                   </div>
                 )}

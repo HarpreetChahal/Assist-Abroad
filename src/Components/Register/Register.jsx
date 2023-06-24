@@ -67,7 +67,7 @@ const navigate=useNavigate()
             dispatch({ type: "LOGIN_FAILURE" });
             if(error?.response?.data?.MESSAGE == "EMAIL")
             {
-              setErrors({ email: "Email already exists" });
+              setErrors({ email: "Email Id already exists" });
             }
             console.error(error);
           });
@@ -159,9 +159,10 @@ const navigate=useNavigate()
                 ),
               }}
             ></TextField>
-           { formik.touched.firstName && formik.errors.firstName && 
-           <div>{formik.errors.firstName}</div>}
+           
           </div>
+          { formik.touched.firstName && formik.errors.firstName && 
+           <div >{formik.errors.firstName}</div>}
           <div className="flex items-center mt-4 rounded-md">
             {/* <MdOutlineEmail className="w-6 h-6 text-[#4F5C78]" /> */}
             <TextField
@@ -186,7 +187,7 @@ const navigate=useNavigate()
             ></TextField>
           </div>
           { formik.touched.email && formik.errors.email && 
-           <div>{formik.errors.email}</div>}
+           <div className="text-[red]  ">{formik.errors.email}</div>}
           <div className="flex items-center mt-4 rounded-md">
             {/* <SlCalender className="w-6 h-6 text-[#4F5C78]" /> */}
             <TextField
@@ -202,6 +203,8 @@ const navigate=useNavigate()
               onBlur={formik.handleBlur}
               value={formik.values.phone}
               InputProps={{
+                inputMode: "numeric",
+                            maxLength: 10,
                 startAdornment: (
                   <InputAdornment position="start">
                     <FiPhone className="w-5 h-6 text-[#4F5C78] "/>
@@ -329,6 +332,7 @@ const navigate=useNavigate()
               fontSize: 14,
               border: "2px solid #6d81fe",
               marginBottom:30,
+              cursor:"pointer",
             }}
           >
             Sign Up
