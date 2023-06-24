@@ -80,7 +80,8 @@ const PaymentCard = (params) => {
         },
       })
         .then(({ DATA = {}, MESSAGE }) => {
-          navigate("/arrival-form", { replace: true });
+          // navigate(-1)
+          navigate("/arrival-form", {replace:true});
         })
         .catch((error) => {
           console.error(error);
