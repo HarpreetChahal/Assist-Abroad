@@ -57,7 +57,7 @@ const PaymentCard = (params) => {
         .max(3, "CVV must be exactly 3 digits")
         .required("Required"),
       cardName: Yup.string().required("Required"),
-      cardEmail: Yup.string().required("Required"),
+      cardEmail: Yup.string().email("Invalid email address").required("Required"),
     }),
     onSubmit: async (values) => {
       let [month,year]=values.expiryDate.split("/")
@@ -250,6 +250,7 @@ const PaymentCard = (params) => {
                       </label>
                       <TextField
                         fullWidth
+                        type="email"
                         size="small"
                         id="cardEmail"
                         variant="outlined"
