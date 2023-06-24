@@ -75,7 +75,7 @@ const Arrival = () => {
       airport: user?.arrival?.airport || "",
     };
 
-    if (user?.arrival?.flightNumber == "") {
+    if (!user?.arrival?.flightNumber) {
       setEdit(true);
       setButtonValue(true);
     }
@@ -119,6 +119,7 @@ const Arrival = () => {
 
           if (buttonValue) {
             setActive(true);
+            setButtonValue(false)
           }
         })
         .catch((error) => {
