@@ -17,7 +17,6 @@ const Navbar = () => {
   const toggleProfileDropdown = () => {
     setProfileOpen(!profileOpen);
   };
-  console.log("Location",location)
   const handleLogout = async () => {
     localStorage.clear();
     dispatch({ type: "LOGOUT" });

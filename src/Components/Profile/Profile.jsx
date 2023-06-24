@@ -12,7 +12,13 @@ import moment from "moment";
 import commonApi from "../../api/common";
 import { useNavigate } from "react-router-dom";
 const Profile = () => {
+  const { dispatch, isFetching, user } = useContext(Context);
   const [edit, setEdit] = useState(false);
+  const [email,setEmail]=useState(user?.email || "")
+  const [name,setName]=useState(user?.name?.firstName || "")
+  const [dob,setDob]=useState(moment(user?.dob).format("DD/MM/YYYY") || moment().format("DD/MM/YYYY"))
+
+  const [phone,setPhone]=useState(user?.phone?.phone || "")
 
   const fileInput = React.useRef();
 
@@ -20,54 +26,45 @@ const Profile = () => {
     window.scrollTo(0, 0); // Scroll to the top of the page on component mount
   }, []);
 
-  const { dispatch, isFetching, user } = useContext(Context);
+ 
 
-  const formik = useFormik({
-    initialValues: {
-      firstname: user?.name?.firstName || "",
-      email: user?.email || "",
-      phone: user?.phone?.phone || "",
-      dob: user?.dob || moment().format("yyyy-MM-DD"),
-    },
-    validationSchema: Yup.object({
-      phone: Yup.string().required("Required"),
-      firstName: Yup.string().required("Required"),
-      email: Yup.string().email("Invalid email address").required("Required"),
-    }),
-    onSubmit: async (values) => {
-      console.log("values", values);
-      let data = {
-        name: {
-          firstName: values.firstname,
-          fullName: values.firstname,
-        },
-        phone: {
-          countryCode: "+1",
-          phone: values.phone,
-        },
-        dob: values.dob,
-      };
-      await commonApi({
-        action: "updateProfile",
-        data: data,
+  const submitValue=async() => {
+   console.log("here")
+    let data = {
+      name: {
+        firstName: name,
+        fullName: name,
+      },
+      phone: {
+        countryCode: "+1",
+        phone: phone,
+      },
+      dob: dob,
+    };
+    await commonApi({
+      action: "updateProfile",
+      data: data,
+      config:{
+        authToken:true
+      }
+    })
+      .then(({ DATA = {}, MESSAGE }) => {
+        console.log("HHD",DATA)
+        // dispatch({ type: "UPDATE_USER", payload: DATA });
+        setEdit(false);
       })
-        .then(({ DATA = {}, MESSAGE }) => {
-          dispatch({ type: "UPDATE_USER", payload: DATA });
-          setEdit(false);
-        })
-        .catch((error) => {
-          dispatch({ type: "LOGIN_FAILURE" });
+      .catch((error) => {
+        dispatch({ type: "LOGIN_FAILURE" });
 
-          console.error(error);
-        });
-    },
-  });
+        console.error(error);
+      });
+  }
   return (
     <div>
       <Navbar />
       <div className="min-h-screen   bg-[#f8f8fa]">
       <div className=" pt-32 pb-20 lg:pt-32 lg:pb-10 px-3  ">
-        <form onSubmit={formik.handleSubmit}>
+        <form>
           <div className=" lg:max-w-7xl w-full mx-auto p-4 lg:py-8 lg:px-8 shadow shadow-slate-300 bg-white rounded-xl ">
             <div className="w-full flex items-start gap-2 justify-between">
               <div className="flex items-start lg:items-center flex-col lg:flex-row gap-10 ">
@@ -153,7 +150,7 @@ const Profile = () => {
                     <Button
                       type="submit"
                       variant="contained"
-                      onClick={formik.handleSubmit}
+                       onClick={submitValue}
                       sx={{
                         color: "#ffffff",
                         bgcolor: "#6D81FC",
@@ -191,12 +188,12 @@ const Profile = () => {
                           variant="outlined"
                           disabled={!edit}
                           name="firstname"
-                          error={
-                            formik.touched.firstname && formik.errors.firstname
-                          }
-                          onChange={formik.handleChange}
-                          onBlur={formik.handleBlur}
-                          value={formik.values.firstname}
+                         
+                          onChange={(e)=>{
+                            setName(e.target.value)
+                          }}
+                         
+                          value={name}
                         />
                       </div>
                       
@@ -216,10 +213,12 @@ const Profile = () => {
                           disabled={true}
                           // defaultValue="sam@gmail.com"
                           name="email"
-                          error={formik.touched.email && formik.errors.email}
-                          onChange={formik.handleChange}
-                          onBlur={formik.handleBlur}
-                          value={formik.values.email}
+                       
+                          onChange={(e)=>{
+                            setEmail(e.target.value)
+                          }}
+                         
+                          value={email}
                         />
                       </div>
                     <div class="flex space-x-4">
@@ -237,10 +236,11 @@ const Profile = () => {
                           variant="outlined"
                           disabled={!edit}
                           name="phone"
-                          error={formik.touched.phone && formik.errors.phone}
-                          onChange={formik.handleChange}
-                          onBlur={formik.handleBlur}
-                          value={formik.values.phone}
+                          onChange={(e)=>{
+                            setPhone(e.target.value)
+                          }}
+                         
+                          value={phone}
                         />
                       </div>
                      
@@ -260,113 +260,19 @@ const Profile = () => {
                           variant="outlined"
                           disabled={!edit}
                           name="dob"
-                          error={formik.touched.dob && formik.errors.dob}
-                          onChange={formik.handleChange}
-                          onBlur={formik.handleBlur}
-                          value={formik.values.dob}
+                          onChange={(e)=>{
+                            setDob(e.target.value)
+                          }}
+                         
+                          value={dob}
                         />
                       </div>
-                    {/* <div class="flex space-x-4">
-                    <div class="flex-1">
-                      <label
-                        class="block text-sm font-medium mb-1"
-                        for="card-expiry"
-                      >
-                        Password <span class="text-red-500">*</span>
-                      </label>
-                      <TextField
-                        fullWidth
-                        size="small"
-                        id="password"
-                        variant="outlined"
-                        disabled={!edit}
-                        name="password"
-                        error={formik.touched.password && formik.errors.password}
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                        value={formik.values.password}
-                      />
-                    </div>
-                    <div class="flex-1">
-                      <label
-                        class="block text-sm font-medium mb-1"
-                        for="card-cvc"
-                      >
-                        Confirm Password <span class="text-red-500">*</span>
-                      </label>
-                      <TextField
-                        fullWidth
-                        size="small"
-                        id="confirmPassword"
-                        variant="outlined"
-                        disabled={!edit}
-                        name="confirmPassword"
-                    error={
-                      formik.touched.confirmPassword &&
-                      formik.errors.confirmPassword
-                    }
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.confirmPassword}
-                      />
-                    </div>
-                  </div> */}
+                    
                   </div>
-                  {/* <!-- Form footer --> */}
+                  
                 </div>
               </div>
-              {/* <div className="flex items-center border-2 bg-[#F8F8FA] max-w-2xl ">
-              <p className="w-32 text-center border-r-2 text-lg  py-2 text-[#23314C]">
-                Name
-              </p>{" "}
-              <input
-                type="text"
-                disabled={!edit}
-                defaultValue={"Samar Dahiya"}
-                className={` outline-none border-none ${
-                  edit && " ring-1 ring-pr"
-                } text-xl py-2 w-full text-[#23314C] px-5 bg-transparent`}
-              />
-            </div> */}
-              {/* <div className="flex mt-2 items-center border-2 bg-[#F8F8FA] max-w-2xl ">
-              <p className="w-32 text-center border-r-2 text-lg  py-2 text-[#23314C]">
-                Contact
-              </p>{" "}
-              <input
-                type="text"
-                disabled={!edit}
-                defaultValue={"(306)***-**96"}
-                className={` outline-none border-none ${
-                  edit && " ring-1 ring-pr"
-                } text-xl py-2 w-full text-[#23314C] px-5 bg-transparent`}
-              />
-            </div>
-            <div className="flex mt-2 items-center border-2 bg-[#F8F8FA] max-w-2xl ">
-              <p className="w-32 text-center border-r-2 text-lg  py-2 text-[#23314C]">
-                Email
-              </p>{" "}
-              <input
-                type="email"
-                disabled={!edit}
-                defaultValue={"samar******@gmail.com"}
-                className={` outline-none border-none ${
-                  edit && " ring-1 ring-pr"
-                } text-xl py-2 w-full text-[#23314C] px-5 bg-transparent`}
-              />
-            </div>
-            <div className="flex mt-2 items-center border-2 bg-[#F8F8FA] max-w-2xl ">
-              <p className="w-32 text-center border-r-2 text-lg  py-2 text-[#23314C]">
-                Address
-              </p>{" "}
-              <input
-                type="text"
-                disabled={!edit}
-                defaultValue={"#2, 875 Regina"}
-                className={` outline-none border-none ${
-                  edit && " ring-1 ring-pr"
-                } text-xl py-2 w-full text-[#23314C] px-5 bg-transparent`}
-              />
-            </div> */}
+             
             </div>
           </div>
         </form>

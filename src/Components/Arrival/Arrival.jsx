@@ -23,6 +23,8 @@ const Arrival = () => {
   const [open, setOpen] = useState(false);
   const { dispatch, user, isFetching } = useContext(Context);
   const [appointment, setAppointment] = useState(null);
+  const [buttonValue,setButtonValue]=useState(false)
+  const [edit,setEdit]=useState(false)
   let initialValues
   const navigate = useNavigate();
   useEffect(() => {
@@ -58,6 +60,11 @@ const Arrival = () => {
       flightName: user?.arrival?.flightName || "",
       arrivalTime: user?.arrival?.time || "",
       airport: user?.arrival?.airport || "",
+    }
+
+    if(user?.arrival?.date!="")
+    {
+      setButtonValue(true)
     }
   }, []);
 
@@ -95,7 +102,9 @@ const Arrival = () => {
       })
         .then(({ DATA = {}, MESSAGE }) => {
           dispatch({ type: "UPDATE_USER", payload: DATA });
-          setActive(true);
+          setEdit(false)
+
+        
         })
         .catch((error) => {
           console.error(error);
@@ -163,6 +172,8 @@ const Arrival = () => {
                         className="inputField"
                         variant="outlined"
                         size="small"
+                        disabled={!edit}
+
                         sx={{ backgroundColor: "#fff", width: "70%" }}
                         id="dateOfArrival"
                         placeholder="Enter arrival date"
@@ -187,6 +198,8 @@ const Arrival = () => {
                         className="inputField"
                         variant="outlined"
                         size="small"
+                        disabled={!edit}
+
                         sx={{ backgroundColor: "#fff", width: "70%" }}
                         id="flightNumber"
                         placeholder="Enter flight ticket no"
@@ -211,6 +224,8 @@ const Arrival = () => {
                         className="inputField"
                         variant="outlined"
                         size="small"
+                        disabled={!edit}
+
                         sx={{ backgroundColor: "#fff", width: "70%" }}
                         id="flightName"
                         placeholder="Enter flight ticket no"
@@ -234,6 +249,8 @@ const Arrival = () => {
                         className="inputField"
                         variant="outlined"
                         size="small"
+                        disabled={!edit}
+
                         sx={{ backgroundColor: "#fff", width: "70%" }}
                         id="arrivalTime"
                         placeholder="Enter flight arrival time"
@@ -261,6 +278,7 @@ const Arrival = () => {
                         size="small"
                         sx={{ backgroundColor: "#fff", width: "70%" }}
                         id="airport"
+                        disabled={!edit}
                         placeholder="Enter airport name"
                         name="airport"
                         error={formik.touched.airport && formik.errors.airport}
@@ -288,8 +306,8 @@ const Arrival = () => {
               }}>
                 Submit
               </Button> */}
-                  <Button
-                    type="submit"
+                { edit ? <Button
+                    onClick={formik.handleSubmit}
                     variant="contained"
                     sx={{
                       color: "#ffffff",
@@ -304,8 +322,31 @@ const Arrival = () => {
                       },
                     }}
                   >
-                    Submit
+                  Submit
                   </Button>
+:
+                  <Button
+                   onClick={
+                    ()=>{
+                      setEdit(true)
+                    }
+                   }
+                    variant="contained"
+                    sx={{
+                      color: "#ffffff",
+                      bgcolor: "#6D81FC",
+                      textTransform: "none",
+                      alignSelf: "flex-start",
+                      marginLeft: 25,
+                      marginTop: 3,
+                      "&:hover": {
+                        bgcolor: "#6d81fc",
+                        color: "#ffffff",
+                      },
+                    }}
+                  >
+                  Edit
+                  </Button>}
                 </div>
               </div>
             </form>
