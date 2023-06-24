@@ -264,6 +264,8 @@ const PaymentCard = (params) => {
                         value={formik.values.cardEmail}
                       />
                     </div>
+                    { formik.touched.cardEmail && formik.errors.cardEmail && 
+           <div>{formik.errors.cardEmail}</div>}
                   </div>
                   {/* <!-- Form footer --> */}
                   <div class="mt-6">
@@ -281,6 +283,7 @@ const PaymentCard = (params) => {
                           },
                         }}
                         type="submit"
+                        disabled={!(formik.isValid && formik.dirty)}
                         onClick={handleClick}
                       >
                         Pay ${price}
