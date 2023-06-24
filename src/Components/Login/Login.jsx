@@ -41,7 +41,7 @@ const Login = () => {
       password: Yup.string().required("Required"),
       email: Yup.string().email("Invalid email address").required("Required"),
     }),
-    onSubmit: async (values) => {
+    onSubmit: async (values,{ setErrors }) => {
       await commonApi({
         action: "login",
         data: values,
@@ -53,7 +53,12 @@ const Login = () => {
         })
         .catch((error) => {
           dispatch({ type: "LOGIN_FAILURE" });
+          if(error?.response?.data?.MESSAGE == "INCORRECT")
+          {
+            
+            setErrors({ password: "Incorrect Email or Password" ,email: "Incorrect Email or Password"});
 
+          }
           console.error(error);
         });
     },
@@ -147,7 +152,8 @@ const Login = () => {
                 ></TextField>
               </div>
               
-              
+              { formik.touched.email && formik.errors.email && 
+           <div>{formik.errors.email}</div>}
               <div className="flex mt-4 items-center  rounded-md">
                 {/* <RiLockPasswordFill className="w-6 h-6 text-[#4F5C78]" /> */}
                 <TextField
@@ -186,7 +192,8 @@ const Login = () => {
                   }}
                 ></TextField>
               </div>
-              
+              { formik.touched.password && formik.errors.password && 
+           <div>{formik.errors.password}</div>}
               {/* <button className="mt-8 rounded-md w-full bg-pr text-center py-3 text-white font-medium">
             Sign Up
           </button> */}
