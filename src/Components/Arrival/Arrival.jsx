@@ -175,8 +175,7 @@ const Arrival = () => {
                   <div className="mt-6 space-y-3 w-full ml-24">
                     <div className=" flex-1 items-center  gap-x-6 ">
                       <label
-                        class="block text-sm font-medium mb-1"
-                        for="card-expiry"
+                        className="block text-sm font-medium mb-1"
                       >
                         Date of arrival
                       </label>
@@ -211,8 +210,8 @@ const Arrival = () => {
                     </div>
                     <div className="relative flex-1 items-center gap-x-6">
                       <label
-                        class="block text-sm font-medium mb-1"
-                        for="card-expiry"
+                        className="block text-sm font-medium mb-1"
+                    
                       >
                         Flight Number
                       </label>
@@ -236,8 +235,8 @@ const Arrival = () => {
                     </div>
                     <div className="relative flex-1 items-center gap-x-6">
                       <label
-                        class="block text-sm font-medium mb-1"
-                        for="card-expiry"
+                        className="block text-sm font-medium mb-1"
+                       
                       >
                         Flight Name
                       </label>
@@ -260,8 +259,8 @@ const Arrival = () => {
                     </div>
                     <div className="relative flex-1 items-center gap-x-6">
                       <label
-                        class="block text-sm font-medium mb-1"
-                        for="card-expiry"
+                        className="block text-sm font-medium mb-1"
+                        
                       >
                         Arrival Time
                       </label>
@@ -286,8 +285,8 @@ const Arrival = () => {
 
                     <div className="relative flex-1 items-center gap-x-6">
                       <label
-                        class="block text-sm font-medium mb-1"
-                        for="card-expiry"
+                        className="block text-sm font-medium mb-1"
+                        
                       >
                         Airport
                       </label>
@@ -373,54 +372,54 @@ const Arrival = () => {
           {active && (
             <div className="mt-10 max-w-7xl mx-auto bg-white shadow shadow-slate-300   mb-5 rounded-2xl p-5">
               {/* <h1 className="text-3xl text-center font-bold">TASKS</h1> */}
-              <div class="container   mx-auto bg-white rounded-2xl">
-                <div class="p-5 bg-white flex items-center mx-auto  border-2   rounded-lg sm:flex-row flex-col">
-                  <div class="sm:w-48 sm:h-32 h-20 w-20 sm:mr-10 p-2 inline-flex items-center justify-center flex-shrink-0">
+              <div className="container   mx-auto bg-white rounded-2xl">
+                <div className="p-5 bg-white flex items-center mx-auto  border-2   rounded-lg sm:flex-row flex-col">
+                  <div className="sm:w-48 sm:h-32 h-20 w-20 sm:mr-10 p-2 inline-flex items-center justify-center flex-shrink-0">
                     <img src={agent} className="rounded-md " />
                   </div>
-                  <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
-                    <h1 class="text-3xl font-medium font_ab mb-5">
+                  <div className="flex-grow sm:text-left text-center mt-6 sm:mt-0">
+                    <h1 className="text-3xl font-medium font_ab mb-5">
                       Agents Details
                     </h1>
 
-                    <div class=" font-bold text-gray-800">
-                      <div class="   space-x-3 ">
-                        <div class="flex pb-1">
-                          <h2 class="text-gray-500 pr-2">Name</h2>
+                    <div className=" font-bold text-gray-800">
+                      <div className="   space-x-3 ">
+                        <div className="flex pb-1">
+                          <h2 className="text-gray-500 pr-2">Name</h2>
                           <p>{appointment?.agentObj?.name?.fullName}</p>
                         </div>
                       </div>
-                      <div class="w-full  space-x-3">
-                        <div class="flex pb-1">
-                          <h2 class="text-gray-500 pr-2">Contact</h2>
+                      <div className="w-full  space-x-3">
+                        <div className="flex pb-1">
+                          <h2 className="text-gray-500 pr-2">Contact</h2>
                           <p>{appointment?.agentObj?.phone?.phone}</p>
                         </div>
                       </div>
-                      <div class="w-full md:w-1/2  space-x-3">
-                        <div class="flex pb-1">
-                          <h2 class="text-gray-500 pr-2">Car Plate</h2>
+                      <div className="w-full md:w-1/2  space-x-3">
+                        <div className="flex pb-1">
+                          <h2 className="text-gray-500 pr-2">Car Plate</h2>
                           <p>SAM 741</p>
                         </div>
                       </div>
-                      <div class="w-full md:w-1/2  space-x-3">
-                        <div class="flex pb-1">
-                          <h2 class="text-gray-500 pr-2">Email</h2>
+                      <div className="w-full md:w-1/2  space-x-3">
+                        <div className="flex pb-1">
+                          <h2 className="text-gray-500 pr-2">Email</h2>
                           <p>{appointment?.agentObj?.email}</p>
                         </div>
                       </div>
                     </div>
-                    {/* <div class="flex mt-5">
-                      <h2 class="text-gray-500 mr-2 font-bold">
+                    {/* <div className="flex mt-5">
+                      <h2 className="text-gray-500 mr-2 font-bold">
                         Last Activity:{" "}
                       </h2>
                       <p>Airport Pickup</p>
                     </div> */}
-                    {/* <div class="flex ">
-                      <h2 class="text-gray-500 mr-2 font-bold">Hotel Stay: </h2>
+                    {/* <div className="flex ">
+                      <h2 className="text-gray-500 mr-2 font-bold">Hotel Stay: </h2>
                       <p>JW Marriot, Regina</p>
                     </div> */}
                     {/* <Link to={"/view-profile"}>
-                      <a class="mt-3 text-indigo-500 inline-flex items-center">
+                      <a className="mt-3 text-indigo-500 inline-flex items-center">
                         View Profile
                         <svg
                           fill="none"
@@ -428,7 +427,7 @@ const Arrival = () => {
                           stroke-linecap="round"
                           stroke-linejoin="round"
                           stroke-width="2"
-                          class="w-4 h-4 ml-2"
+                          className="w-4 h-4 ml-2"
                           viewBox="0 0 24 24"
                         >
                           <path d="M5 12h14M12 5l7 7-7 7"></path>
@@ -439,17 +438,17 @@ const Arrival = () => {
                 </div>
               </div>
 
-              <div class="max-w-7xl mx-auto mt-5 bg-white  p-7  rounded-xl border-2">
-                <div class="flex flex-row justify-between items-center">
+              <div className="max-w-7xl mx-auto mt-5 bg-white  p-7  rounded-xl border-2">
+                <div className="flex flex-row justify-between items-center">
                   <div>
-                    <h1 class="text-3xl font-medium font_ab">Tasks list</h1>
+                    <h1 className="text-3xl font-medium font_ab">Tasks list</h1>
                   </div>
                 </div>
-                <p class="text-slate-500 font-medium font_ab">
+                <p className="text-slate-500 font-medium font_ab">
                   Hello, here are your latest tasks
                 </p>
                 <div>
-                  <div class=" justify-between items-center py-3 px-2   ">
+                  <div className=" justify-between items-center py-3 px-2   ">
                     {appointment?.tasksList?.map((task, index) => {
                       return (
                         <div className="flex items-center justify-between ">
@@ -460,7 +459,7 @@ const Arrival = () => {
                             viewBox="0 0 24 24"
                             stroke-width="1.5"
                             stroke="currentColor"
-                            class="w-6 h-6 "
+                            className="w-6 h-6 "
                           >
                             <path
                               stroke-linecap="round"

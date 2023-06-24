@@ -92,14 +92,14 @@ const PaymentCard = (params) => {
   return (
     <div className=" min-h-screen">
       <Navbar />
-      <section class="antialiased bg-gray-100 text-gray-600 min-h-screen p-4">
-        <div class="h-full">
+      <section className="antialiased bg-gray-100 text-gray-600 min-h-screen p-4">
+        <div className="h-full">
           {/* <!-- Pay component --> */}
           <div>
             {/* <!-- Card background --> */}
-            <div class="relative px-4 sm:px-6 lg:px-8 max-w-lg mx-auto mt-32 ">
+            <div className="relative px-4 sm:px-6 lg:px-8 max-w-lg mx-auto mt-32 ">
               <img
-                class="rounded-t shadow-lg"
+                className="rounded-t shadow-lg"
                 src={"https://preview.cruip.com/mosaic/images/pay-bg.jpg"}
                 width="460"
                 height="180"
@@ -107,34 +107,34 @@ const PaymentCard = (params) => {
               />
             </div>
             {/* <!-- Card body --> */}
-            <div class="relative px-4 sm:px-6 lg:px-8 pb-8 max-w-lg mx-auto">
-              <div class="bg-white px-8 pb-6 rounded-b shadow-lg">
+            <div className="relative px-4 sm:px-6 lg:px-8 pb-8 max-w-lg mx-auto">
+              <div className="bg-white px-8 pb-6 rounded-b shadow-lg">
                 {/* <!-- Card header --> */}
-                <div class="text-center mb-6 ">
-                  <div class="mb-2">
+                <div className="text-center mb-6 ">
+                  <div className="mb-2">
                     <img
-                      class="-mt-8 inline-flex rounded-full"
+                      className="-mt-8 inline-flex rounded-full"
                       src={agent}
                       width="64"
                       height="64"
                       alt="User"
                     />
                   </div>
-                  <h1 class="text-xl text-pr font-semibold mt-15 mb-2 font_ab px:4 ">
+                  <h1 className="text-xl text-pr font-semibold mt-15 mb-2 font_ab px:4 ">
                     Pay now
                   </h1>
                 </div>
 
                 {/* // <!-- Card form --> */}
                 <form x-show="card" onSubmit={formik.handleSubmit}>
-                  <div class="space-y-4">
+                  <div className="space-y-4">
                     {/* <!-- Card Number --> */}
                     <div>
                       <label
-                        class="block text-sm font-medium mb-1"
-                        for="card-nr"
+                        className="block text-sm font-medium mb-1"
+                        htmlFor="card-nr"
                       >
-                        Card Number <span class="text-red-500">*</span>
+                        Card Number 
                       </label>
                       <TextField
                         fullWidth
@@ -153,13 +153,13 @@ const PaymentCard = (params) => {
                       />
                     </div>
                     {/* <!-- Expiry and CVC --> */}
-                    <div class="flex space-x-4">
-                      <div class="flex-1">
+                    <div className="flex space-x-4">
+                      <div className="flex-1">
                         <label
-                          class="block text-sm font-medium mb-1"
-                          for="card-expiry"
+                          className="block text-sm font-medium mb-1"
+                          htmlFor="card-expiry"
                         >
-                          Expiry Date <span class="text-red-500">*</span>
+                          Expiry Date 
                         </label>
                         <TextField
                           fullWidth
@@ -191,12 +191,12 @@ const PaymentCard = (params) => {
                           value={formik.values.expiryDate}
                         />
                       </div>
-                      <div class="flex-1">
+                      <div className="flex-1">
                         <label
-                          class="block text-sm font-medium mb-1"
-                          for="card-cvc"
+                          className="block text-sm font-medium mb-1"
+                          htmlFor="card-cvc"
                         >
-                          CVV <span class="text-red-500">*</span>
+                          CVV 
                         </label>
                         <TextField
                           fullWidth
@@ -220,10 +220,10 @@ const PaymentCard = (params) => {
                     {/* <!-- Name on Card --> */}
                     <div>
                       <label
-                        class="block text-sm font-medium mb-1"
-                        for="card-name"
+                        className="block text-sm font-medium mb-1"
+                        htmlFor="card-name"
                       >
-                        Name on Card <span class="text-red-500">*</span>
+                        Name on Card 
                       </label>
                       <TextField
                         fullWidth
@@ -243,10 +243,10 @@ const PaymentCard = (params) => {
                     {/* <!-- Email --> */}
                     <div>
                       <label
-                        class="block text-sm font-medium mb-1"
-                        for="card-email"
+                        className="block text-sm font-medium mb-1"
+                        htmlFor="card-email"
                       >
-                        Email <span class="text-red-500">*</span>
+                        Email 
                       </label>
                       <TextField
                         fullWidth
@@ -268,8 +268,8 @@ const PaymentCard = (params) => {
            <div>{formik.errors.cardEmail}</div>}
                   </div>
                   {/* <!-- Form footer --> */}
-                  <div class="mt-6">
-                    <div class="mb-4">
+                  <div className="mt-6">
+                    <div className="mb-4">
                       <Button
                         fullWidth
                         variant="contained"
@@ -293,13 +293,13 @@ const PaymentCard = (params) => {
                   {showDiv && (
                     <div
                       id="toast-simple"
-                      class="flex items-center w-full max-w-xl mt-8 border-2 border-slate-200 p-4 space-x-4 text-gray-500 bg-white divide-x divide-slate-300 rounded-lg shadow shadow-slate-300 "
+                      className="flex items-center w-full max-w-xl mt-8 border-2 border-slate-200 p-4 space-x-4 text-gray-500 bg-white divide-x divide-slate-300 rounded-lg shadow shadow-slate-300 "
                       role="alert"
                       onClick={handleClose}
                     >
                       <BsCreditCard className="w-10 h-10 text-[#6d81fe] " />
 
-                      <div class="pl-4 text-sm font-small font-10 text-slate-500">
+                      <div className="pl-4 text-sm font-small font-10 text-slate-500">
                         {" "}
                         Payment has been successfully processed. Ridirecting to
                         arrival page in 10 seconds.

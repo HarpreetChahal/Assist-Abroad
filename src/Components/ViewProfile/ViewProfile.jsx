@@ -26,10 +26,10 @@ const ViewProfile = () => {
 
           </div>
 
-          <div class="relative flex flex-col items-center rounded-[20px] mx-auto  bg-clip-border shadow-3xl shadow-shadow-500 ">
-            <div class="mt-2 mb-8 w-full">
-              <h4 class="px-2 text-xl font-bold mt-5">General Information</h4>
-              <p class="mt-2 px-2 text-base text-gray-600">
+          <div className="relative flex flex-col items-center rounded-[20px] mx-auto  bg-clip-border shadow-3xl shadow-shadow-500 ">
+            <div className="mt-2 mb-8 w-full">
+              <h4 className="px-2 text-xl font-bold mt-5">General Information</h4>
+              <p className="mt-2 px-2 text-base text-gray-600">
                 As we live, our hearts turn colder. Cause pain is what we go
                 through as we become older. We get insulted by others, lose
                 trust for those others. We get back stabbed by friends. It
@@ -37,35 +37,35 @@ const ViewProfile = () => {
                 broken by people we love, even that we give them all...
               </p>
             </div>
-            <div class="grid grid-cols-2 gap-4 px-2 w-full">
-              <div class="flex flex-col items-start justify-center rounded-2xl bg-white border-2 bg-clip-border px-3 py-4 shadow-3xl shadow-shadow-500 ">
-                <p class="text-sm text-gray-600">Name</p>
-                <p class="text-base font-medium text-navy-700 ">Jane Sic</p>
+            <div className="grid grid-cols-2 gap-4 px-2 w-full">
+              <div className="flex flex-col items-start justify-center rounded-2xl bg-white border-2 bg-clip-border px-3 py-4 shadow-3xl shadow-shadow-500 ">
+                <p className="text-sm text-gray-600">Name</p>
+                <p className="text-base font-medium text-navy-700 ">Jane Sic</p>
               </div>
 
-              <div class="flex flex-col justify-center rounded-2xl bg-white border-2 bg-clip-border px-3 py-4 shadow-3xl shadow-shadow-500 ">
-                <p class="text-sm text-gray-600">Birthday</p>
-                <p class="text-base font-medium text-navy-700 ">20 July 1986</p>
+              <div className="flex flex-col justify-center rounded-2xl bg-white border-2 bg-clip-border px-3 py-4 shadow-3xl shadow-shadow-500 ">
+                <p className="text-sm text-gray-600">Birthday</p>
+                <p className="text-base font-medium text-navy-700 ">20 July 1986</p>
               </div>
 
-              <div class="flex flex-col items-start justify-center rounded-2xl bg-white border-2 bg-clip-border px-3 py-4 shadow-3xl shadow-shadow-500 ">
-                <p class="text-sm text-gray-600">Birthday</p>
-                <p class="text-base font-medium text-navy-700 ">20 July 1986</p>
+              <div className="flex flex-col items-start justify-center rounded-2xl bg-white border-2 bg-clip-border px-3 py-4 shadow-3xl shadow-shadow-500 ">
+                <p className="text-sm text-gray-600">Birthday</p>
+                <p className="text-base font-medium text-navy-700 ">20 July 1986</p>
               </div>
 
-              <div class="flex flex-col justify-center rounded-2xl bg-white border-2 bg-clip-border px-3 py-4 shadow-3xl shadow-shadow-500 ">
-                <p class="text-sm text-gray-600">Birthday</p>
-                <p class="text-base font-medium text-navy-700 ">20 July 1986</p>
+              <div className="flex flex-col justify-center rounded-2xl bg-white border-2 bg-clip-border px-3 py-4 shadow-3xl shadow-shadow-500 ">
+                <p className="text-sm text-gray-600">Birthday</p>
+                <p className="text-base font-medium text-navy-700 ">20 July 1986</p>
               </div>
 
-              <div class="flex flex-col items-start justify-center rounded-2xl bg-white border-2 bg-clip-border px-3 py-4 shadow-3xl shadow-shadow-500 ">
-                <p class="text-sm text-gray-600">Birthday</p>
-                <p class="text-base font-medium text-navy-700 ">20 July 1986</p>
+              <div className="flex flex-col items-start justify-center rounded-2xl bg-white border-2 bg-clip-border px-3 py-4 shadow-3xl shadow-shadow-500 ">
+                <p className="text-sm text-gray-600">Birthday</p>
+                <p className="text-base font-medium text-navy-700 ">20 July 1986</p>
               </div>
 
-              <div class="flex flex-col justify-center rounded-2xl bg-white border-2 bg-clip-border px-3 py-4 shadow-3xl shadow-shadow-500">
-                <p class="text-sm text-gray-600">Birthday</p>
-                <p class="text-base font-medium text-navy-700 ">20 July 1986</p>
+              <div className="flex flex-col justify-center rounded-2xl bg-white border-2 bg-clip-border px-3 py-4 shadow-3xl shadow-shadow-500">
+                <p className="text-sm text-gray-600">Birthday</p>
+                <p className="text-base font-medium text-navy-700 ">20 July 1986</p>
               </div>
             </div>
           </div>

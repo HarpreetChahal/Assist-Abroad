@@ -259,25 +259,25 @@ const BecomeAgent = () => {
               </div> */}
           {/* <!-- component --> */}
           <form onSubmit={formik.handleSubmit}>
-            <div class="space-y-4">
-              <div class="">
-                <h2 class="text-base font-semibold leading-7 text-gray-900">
+            <div className="space-y-4">
+              <div className="">
+                <h2 className="text-base font-semibold leading-7 text-gray-900">
                   Profile
                 </h2>
-                <p class="mt-1 text-sm leading-6 text-gray-600">
+                <p className="mt-1 text-sm leading-6 text-gray-600">
                   This information will be displayed publicly so be careful what
                   you share.
                 </p>
 
-                <div class="mt-5 grid grid-cols-1 gap-x-2 gap-y-4 sm:grid-cols-6">
-                  <div class="col-span-full">
+                <div className="mt-5 grid grid-cols-1 gap-x-2 gap-y-4 sm:grid-cols-6">
+                  <div className="col-span-full">
                     <label
                       for="about"
-                      class="block text-sm font-medium leading-6 text-gray-900"
+                      className="block text-sm font-medium leading-6 text-gray-900"
                     >
                       About
                     </label>
-                    <div class="mt-2">
+                    <div className="mt-2">
                       <TextField
                         fullWidth
                         id="about"
@@ -291,17 +291,17 @@ const BecomeAgent = () => {
                       />
                     </div>
                   </div>
-                  {/* <div class="col-span-full">
+                  {/* <div className="col-span-full">
                     <label
                       for="cover-photo"
-                      class="block text-sm font-medium leading-6 text-gray-900"
+                      className="block text-sm font-medium leading-6 text-gray-900"
                     >
                       Add documents
                     </label>
-                    <div class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
-                      <div class="text-center">
+                    <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
+                      <div className="text-center">
                         <svg
-                          class="mx-auto h-12 w-12 text-gray-300"
+                          className="mx-auto h-12 w-12 text-gray-300"
                           viewBox="0 0 24 24"
                           fill="currentColor"
                           aria-hidden="true"
@@ -312,10 +312,10 @@ const BecomeAgent = () => {
                             clip-rule="evenodd"
                           />
                         </svg>
-                        <div class="mt-4 flex text-sm leading-6 text-gray-600">
+                        <div className="mt-4 flex text-sm leading-6 text-gray-600">
                           <label
                             for="file-upload"
-                            class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
+                            className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
                           >
                             <span>Upload a file</span>
                             <Button
@@ -337,23 +337,23 @@ const BecomeAgent = () => {
                 </div>
               </div>
 
-              <div class=" pb-8">
-                <h2 class="text-base font-semibold leading-7 text-gray-900">
+              <div className=" pb-8">
+                <h2 className="text-base font-semibold leading-7 text-gray-900">
                   Personal Information
                 </h2>
-                <p class="mt-1 text-sm leading-6 text-gray-600">
+                <p className="mt-1 text-sm leading-6 text-gray-600">
                   Use a permanent address where you can receive mail.
                 </p>
 
-                <div class="mt-2 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-                  <div class="sm:col-span-3">
+                <div className="mt-2 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                  <div className="sm:col-span-3">
                     <label
                       for="first-name"
-                      class="block text-sm font-medium leading-6 text-gray-900"
+                      className="block text-sm font-medium leading-6 text-gray-900"
                     >
                       Name
                     </label>
-                    <div class="mt-2">
+                    <div className="mt-2">
                       <TextField
                         fullWidth
                         size="small"
@@ -370,14 +370,14 @@ const BecomeAgent = () => {
                     </div>
                   </div>
 
-                  <div class="sm:col-span-3">
+                  <div className="sm:col-span-3">
                     <label
                       for="last-name"
-                      class="block text-sm font-medium leading-6 text-gray-900"
+                      className="block text-sm font-medium leading-6 text-gray-900"
                     >
                       Email
                     </label>
-                    <div class="mt-2">
+                    <div className="mt-2">
                       <TextField
                         fullWidth
                         size="small"
@@ -391,14 +391,14 @@ const BecomeAgent = () => {
                       />
                     </div>
                   </div>
-                  <div class="sm:col-span-3">
+                  <div className="sm:col-span-3">
                     <label
                       for="first-name"
-                      class="block text-sm font-medium leading-6 text-gray-900"
+                      className="block text-sm font-medium leading-6 text-gray-900"
                     >
                       Contact
                     </label>
-                    <div class="mt-2">
+                    <div className="mt-2">
                       <TextField
                         fullWidth
                         size="small"
@@ -413,14 +413,14 @@ const BecomeAgent = () => {
                     </div>
                   </div>
 
-                  <div class="sm:col-span-3">
+                  <div className="sm:col-span-3">
                     <label
                       for="last-name"
-                      class="block text-sm font-medium leading-6 text-gray-900"
+                      className="block text-sm font-medium leading-6 text-gray-900"
                     >
                       Date of birth
                     </label>
-                    <div class="mt-2">
+                    <div className="mt-2">
                       <TextField
                         fullWidth
                         size="small"
@@ -435,14 +435,14 @@ const BecomeAgent = () => {
                     </div>
                   </div>
 
-                  <div class="sm:col-span-3">
+                  <div className="sm:col-span-3">
                     <label
                       for="last-name"
-                      class="block text-sm font-medium leading-6 text-gray-900"
+                      className="block text-sm font-medium leading-6 text-gray-900"
                     >
                       Car Plate
                     </label>
-                    <div class="mt-2">
+                    <div className="mt-2">
                       <TextField
                         fullWidth
                         size="small"
@@ -458,14 +458,14 @@ const BecomeAgent = () => {
                       />
                     </div>
                   </div>
-                  <div class="sm:col-span-3">
+                  <div className="sm:col-span-3">
                     <label
                       for="last-name"
-                      class="block text-sm font-medium leading-6 text-gray-900"
+                      className="block text-sm font-medium leading-6 text-gray-900"
                     >
                       Country
                     </label>
-                    <div class="mt-2">
+                    <div className="mt-2">
                       <TextField
                         fullWidth
                         size="small"
@@ -480,14 +480,14 @@ const BecomeAgent = () => {
                     </div>
                   </div>
 
-                  <div class="col-span-full">
+                  <div className="col-span-full">
                     <label
                       for="street-address"
-                      class="block text-sm font-medium leading-6 text-gray-900"
+                      className="block text-sm font-medium leading-6 text-gray-900"
                     >
                       Street address
                     </label>
-                    <div class="mt-2">
+                    <div className="mt-2">
                       <TextField
                         fullWidth
                         size="small"
@@ -504,14 +504,14 @@ const BecomeAgent = () => {
                     </div>
                   </div>
 
-                  <div class="sm:col-span-2 sm:col-start-1">
+                  <div className="sm:col-span-2 sm:col-start-1">
                     <label
                       for="city"
-                      class="block text-sm font-medium leading-6 text-gray-900"
+                      className="block text-sm font-medium leading-6 text-gray-900"
                     >
                       City
                     </label>
-                    <div class="mt-2">
+                    <div className="mt-2">
                       <TextField
                         fullWidth
                         size="small"
@@ -526,14 +526,14 @@ const BecomeAgent = () => {
                     </div>
                   </div>
 
-                  <div class="sm:col-span-2">
+                  <div className="sm:col-span-2">
                     <label
                       for="region"
-                      class="block text-sm font-medium leading-6 text-gray-900"
+                      className="block text-sm font-medium leading-6 text-gray-900"
                     >
                       State / Province
                     </label>
-                    <div class="mt-2">
+                    <div className="mt-2">
                       <TextField
                         fullWidth
                         size="small"
@@ -548,14 +548,14 @@ const BecomeAgent = () => {
                     </div>
                   </div>
 
-                  <div class="sm:col-span-2">
+                  <div className="sm:col-span-2">
                     <label
                       for="postal-code"
-                      class="block text-sm font-medium leading-6 text-gray-900"
+                      className="block text-sm font-medium leading-6 text-gray-900"
                     >
                       ZIP / Postal code
                     </label>
-                    <div class="mt-2">
+                    <div className="mt-2">
                       <TextField
                         fullWidth
                         size="small"
@@ -569,14 +569,14 @@ const BecomeAgent = () => {
                       />
                     </div>
                   </div>
-                  <div class="sm:col-span-2 sm:col-start-1">
+                  <div className="sm:col-span-2 sm:col-start-1">
                     <label
                       for="city"
-                      class="block text-sm font-medium leading-6 text-gray-900"
+                      className="block text-sm font-medium leading-6 text-gray-900"
                     >
                       Account No
                     </label>
-                    <div class="mt-2">
+                    <div className="mt-2">
                       <TextField
                         fullWidth
                         size="small"
@@ -593,14 +593,14 @@ const BecomeAgent = () => {
                     </div>
                   </div>
 
-                  <div class="sm:col-span-2">
+                  <div className="sm:col-span-2">
                     <label
                       for="region"
-                      class="block text-sm font-medium leading-6 text-gray-900"
+                      className="block text-sm font-medium leading-6 text-gray-900"
                     >
                       Bank Name
                     </label>
-                    <div class="mt-2">
+                    <div className="mt-2">
                       <TextField
                         fullWidth
                         size="small"
@@ -617,14 +617,14 @@ const BecomeAgent = () => {
                     </div>
                   </div>
 
-                  <div class="sm:col-span-2">
+                  <div className="sm:col-span-2">
                     <label
                       for="postal-code"
-                      class="block text-sm font-medium leading-6 text-gray-900"
+                      className="block text-sm font-medium leading-6 text-gray-900"
                     >
                       SIN No
                     </label>
-                    <div class="mt-2">
+                    <div className="mt-2">
                       <TextField
                         fullWidth
                         size="small"
@@ -644,7 +644,7 @@ const BecomeAgent = () => {
               </div>
             </div>
 
-            <div class="mt-2 flex items-center justify-center text-center gap-x-6">
+            <div className="mt-2 flex items-center justify-center text-center gap-x-6">
               <div>
                 <Button
                   type="submit"
@@ -667,12 +667,12 @@ const BecomeAgent = () => {
                   <div
                     ref={toastRef}
                     id="toast-simple"
-                    class="flex items-center w-full max-w-xl mt-8 border-2 border-slate-200 p-4 space-x-4 text-gray-500 bg-white divide-x divide-slate-300 rounded-lg shadow shadow-slate-300 "
+                    className="flex items-center w-full max-w-xl mt-8 border-2 border-slate-200 p-4 space-x-4 text-gray-500 bg-white divide-x divide-slate-300 rounded-lg shadow shadow-slate-300 "
                     role="alert"
                   >
                     <svg
                       aria-hidden="true"
-                      class="w-7 h-7 text-blue-600"
+                      className="w-7 h-7 text-blue-600"
                       focusable="false"
                       data-prefix="fas"
                       data-icon="paper-plane"
@@ -685,7 +685,7 @@ const BecomeAgent = () => {
                         d="M511.6 36.86l-64 415.1c-1.5 9.734-7.375 18.22-15.97 23.05c-4.844 2.719-10.27 4.097-15.68 4.097c-4.188 0-8.319-.8154-12.29-2.472l-122.6-51.1l-50.86 76.29C226.3 508.5 219.8 512 212.8 512C201.3 512 192 502.7 192 491.2v-96.18c0-7.115 2.372-14.03 6.742-19.64L416 96l-293.7 264.3L19.69 317.5C8.438 312.8 .8125 302.2 .0625 289.1s5.469-23.72 16.06-29.77l448-255.1c10.69-6.109 23.88-5.547 34 1.406S513.5 24.72 511.6 36.86z"
                       ></path>
                     </svg>
-                    <div class="pl-4 text-sm font-small font-10 text-slate-500">
+                    <div className="pl-4 text-sm font-small font-10 text-slate-500">
                       {" "}
                       Your request has been sent. We will get in touch with you
                       through email.

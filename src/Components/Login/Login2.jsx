@@ -55,14 +55,14 @@ const Login = () => {
   return (
     <>
       <Navbar />
-      <div class="bg"></div>
-      <div class="bg bg2"></div>
-      <div class="bg bg3"></div>
+      <div className="bg"></div>
+      <div className="bg bg2"></div>
+      <div className="bg bg3"></div>
       <div className="loginPage flex">
         <div className="container_login flex">
           <div className="videoDiv">
             {/* <video src={video} autoPlay muted loop alt="Login Image"></video> */}
-            <div class="imageContainer">
+            <div className="imageContainer">
             <img className="imageLogoLeft" src={image} alt="Login Image"></img>
 </div>
             <div className="textDiv">

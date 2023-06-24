@@ -91,52 +91,52 @@ const AgentTask = () => {
       <Navbar />
       <div className="pt-32 pb-12 max-w-7xl mx-auto  p-5">
         {/* <h1 className="text-3xl text-center font-bold">TASKS</h1> */}
-        <div class="container mx-auto bg-white rounded-2xl">
-          <div class="p-5 bg-white flex items-center mx-auto shadow shadow-slate-300 rounded-lg sm:flex-row flex-col">
-            <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
-              <h1 class="text-2xl font-medium font_ab mb-2">Client Details</h1>
-              <div class="font-bold text-gray-800">
-                <div class="space-x-3">
-                  <div class="flex pb-2">
-                    <h2 class="text-gray-500 pr-2">Name</h2>
+        <div className="container mx-auto bg-white rounded-2xl">
+          <div className="p-5 bg-white flex items-center mx-auto shadow shadow-slate-300 rounded-lg sm:flex-row flex-col">
+            <div className="flex-grow sm:text-left text-center mt-6 sm:mt-0">
+              <h1 className="text-2xl font-medium font_ab mb-2">Client Details</h1>
+              <div className="font-bold text-gray-800">
+                <div className="space-x-3">
+                  <div className="flex pb-2">
+                    <h2 className="text-gray-500 pr-2">Name</h2>
                     <p>{appointment?.userObj?.name?.firstName}</p>
                   </div>
                 </div>
-                <div class="w-full space-x-3">
-                  <div class="flex pb-2">
-                    <h2 class="text-gray-500 pr-2">Email</h2>
+                <div className="w-full space-x-3">
+                  <div className="flex pb-2">
+                    <h2 className="text-gray-500 pr-2">Email</h2>
                     <p>{appointment?.userId?.email}</p>
                   </div>
                 </div>
-                <div class="w-full md:w-1/2 flex space-x-3">
-                  <div class="flex pb-2">
-                    <h2 class="text-gray-500 pr-2">Contact</h2>
+                <div className="w-full md:w-1/2 flex space-x-3">
+                  <div className="flex pb-2">
+                    <h2 className="text-gray-500 pr-2">Contact</h2>
                     <p>{appointment?.userId?.phone?.phone}</p>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="sm:w-40 sm:h-32 h-20 w-20 p-2 inline-flex items-center justify-center  flex-shrink-0">
+            <div className="sm:w-40 sm:h-32 h-20 w-20 p-2 inline-flex items-center justify-center  flex-shrink-0">
               <img src={agent} style={{ borderRadius: 10 }} />
             </div>
           </div>
         </div>
 
-        <div class="max-w-7xl mx-auto mt-5 bg-white  p-5 shadow shadow-slate-300 rounded-xl shadow shadow-slate-300">
-          <div class="flex flex-grow justify-between items-center">
+        <div className="max-w-7xl mx-auto mt-5 bg-white  p-5 shadow shadow-slate-300 rounded-xl shadow shadow-slate-300">
+          <div className="flex flex-grow justify-between items-center">
             <div>
-              <h1 class="text-2xl font-medium font_ab">
+              <h1 className="text-2xl font-medium font_ab">
                 Pre-Arrival Information
               </h1>
             </div>
           </div>
-          <p class="text-slate-500 font-medium font_ab">
+          <p className="text-slate-500 font-medium font_ab">
             Hello, here are client arrival details
           </p>
           <div>
-            <div class="py-3">
-              <div class="flex ">
-                <h2 class="text-gray-500 mr-2 font-bold">Arrival Date </h2>
+            <div className="py-3">
+              <div className="flex ">
+                <h2 className="text-gray-500 mr-2 font-bold">Arrival Date </h2>
                 <p>
                   {appointment?.userId?.arrival?.date &&
                     moment(appointment?.userId?.arrival?.date).format(
@@ -144,20 +144,20 @@ const AgentTask = () => {
                     )}
                 </p>
               </div>
-              <div class="flex">
-                <h2 class="text-gray-500 mr-2 font-bold">Arrival Time </h2>
+              <div className="flex">
+                <h2 className="text-gray-500 mr-2 font-bold">Arrival Time </h2>
                 <p>{appointment?.userId?.arrival?.time}</p>
               </div>
-              <div class="flex">
-                <h2 class="text-gray-500 mr-2 font-bold">Flight Number </h2>
+              <div className="flex">
+                <h2 className="text-gray-500 mr-2 font-bold">Flight Number </h2>
                 <p>{appointment?.userId?.arrival?.flightNumber}</p>
               </div>
-              <div class="flex">
-                <h2 class="text-gray-500 mr-2 font-bold">Flight Name </h2>
+              <div className="flex">
+                <h2 className="text-gray-500 mr-2 font-bold">Flight Name </h2>
                 <p>{appointment?.userId?.arrival?.flightName}</p>
               </div>
-              <div class="flex">
-                <h2 class="text-gray-500 mr-2 font-bold">Airport </h2>
+              <div className="flex">
+                <h2 className="text-gray-500 mr-2 font-bold">Airport </h2>
                 <p>{appointment?.userId?.arrival?.airport}</p>
               </div>
             </div>
@@ -206,17 +206,17 @@ const AgentTask = () => {
           Completed
           </button>
         </div> */}
-        <div class="max-w-7xl mx-auto mt-5 bg-white  p-5 rounded-xl shadow shadow-slate-300">
-          <div class="flex flex-grow justify-between items-center">
+        <div className="max-w-7xl mx-auto mt-5 bg-white  p-5 rounded-xl shadow shadow-slate-300">
+          <div className="flex flex-grow justify-between items-center">
             <div>
-              <h1 class="text-2xl font-medium font_ab">Tasks list</h1>
+              <h1 className="text-2xl font-medium font_ab">Tasks list</h1>
             </div>
           </div>
-          <p class="text-slate-500 font-medium font_ab">
+          <p className="text-slate-500 font-medium font_ab">
             Hello, here are your latest tasks
           </p>
           <div>
-            <div class=" justify-between items-center py-3 px-2   ">
+            <div className=" justify-between items-center py-3 px-2   ">
               {appointment?.tasksList?.map((task, index) => {
                 return (
                   <div className="flex items-center justify-between  key={index} ">
@@ -248,7 +248,7 @@ const AgentTask = () => {
                         viewBox="0 0 24 24"
                         stroke-width="1.5"
                         stroke="currentColor"
-                        class="w-4 h-4  hover:text-slate-700 hover:cursor-pointer"
+                        className="w-4 h-4  hover:text-slate-700 hover:cursor-pointer"
                       >
                         <path
                           stroke-linecap="round"
