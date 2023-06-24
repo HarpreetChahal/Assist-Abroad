@@ -38,9 +38,9 @@ const BecomeAgent = () => {
     setShowDiv(true);
 
     // Redirect to homepage after 5 seconds
-    // setTimeout(() => {
-    //   window.location.href = '/'; // Replace '/' with the actual homepage URL
-    // }, 10000);
+    setTimeout(() => {
+      window.location.href = '/'; 
+    }, 10000);
   };
 
   const handleClose = () => {
@@ -127,7 +127,8 @@ const BecomeAgent = () => {
       })
         .then(({ DATA = {}, MESSAGE }) => {
           dispatch({ type: "UPDATE_USER", payload: DATA });
-          navigate("/arrival-form");
+          
+          handleClick()
         })
         .catch((error) => {
           console.error(error);
@@ -657,7 +658,7 @@ const BecomeAgent = () => {
                       color: "#ffffff",
                     },
                   }}
-                  onClick={handleClick}
+                  
                 >
                   Submit Request
                 </Button>
