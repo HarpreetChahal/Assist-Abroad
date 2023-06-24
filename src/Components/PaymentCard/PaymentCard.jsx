@@ -13,7 +13,6 @@ import * as Yup from "yup";
 
 import { BsCreditCard } from "react-icons/bs";
 
-
 import commonApi from "../../api/common";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
@@ -21,7 +20,7 @@ import { useLocation } from "react-router-dom";
 const PaymentCard = (params) => {
   const { dispatch, isFetching } = useContext(Context);
   const [showDiv, setShowDiv] = useState(false);
-  
+
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -39,8 +38,8 @@ const PaymentCard = (params) => {
     // Hide the notification div
     setShowDiv(false);
   };
-  
-  const {membershipId,price} = useLocation().state;
+
+  const { membershipId, price } = useLocation().state;
 
   const formik = useFormik({
     initialValues: {
@@ -52,25 +51,27 @@ const PaymentCard = (params) => {
     },
     validationSchema: Yup.object({
       cardNumber: Yup.number().required("Required"),
-      expiryDate: Yup.string().required("Required"),
+      expiryDate: Yup.string().min(5,"").required("Required"),
       cvv: Yup.string()
-      .matches(/^\d+$/, "CVV must contain only numbers")
+        .matches(/^\d+$/, "CVV must contain only numbers")
         .max(3, "CVV must be exactly 3 digits")
         .required("Required"),
       cardName: Yup.string().required("Required"),
       cardEmail: Yup.string().required("Required"),
     }),
     onSubmit: async (values) => {
-      let data={cardDetails:{
-        ...values,
-        number:values.cardNumber,
-        exp_month:values.expiryDate.slice(0,2),
-        exp_year:values.expiryDate.slice(2),
-        cvc:values.cvv
-      },
-      membershipId:membershipId
-    }
-      
+      let [month,year]=values.expiryDate.split("/")
+      let data = {
+        cardDetails: {
+          ...values,
+          number: values.cardNumber,
+          exp_month: month,
+          exp_year: year,
+          cvc: values.cvv,
+        },
+        membershipId: membershipId,
+      };
+
       await commonApi({
         action: "createPayment",
         data: data,
@@ -79,10 +80,9 @@ const PaymentCard = (params) => {
         },
       })
         .then(({ DATA = {}, MESSAGE }) => {
-          navigate("/arrival-form")
+          navigate("/arrival-form", { replace: true });
         })
         .catch((error) => {
-       
           console.error(error);
         });
     },
@@ -122,7 +122,6 @@ const PaymentCard = (params) => {
                   <h1 class="text-xl text-pr font-semibold mt-15 mb-2 font_ab px:4 ">
                     Pay now
                   </h1>
-                  
                 </div>
 
                 {/* // <!-- Card form --> */}
@@ -143,6 +142,7 @@ const PaymentCard = (params) => {
                         variant="outlined"
                         placeholder="1234-1234-1234"
                         name="cardNumber"
+                        inputProps={{ maxLength: 16 }}
                         error={
                           formik.touched.cardNumber && formik.errors.cardNumber
                         }
@@ -166,12 +166,26 @@ const PaymentCard = (params) => {
                           id="expiryDate"
                           variant="outlined"
                           placeholder="MM/YY"
+                        inputProps={{ maxLength: 5 }}
+
                           name="expiryDate"
                           error={
                             formik.touched.expiryDate &&
                             formik.errors.expiryDate
                           }
-                          onChange={formik.handleChange}
+                          onChange={(event) => {
+                            const input = event.target.value;
+                            let formattedDate = input;
+                        
+                            if (input.length === 2 && !input.includes('/')) {
+                              formattedDate = `${input}/`;
+                            } 
+                            if (formattedDate.length > 5) {
+                              formattedDate = formattedDate.slice(0, 5);
+                            }
+                        
+                            formik.setFieldValue('expiryDate', formattedDate);
+                          }}
                           onBlur={formik.handleBlur}
                           value={formik.values.expiryDate}
                         />
@@ -252,42 +266,40 @@ const PaymentCard = (params) => {
                   {/* <!-- Form footer --> */}
                   <div class="mt-6">
                     <div class="mb-4">
-                 
-                        <Button
-                          fullWidth
-                          variant="contained"
-                          sx={{
+                      <Button
+                        fullWidth
+                        variant="contained"
+                        sx={{
+                          color: "#ffffff",
+                          bgcolor: "#6D81FC",
+                          textTransform: "none",
+                          "&:hover": {
+                            bgcolor: "#6d81fc",
                             color: "#ffffff",
-                            bgcolor: "#6D81FC",
-                            textTransform: "none",
-                            "&:hover": {
-                              bgcolor: "#6d81fc",
-                              color: "#ffffff",
-                            },
-                          }}
-                          type="submit"
-                          onClick={handleClick}
-                        >
-                          Pay ${price}
-                        </Button>
-                      
+                          },
+                        }}
+                        type="submit"
+                        onClick={handleClick}
+                      >
+                        Pay ${price}
+                      </Button>
                     </div>
                   </div>
                   {showDiv && (
-                  <div
-                   
-                    id="toast-simple"
-                    class="flex items-center w-full max-w-xl mt-8 border-2 border-slate-200 p-4 space-x-4 text-gray-500 bg-white divide-x divide-slate-300 rounded-lg shadow shadow-slate-300 "
-                    role="alert"
-                    onClick={handleClose}
-                  >
-                    <BsCreditCard className="w-10 h-10 text-[#6d81fe] " />
-                   
-                    <div class="pl-4 text-sm font-small font-10 text-slate-500">
-                      {" "}
-                      Payment has been successfully processed. Ridirecting to arrival page in 10 seconds.
+                    <div
+                      id="toast-simple"
+                      class="flex items-center w-full max-w-xl mt-8 border-2 border-slate-200 p-4 space-x-4 text-gray-500 bg-white divide-x divide-slate-300 rounded-lg shadow shadow-slate-300 "
+                      role="alert"
+                      onClick={handleClose}
+                    >
+                      <BsCreditCard className="w-10 h-10 text-[#6d81fe] " />
+
+                      <div class="pl-4 text-sm font-small font-10 text-slate-500">
+                        {" "}
+                        Payment has been successfully processed. Ridirecting to
+                        arrival page in 10 seconds.
+                      </div>
                     </div>
-                  </div>
                   )}
                 </form>
               </div>
