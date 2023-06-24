@@ -191,7 +191,7 @@ const Profile = () => {
                           size="small"
                           id="email"
                           variant="outlined"
-                          disabled={!edit}
+                          disabled={true}
                           name="email"
                           onChange={formik.handleChange}
                           onBlur={formik.handleBlur}
