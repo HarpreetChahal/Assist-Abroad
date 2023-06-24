@@ -38,9 +38,15 @@ const BecomeAgent = () => {
     setShowDiv(true);
 
     // Redirect to homepage after 5 seconds
-    // setTimeout(() => {
-    //   window.location.href = '/'; 
-    // }, 10000);
+    let timer = setInterval(() => {
+      setCountdown((prevCountdown) => prevCountdown - 1);
+    }, 1000);
+  
+    // Redirect to homepage after countdown
+    setTimeout(() => {
+      clearInterval(timer);
+      navigate("/");
+    }, countdown * 1000); // Multiply by 1000 to convert seconds to milliseconds
   };
 
   const handleClose = () => {
@@ -689,7 +695,7 @@ const BecomeAgent = () => {
                       {" "}
                       Your request has been sent. We will get in touch with you
                       through email.
-                       {/* Redirecting you to the homepage in{" "}{countdown} seconds. */}
+                       Redirecting you to the homepage in{" "}{countdown} seconds.
                     </div>
                   </div>
                 )}
