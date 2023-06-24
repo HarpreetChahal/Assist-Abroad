@@ -25,6 +25,7 @@ const Arrival = () => {
   const [appointment, setAppointment] = useState(null);
   const [buttonValue, setButtonValue] = useState(false);
   const [edit, setEdit] = useState(false);
+  const [showFedback,setShowFeedback]=useState(false)
   let initialValues;
   const navigate = useNavigate();
   useEffect(() => {
@@ -47,6 +48,18 @@ const Arrival = () => {
       })
         .then(({ DATA = {}, MESSAGE }) => {
           setAppointment(DATA.data[0]);
+
+          let tasks = DATA.data[0].tasksList;
+          let count = 0;
+          for (let i = 0; i < tasks.length; i++) {
+            if (tasks[i].status) {
+              count++;
+            }
+          }
+  
+          if (count == tasks.length) {
+            setShowFeedback(true);
+          }
         })
         .catch((error) => {
           console.error(error);
@@ -472,14 +485,14 @@ const Arrival = () => {
                       );
                     })}
                   </div>
-                  <div className="flex items-center justify-center h-10 space-x-6 ">
+                 {showFedback && <div className="flex items-center justify-center h-10 space-x-6 ">
                     <button
                       onClick={() => setOpen(true)}
                       className="text-white mt-5 bg-pr px-7 py-2 rounded-md"
                     >
                       Give Feedback
                     </button>
-                  </div>
+                  </div>}
                   {/* <Button type="submit"  onClick={() => setOpen(true)} 
              
               style={{
