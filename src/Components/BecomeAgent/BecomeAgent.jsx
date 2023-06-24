@@ -429,7 +429,7 @@ const BecomeAgent = () => {
                         error={formik.touched.dob && formik.errors.dob}
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
-                        value={formik.values.dob}
+                        value={formik.values.dob ? moment(formik.values.dob).format("DD/MM/YYYY"):moment().format("DD/MM/YYYY")}
                       />
                     </div>
                   </div>
