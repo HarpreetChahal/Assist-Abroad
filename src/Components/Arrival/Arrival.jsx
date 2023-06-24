@@ -23,9 +23,9 @@ const Arrival = () => {
   const [open, setOpen] = useState(false);
   const { dispatch, user, isFetching } = useContext(Context);
   const [appointment, setAppointment] = useState(null);
-  const [buttonValue,setButtonValue]=useState(false)
-  const [edit,setEdit]=useState(false)
-  let initialValues
+  const [buttonValue, setButtonValue] = useState(false);
+  const [edit, setEdit] = useState(false);
+  let initialValues;
   const navigate = useNavigate();
   useEffect(() => {
     window.scrollTo(0, 0); // Scroll to the top of the page on component mount
@@ -54,20 +54,18 @@ const Arrival = () => {
     };
     fetchAppointment();
 
-    initialValues={
+    initialValues = {
       dateOfArrival: user?.arrival?.date || "",
       flightNumber: user?.arrival?.flightNumber || "",
       flightName: user?.arrival?.flightName || "",
       arrivalTime: user?.arrival?.time || "",
       airport: user?.arrival?.airport || "",
-    }
+    };
 
-    if(user?.arrival?.flightNumber=="")
-    {
-      setEdit(true)
-      setButtonValue(true)
+    if (user?.arrival?.flightNumber == "") {
+      setEdit(true);
+      setButtonValue(true);
     }
-   
   }, []);
 
   const formik = useFormik({
@@ -104,12 +102,11 @@ const Arrival = () => {
       })
         .then(({ DATA = {}, MESSAGE }) => {
           dispatch({ type: "UPDATE_USER", payload: DATA });
-          setEdit(false)
+          setEdit(false);
 
-        if(buttonValue)
-        {
-          setActive(true)
-        }
+          if (buttonValue) {
+            setActive(true);
+          }
         })
         .catch((error) => {
           console.error(error);
@@ -119,7 +116,7 @@ const Arrival = () => {
   return (
     <div className=" min-h-screen   bg-[#f8f8fa]">
       <Navbar />
-      <Modal open={open} setOpen={setOpen} />
+      <Modal open={open} setOpen={setOpen} appointment={appointment} />
       <div className=" pt-28 p-4">
         <div className="max-w-7xl mx-auto ">
           <div className="flex items-center justify-between">
@@ -178,7 +175,6 @@ const Arrival = () => {
                         variant="outlined"
                         size="small"
                         disabled={!edit}
-
                         sx={{ backgroundColor: "#fff", width: "70%" }}
                         id="dateOfArrival"
                         placeholder="Enter arrival date"
@@ -189,7 +185,13 @@ const Arrival = () => {
                         }
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
-                        value={formik.values.dateOfArrival!=""? moment(formik.values.dateOfArrival).format("DD/MM/YYYY"):""}
+                        value={
+                          formik.values.dateOfArrival != ""
+                            ? moment(formik.values.dateOfArrival).format(
+                                "DD/MM/YYYY"
+                              )
+                            : ""
+                        }
                       />
                     </div>
                     <div className="relative flex-1 items-center gap-x-6">
@@ -204,7 +206,6 @@ const Arrival = () => {
                         variant="outlined"
                         size="small"
                         disabled={!edit}
-
                         sx={{ backgroundColor: "#fff", width: "70%" }}
                         id="flightNumber"
                         placeholder="Enter flight ticket no"
@@ -230,7 +231,6 @@ const Arrival = () => {
                         variant="outlined"
                         size="small"
                         disabled={!edit}
-
                         sx={{ backgroundColor: "#fff", width: "70%" }}
                         id="flightName"
                         placeholder="Enter flight ticket no"
@@ -255,7 +255,6 @@ const Arrival = () => {
                         variant="outlined"
                         size="small"
                         disabled={!edit}
-
                         sx={{ backgroundColor: "#fff", width: "70%" }}
                         id="arrivalTime"
                         placeholder="Enter flight arrival time"
@@ -311,47 +310,47 @@ const Arrival = () => {
               }}>
                 Submit
               </Button> */}
-                { edit ? <Button
-                    onClick={formik.handleSubmit}
-                    variant="contained"
-                    sx={{
-                      color: "#ffffff",
-                      bgcolor: "#6D81FC",
-                      textTransform: "none",
-                      alignSelf: "flex-start",
-                      marginLeft: 25,
-                      marginTop: 3,
-                      "&:hover": {
-                        bgcolor: "#6d81fc",
+                  {edit ? (
+                    <Button
+                      onClick={formik.handleSubmit}
+                      variant="contained"
+                      sx={{
                         color: "#ffffff",
-                      },
-                    }}
-                  >
-                  Submit
-                  </Button>
-:
-                  <Button
-                   onClick={
-                    ()=>{
-                      setEdit(true)
-                    }
-                   }
-                    variant="contained"
-                    sx={{
-                      color: "#ffffff",
-                      bgcolor: "#6D81FC",
-                      textTransform: "none",
-                      alignSelf: "flex-start",
-                      marginLeft: 25,
-                      marginTop: 3,
-                      "&:hover": {
-                        bgcolor: "#6d81fc",
+                        bgcolor: "#6D81FC",
+                        textTransform: "none",
+                        alignSelf: "flex-start",
+                        marginLeft: 25,
+                        marginTop: 3,
+                        "&:hover": {
+                          bgcolor: "#6d81fc",
+                          color: "#ffffff",
+                        },
+                      }}
+                    >
+                      Submit
+                    </Button>
+                  ) : (
+                    <Button
+                      onClick={() => {
+                        setEdit(true);
+                      }}
+                      variant="contained"
+                      sx={{
                         color: "#ffffff",
-                      },
-                    }}
-                  >
-                  Edit
-                  </Button>}
+                        bgcolor: "#6D81FC",
+                        textTransform: "none",
+                        alignSelf: "flex-start",
+                        marginLeft: 25,
+                        marginTop: 3,
+                        "&:hover": {
+                          bgcolor: "#6d81fc",
+                          color: "#ffffff",
+                        },
+                      }}
+                    >
+                      Edit
+                    </Button>
+                  )}
                 </div>
               </div>
             </form>
@@ -434,13 +433,13 @@ const Arrival = () => {
                 <p class="text-slate-500 font-medium font_ab">
                   Hello, here are your latest tasks
                 </p>
-                <div >
+                <div>
                   <div class=" justify-between items-center py-3 px-2   ">
                     {appointment?.tasksList?.map((task, index) => {
                       return (
                         <div className="flex items-center justify-between ">
                           <div className="flex  justify-start h-10 space-x-6 ">
-                          {/* <svg
+                            {/* <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
                             viewBox="0 0 24 24"
@@ -454,8 +453,8 @@ const Arrival = () => {
                               d="M4.5 12.75l6 6 9-13.5"
                             />
                           </svg> */}
-                          {/* {index + 1} */}
-                          {/* </div>
+                            {/* {index + 1} */}
+                            {/* </div>
 
                           <div className="justify-start text-sm "> */}
                             <label
@@ -505,14 +504,35 @@ const Arrival = () => {
   );
 };
 
-function Modal({ open, setOpen }) {
+function Modal({ open, setOpen, appointment }) {
   const cancelButtonRef = useRef(null);
   const [value, setValue] = React.useState(0);
   const [value1, setValue1] = React.useState(0);
   const [value2, setValue2] = React.useState(0);
   const [value3, setValue3] = React.useState(0);
   const [value4, setValue4] = React.useState(0);
+  const [feedback, setFeedback] = React.useState("");
 
+  let addFeddback = async () => {
+    let data = {
+      agentId: appointment.agentId,
+      rating: value4,
+      feedback: feedback,
+    };
+    await commonApi({
+      action: "addFeedback",
+      data: data,
+      config: {
+        authToken: true,
+      },
+    })
+      .then(({ DATA = {}, MESSAGE }) => {
+        setOpen(false)
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog
@@ -555,7 +575,7 @@ function Modal({ open, setOpen }) {
                         Feedback on Services
                       </Dialog.Title>
                       <div className="my-8">
-                        <div className="flex items-center justify-between lg:grid grid-cols-2  gap-2 lg:gap-8">
+                        {/* <div className="flex items-center justify-between lg:grid grid-cols-2  gap-2 lg:gap-8">
                           <p className="text-sm lg:text-xl text-gray-500">
                             Airport Pickup
                           </p>
@@ -622,11 +642,11 @@ function Modal({ open, setOpen }) {
                               {value3 === 0 ? "Not Yet Rated" : `${value3}/5`}
                             </p>
                           </div>
-                        </div>
+                        </div> */}
                         <div className="flex items-center justify-between lg:grid grid-cols-2 mt-4  gap-2 lg:gap-8">
-                          <p className="text-sm lg:text-xl text-gray-500">
+                          {/* <p className="text-sm lg:text-xl text-gray-500">
                             Health Card
-                          </p>
+                          </p> */}
                           <div className="flex items-center  gap-4">
                             <Rating
                               name="simple-controlled"
@@ -650,10 +670,16 @@ function Modal({ open, setOpen }) {
                             id=""
                             cols="30"
                             rows="5"
+                            onChange={(e) => {
+                              setFeedback(e.target.value);
+                            }}
                           ></textarea>
                         </div>
                         <div className="flex items-center justify-end">
-                          <button className="text-white mt-4 bg-pr px-7 py-2 rounded-md">
+                          <button
+                            className="text-white mt-4 bg-pr px-7 py-2 rounded-md"
+                            onClick={addFeddback}
+                          >
                             Give Feedback
                           </button>
                         </div>

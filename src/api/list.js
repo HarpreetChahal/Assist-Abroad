@@ -47,6 +47,10 @@ const apiList = {
       updateStatus:{
         url:()=>"web/api/v1/appointment/status",
         method:"put"
+      },
+      addFeedback:{
+        url:()=>"web/api/v1/feedback/create",
+        method:"post"
       }
   };
   export default apiList;
