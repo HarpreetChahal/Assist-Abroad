@@ -53,7 +53,7 @@ function App() {
           exact
           path="/"
           element={
-            token && user ? <Home  /> : <Login /> 
+            <Home  /> 
           }
         />
        
