@@ -14,9 +14,11 @@ const Navbar = () => {
   const [profileOpen, setProfileOpen] = useState(false);
   const { user, dispatch, token } = useContext(Context);
   const location = useLocation();
+  const navigate=useNavigate()
   const toggleProfileDropdown = () => {
     setProfileOpen(!profileOpen);
   };
+
   const handleLogout = async () => {
     localStorage.clear();
     dispatch({ type: "LOGOUT" });
