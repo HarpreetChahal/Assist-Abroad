@@ -43,6 +43,10 @@ const apiList = {
       updateProfile:{
         url:()=>"web/api/v1/user/profile",
         method:"put"
+      },
+      updateStatus:{
+        url:()=>"web/api/v1/appointment/status",
+        method:"put"
       }
   };
   export default apiList;

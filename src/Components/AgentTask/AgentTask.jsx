@@ -54,11 +54,27 @@ const AgentTask = () => {
   useEffect(() => {
     fetchAppointment();
   }, []);
-
+  
   const updateTask = async (appointmentId, taskId) => {
     await commonApi({
       action: "updateTask",
       data: { appointmentId: appointmentId, taskId: taskId },
+      config: {
+        authToken: true,
+      },
+    })
+      .then(({ DATA = {}, MESSAGE }) => {
+        fetchAppointment();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  const completeAppiointment = async (appointmentId) => {
+    await commonApi({
+      action: "updateStatus",
+      data: { appointmentId: appointmentId},
       config: {
         authToken: true,
       },
@@ -247,7 +263,9 @@ const AgentTask = () => {
             </div>
             {showCompleted && (
               <div className="flex items-center justify-center h-10 space-x-6 ">
-                <button className="text-white mt-5 bg-pr px-7 py-2 rounded-md">
+                <button className="text-white mt-5 bg-pr px-7 py-2 rounded-md" onClick={()=>{
+                  completeAppiointment(appointment._id)
+                }}>
                   Completed
                 </button>
               </div>
