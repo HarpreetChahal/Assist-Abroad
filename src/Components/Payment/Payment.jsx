@@ -79,12 +79,22 @@ const Payment = () => {
                   <p className="w-full font-light sm:text-lg text-wt bg-pr p-4">
                     Best option for personal use & for your next project.
                   </p>
-                  <div className="flex justify-center items-baseline my-8">
+                  <div className="flex justify-center items-baseline my-6">
                     <span className="mr-2 text-5xl font-extrabold">
                       ${mem.price}
                     </span>
                     <span className="text-gray-500">/month</span>
                   </div>
+                  <a
+                    href="#"
+                    
+                    className="text-wt bg-pr hover:bg-primary-700  font-medium rounded-lg text-sm px-8 py-2.5 mb-10 text-center mb-4"
+                    onClick={(event) =>
+                      handleSelectMembership(mem._id, mem.price, index, event)
+                    }
+                  >
+                    Select
+                  </a>
                   {/* List */}
                   <ul role="list" className="mb-8 space-y-4 text-left">
                     {mem.services.map((service, index) => (
@@ -106,16 +116,7 @@ const Payment = () => {
                       </li>
                     ))}
                   </ul>
-                  <a
-                    href="#"
-                    
-                    className="text-wt bg-pr hover:bg-primary-700  font-medium rounded-lg text-sm px-8 py-2.5 text-center mb-4"
-                    onClick={(event) =>
-                      handleSelectMembership(mem._id, mem.price, index, event)
-                    }
-                  >
-                    Select
-                  </a>
+                  
                 </div>
               );
             })}

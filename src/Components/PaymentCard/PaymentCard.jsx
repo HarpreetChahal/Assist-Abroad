@@ -97,7 +97,7 @@ const PaymentCard = (params) => {
           {/* <!-- Pay component --> */}
           <div>
             {/* <!-- Card background --> */}
-            <div className="relative px-4 sm:px-6 lg:px-8 max-w-lg mx-auto mt-32 ">
+            <div className="relative px-4 sm:px-6 lg:px-8 max-w-xl mx-auto mt-32 ">
               <img
                 className="rounded-t shadow-lg"
                 src={"https://preview.cruip.com/mosaic/images/pay-bg.jpg"}
@@ -107,7 +107,7 @@ const PaymentCard = (params) => {
               />
             </div>
             {/* <!-- Card body --> */}
-            <div className="relative px-4 sm:px-6 lg:px-8 pb-8 max-w-lg mx-auto">
+            <div className="relative px-4 sm:px-6 lg:px-8 pb-8 max-w-xl mx-auto">
               <div className="bg-white px-8 pb-6 rounded-b shadow-lg">
                 {/* <!-- Card header --> */}
                 <div className="text-center mb-6 ">
