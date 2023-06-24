@@ -62,7 +62,14 @@ const Navbar = () => {
                 </div>
               </>
             )}
-
+{user && token && (
+                  <Link
+                    to="/profile"
+                    className="text-[#23314C] cursor-pointer hover:text-pr font_ab"
+                  >
+                    Profile
+                  </Link>
+                )}
             {user && token && (
               <div className="text-[#23314C] cursor-pointer hover:text-pr  font_ab">
                 <img
@@ -194,10 +201,17 @@ const Navbar = () => {
                 >
                   Home
                 </Link>
-
+                {user && token && (
+                  <Link
+                    to="/profile"
+                    className="text-[#23314C] cursor-pointer hover:text-pr font_ab"
+                  >
+                    Profile
+                  </Link>
+                )}
                 {((user && user.role == 0  && !user.hasRequested )|| (!user))&& (
                   <>
-                    {" "}
+                    
                     <div
                       onClick={() => {
                         window.scrollTo(0, 470);
@@ -218,14 +232,7 @@ const Navbar = () => {
                     </div>
                   </>
                 )}
-                {user && token && (
-                  <Link
-                    to="/profile"
-                    className="text-[#23314C] cursor-pointer hover:text-pr font_ab"
-                  >
-                    Profile
-                  </Link>
-                )}
+                
                 {user && token && !user.hasRequested && user.role == 0 && (
                   <Link
                     to="/become-agent"
