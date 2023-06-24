@@ -155,7 +155,7 @@ const Navbar = () => {
               </div>
             </div>
 
-            <div className="flex items-center">
+            { location.pathname=="/login" && <div className="flex items-center">
               <div>
                 <Link
                   to="/register"
@@ -164,7 +164,18 @@ const Navbar = () => {
                   Join
                 </Link>
               </div>
-            </div>
+            </div>}
+
+            { location.pathname=="/register" && <div className="flex items-center">
+              <div>
+                <Link
+                  to="/login"
+                  className="text-pr border border-pr  px-6 mt-2 rounded-md py-1.5 font_ab"
+                >
+                  Sing In
+                </Link>
+              </div>
+            </div>}
           </div>
 
           {open && (
@@ -219,14 +230,7 @@ const Navbar = () => {
                     Logout
                   </div>
                 )}
-                {!user && !token && (
-                  <Link
-                    to="/login"
-                    className="text-[#23314C] cursor-pointer hover:text-pr font_ab"
-                  >
-                    Sign In
-                  </Link>
-                )}
+               
               </>
             </div>
           )}
