@@ -4,13 +4,13 @@ import agent from "/src/Assets/agent.png";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import commonApi from "../../api/common";
-
-
+import moment from "moment";
 
 const AgentTask = () => {
   const search = useLocation().search;
   const name = new URLSearchParams(search).get("taskId");
   const [appointment, setAppointment] = useState(null);
+  const [showCompleted, setShowCompleted] = useState(false);
   let fetchAppointment = async () => {
     let data = {
       query: {
@@ -35,6 +35,17 @@ const AgentTask = () => {
     })
       .then(({ DATA = {}, MESSAGE }) => {
         setAppointment(DATA.data[0]);
+        let tasks = DATA.data[0].tasksList;
+        let count = 0;
+        for (let i = 0; i < tasks.length; i++) {
+          if (tasks[i].status) {
+            count++;
+          }
+        }
+
+        if (count == tasks.length) {
+          setShowCompleted(true);
+        }
       })
       .catch((error) => {
         console.error(error);
@@ -66,7 +77,6 @@ const AgentTask = () => {
         {/* <h1 className="text-3xl text-center font-bold">TASKS</h1> */}
         <div class="container mx-auto bg-white rounded-2xl">
           <div class="p-5 bg-white flex items-center mx-auto shadow shadow-slate-300 rounded-lg sm:flex-row flex-col">
-            
             <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
               <h1 class="text-2xl font-medium font_ab mb-2">Client Details</h1>
               <div class="font-bold text-gray-800">
@@ -91,7 +101,7 @@ const AgentTask = () => {
               </div>
             </div>
             <div class="sm:w-40 sm:h-32 h-20 w-20 p-2 inline-flex items-center justify-center  flex-shrink-0">
-              <img src={agent} style={{borderRadius:10}}/>
+              <img src={agent} style={{ borderRadius: 10 }} />
             </div>
           </div>
         </div>
@@ -109,30 +119,31 @@ const AgentTask = () => {
           </p>
           <div>
             <div class="py-3">
-             
-                
-                  <div class="flex ">
-                    <h2 class="text-gray-500 mr-2 font-bold">Arrival Date </h2>
-                    <p>{appointment?.userId?.arrival?.date}</p>
-                  </div>
-                  <div class="flex">
-                    <h2 class="text-gray-500 mr-2 font-bold">Arrival Time </h2>
-                    <p>{appointment?.userId?.arrival?.time}</p>
-                  </div>
-                  <div class="flex">
-                    <h2 class="text-gray-500 mr-2 font-bold">Flight Number </h2>
-                    <p>{appointment?.userId?.arrival?.flightNumber}</p>
-                  </div>
-                  <div class="flex">
-                    <h2 class="text-gray-500 mr-2 font-bold">Flight Name </h2>
-                    <p>{appointment?.userId?.arrival?.flightName}</p>
-                  </div>
-                  <div class="flex">
-                    <h2 class="text-gray-500 mr-2 font-bold">Airport </h2>
-                    <p>{appointment?.userId?.arrival?.airport}</p>
-                  </div>
-                
-             
+              <div class="flex ">
+                <h2 class="text-gray-500 mr-2 font-bold">Arrival Date </h2>
+                <p>
+                  {appointment?.userId?.arrival?.date &&
+                    moment(appointment?.userId?.arrival?.date).format(
+                      "DD/MM/YYYY"
+                    )}
+                </p>
+              </div>
+              <div class="flex">
+                <h2 class="text-gray-500 mr-2 font-bold">Arrival Time </h2>
+                <p>{appointment?.userId?.arrival?.time}</p>
+              </div>
+              <div class="flex">
+                <h2 class="text-gray-500 mr-2 font-bold">Flight Number </h2>
+                <p>{appointment?.userId?.arrival?.flightNumber}</p>
+              </div>
+              <div class="flex">
+                <h2 class="text-gray-500 mr-2 font-bold">Flight Name </h2>
+                <p>{appointment?.userId?.arrival?.flightName}</p>
+              </div>
+              <div class="flex">
+                <h2 class="text-gray-500 mr-2 font-bold">Airport </h2>
+                <p>{appointment?.userId?.arrival?.airport}</p>
+              </div>
             </div>
           </div>
         </div>
@@ -234,11 +245,13 @@ const AgentTask = () => {
                 );
               })}
             </div>
-            <div className="flex items-center justify-center h-10 space-x-6 ">
-              <button className="text-white mt-5 bg-pr px-7 py-2 rounded-md">
-                Completed
-              </button>
-            </div>
+            {showCompleted && (
+              <div className="flex items-center justify-center h-10 space-x-6 ">
+                <button className="text-white mt-5 bg-pr px-7 py-2 rounded-md">
+                  Completed
+                </button>
+              </div>
+            )}
             {/* <Button type="submit"  onClick={() => setOpen(true)} 
              
               style={{

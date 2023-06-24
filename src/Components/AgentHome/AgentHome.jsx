@@ -22,7 +22,9 @@ const AgentHome = () => {
           agentId: user._id,
           status: !active ? "In-progress" : "Completed",
         },
-        options: {},
+        options: {
+          sort:{createdAt:-1}
+        },
       };
       await commonApi({
         action: "listTask",
