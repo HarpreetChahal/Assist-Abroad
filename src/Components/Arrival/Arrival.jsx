@@ -35,7 +35,7 @@ const Arrival = () => {
       let data = {
         query: {
           userId: user._id,
-          status: "In-progress",
+          // status: "In-progress",
         },
         options: {},
       };
@@ -392,12 +392,12 @@ const Arrival = () => {
                           <p>{appointment?.agentObj?.phone?.phone}</p>
                         </div>
                       </div>
-                      <div className="w-full md:w-1/2  space-x-3">
+                      {/* <div className="w-full md:w-1/2  space-x-3">
                         <div className="flex pb-1">
                           <h2 className="text-gray-500 pr-2">Car Plate</h2>
                           <p>SAM 741</p>
                         </div>
-                      </div>
+                      </div> */}
                       <div className="w-full md:w-1/2  space-x-3">
                         <div className="flex pb-1">
                           <h2 className="text-gray-500 pr-2">Email</h2>
