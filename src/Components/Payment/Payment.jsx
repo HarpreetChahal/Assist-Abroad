@@ -15,8 +15,7 @@ const Payment = () => {
   const [selectedMembership, setSelectedMembership] = useState(null);
   const [selectedPrice, setSelectedPrice] = useState(null);
   const [highlightedIndex, setHighlightedIndex] = useState(null);
-
-  const fetchMembership = async () => {
+    const fetchMembership = async () => {
     await commonApi({
       action: "getMembership",
       data: {},
@@ -24,9 +23,12 @@ const Payment = () => {
       .then(({ DATA = {}, MESSAGE }) => {
         setMembership(DATA.data);
         for (let i = 0; i < DATA.data.length; i++) {
-          if (membership[i]?.featured === true) {
-            setSelectedMembership(membership[i]._id);
-            setSelectedPrice(membership[i].price);
+       
+          let data=DATA.data
+          if (data[i]?.featured === true) {
+            setSelectedMembership(data[i]._id);
+            setSelectedPrice(data[i].price);
+            setHighlightedIndex(i)
           }
         }
       })
@@ -63,7 +65,8 @@ const Payment = () => {
           <div className="space-y-10 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0">
             {/* Pricing Card */}
             {membership.map((mem, index) => {
-              const isHighlighted = index === highlightedIndex;
+              console.log("ubde4",selectedMembership)
+              const isHighlighted = selectedMembership == mem._id;
               return (
                 <div
                   className={`flex flex-col mx-auto text-center text-tc bg-white border-2 ${
