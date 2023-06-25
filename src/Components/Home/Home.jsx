@@ -11,6 +11,7 @@ import { Button, TextField } from "@mui/material";
 import emailjs from "@emailjs/browser";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { css } from "glamor";
 
 const Home = () => {
   const form = useRef();
@@ -18,7 +19,7 @@ const Home = () => {
     background: "#6d81fe",
     color: "#ffffff",
   };
-  
+
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -190,12 +191,14 @@ const Home = () => {
               name="user_name"
               placeholder="Name"
               className="bg-white border-2 px-4 py-4 outline-none rounded-lg text-lg w-full"
+              required
             />
             <input
               type="email"
               name="user_email"
               placeholder="E-mail"
               className="bg-white border-2 px-4 py-4 outline-none rounded-lg text-lg w-full"
+              required
             />
             <textarea
               name="message"
@@ -204,6 +207,7 @@ const Home = () => {
               id=""
               cols="30"
               rows="10"
+              required
             ></textarea>
             <div className="lg:col-span-2 flex items-center justify-end">
               <Button
@@ -227,6 +231,10 @@ const Home = () => {
             hideProgressBar
             closeOnClick
             pauseOnHover
+            closeButton
+            progressStyle={{ background: "#6d81fe" }} // Change the color of the tick sign here
+            progressClassName={"custom-progress-bar"}
+            icon={false}
           />
         </form>
       </section>
