@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import Navbar from "../../layout/Navbar";
 import hero from "/src/Assets/HOME9.png";
 import love from "/src/Assets/love.png";
@@ -7,7 +7,41 @@ import thunder from "/src/Assets/thunder.png";
 import Footer from "../../layout/Footer";
 import { Link } from "react-router-dom";
 import { Button, TextField } from "@mui/material";
+
+import emailjs from "@emailjs/browser";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const Home = () => {
+  const form = useRef();
+  const toastStyle = {
+    background: "#6d81fe",
+    color: "#ffffff",
+  };
+  
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_w177nqe",
+        "template_btcxizo",
+        form.current,
+        "4TbzYhqyU5WTSHK_R"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          console.log("message sent");
+          toast.success("Your message has been sent!");
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+    
+  };
   return (
     <div className="bg-[#F6F7FC] relative min-h-screen">
       {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42" width="42" height="42"/> */}
@@ -146,20 +180,20 @@ const Home = () => {
         </div>
       </section>
       <section className="mt-10 pb-20 mx-5 lg:mx-0">
-        <form action="https://formspree.io/f/mdornano" method="POST">
+        <form ref={form} onSubmit={sendEmail}>
           <h1 className="text-3xl text-[#23314C] text-center font-bold font_ab">
             Contact Us
           </h1>
           <div className="mx-auto lg:max-w-7xl mt-10 grid grid-cols-1 lg:grid-cols-2 gap-5">
             <input
               type="text"
-              name="username"
+              name="user_name"
               placeholder="Name"
               className="bg-white border-2 px-4 py-4 outline-none rounded-lg text-lg w-full"
             />
             <input
               type="email"
-              name="Email"
+              name="user_email"
               placeholder="E-mail"
               className="bg-white border-2 px-4 py-4 outline-none rounded-lg text-lg w-full"
             />
@@ -167,7 +201,6 @@ const Home = () => {
               name="message"
               className="bg-white border-2 lg:col-span-2 px-4 py-4 outline-none rounded-lg text-lg w-full"
               placeholder="Message"
-
               id=""
               cols="30"
               rows="10"
@@ -175,6 +208,7 @@ const Home = () => {
             <div className="lg:col-span-2 flex items-center justify-end">
               <Button
                 type="submit"
+                value="Send"
                 variant="contained"
                 sx={{
                   color: "#ffffff",
@@ -186,6 +220,14 @@ const Home = () => {
               </Button>
             </div>
           </div>
+          <ToastContainer
+            toastStyle={toastStyle}
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar
+            closeOnClick
+            pauseOnHover
+          />
         </form>
       </section>
       <Footer />
