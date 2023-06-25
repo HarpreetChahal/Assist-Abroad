@@ -162,27 +162,16 @@ const Navbar = () => {
               </div>
             </div>
 
-            {location.pathname == "/login" && (
+         
+
+            {location.pathname != "/register" && !user && (
               <div className="flex items-center">
                 <div>
                   <Link
                     to="/register"
                     className="text-pr border border-pr  px-6 mt-2 rounded-md py-1.5 font_ab"
                   >
-                    Join
-                  </Link>
-                </div>
-              </div>
-            )}
-
-            {location.pathname == "/register" && (
-              <div className="flex items-center">
-                <div>
-                  <Link
-                    to="/login"
-                    className="text-pr border border-pr  px-6 mt-2 rounded-md py-1.5 font_ab"
-                  >
-                    Sign In
+                   Join
                   </Link>
                 </div>
               </div>
@@ -193,7 +182,7 @@ const Navbar = () => {
             <div className="grid grid-cols-1 bg-white shadow-md px-3 items-center gap-4 justify-center text-gray-500 pb-5">
               <>
                 <Link
-                  to="/home"
+                  to="/"
                   className="text-[#23314C] hover:text-pr font_ab"
                 >
                   Home
@@ -206,7 +195,7 @@ const Navbar = () => {
                     Profile
                   </Link>
                 )}
-                {((user && user.role == 0  && !user.hasRequested )|| (!user))&& (
+                {((user && user.role == 0  && !user.hasAppoinment)|| (!user))&& (
                   <>
                     
                     <div
@@ -246,6 +235,28 @@ const Navbar = () => {
                     Logout
                   </div>
                 )}
+
+{location.pathname != "/login"  && !user && (
+            <Link
+            to="/login"
+            className="text-[#23314C] cursor-pointer hover:text-pr font_ab"
+          >
+            Sign In
+          </Link>
+                 
+              
+            )}
+
+            {location.pathname != "/register" && !user && (
+           
+           <Link
+           to="/register"
+           className="text-[#23314C] cursor-pointer hover:text-pr font_ab"
+         >
+           Join
+         </Link>
+            
+            )}
               </>
             </div>
           )}
