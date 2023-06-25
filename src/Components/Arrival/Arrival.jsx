@@ -74,7 +74,7 @@ const Arrival = () => {
       arrivalTime: user?.arrival?.time || "",
       airport: user?.arrival?.airport || "",
     };
-    console.log("intial",initialValues)
+   
     if (!user?.arrival?.flightNumber) {
       setEdit(true);
       setButtonValue(true);

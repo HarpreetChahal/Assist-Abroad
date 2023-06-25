@@ -65,7 +65,7 @@ const Payment = () => {
           <div className="space-y-10 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0">
             {/* Pricing Card */}
             {membership.map((mem, index) => {
-              console.log("ubde4",selectedMembership)
+           
               const isHighlighted = selectedMembership == mem._id;
               return (
                 <div
