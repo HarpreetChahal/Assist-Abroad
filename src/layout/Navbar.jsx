@@ -43,7 +43,8 @@ const Navbar = () => {
             >
               Home
             </Link>
-            {((user && user.role == 0  && !user.hasRequested) || (!user)) && (
+          
+            {((user && user.role == 0  && !user.hasAppoinment) || (!user)) && (
               <>
                 <div
                   onClick={() => {
@@ -63,7 +64,7 @@ const Navbar = () => {
                   Contact
                 </div>
               </>
-            )}
+            ) }
 {user && token && (
                   <Link
                     to="/profile"
@@ -95,13 +96,7 @@ const Navbar = () => {
             )}
             {profileOpen && user && token && (
               <div className="absolute mt-52 px-2 py-2 bg-white rounded-md shadow-lg bg-[#ffffff]">
-                <Link
-                  to="/profile"
-                  className="flex items-start justify-start text-[#23314C] hover:text-pr text-lg font_ab px-1 py-1  mt-1  rounded-md hover:bg-[#6D81FE] hover:text-white"
-                >
-                  <AiOutlineUser className="mr-2" />
-                  Profile
-                </Link>
+               
                 {user && token && !user.hasRequested && user.role == 0 && (
                   <Link
                     to="/become-agent"

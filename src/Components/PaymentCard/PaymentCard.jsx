@@ -79,9 +79,20 @@ const PaymentCard = (params) => {
           authToken: true,
         },
       })
-        .then(({ DATA = {}, MESSAGE }) => {
+        .then(async({ DATA = {}, MESSAGE }) => {
           // navigate(-1)
+          
+        await commonApi({
+          action: "getProfile",
+          data: {},
+          config: {
+            authToken: true,
+          },
+        }).then(({ DATA = {}, MESSAGE }) => {
+          dispatch({ type: "UPDATE_USER", payload: DATA });
           navigate("/arrival-form", {replace:true});
+        });
+      
         })
         .catch((error) => {
           console.error(error);
@@ -300,7 +311,7 @@ const PaymentCard = (params) => {
                       <BsCreditCard className="w-8 h-8 text-[#6d81fe] " />
 
                       <div className="pl-4 text-sm font-small font-10 text-slate-500">
-                        {" "}
+                        
                         The payment has been successfully processed
                       </div>
                     </div>

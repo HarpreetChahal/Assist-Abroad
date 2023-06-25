@@ -73,7 +73,7 @@ function App() {
         <Route
           exact
           path="/profile"
-          element={token && user && user.role==0 ? <Profile /> : token && user  && user.role==1?<PageNotFound /> : <Login />}
+          element={token && user ? <Profile /> : <Login />}
         />
         <Route
           exact

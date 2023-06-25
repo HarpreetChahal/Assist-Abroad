@@ -51,6 +51,10 @@ const apiList = {
       addFeedback:{
         url:()=>"web/api/v1/feedback/create",
         method:"post"
+      },
+      getProfile:{
+        url:()=>"web/api/v1/user",
+        method:"get"
       }
   };
   export default apiList;
