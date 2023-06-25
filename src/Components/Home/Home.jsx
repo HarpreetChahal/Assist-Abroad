@@ -13,37 +13,38 @@ const Home = () => {
       {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42" width="42" height="42"/> */}
       <Navbar />
       <section
-      
         className="w-full pt-32 px-5 lg:mx-0
           "
       >
         <div className="bg-white mx-auto w-full lg:max-w-7xl gap-10 px-5 lg:px-10 py-10 grid grid-cols-1 lg:grid-cols-2 ">
           <div>
             <h1 className=" text-3xl text-[#6D81FE] lg:text-4xl font_ab mb-5">
-              <span>Moving to a new <br className=" lg:hidden"  /> country ? </span>
+              <span>
+                Moving to a new <br className=" lg:hidden" /> country ?{" "}
+              </span>
               <br /> Let us help you
             </h1>
-            <div >
-            <Link to={'/quiz'}>
-            <Button
-              variant="contained"
-              sx={{
-                color: "#ffffff",
-                bgcolor: "#6D81FC",
-                textTransform: "none",
-                "&:hover": {
-                  bgcolor: "#6d81fc",
-                  color: "#ffffff",
-                },
-                
-              }}
-            >
-             Get started
-            </Button></Link>
+            <div>
+              <Link to={"/quiz"}>
+                <Button
+                  variant="contained"
+                  sx={{
+                    color: "#ffffff",
+                    bgcolor: "#6D81FC",
+                    textTransform: "none",
+                    "&:hover": {
+                      bgcolor: "#6d81fc",
+                      color: "#ffffff",
+                    },
+                  }}
+                >
+                  Get started
+                </Button>
+              </Link>
             </div>
           </div>
           <div>
-            <img src={hero} alt="" className="h-3/4 w-3/4"/>
+            <img src={hero} alt="" className="h-3/4 w-3/4" />
           </div>
         </div>
       </section>
@@ -145,42 +146,49 @@ const Home = () => {
         </div>
       </section>
       <section className="mt-10 pb-20 mx-5 lg:mx-0">
-        <h1 className="text-3xl text-[#23314C] text-center font-bold font_ab">
-          Contact Us
-        </h1>
-        <div className="mx-auto lg:max-w-7xl mt-10 grid grid-cols-1 lg:grid-cols-2 gap-5">
-          <input
-            type="text"
-            placeholder="Name"
-            className="bg-white border-2 px-4 py-4 outline-none rounded-lg text-lg w-full"
-          />
-          <input
-            type="email"
-            placeholder="E-mail"
-            className="bg-white border-2 px-4 py-4 outline-none rounded-lg text-lg w-full"
-          />
-          <textarea   className="bg-white border-2 lg:col-span-2 px-4 py-4 outline-none rounded-lg text-lg w-full" placeholder="Message" name="" id="" cols="30" rows="10">
+        <form action="https://formspree.io/f/mdornano" method="POST">
+          <h1 className="text-3xl text-[#23314C] text-center font-bold font_ab">
+            Contact Us
+          </h1>
+          <div className="mx-auto lg:max-w-7xl mt-10 grid grid-cols-1 lg:grid-cols-2 gap-5">
+            <input
+              type="text"
+              name="username"
+              placeholder="Name"
+              className="bg-white border-2 px-4 py-4 outline-none rounded-lg text-lg w-full"
+            />
+            <input
+              type="email"
+              name="Email"
+              placeholder="E-mail"
+              className="bg-white border-2 px-4 py-4 outline-none rounded-lg text-lg w-full"
+            />
+            <textarea
+              name="message"
+              className="bg-white border-2 lg:col-span-2 px-4 py-4 outline-none rounded-lg text-lg w-full"
+              placeholder="Message"
 
-          </textarea>
-          <div className="lg:col-span-2 flex items-center justify-end">
-
-<Button
-              variant="contained"
-              sx={{
-                color: "#ffffff",
-                bgcolor: "#6D81FC",
-                textTransform: "none",
-               
-                
-              }}
-            >
-            Submit
-            </Button>
-
+              id=""
+              cols="30"
+              rows="10"
+            ></textarea>
+            <div className="lg:col-span-2 flex items-center justify-end">
+              <Button
+                type="submit"
+                variant="contained"
+                sx={{
+                  color: "#ffffff",
+                  bgcolor: "#6D81FC",
+                  textTransform: "none",
+                }}
+              >
+                Submit
+              </Button>
+            </div>
           </div>
-        </div>
+        </form>
       </section>
-      <Footer/>
+      <Footer />
     </div>
   );
 };
