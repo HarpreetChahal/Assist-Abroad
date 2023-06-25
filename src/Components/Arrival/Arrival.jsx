@@ -448,7 +448,7 @@ const Arrival = () => {
                   <div className=" justify-between items-center py-3 px-2   ">
                     {appointment?.tasksList?.map((task, index) => {
                       return (
-                        <div className="flex items-center justify-between ">
+                        <div className="flex items-center justify-between " key={index}>
                           <div className="flex  justify-start h-10 space-x-6 ">
                             {/* <svg
                             xmlns="http://www.w3.org/2000/svg"

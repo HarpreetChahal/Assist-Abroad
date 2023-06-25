@@ -219,7 +219,7 @@ const AgentTask = () => {
             <div className=" justify-between items-center py-3 px-2   ">
               {appointment?.tasksList?.map((task, index) => {
                 return (
-                  <div className="flex items-center justify-between  key={index} ">
+                  <div className="flex items-center justify-between" key={index}>
                     <div className="flex  justify-start h-10 space-x-6 ">
                       <input
                         id="comments"
@@ -232,6 +232,7 @@ const AgentTask = () => {
                         }}
                         checked={task.completed}
                         className="h-6 w-6 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                        
                       />
                       {/* {index + 1} */}
                       {/* </div>
