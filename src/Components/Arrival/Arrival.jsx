@@ -74,23 +74,23 @@ const Arrival = () => {
       arrivalTime: user?.arrival?.time || "",
       airport: user?.arrival?.airport || "",
     };
-
+    console.log("intial",initialValues)
     if (!user?.arrival?.flightNumber) {
       setEdit(true);
       setButtonValue(true);
     }
-  }, []);
+  }, [user.arrival]);
 
   const formik = useFormik({
     initialValues: {
-      dateOfArrival: user?.arrival?.date || "",
+      dateOfArrival: user?.arrival?.date ? moment(user?.arrival?.date).format("YYYY-MM-DD") :moment(new Date()).format("YYYY-MM-DD"),
       flightNumber: user?.arrival?.flightNumber || "",
       flightName: user?.arrival?.flightName || "",
       arrivalTime: user?.arrival?.time || "",
       airport: user?.arrival?.airport || "",
     },
     validationSchema: Yup.object({
-      dateOfArrival: Yup.string().required("Required"),
+      dateOfArrival: Yup.date().required("Required"),
       flightNumber: Yup.string().required("Required"),
       flightName: Yup.string().required("Required"),
       arrivalTime: Yup.string().required("Required"),
@@ -186,7 +186,7 @@ const Arrival = () => {
                       <TextField
                         className="inputField"
                         variant="outlined"
-                        
+                        type="date"
                         size="small"
                         disabled={!edit}
                         sx={{ backgroundColor: "#fff", width: "70%" }}
@@ -200,11 +200,8 @@ const Arrival = () => {
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         value={
-                          formik.values.dateOfArrival != ""
-                            ? moment(formik.values.dateOfArrival).format(
-                                "DD/MM/YYYY"
-                              )
-                            : ""
+                          formik.values.dateOfArrival || moment(new Date())
+                            
                         }
                       />
                     </div>
