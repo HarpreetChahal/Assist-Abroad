@@ -297,12 +297,11 @@ const PaymentCard = (params) => {
                       role="alert"
                       onClick={handleClose}
                     >
-                      <BsCreditCard className="w-10 h-10 text-[#6d81fe] " />
+                      <BsCreditCard className="w-8 h-8 text-[#6d81fe] " />
 
                       <div className="pl-4 text-sm font-small font-10 text-slate-500">
                         {" "}
-                        Payment has been successfully processed. Ridirecting to
-                        arrival page in 10 seconds.
+                        The payment has been successfully processed
                       </div>
                     </div>
                   )}
