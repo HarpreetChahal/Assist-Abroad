@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../../layout/Navbar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import { styled } from "@mui/material/styles";
 import RadioGroup, { useRadioGroup } from "@mui/material/RadioGroup";
@@ -39,7 +39,7 @@ const Quiz = () => {
   const [questions, setQuestions] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [progress, setProgress] = useState(0);
-  
+  const navigate=useNavigate()
   useEffect(() => {
     const getQuestions = async () => {
       await commonApi({
