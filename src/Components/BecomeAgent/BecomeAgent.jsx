@@ -46,7 +46,7 @@ const BecomeAgent = () => {
     setTimeout(() => {
       clearInterval(timer);
       navigate("/");
-    }, countdown * 1000); // Multiply by 1000 to convert seconds to milliseconds
+    }, countdown * 500); // Multiply by 1000 to convert seconds to milliseconds
   };
 
   const handleClose = () => {
@@ -58,7 +58,7 @@ const BecomeAgent = () => {
     if (showDiv && countdown > 0) {
       const timer = setTimeout(() => {
         setCountdown((prevCountdown) => prevCountdown - 1);
-      }, 1000);
+      }, 500);
 
       return () => {
         clearTimeout(timer);

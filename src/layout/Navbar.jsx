@@ -2,27 +2,31 @@ import React, { useState, useContext } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
-import { AiOutlineUser } from "react-icons/ai";
-import { AiOutlineRobot } from "react-icons/ai";
 import { FiLogOut } from "react-icons/fi";
-import { AiOutlineDown } from "react-icons/ai";
+import { AiOutlineRobot } from "react-icons/ai";
+import { Avatar, MenuItem, Menu, Popper, Grow, Paper, ClickAwayListener } from "@mui/material";
 import agent from "/src/Assets/agent.png";
 import { Context } from "../Components/context/Context";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
-  const [profileOpen, setProfileOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
   const { user, dispatch, token } = useContext(Context);
   const location = useLocation();
-  const navigate=useNavigate()
-  const toggleProfileDropdown = () => {
-    setProfileOpen(!profileOpen);
+  const navigate = useNavigate();
+
+  const toggleProfileDropdown = (event) => {
+    setAnchorEl(anchorEl ? null : event.currentTarget);
   };
 
   const handleLogout = async () => {
     localStorage.clear();
     dispatch({ type: "LOGOUT" });
     navigate("/login");
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
   };
 
   return (
@@ -44,7 +48,7 @@ const Navbar = () => {
               Home
             </Link>
           
-            {((user && user.role == 0  && !user.hasAppoinment) || (!user)) && (
+            {((user && user.role === 0 && !user.hasAppoinment) || (!user)) && (
               <>
                 <div
                   onClick={() => {
@@ -64,83 +68,98 @@ const Navbar = () => {
                   Contact
                 </div>
               </>
-            ) }
-{user && token && (
-                  <Link
-                    to="/profile"
-                    className="text-[#23314C] cursor-pointer hover:text-pr text-lg font_ab"
-                  >
-                    Profile
-                  </Link>
-                )}
+            )}
+
             {user && token && (
-              <div className="text-[#23314C] cursor-pointer hover:text-pr  font_ab">
-                <img
-                  className={`text-[#23314C] cursor-pointer hover:text-pr text-lg font_ab w-10 h-10 rounded-full ${
-                    profileOpen ? "text-pr" : ""
-                  }`}
+              <Link
+                to="/profile"
+                className="text-[#23314C] cursor-pointer hover:text-pr text-lg font_ab"
+              >
+                Profile
+              </Link>
+            )}
+
+            {user && token && (
+              <div>
+                <Avatar
                   onClick={toggleProfileDropdown}
+                  className={`cursor-pointer ${anchorEl ? "text-pr" : ""}`}
                   src={agent}
                   alt="Rounded avatar"
                 />
-                {/* <div
-                    className={`flex text-[#23314C] cursor-pointer hover:text-pr text-lg font_ab  ${
-                      profileOpen ? "text-pr" : ""
-                    }`}
-                    onClick={toggleProfileDropdown}
-                  >
-                    Avatar
-                    <AiOutlineDown className="ml-1" size={14} />
-                  </div> */}
-              </div>
-            )}
-            {profileOpen && user && token && (
-              <div className="absolute mt-52 px-2 py-2 bg-white rounded-md shadow-lg bg-[#ffffff]">
-               
-                {user && token && !user.hasRequested && user.role == 0 && (
-                  <Link
-                    to="/become-agent"
-                    className="flex items-start justify-start text-[#23314C] hover:text-pr text-lg font_ab px-1 py-1  mt-1  rounded-md hover:bg-[#6D81FE] hover:text-white"
-                  >
-                    <AiOutlineRobot className="mr-2" />
-                    Become Agent
-                  </Link>
-                )}
-                {user && token && (
-                  <div
-                    onClick={handleLogout}
-                    className="flex  items-start justify-start text-[#23314C] hover:text-pr text-lg font_ab px-1 py-1  mt-1 rounded-md hover:bg-[#6D81FE] hover:text-white"
-                  >
-                    <FiLogOut className="mr-2" />
-                    Logout
-                  </div>
-                )}
+                <Popper
+                  open={Boolean(anchorEl)}
+                  anchorEl={anchorEl}
+                  placement="bottom-end"
+                  transition
+                >
+                  {({ TransitionProps }) => (
+                    <Grow {...TransitionProps}>
+                      <Paper>
+                        <ClickAwayListener onClickAway={handleClose}>
+                          <Menu
+                            anchorEl={anchorEl}
+                            open={Boolean(anchorEl)}
+                            onClose={handleClose}
+                            anchorOrigin={{
+                              vertical: "bottom",
+                              horizontal: "center",
+                            }}
+                            transformOrigin={{
+                              vertical: "top",
+                              horizontal: "center",
+                            }}
+                          >
+                            {user && token && !user.hasRequested && user.role === 0 && (
+                              <MenuItem
+                              
+                                onClick={handleClose}
+                                component={Link}
+                                to="/become-agent"
+                              >
+                                <AiOutlineRobot className="mr-2" />
+                                Become Agent
+                              </MenuItem>
+                            )}
+                            {user && token && (
+                              <MenuItem onClick={handleLogout}>
+                                <FiLogOut className="mr-2" />
+                                Logout
+                              </MenuItem>
+                            )}
+                          </Menu>
+                        </ClickAwayListener>
+                      </Paper>
+                    </Grow>
+                  )}
+                </Popper>
               </div>
             )}
 
-            {!(user && token)
-              ? location.pathname != "/login" && (
-                  <Link
-                    to="/login"
-                    className="text-[#23314C] hover:text-pr text-lg font_ab"
-                  >
-                    Sign In
-                  </Link>
-                )
-              : null}
-            {!(user && token)
-              ? location.pathname != "/register" && (
-                  <Link
-                    to="/register"
-                    className="text-pr border border-pr px-7 text-lg hover:bg-pr hover:text-white rounded-md py-1 font_ab"
-                  >
-                    Join
-                  </Link>
-                )
-              : null}
+            {!(user && token) ? (
+              location.pathname !== "/login" && (
+                <Link
+                  to="/login"
+                  className="text-[#23314C] hover:text-pr text-lg font_ab"
+                >
+                  Sign In
+                </Link>
+              )
+            ) : null}
+
+            {!(user && token) ? (
+              location.pathname !== "/register" && (
+                <Link
+                  to="/register"
+                  className="text-pr border border-pr px-7 text-lg hover:bg-pr hover:text-white rounded-md py-1 font_ab"
+                >
+                  Join
+                </Link>
+              )
+            ) : null}
           </div>
         </div>
-        {/* mobile version */}
+
         <div className="lg:hidden w-full">
           <div className="w-full  flex items-center justify-between white-4">
             <div className="flex items-center">
@@ -162,20 +181,19 @@ const Navbar = () => {
               </div>
             </div>
 
-         
-
-            {location.pathname != "/register" && !user && (
+            {location.pathname !== "/register" && !user && (
               <div className="flex items-center">
                 <div>
                   <Link
                     to="/register"
                     className="text-pr border border-pr  px-6 mt-2 rounded-md py-1.5 font_ab"
                   >
-                   Join
+                    Join
                   </Link>
                 </div>
               </div>
             )}
+            
           </div>
 
           {open && (
@@ -195,9 +213,8 @@ const Navbar = () => {
                     Profile
                   </Link>
                 )}
-                {((user && user.role == 0  && !user.hasAppoinment)|| (!user))&& (
+                {((user && user.role === 0 && !user.hasAppoinment) || !user) && (
                   <>
-                    
                     <div
                       onClick={() => {
                         window.scrollTo(0, 470);
@@ -218,8 +235,8 @@ const Navbar = () => {
                     </div>
                   </>
                 )}
-                
-                {user && token && !user.hasRequested && user.role == 0 && (
+
+                {user && token && !user.hasRequested && user.role === 0 && (
                   <Link
                     to="/become-agent"
                     className="text-[#23314C] cursor-pointer hover:text-pr font_ab"
@@ -236,27 +253,15 @@ const Navbar = () => {
                   </div>
                 )}
 
-{location.pathname != "/login"  && !user && (
-            <Link
-            to="/login"
-            className="text-[#23314C] cursor-pointer hover:text-pr font_ab"
-          >
-            Sign In
-          </Link>
-                 
-              
-            )}
-
-            {location.pathname != "/register" && !user && (
-           
-           <Link
-           to="/register"
-           className="text-[#23314C] cursor-pointer hover:text-pr font_ab"
-         >
-           Join
-         </Link>
-            
-            )}
+                {location.pathname !== "/login" && !user && (
+                  <Link
+                    to="/login"
+                    className="text-[#23314C] cursor-pointer hover:text-pr font_ab"
+                  >
+                    Sign In
+                  </Link>
+                )}
+                
               </>
             </div>
           )}
