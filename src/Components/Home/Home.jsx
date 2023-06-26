@@ -1,12 +1,20 @@
 import React, { useRef } from "react";
 import Navbar from "../../layout/Navbar";
 import hero from "/src/Assets/HOME9.png";
-import love from "/src/Assets/love.png";
-import rocket from "/src/Assets/rocket.png";
-import thunder from "/src/Assets/thunder.png";
+
+import hotel from "/src/Assets/hotel.png";
+import house from "/src/Assets/house.png";
+import taxi from "/src/Assets/taxi.png";
+import city from "/src/Assets/city.png";
+import document from "/src/Assets/document.png";
+import bank from "/src/Assets/bank.png";
+
 import Footer from "../../layout/Footer";
 import { Link } from "react-router-dom";
 import { Button, TextField } from "@mui/material";
+
+
+
 
 import emailjs from "@emailjs/browser";
 import { ToastContainer, toast } from "react-toastify";
@@ -19,7 +27,6 @@ const Home = () => {
     background: "#6d81fe",
     color: "#ffffff",
   };
-
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -39,7 +46,6 @@ const Home = () => {
           console.log(error.text);
         }
       );
-    
   };
   return (
     <div className="bg-[#F6F7FC] relative min-h-screen">
@@ -88,92 +94,98 @@ const Home = () => {
         <div className="mx-auto mt-10 grid grid-cols-1 pb-10 lg:grid-cols-3 gap-x-16 gap-y-10 w-full lg:max-w-7xl">
           <div className="bg-white border-2 px-5 py-10 rounded-xl  ">
             <div className="flex items-center justify-center">
-              <img src={rocket} alt="" className="w-16 h-16" />
+              <img src={taxi} alt="" className="w-16 h-16 "/>
             </div>
-            <h1 className="text-3xl font-semibold text-pr py-7 pl-5">
-              From Zero to One
+            <h1 className="text-3xl font-semibold text-pr py-7 pl-5 text-center font_ab">
+              Airport Pickup
             </h1>
-            <p className=" text-[#747474] px-5">
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout. The
-              point of using Lorem Ipsum is that it has a more-or-less normal
-              distribution of letters, as opposed to using 'Content here,
-              content here&apos; making it look like readable English.
+            <p className=" text-[#747474] px-5 font_ab">
+              Airport pickup service provides a convenient and reliable
+              transportation solution for travelers arriving at an airport.
+              Whether you are a tourist visiting a new city or a business
+              professional attending a conference, airport pickup services offer
+              a hassle-free way to reach your destination comfortably and
+              efficiently.
             </p>
           </div>
           <div className="bg-white border-2 px-5 py-10 rounded-xl  ">
             <div className="flex items-center justify-center">
-              <img src={thunder} alt="" className="w-16 h-16 " />
+              <img src={hotel} alt="" className="w-16 h-16 "/>
             </div>
-            <h1 className="text-3xl font-semibold text-pr py-7 pl-5">
-              From Zero to One
+            <h1 className="text-3xl font-semibold text-pr py-7 pl-5 text-center font_ab">
+              Hotel Stay
             </h1>
-            <p className=" text-[#747474] px-5">
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout. The
-              point of using Lorem Ipsum is that it has a more-or-less normal
-              distribution of letters, as opposed to using 'Content here,
-              content here&apos; making it look like readable English.
+            <p className=" text-[#747474] px-5 font_ab">
+              Hotel stay service offers travelers a comfortable place to call
+              home during their trips. With a range of amenities, personalized
+              service, and a focus on guest satisfaction, hotels strive to
+              create a welcoming and enjoyable experience for guests. Whether
+              you are traveling for business or leisure, a hotel stay provides
+              the ideal base .
             </p>
           </div>
           <div className="bg-white border-2 px-5 py-10 rounded-xl  ">
             <div className="flex items-center justify-center">
-              <img src={love} alt="" className="w-16 h-16" />
+              <img src={city} alt="" className="w-16 h-16 "/>
             </div>
-            <h1 className="text-3xl font-semibold text-pr py-7 pl-5">
-              From Zero to One
+            <h1 className="text-3xl font-semibold text-pr py-7 pl-5 text-center font_ab">
+              City Tour
             </h1>
-            <p className=" text-[#747474] px-5">
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout. The
-              point of using Lorem Ipsum is that it has a more-or-less normal
-              distribution of letters, as opposed to using 'Content here,
-              content here&apos; making it look like readable English.
+            <p className=" text-[#747474] px-5 font_ab">
+              A city tour is an immersive and exciting way to explore the sights
+              & culture of a new destination. Whether you are visiting a city
+              for the first time or looking to discover hidden gems in your own
+              hometown, a city tour offers a comprehensive experience. City
+              tours come in various forms, catering to different interests and
+              preferences.
             </p>
           </div>
           <div className="bg-white border-2 px-5 py-10 rounded-xl  ">
             <div className="flex items-center justify-center">
-              <img src={rocket} alt="" className="w-16 h-16" />
+              <img src={document} alt="" className="w-16 h-16 "/>
             </div>
-            <h1 className="text-3xl font-semibold text-pr py-7 pl-5">
-              From Zero to One
+            <h1 className="text-3xl font-semibold text-pr py-7 pl-5 font_ab text-center ">
+              Official Documents
             </h1>
-            <p className=" text-[#747474] px-5">
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout. The
-              point of using Lorem Ipsum is that it has a more-or-less normal
-              distribution of letters, as opposed to using 'Content here,
-              content here&apos; making it look like readable English.
+            <p className=" text-[#747474] px-5 font_ab">
+              Getting government documents like official documents, such as
+              identification cards, driver's licenses, and permits is a new
+              place is hassle but if you have valuable resource that assists
+              individuals in navigating the often complex process of obtaining
+              and managing government-issued documents, it can be made smooth
+              and efficient. seeking various .
             </p>
           </div>
           <div className="bg-white border-2 px-5 py-10 rounded-xl  ">
             <div className="flex items-center justify-center">
-              <img src={thunder} alt="" className="w-16 h-16" />
+              <img src={bank} alt="" className="w-16 h-16 "/>
             </div>
-            <h1 className="text-3xl font-semibold text-pr py-7 pl-5">
-              From Zero to One
+            <h1 className="text-3xl font-semibold text-pr py-7 pl-5 font_ab text-center">
+              Banking
             </h1>
-            <p className=" text-[#747474] px-5">
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout. The
-              point of using Lorem Ipsum is that it has a more-or-less normal
-              distribution of letters, as opposed to using 'Content here,
-              content here&apos; making it look like readable English.
+            <p className=" text-[#747474] px-5 font_ab">
+              Setting up a bank account is a fundamental step towards managing
+              your finances and accessing various banking services when moving
+              to a new place. A banking service that assists individuals in
+              opening an account provides a convenient and efficient process for
+              establishing a banking relationship and accessing the benefits of
+              modern banking.
             </p>
           </div>
           <div className="bg-white border-2 px-5 py-10 rounded-xl  ">
             <div className="flex items-center justify-center">
-              <img src={love} alt="" className="w-16 h-16" />
+              < img src={house} alt="" className="w-16 h-16 "/>
             </div>
-            <h1 className="text-3xl font-semibold text-pr py-7 pl-5">
-              From Zero to One
+            <h1 className="text-3xl font-semibold text-pr py-7 pl-5 font_ab text-center">
+              Housing
             </h1>
-            <p className=" text-[#747474] px-5">
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout. The
-              point of using Lorem Ipsum is that it has a more-or-less normal
-              distribution of letters, as opposed to using 'Content here,
-              content here&apos; making it look like readable English.
+            <p className=" text-[#747474] px-5 font_ab">
+              Moving to a new place can be an exciting yet challenging
+              experience, and a housing service that assists individuals in the
+              process can make it smoother and more convenient. This service
+              provide support and resources to help individuals find, secure,
+              and transition into their new home, whether it's renting an
+              apartment or a house when relocating to a new city.
             </p>
           </div>
         </div>
