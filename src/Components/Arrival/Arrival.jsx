@@ -5,12 +5,15 @@ import moment from "moment";
 import { Link } from "react-router-dom";
 import arrivalForm from "/src/Assets/imageLogoLogin.png";
 import agent from "/src/Assets/agent.png";
+import tick from "/src/Assets/tick.png";
 import { Fragment, useRef } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import Rating from "@mui/material/Rating";
 import { Button, TextField } from "@mui/material";
 import { useState, useContext, useEffect } from "react";
 // import { MdReportGmailerrorred } from "react-icons/md";
+
+import { RxDotFilled } from "react-icons/rx";
 
 import { Context } from "../../Components/context/Context";
 import { useFormik } from "formik";
@@ -25,7 +28,7 @@ const Arrival = () => {
   const [appointment, setAppointment] = useState(null);
   const [buttonValue, setButtonValue] = useState(false);
   const [edit, setEdit] = useState(false);
-  const [showFedback,setShowFeedback]=useState(false)
+  const [showFedback, setShowFeedback] = useState(false);
   let initialValues;
   const navigate = useNavigate();
   useEffect(() => {
@@ -56,7 +59,7 @@ const Arrival = () => {
               count++;
             }
           }
-  
+
           if (count == tasks.length) {
             setShowFeedback(true);
           }
@@ -74,7 +77,7 @@ const Arrival = () => {
       arrivalTime: user?.arrival?.time || "",
       airport: user?.arrival?.airport || "",
     };
-   
+
     if (!user?.arrival?.flightNumber) {
       setEdit(true);
       setButtonValue(true);
@@ -83,7 +86,9 @@ const Arrival = () => {
 
   const formik = useFormik({
     initialValues: {
-      dateOfArrival: user?.arrival?.date ? moment(user?.arrival?.date).format("YYYY-MM-DD") :moment(new Date()).format("YYYY-MM-DD"),
+      dateOfArrival: user?.arrival?.date
+        ? moment(user?.arrival?.date).format("YYYY-MM-DD")
+        : moment(new Date()).format("YYYY-MM-DD"),
       flightNumber: user?.arrival?.flightNumber || "",
       flightName: user?.arrival?.flightName || "",
       arrivalTime: user?.arrival?.time || "",
@@ -119,7 +124,7 @@ const Arrival = () => {
 
           if (buttonValue) {
             setActive(true);
-            setButtonValue(false)
+            setButtonValue(false);
           }
         })
         .catch((error) => {
@@ -174,9 +179,7 @@ const Arrival = () => {
                 <div className="w-full sm:w-1/2 flex items-center justify-center flex-col px-5 ">
                   <div className="mt-6 space-y-3 w-full ml-24">
                     <div className=" flex-1 items-center  gap-x-6 ">
-                      <label
-                        className="block text-sm font-medium mb-1"
-                      >
+                      <label className="block text-sm font-medium mb-1">
                         Date of arrival
                       </label>
                       {/* <input
@@ -201,15 +204,11 @@ const Arrival = () => {
                         onBlur={formik.handleBlur}
                         value={
                           formik.values.dateOfArrival || moment(new Date())
-                            
                         }
                       />
                     </div>
                     <div className="relative flex-1 items-center gap-x-6">
-                      <label
-                        className="block text-sm font-medium mb-1"
-                    
-                      >
+                      <label className="block text-sm font-medium mb-1">
                         Flight Number
                       </label>
                       <TextField
@@ -231,10 +230,7 @@ const Arrival = () => {
                       />
                     </div>
                     <div className="relative flex-1 items-center gap-x-6">
-                      <label
-                        className="block text-sm font-medium mb-1"
-                       
-                      >
+                      <label className="block text-sm font-medium mb-1">
                         Flight Name
                       </label>
                       <TextField
@@ -255,10 +251,7 @@ const Arrival = () => {
                       />
                     </div>
                     <div className="relative flex-1 items-center gap-x-6">
-                      <label
-                        className="block text-sm font-medium mb-1"
-                        
-                      >
+                      <label className="block text-sm font-medium mb-1">
                         Arrival Time
                       </label>
                       <TextField
@@ -281,10 +274,7 @@ const Arrival = () => {
                     </div>
 
                     <div className="relative flex-1 items-center gap-x-6">
-                      <label
-                        className="block text-sm font-medium mb-1"
-                        
-                      >
+                      <label className="block text-sm font-medium mb-1">
                         Airport
                       </label>
                       <TextField
@@ -445,34 +435,23 @@ const Arrival = () => {
                   Hello, here are your latest tasks
                 </p>
                 <div>
-                  <div className=" justify-between items-center py-3 px-2   ">
+                  <div className=" justify-between items-center py-3    ">
                     {appointment?.tasksList?.map((task, index) => {
                       return (
-                        <div className="flex items-center justify-between " key={index}>
+                        <div
+                          className="flex items-center justify-between "
+                          key={index}
+                        >
                           <div className="flex  justify-start h-10 space-x-6 ">
-                            {/* <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke-width="1.5"
-                            stroke="currentColor"
-                            className="w-6 h-6 "
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M4.5 12.75l6 6 9-13.5"
-                            />
-                          </svg> */}
-                            {/* {index + 1} */}
-                            {/* </div>
-
-                          <div className="justify-start text-sm "> */}
-                            <label
-                              htmlFor="comments"
-                              className="font-medium text-slate-600"
-                            >
-                              {task.completed ? <s className="text-pr">{task.name}</s> : task.name}
+                            
+                            <label htmlFor="comments" className="flex font-medium  ">
+                             <RxDotFilled className="w-6 h-6  "/>
+                              {task.completed ? (
+                                <s className=" text-green-500 gap-x-2   flex">{task.name}
+                                 <img src={tick} alt="" className="w-8 h-8"/></s>
+                              ) : (
+                                task.name
+                              )}
                             </label>
                           </div>
                           {/* <div className="justify-end">
@@ -483,14 +462,16 @@ const Arrival = () => {
                       );
                     })}
                   </div>
-                 {showFedback && <div className="flex items-center justify-center h-10 space-x-6 ">
-                    <button
-                      onClick={() => setOpen(true)}
-                      className="text-white mt-5 bg-pr px-7 py-2 rounded-md"
-                    >
-                      Give Feedback
-                    </button>
-                  </div>}
+                  {showFedback && (
+                    <div className="flex items-center justify-center h-10 space-x-6 ">
+                      <button
+                        onClick={() => setOpen(true)}
+                        className="text-white mt-5 bg-pr px-7 py-2 rounded-md"
+                      >
+                        Give Feedback
+                      </button>
+                    </div>
+                  )}
                   {/* <Button type="submit"  onClick={() => setOpen(true)} 
              
               style={{
@@ -538,7 +519,7 @@ function Modal({ open, setOpen, appointment }) {
       },
     })
       .then(({ DATA = {}, MESSAGE }) => {
-        setOpen(false)
+        setOpen(false);
       })
       .catch((error) => {
         console.error(error);
@@ -656,7 +637,7 @@ function Modal({ open, setOpen, appointment }) {
                         </div> */}
                         <div className="flex items-center justify-between lg:grid grid-cols-2 mt-4  gap-2 lg:gap-8">
                           <p className="text-sm lg:text-xl text-gray-500">
-                            Rate the agent 
+                            Rate the agent
                           </p>
                           <div className="flex items-center  gap-4">
                             <Rating

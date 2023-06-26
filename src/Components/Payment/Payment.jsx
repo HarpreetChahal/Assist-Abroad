@@ -59,7 +59,7 @@ const Payment = () => {
               Choose a package
             </h2>
             <p className="mb-5 font-light text-tc sm:text-xl font_ab">
-              This is the best package that suits you after your survey
+              Pick a package that covers your service needs
             </p>
           </div>
           <div className="space-y-10 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0">
