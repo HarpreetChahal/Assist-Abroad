@@ -216,6 +216,9 @@ const Profile = () => {
                             onBlur={formik.handleBlur}
                             value={formik.values.phone}
                             error={formik.touched.phone && formik.errors.phone}
+                            inputProps={{
+                              maxLength: 10,
+                            }}
                           
                           />
                         </div>
