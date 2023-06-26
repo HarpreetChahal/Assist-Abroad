@@ -51,16 +51,18 @@ const PaymentCard = (params) => {
     },
     validationSchema: Yup.object({
       cardNumber: Yup.number().required("Required"),
-      expiryDate: Yup.string().min(5,"").required("Required"),
+      expiryDate: Yup.string().min(5, "").required("Required"),
       cvv: Yup.string()
         .matches(/^\d+$/, "CVV must contain only numbers")
         .max(3, "CVV must be exactly 3 digits")
         .required("Required"),
       cardName: Yup.string().required("Required"),
-      cardEmail: Yup.string().email("Invalid email address").required("Required"),
+      cardEmail: Yup.string()
+        .email("Invalid email address")
+        .required("Required"),
     }),
     onSubmit: async (values) => {
-      let [month,year]=values.expiryDate.split("/")
+      let [month, year] = values.expiryDate.split("/");
       let data = {
         cardDetails: {
           ...values,
@@ -79,20 +81,19 @@ const PaymentCard = (params) => {
           authToken: true,
         },
       })
-        .then(async({ DATA = {}, MESSAGE }) => {
+        .then(async ({ DATA = {}, MESSAGE }) => {
           // navigate(-1)
-          
-        await commonApi({
-          action: "getProfile",
-          data: {},
-          config: {
-            authToken: true,
-          },
-        }).then(({ DATA = {}, MESSAGE }) => {
-          dispatch({ type: "UPDATE_USER", payload: DATA });
-          navigate("/arrival-form", {replace:true});
-        });
-      
+
+          await commonApi({
+            action: "getProfile",
+            data: {},
+            config: {
+              authToken: true,
+            },
+          }).then(({ DATA = {}, MESSAGE }) => {
+            dispatch({ type: "UPDATE_USER", payload: DATA });
+            navigate("/arrival-form", { replace: true });
+          });
         })
         .catch((error) => {
           console.error(error);
@@ -145,9 +146,9 @@ const PaymentCard = (params) => {
                         className="block text-sm font-medium mb-1"
                         htmlFor="card-nr"
                       >
-                        Card Number 
+                        Card Number
                       </label>
-                      <TextField
+                      {/* <TextField
                         fullWidth
                         size="small"
                         id="cardNumber"
@@ -161,7 +162,29 @@ const PaymentCard = (params) => {
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         value={formik.values.cardNumber}
-                      />
+                      /> */}
+                    <TextField
+  fullWidth
+  size="small"
+  id="cardNumber"
+  variant="outlined"
+  placeholder="1234 1234 1234 1234"
+  name="cardNumber"
+  inputProps={{ maxLength: 19 }}
+  error={formik.touched.cardNumber && formik.errors.cardNumber}
+  onChange={(event) => {
+    const input = event.target.value;
+    let formattedNumber = input.replace(/\s/g, ''); // Remove existing spaces
+
+    if (formattedNumber.length > 0) {
+      formattedNumber = formattedNumber.match(new RegExp('.{1,4}', 'g')).join(' ');
+    }
+
+    formik.setFieldValue('cardNumber', formattedNumber);
+  }}
+  onBlur={formik.handleBlur}
+  value={formik.values.cardNumber}
+/>
                     </div>
                     {/* <!-- Expiry and CVC --> */}
                     <div className="flex space-x-4">
@@ -170,7 +193,7 @@ const PaymentCard = (params) => {
                           className="block text-sm font-medium mb-1"
                           htmlFor="card-expiry"
                         >
-                          Expiry Date 
+                          Expiry Date
                         </label>
                         <TextField
                           fullWidth
@@ -178,8 +201,7 @@ const PaymentCard = (params) => {
                           id="expiryDate"
                           variant="outlined"
                           placeholder="MM/YY"
-                        inputProps={{ maxLength: 5 }}
-
+                          inputProps={{ maxLength: 5 }}
                           name="expiryDate"
                           error={
                             formik.touched.expiryDate &&
@@ -188,15 +210,15 @@ const PaymentCard = (params) => {
                           onChange={(event) => {
                             const input = event.target.value;
                             let formattedDate = input;
-                        
-                            if (input.length === 2 && !input.includes('/')) {
+
+                            if (input.length === 2 && !input.includes("/")) {
                               formattedDate = `${input}/`;
-                            } 
+                            }
                             if (formattedDate.length > 5) {
                               formattedDate = formattedDate.slice(0, 5);
                             }
-                        
-                            formik.setFieldValue('expiryDate', formattedDate);
+
+                            formik.setFieldValue("expiryDate", formattedDate);
                           }}
                           onBlur={formik.handleBlur}
                           value={formik.values.expiryDate}
@@ -207,7 +229,7 @@ const PaymentCard = (params) => {
                           className="block text-sm font-medium mb-1"
                           htmlFor="card-cvc"
                         >
-                          CVV 
+                          CVV
                         </label>
                         <TextField
                           fullWidth
@@ -234,7 +256,7 @@ const PaymentCard = (params) => {
                         className="block text-sm font-medium mb-1"
                         htmlFor="card-name"
                       >
-                        Name on Card 
+                        Name on Card
                       </label>
                       <TextField
                         fullWidth
@@ -257,7 +279,7 @@ const PaymentCard = (params) => {
                         className="block text-sm font-medium mb-1"
                         htmlFor="card-email"
                       >
-                        Email 
+                        Email
                       </label>
                       <TextField
                         fullWidth
@@ -275,8 +297,11 @@ const PaymentCard = (params) => {
                         value={formik.values.cardEmail}
                       />
                     </div>
-                    { formik.touched.cardEmail && formik.errors.cardEmail && 
-           <div className="text-[red] mt-2 font-medium">{formik.errors.cardEmail}</div>}
+                    {formik.touched.cardEmail && formik.errors.cardEmail && (
+                      <div className="text-[red] mt-2 font-medium">
+                        {formik.errors.cardEmail}
+                      </div>
+                    )}
                   </div>
                   {/* <!-- Form footer --> */}
                   <div className="mt-6">
@@ -311,7 +336,6 @@ const PaymentCard = (params) => {
                       <BsCreditCard className="w-8 h-8 text-[#6d81fe] " />
 
                       <div className="pl-4 text-sm font-small font-10 text-slate-500">
-                        
                         The payment has been successfully processed
                       </div>
                     </div>
