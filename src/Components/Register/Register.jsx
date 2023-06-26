@@ -194,7 +194,7 @@ const navigate=useNavigate()
               className="bg-[#fff] border-none outline-none text-lg px-2 py-2 w-full"
               //  sx={{"& fieldset" : {border:'none'},}}
               size="small"
-              type="number"
+
               id="phone"
               placeholder="Enter your phone number"
               name="phone"
@@ -202,9 +202,11 @@ const navigate=useNavigate()
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.phone}
+              inputProps={{
+                maxLength: 10
+              }}
               InputProps={{
-                inputMode: "numeric",
-                            maxLength: 10,
+              
                 startAdornment: (
                   <InputAdornment position="start">
                     <FiPhone className="w-5 h-6 text-[#4F5C78] "/>

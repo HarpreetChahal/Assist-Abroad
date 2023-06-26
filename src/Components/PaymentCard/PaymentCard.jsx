@@ -276,7 +276,7 @@ const PaymentCard = (params) => {
                       />
                     </div>
                     { formik.touched.cardEmail && formik.errors.cardEmail && 
-           <div>{formik.errors.cardEmail}</div>}
+           <div className="text-[red] mt-2 font-medium">{formik.errors.cardEmail}</div>}
                   </div>
                   {/* <!-- Form footer --> */}
                   <div className="mt-6">
