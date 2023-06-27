@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "../../layout/Navbar";
 import { Link } from "react-router-dom";
 // import commonApi from "../../api/common";
-import agent from "/src/Assets/agent.png";
+import agent from "/src/Assets/agent1.jpg";
 import cover from "/src/Assets/imageLogoRegister.png";
 import { Button, TextField } from "@mui/material";
 
