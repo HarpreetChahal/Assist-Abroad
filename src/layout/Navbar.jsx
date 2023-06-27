@@ -5,7 +5,8 @@ import { AiOutlineClose } from "react-icons/ai";
 import { FiLogOut } from "react-icons/fi";
 import { AiOutlineRobot } from "react-icons/ai";
 import { Avatar, MenuItem, Menu, Popper, Grow, Paper, ClickAwayListener } from "@mui/material";
-import agent from "/src/Assets/agent.png";
+import agent1 from "/src/Assets/agent.png";
+import agent2 from "/src/Assets/avatar2.jpg";
 import { Context } from "../Components/context/Context";
 
 const Navbar = () => {
@@ -84,7 +85,7 @@ const Navbar = () => {
                 <Avatar
                   onClick={toggleProfileDropdown}
                   className={`cursor-pointer ${anchorEl ? "text-pr" : ""}`}
-                  src={agent}
+                  src={user.role === 0 ? agent1 : agent2}
                   alt="Rounded avatar"
                 />
                 <Popper

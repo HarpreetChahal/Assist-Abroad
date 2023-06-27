@@ -59,7 +59,7 @@ const Payment = () => {
               Choose a package
             </h2>
             <p className="mb-5 font-light text-tc sm:text-xl font_ab">
-              Pick a package that covers your service needs
+              Select a plan that works best for you
             </p>
           </div>
           <div className="space-y-10 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0">
@@ -80,7 +80,7 @@ const Payment = () => {
                     {mem.name}
                   </h3>
                   <p className="w-full font-light sm:text-lg text-wt bg-pr p-4">
-                    Best option for personal use & for your next project.
+                    {mem?.description}
                   </p>
                   <div className="flex justify-center items-baseline my-6">
                     <span className="mr-2 text-5xl font-extrabold">

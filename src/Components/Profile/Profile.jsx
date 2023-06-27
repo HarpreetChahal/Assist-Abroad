@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "../../layout/Navbar";
-import agent from "/src/Assets/agent.png";
+import agent1 from "/src/Assets/agent.png";
+import agent2 from "/src/Assets/avatar2.jpg";
 import { useState, useEffect } from "react";
 import { Button, TextField } from "@mui/material";
 import { useContext } from "react";
@@ -69,7 +70,8 @@ const Profile = () => {
             <div className="lg:max-w-7xl w-full mx-auto p-4 lg:py-8 lg:px-8 shadow shadow-slate-300 bg-white rounded-xl">
               <div className="w-full flex items-start gap-2 justify-between">
                 <div className="flex items-start lg:items-center flex-col lg:flex-row gap-10">
-                  <img className="w-32 lg:w-auto rounded-md" src={agent} alt="" />
+                  {/* <img className="w-32 lg:w-auto rounded-md" src={agent} alt="" /> */}
+                  <img className="w-32 h-32 lg:w-auto rounded-md" src={user.role === 0 ? agent1 : agent2} alt="" />
                   <div>
                     <h1 className="text-4xl font_ab">{user?.name?.firstName}</h1>
                     <h1 className="text-lg mt-1 mb-4 font_ab ">Member Since : 2023</h1>
