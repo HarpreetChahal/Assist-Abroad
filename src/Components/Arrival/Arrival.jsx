@@ -257,6 +257,7 @@ const Arrival = () => {
                       <TextField
                         className="inputField"
                         variant="outlined"
+                        type="time"
                         size="small"
                         disabled={!edit}
                         sx={{ backgroundColor: "#fff", width: "70%" }}
