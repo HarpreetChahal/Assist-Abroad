@@ -67,11 +67,12 @@ const Login = () => {
   const [showConfirmPassword, setConfirmPassword] = useState(false);
 
   return (
-    <div className=" w-full">
+    <div className=" w-full ">
       <Navbar />
 
-      <div className=" max-w-7xl bg-[white] mt-32  mx-auto px-5 lg:px-0 shadow-lg border-2 rounded-md  grid grid-cols-1  lg:grid-cols-2  "
-      style={{height:"79vh"}}>
+      <div className=" max-w-7xl bg-[white] mt-32 sm:mt-48  mx-auto px-5 lg:px-0 shadow-lg sm:border-2   rounded-md  grid grid-cols-1  lg:grid-cols-2  "
+      // style={{height:"79vh"}}
+      >
         <div className="flex  items-center justify-center mx-auto h-full w-full  bg-pr  rounded-l-md">
           <img
             src={image}
@@ -98,15 +99,15 @@ const Login = () => {
           
 
             <div className="hidden lg:block">
-              <div className="text-pr text-4xl text-center lg:text-6xl font_ab mt-10 ">
+              <div className="text-pr text-4xl text-center lg:text-6xl font_ab mt-32 ">
                 Assist Abroad
               </div>
-              <h3 className="text-xl text-center lg:text-2xl font_ab text-[#4F5C78]  ">
+              <h3 className="text-xl text-center lg:text-2xl mb-10 font_ab text-[#4F5C78]  ">
                 Welcome back
               </h3>
             </div>
            
-            <div
+            {/* <div
               className="  text-[#ffffff] cursor-pointer  rounded-md bg-[#23314c] py-3 flex items-center mt-10 justify-center gap-3 "
               style={{ border: "1px solid #bfbfbf" }}
             >
@@ -123,7 +124,7 @@ const Login = () => {
                 className="w-44 h-[1px] "
                 style={{ border: "1px solid rgba(0, 0, 0, 0.1)" }}
               ></div>
-            </div>
+            </div> */}
             <div className="  ">
               
               <div className="flex items-center mt-2 rounded-md">
@@ -193,7 +194,7 @@ const Login = () => {
            <div className="text-[red] mt-2 font-medium"
          
            >{formik.errors.password}</div>}
-             
+             <div className="mb-32">
               <Button
                 type="submit"
                 className=" mt-8 rounded-md shadow-md w-full bg-pr text-center  text-white font-medium cursor-pointer"
@@ -213,7 +214,7 @@ const Login = () => {
               >
                 Log In
               </Button>
-
+              </div>
              
             </div>
           </form>

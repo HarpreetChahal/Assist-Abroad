@@ -111,17 +111,17 @@ const Register = () => {
             {/* <form onSubmit="" className="form grid"> */}
 
             <div className="hidden lg:block">
-              <div className="text-pr text-4xl text-center lg:text-6xl font_ab mt-10 ">
+              <div className="text-pr text-4xl text-center lg:text-6xl font_ab mt-20 ">
                 Assist Abroad
               </div>
-              <h3 className="text-xl text-center lg:text-2xl font_ab text-[#4F5C78] ">
+              <h3 className="text-xl text-center lg:text-2xl font_ab text-[#4F5C78] mb-10 ">
                 Let's get started
               </h3>
             </div>
             {/* <div className="w-96 text-white rounded-md bg-gray-800 py-3 text-center">
           Authentication error display
         </div> */}
-            <div
+            {/* <div
               className="  text-[#ffffff] cursor-pointer  rounded-md bg-[#23314c] py-3 flex items-center mt-5 justify-center gap-3 "
               style={{ border: "1px solid #bfbfbf" }}
             >
@@ -138,7 +138,7 @@ const Register = () => {
                 className="w-44 h-[1px] "
                 style={{ border: "1px solid rgba(0, 0, 0, 0.1)" }}
               ></div>
-            </div>
+            </div> */}
             <div className="  ">
               <div className="flex items-center  rounded-md">
                 <TextField
@@ -330,6 +330,7 @@ const Register = () => {
               {/* <button className="mt-8 rounded-md w-full bg-pr text-center py-3 text-white font-medium">
             Sign Up
           </button> */}
+          <div className="mb-20">
               <Button
                 type="submit"
                 className=" mt-8 rounded-md shadow-md w-full bg-pr text-center  text-white font-medium "
@@ -349,7 +350,7 @@ const Register = () => {
               >
                 Sign Up
               </Button>
-
+              </div>
               {/* <p className="mt-2 ">Already have an account?</p>
           <Link to="/login">
             <Button 
