@@ -57,6 +57,19 @@ const Quiz = () => {
     getQuestions();
   }, []);
 
+  const handleNextQuestion = () => {
+    // Check if an answer is selected before moving to the next question
+    const selectedAnswer = document.querySelector(
+      'input[name="use-radio-group"]:checked'
+    );
+
+    if (selectedAnswer) {
+      setCurrentIndex(currentIndex + 1);
+    } else {
+      alert("Please select an answer.");
+    }
+  };
+
   useEffect(() => {
     const calculateProgress = () => {
       const totalQuestions = questions.length;
@@ -149,9 +162,8 @@ const Quiz = () => {
                   textTransform: "none",
                 }}
                 disabled={currentIndex === questions.length - 1}
-                onClick={() => {
-                  setCurrentIndex(currentIndex + 1);
-                }}
+                onClick={handleNextQuestion}
+               
               >
                 Next
               </Button>
