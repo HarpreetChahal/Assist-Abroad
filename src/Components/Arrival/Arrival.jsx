@@ -366,7 +366,7 @@ const Arrival = () => {
                     <img src={agent} className="rounded-md " />
                   </div>
                   <div className="flex-grow sm:text-left text-center mt-6 sm:mt-0">
-                    <h1 className="text-3xl font-medium font_ab mb-8 mt-3">
+                    <h1 className="text-3xl font-medium font_ab mb-5 mt-3">
                       Agents Details
                     </h1>
 
@@ -395,7 +395,15 @@ const Arrival = () => {
                           <p>{appointment?.agentObj?.email}</p>
                         </div>
                       </div>
+                      <div className="w-full md:w-1/2  space-x-3">
+                        <div className="flex pb-1">
+                          <h2 className="text-gray-500 pr-2">Car Plate</h2>
+                          <p>S4S NAX</p>
+                        </div>
+                      </div>
                     </div>
+
+                    
                     {/* <div className="flex mt-5">
                       <h2 className="text-gray-500 mr-2 font-bold">
                         Last Activity:{" "}
@@ -565,7 +573,7 @@ function Modal({ open, setOpen, appointment }) {
                         as="h3"
                         className="text-xl lg:text-2xl w-full text-center font-semibold leading-6 text-gray-900"
                       >
-                        Feedback on Services
+                        Feedback
                       </Dialog.Title>
                       <div className="my-8">
                         {/* <div className="flex items-center justify-between lg:grid grid-cols-2  gap-2 lg:gap-8">
@@ -638,7 +646,7 @@ function Modal({ open, setOpen, appointment }) {
                         </div> */}
                         <div className="flex items-center justify-between lg:grid grid-cols-2 mt-4  gap-2 lg:gap-8">
                           <p className="text-sm lg:text-xl text-gray-500">
-                            Rate the agent
+                            Rate the services of agent
                           </p>
                           <div className="flex items-center  gap-4">
                             <Rating
