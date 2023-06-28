@@ -85,8 +85,8 @@ const Quiz = () => {
       <Navbar />
       <section className="w-full pt-32 lg:pt-52 px-5  lg:max-w-7xl py-9 px-5 lg:px-10 mx-auto">
       <div className="flex justify-between mb-2"> 
-      <div className="text-1xl text-[#23314C] font_ab">{currentIndex + 1} of {questions.length} Questions</div>
-      <div className="text-1xl text-[#23314C] font_ab">{Math.round(progress)}% Completed</div>
+      <div className="text-1xl text-[#23314C] text-xl font_ab">{currentIndex + 1} of {questions.length} Questions</div>
+      <div className="text-1xl text-[#23314C] text-xl font_ab">{Math.round(progress)}% Completed</div>
       </div>
       <LinearProgress
   variant="determinate"
@@ -111,20 +111,25 @@ const Quiz = () => {
           <form action="">
             <fieldset>
               <div className="mt-6 space-y-6">
-                <div className="flex items-center gap-x-3">
+                <div className="flex items-center gap-x-3 ">
                   <RadioGroup name="use-radio-group" defaultValue="">
                     {questions[currentIndex]?.options.map((option, index) => {
                       return (
                         <MyFormControlLabel
+                        className="text-2xl"
                           key={index}
                           sx={{
                             "& .MuiSvgIcon-root": {
-                              fontSize: 24,
+                              fontSize: 23,
                               color: "#23314c",
+                              fontFamily: 'ABeeZee',
+                              
                             },
                             "& .MuiFormControlLabel-label": {
-                              fontSize: "20px",
+                              fontSize: "23px",
                               color: "#23314c",
+                              fontFamily: 'ABeeZee',
+                              
                             },
                           }}
                           value={option}
@@ -145,6 +150,7 @@ const Quiz = () => {
                   color: "#ffffff",
                   bgcolor: "#6D81FC",
                   textTransform: "none",
+                  fontSize: '16px',
                 }}
                 disabled={currentIndex === 0}
                 onClick={() => {
@@ -160,6 +166,8 @@ const Quiz = () => {
                   color: "#ffffff",
                   bgcolor: "#6D81FC",
                   textTransform: "none",
+                  fontSize: '16px',
+
                 }}
                 disabled={currentIndex === questions.length - 1}
                 onClick={handleNextQuestion}
@@ -182,6 +190,7 @@ const Quiz = () => {
                       color: "#ffffff",
                       bgcolor: "#6D81FC",
                       textTransform: "none",
+                      fontSize: '16px',
                       "&:hover": {
                         bgcolor: "#6d81fc",
                         color: "#ffffff",
