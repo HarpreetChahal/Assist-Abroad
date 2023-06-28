@@ -16,8 +16,8 @@ import { FaRegAddressCard } from "react-icons/fa";
 import { MdOutlineEmail } from "react-icons/Md";
 import { BiUserPin } from "react-icons/bi";
 import { FiPhone } from "react-icons/fi";
-import { RiLockPasswordFill } from "react-icons/Ri";
-import { SlCalender } from "react-icons/sl";
+import { RiLockPasswordLine } from "react-icons/Ri";
+import { LuCake } from "react-icons/lu";
 import { AiFillEyeInvisible } from "react-icons/ai";
 import { AiFillEye } from "react-icons/ai";
 
@@ -146,7 +146,7 @@ const Register = () => {
                   type="text"
                   id="firstName"
                   className="bg-[#fff] border-none outline-none text-lg px-2 py-2 w-full"
-                  placeholder="John Doe"
+                  placeholder="Enter your name"
                   name="firstName"
                   error={formik.touched.firstName && formik.errors.firstName}
                   onChange={formik.handleChange}
@@ -229,11 +229,11 @@ const Register = () => {
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   value={formik.values.dob}
-                  inputProps={{ max: "2023-06-27" }}
+                  
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
-                        <SlCalender className="w-5 h-6 text-[#4F5C78] " />
+                        <LuCake className="w-6 h-7 text-[#4F5C78] " />
                       </InputAdornment>
                     ),
                   }}
@@ -256,7 +256,7 @@ const Register = () => {
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
-                        <RiLockPasswordFill className="w-5 h-6 text-[#4F5C78] " />
+                        <RiLockPasswordLine className="w-5 h-6 text-[#4F5C78] " />
                       </InputAdornment>
                     ),
                     endAdornment: (
@@ -296,7 +296,7 @@ const Register = () => {
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
-                        <RiLockPasswordFill className="w-5 h-6 text-[#4F5C78] " />
+                        <RiLockPasswordLine className="w-5 h-6 text-[#4F5C78] " />
                       </InputAdornment>
                     ),
                     endAdornment: (

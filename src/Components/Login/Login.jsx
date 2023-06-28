@@ -16,7 +16,7 @@ import { FaRegAddressCard } from "react-icons/fa";
 import { MdOutlineEmail } from "react-icons/Md";
 import { BiUserPin } from "react-icons/bi";
 import { FiPhone } from "react-icons/fi";
-import { RiLockPasswordFill } from "react-icons/Ri";
+import { RiLockPasswordLine } from "react-icons/Ri";
 import { SlCalender } from "react-icons/sl";
 import { AiFillEyeInvisible } from "react-icons/ai";
 import { AiFillEye } from "react-icons/ai";
@@ -169,7 +169,7 @@ const Login = () => {
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
-                        <RiLockPasswordFill className="w-5 h-6 text-[#4F5C78] " />
+                        <RiLockPasswordLine className="w-5 h-6 text-[#4F5C78] " />
                       </InputAdornment>
                     ),
                     endAdornment: (
