@@ -13,14 +13,14 @@ const ViewProfile = () => {
     <div>
       <Navbar />
       <div className=" pt-32 pb-20 lg:pt-32 lg:pb-12 px-1 bg-[#f8f8fa]">
-        <div className=" lg:max-w-7xl w-full mx-auto p-4 lg:py-20 lg:px-20 border-2 rounded-xl bg-white ">
+        <div className=" lg:max-w-7xl w-full mx-auto p-4 lg:py-10 lg:px-10 border-2 rounded-xl bg-white ">
           
           <div className="w-full flex items-center gap-2 border-2 justify-center rounded-2xl">
             <div className="flex items-center lg:items-center flex-col lg:flex-col gap-5 px-4 py-4">
-              <img className="w-32 lg:w-auto" src={agent} alt="" />
+              <img className="w-32 lg:w-auto rounded-md" src={agent} alt="" />
               <div>
                 <h1 className="text-3xl">SAMAR DAHIYA</h1>
-                <h1 className="text-lg mt-1 mb-4">Member Since : 2020</h1>
+                <h1 className="text-lg mt-1">Member Since : 2020</h1>
               </div>
             </div>
 
@@ -44,17 +44,17 @@ const ViewProfile = () => {
               </div>
 
               <div className="flex flex-col justify-center rounded-2xl bg-white border-2 bg-clip-border px-3 py-4 shadow-3xl shadow-shadow-500 ">
-                <p className="text-sm text-gray-600">Birthday</p>
+                <p className="text-sm text-gray-600">Email</p>
                 <p className="text-base font-medium text-navy-700 ">20 July 1986</p>
               </div>
 
               <div className="flex flex-col items-start justify-center rounded-2xl bg-white border-2 bg-clip-border px-3 py-4 shadow-3xl shadow-shadow-500 ">
-                <p className="text-sm text-gray-600">Birthday</p>
+                <p className="text-sm text-gray-600">Contact</p>
                 <p className="text-base font-medium text-navy-700 ">20 July 1986</p>
               </div>
 
               <div className="flex flex-col justify-center rounded-2xl bg-white border-2 bg-clip-border px-3 py-4 shadow-3xl shadow-shadow-500 ">
-                <p className="text-sm text-gray-600">Birthday</p>
+                <p className="text-sm text-gray-600">Car Plate</p>
                 <p className="text-base font-medium text-navy-700 ">20 July 1986</p>
               </div>
 

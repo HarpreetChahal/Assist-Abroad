@@ -20,6 +20,8 @@ import { Context } from "./Components/context/Context";
 //React router dom import
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ViewProfile from "./Components/ViewProfile/ViewProfile";
+import ForgetPassword from "./Components/ForgetPassword/ForgetPassword";
+import ChangePassword from "./Components/ChangePassword/ChangePassword";
 
 function App() {
   const { user, dispatch, token } = useContext(Context);
@@ -101,7 +103,16 @@ function App() {
           path="/view-profile"
           element={token && user ? <ViewProfile /> : <Login />}
         />
+         <Route
+          exact
+          path="/forgetPassword"
+          element={<ForgetPassword/>} />
+          <Route
+          exact
+          path="/changePassword"
+          element={<ChangePassword/>} />
       </Routes>
+      
     </div>
   );
 }

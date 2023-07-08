@@ -70,7 +70,7 @@ const Login = () => {
     <div className=" w-full ">
       <Navbar />
 
-      <div className=" max-w-7xl bg-[white] mt-32 sm:mt-48  mx-auto px-5 lg:px-0 shadow-lg sm:border-2   rounded-md  grid grid-cols-1  lg:grid-cols-2  "
+      <div className=" max-w-7xl bg-[white] mt-32 sm:mt-36  mx-auto px-5 lg:px-0 shadow-lg sm:border-2   rounded-md  grid grid-cols-1  lg:grid-cols-2  "
       // style={{height:"79vh"}}
       >
         <div className="flex  items-center justify-center mx-auto h-full w-full  bg-pr  rounded-l-md">
@@ -107,7 +107,7 @@ const Login = () => {
               </h3>
             </div>
            
-            {/* <div
+            <div
               className="  text-[#ffffff] cursor-pointer  rounded-md bg-[#23314c] py-3 flex items-center mt-10 justify-center gap-3 "
               style={{ border: "1px solid #bfbfbf" }}
             >
@@ -124,7 +124,7 @@ const Login = () => {
                 className="w-44 h-[1px] "
                 style={{ border: "1px solid rgba(0, 0, 0, 0.1)" }}
               ></div>
-            </div> */}
+            </div>
             <div className="  ">
               
               <div className="flex items-center mt-2 rounded-md">
@@ -153,7 +153,7 @@ const Login = () => {
               
               {/* { formik.touched.email && formik.errors.email && 
            <div className="text-[red]">{formik.errors.email}</div>} */}
-              <div className="flex mt-4 items-center  rounded-md">
+              <div className=" mt-4 items-center  rounded-md">
               
                 <TextField
                   className="bg-[#fff] border-none outline-none text-lg  w-full"
@@ -189,6 +189,9 @@ const Login = () => {
                     ),
                   }}
                 ></TextField>
+                 <p className="text-mdd  lg:text-md  font_ab  mt-2 ">
+                Forgot Password?
+              </p>
               </div>
               { formik.touched.password && formik.errors.password && 
            <div className="text-[red] mt-2 font-medium"
@@ -215,8 +218,9 @@ const Login = () => {
                 Log In
               </Button>
               </div>
-             
+              
             </div>
+           
           </form>
         </div>
       </div>

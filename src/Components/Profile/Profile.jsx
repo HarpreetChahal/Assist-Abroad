@@ -76,7 +76,7 @@ const Profile = () => {
                     <h1 className="text-4xl font_ab">{user?.name?.firstName}</h1>
                     <h1 className="text-lg mt-1 mb-4 font_ab ">Member Since : 2023</h1>
                     <div className=" items-center  rounded-md">
-                      {/* <Button
+                      <Button
                         variant="contained"
                         onClick={() => fileInput.current.click()}
                         sx={{
@@ -85,13 +85,13 @@ const Profile = () => {
                           textTransform: "none",
                           border: 2,
                           "&:hover": {
-                            bgcolor: "#6d81fc",
-                            color: "#ffffff",
+                            bgcolor: "#ffffff",
+                            color: "#6d81fc",
                           },
                         }}
                       >
                         Choose Image
-                      </Button> */}
+                      </Button>
                       
                       {/* <label
                         htmlFor="myfile"

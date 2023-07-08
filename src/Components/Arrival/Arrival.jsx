@@ -366,7 +366,7 @@ const Arrival = () => {
                     <img src={agent} className="rounded-md " />
                   </div>
                   <div className="flex-grow sm:text-left text-center mt-6 sm:mt-0">
-                    <h1 className="text-3xl font-medium font_ab mb-5 mt-3">
+                    <h1 className="text-3xl font-medium font_ab mb-2 mt-3">
                       Agents Details
                     </h1>
 
@@ -414,7 +414,7 @@ const Arrival = () => {
                       <h2 className="text-gray-500 mr-2 font-bold">Hotel Stay: </h2>
                       <p>JW Marriot, Regina</p>
                     </div> */}
-                    {/* <Link to={"/view-profile"}>
+                    <Link to={"/view-profile"}>
                       <a className="mt-3 text-indigo-500 inline-flex items-center">
                         View Profile
                         <svg
@@ -429,12 +429,12 @@ const Arrival = () => {
                           <path d="M5 12h14M12 5l7 7-7 7"></path>
                         </svg>
                       </a>
-                    </Link> */}
+                    </Link>
                   </div>
                 </div>
               </div>
 
-              <div className="max-w-7xl mx-auto mt-5 bg-white  p-7  rounded-xl border-2">
+              <div className="max-w-7xl mx-auto mt-5 bg-white p-7 rounded-xl border-2">
                 <div className="flex flex-row justify-between items-center">
                   <div>
                     <h1 className="text-3xl font-medium font_ab">Tasks list</h1>

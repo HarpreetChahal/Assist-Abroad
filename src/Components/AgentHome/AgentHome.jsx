@@ -70,9 +70,13 @@ const AgentHome = () => {
                 Completed
               </button>
             </div>
-            {/* <button className="bg-pr px-5 py-2 rounded-md text-white flex items-center gap-1 text-lg">
+            <button className="bg-pr px-20 py-2 rounded-md text-white flex items-center gap-1 text-lg">
+              Search <AiOutlineArrowDown className="w-5 h-5" />
+            </button>
+            <button className="bg-pr px-5 py-2 rounded-md text-white flex items-center gap-1 text-lg">
               Sort <AiOutlineArrowDown className="w-5 h-5" />
-            </button> */}
+            </button>
+            
           </div>
           {appointments.map((appointment, index) => {
             return (
