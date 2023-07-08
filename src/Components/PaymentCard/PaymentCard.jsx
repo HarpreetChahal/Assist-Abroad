@@ -3,6 +3,9 @@ import Navbar from "../../layout/Navbar";
 import { Link } from "react-router-dom";
 // import commonApi from "../../api/common";
 import agent from "/src/Assets/agent1.jpg";
+import visa from "/src/Assets/visa.png";
+import mastercard from "/src/Assets/mastercard.png";
+import amex from "/src/Assets/amex.png";
 import cover from "/src/Assets/imageLogoRegister.png";
 import { Button, TextField } from "@mui/material";
 
@@ -10,12 +13,11 @@ import { useState, useContext, useEffect } from "react";
 import { Context } from "../../Components/context/Context";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-
 import { BsCreditCard } from "react-icons/bs";
-import { AiOutlineArrowDown } from "react-icons/ai";
-import { AiOutlineSearch } from "react-icons/ai";
 import InputAdornment from "@mui/material/InputAdornment";
 import { number } from "card-validator";
+import creditCardType from "credit-card-type"; // Import credit-card-type library
+
 
 import commonApi from "../../api/common";
 import { useNavigate } from "react-router-dom";
@@ -54,8 +56,7 @@ const PaymentCard = (params) => {
       cardEmail: "",
     },
     validationSchema: Yup.object({
-      cardNumber: Yup.number()
-      .required("Required"),
+      cardNumber: Yup.number().required("Required"),
       expiryDate: Yup.string().min(5, "").required("Required"),
       cvv: Yup.string()
         .matches(/^\d+$/, "CVV must contain only numbers")
@@ -75,6 +76,10 @@ const PaymentCard = (params) => {
         formik.setFieldError("cardNumber", "Invalid credit card number");
         return;
       }
+
+      const cardType = creditCardType(values.cardNumber);
+      // console.log("Card Type:", cardType[0].niceType);
+
       let [month, year] = values.expiryDate.split("/");
       let data = {
         cardDetails: {
@@ -86,8 +91,6 @@ const PaymentCard = (params) => {
         },
         membershipId: membershipId,
       };
-
-      
 
       await commonApi({
         action: "createPayment",
@@ -116,6 +119,20 @@ const PaymentCard = (params) => {
     },
   });
 
+  const getCardIcon = (cardType) => {
+    switch (cardType) {
+      case "visa":
+        return <img src={visa} alt="Visa" className="w-7 h-8"/>;
+      case "mastercard":
+        return <img src={mastercard} alt="Mastercard" className="w-7 h-6" />;
+        case "amex":
+          return <img src={amex} alt="American Express" className="w-7 h-6" />;
+      
+      default:
+        return null;
+    }
+  };
+  
   return (
     <div className=" min-h-screen">
       <Navbar />
@@ -188,13 +205,31 @@ const PaymentCard = (params) => {
                         InputProps={{
                           endAdornment: (
                             <InputAdornment position="end">
-                              <AiOutlineSearch className="w-5 h-5 cursor-pointer" />
-                            </InputAdornment>
+        {formik.values.cardNumber && (
+          <>
+            {formik.values.cardNumber.startsWith("4") ? (
+              <img src={visa} alt="Visa" className="w-7 h-8" />
+            ) : formik.values.cardNumber.startsWith("5") ? (
+              <img src={mastercard} alt="Mastercard" className="w-7 h-6" />
+            ) : formik.values.cardNumber.startsWith("34") ||
+              formik.values.cardNumber.startsWith("37") ? (
+              <img src={amex} alt="American Express" className="w-7 h-6" />
+            ) : (
+              <>
+                {getCardIcon(
+                  creditCardType(formik.values.cardNumber)[0]?.type
+                )}
+              </>
+            )}
+          </>
+        )}
+      </InputAdornment>
+                          
                           ),
                         }}
                         inputProps={{ maxLength: 19 }}
                         error={
-                          formik.touched.cardNumber && formik.errors.cardNumber
+                          formik.touched.cardNumber && formik.errorscardNumber
                         }
                         onChange={(event) => {
                           const input = event.target.value;
@@ -207,15 +242,22 @@ const PaymentCard = (params) => {
                           }
 
                           formik.setFieldValue("cardNumber", formattedNumber);
+
+                          const cardType = creditCardType(formattedNumber);
+                          if (cardType.length > 0) {
+                            formik.setFieldValue("cardType", cardType[0].type);
+                          } else {
+                            formik.setFieldValue("cardType", "");
+                          }
                         }}
                         onBlur={formik.handleBlur}
                         value={formik.values.cardNumber}
                       />
                       {formik.touched.cardNumber && formik.errors.cardNumber && (
-                      <div className="text-[red] mt-2 font-medium">
-                        {formik.errors.cardNumber}
-                      </div>
-                    )}
+                        <div className="text-[red] mt-2 font-medium">
+                          {formik.errors.cardNumber}
+                        </div>
+                      )}
                     </div>
                     {/* <!-- Expiry and CVC --> */}
                     <div className="flex space-x-4">
