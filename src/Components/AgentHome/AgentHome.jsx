@@ -3,8 +3,6 @@ import Navbar from "../../layout/Navbar";
 import { AiOutlineArrowDown } from "react-icons/ai";
 import { AiOutlineSearch } from "react-icons/ai";
 import InputAdornment from "@mui/material/InputAdornment";
-// import IconButton from "@mui/material/IconButton";
-// import SearchIcon from "@mui/icons-material/Search";
 import TextField from "@mui/material/TextField";
 import agent from "/src/Assets/agent.png";
 import { Link } from "react-router-dom";
@@ -47,19 +45,20 @@ const AgentHome = () => {
     };
     fetchAppointments();
   }, [active]);
+
   return (
-    <div className=" min-h-screen px-4 lg:px-0 bg-[#f8f8fa] ">
+    <div className="min-h-screen px-4 lg:px-0 bg-[#f8f8fa]">
       <Navbar />
-      <div className=" pt-28 bg-[#f8f8fa]">
-        <div className="max-w-7xl mx-auto ">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
+      <div className="pt-28 bg-[#f8f8fa]">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col lg:flex-row items-center justify-between">
+            <div className="flex items-center gap-4 mb-4 lg:mb-0">
               <button
                 onClick={() => setActive(false)}
                 className={
                   !active
                     ? "bg-pr px-10 py-2 rounded-md text-white text-lg"
-                    : "border border-pr text-pr font-medium px-10 py-2 rounded-md  text-lg"
+                    : "border border-pr text-pr font-medium px-10 py-2 rounded-md text-lg"
                 }
               >
                 Ongoing
@@ -69,38 +68,36 @@ const AgentHome = () => {
                 className={
                   active
                     ? "bg-pr px-10 py-2 rounded-md text-white text-lg"
-                    : "border border-pr text-pr font-medium px-10 py-2 rounded-md  text-lg"
+                    : "border border-pr text-pr font-medium px-10 py-2 rounded-md text-lg"
                 }
               >
                 Completed
               </button>
             </div>
-            {/* <button className="bg-pr px-32 py-2  rounded-md text-white flex items-center gap-1 text-lg">
-              Search <AiOutlineSearch className="w-5 h-5" />
-            </button> */}
-            <TextField
-              id="search-bar"
-              className="bg-[#fff] border-none outline-none text-lg px-5 py-2 "
-              size="small"
-              type="text"
-              placeholder="Search..."
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <AiOutlineSearch className="w-5 h-5  cursor-pointer" />
-                  </InputAdornment>
-                ),
-              }}
-            />
-
-            <button className="bg-pr px-5 py-2 rounded-md text-white flex items-center gap-1 text-lg">
-              Sort <AiOutlineArrowDown className="w-5 h-5" />
-            </button>
+            <div className="flex flex-col lg:flex-row items-center gap-4">
+              <TextField
+                id="search-bar"
+                className="bg-[#fff] border-none outline-none text-lg px-5 py-2 mb-4 lg:mb-0 border-2"
+                size="small"
+                type="text"
+                placeholder="Search..."
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <AiOutlineSearch className="w-5 h-5 cursor-pointer" />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+              <button className="bg-pr px-5 py-2 rounded-md text-white flex items-center gap-1 text-lg">
+                Sort <AiOutlineArrowDown className="w-5 h-5" />
+              </button>
+            </div>
           </div>
           {appointments.map((appointment, index) => {
             return (
               <div
-                className="mt-10 shadow shadow-slate-300 rounded-xl flex items-center gap-10 p-6 bg-white "
+                className="mt-10 shadow shadow-slate-300 rounded-xl flex items-center gap-5 p-6 bg-white"
                 key={index}
                 onClick={() => {
                   navigate("/agent-task/?taskId=" + appointment._id);
@@ -111,7 +108,7 @@ const AgentHome = () => {
                   <h1 className="text-xl font_ab lg:text-4xl">
                     {appointment.userObj?.name?.firstName}
                   </h1>
-                  <div className="w-full flex ">
+                  <div className="w-full flex">
                     <h1 className="text-sm lg:text-lg mt-3 font_ab text-gray-500 text-bold flex">
                       Email :{" "}
                       <p className="flex pl-2 text-black">
@@ -120,27 +117,25 @@ const AgentHome = () => {
                       </p>
                     </h1>
                   </div>
-                  <div className="w-full flex ">
-                    <h1 className="text-sm lg:text-lg  font_ab text-gray-500 text-bold flex">
+                  <div className="w-full flex">
+                    <h1 className="text-sm lg:text-lg font_ab text-gray-500 text-bold flex">
                       Phone :{" "}
                       <p className="flex pl-2 text-black">
                         {appointment.userObj?.phone?.phone}
                       </p>
                     </h1>
                   </div>
-                  {/* <h1 className="text-lg mt-1">Member Since : 2020</h1> */}
                 </div>
               </div>
             );
           })}
-          {appointments.length == 0 && (
+          {appointments.length === 0 && (
             <div className="mt-10 shadow shadow-slate-300 rounded-xl text-center pt-20 pb-20 lg:pt-56 lg:pb-56 p-6 bg-white flex flex-col items-center justify-center">
               <BsPostcard className="w-32 h-32 text-[#4F5C78]" />
               <div>
                 <h1 className="text-4xl font_ab text-[#4F5C78]">
                   No Appointments
                 </h1>
-                {/* <h1 className="text-lg mt-1">Member Since : 2020</h1> */}
               </div>
             </div>
           )}
