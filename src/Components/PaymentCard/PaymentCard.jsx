@@ -12,6 +12,10 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 
 import { BsCreditCard } from "react-icons/bs";
+import { AiOutlineArrowDown } from "react-icons/ai";
+import { AiOutlineSearch } from "react-icons/ai";
+import InputAdornment from "@mui/material/InputAdornment";
+import { number } from "card-validator";
 
 import commonApi from "../../api/common";
 import { useNavigate } from "react-router-dom";
@@ -50,7 +54,8 @@ const PaymentCard = (params) => {
       cardEmail: "",
     },
     validationSchema: Yup.object({
-      cardNumber: Yup.number().required("Required"),
+      cardNumber: Yup.number()
+      .required("Required"),
       expiryDate: Yup.string().min(5, "").required("Required"),
       cvv: Yup.string()
         .matches(/^\d+$/, "CVV must contain only numbers")
@@ -61,7 +66,15 @@ const PaymentCard = (params) => {
         .email("Invalid email address")
         .required("Required"),
     }),
+
     onSubmit: async (values) => {
+      const cardNumberValidation = number(values.cardNumber);
+      const isCardNumberValid = cardNumberValidation.isValid;
+
+      if (!isCardNumberValid) {
+        formik.setFieldError("cardNumber", "Invalid credit card number");
+        return;
+      }
       let [month, year] = values.expiryDate.split("/");
       let data = {
         cardDetails: {
@@ -73,6 +86,8 @@ const PaymentCard = (params) => {
         },
         membershipId: membershipId,
       };
+
+      
 
       await commonApi({
         action: "createPayment",
@@ -163,28 +178,44 @@ const PaymentCard = (params) => {
                         onBlur={formik.handleBlur}
                         value={formik.values.cardNumber}
                       /> */}
-                    <TextField
-  fullWidth
-  size="small"
-  id="cardNumber"
-  variant="outlined"
-  placeholder="1234 1234 1234 1234"
-  name="cardNumber"
-  inputProps={{ maxLength: 19 }}
-  error={formik.touched.cardNumber && formik.errors.cardNumber}
-  onChange={(event) => {
-    const input = event.target.value;
-    let formattedNumber = input.replace(/\s/g, ''); // Remove existing spaces
+                      <TextField
+                        fullWidth
+                        size="small"
+                        id="cardNumber"
+                        variant="outlined"
+                        placeholder="1234 1234 1234 1234"
+                        name="cardNumber"
+                        InputProps={{
+                          endAdornment: (
+                            <InputAdornment position="end">
+                              <AiOutlineSearch className="w-5 h-5 cursor-pointer" />
+                            </InputAdornment>
+                          ),
+                        }}
+                        inputProps={{ maxLength: 19 }}
+                        error={
+                          formik.touched.cardNumber && formik.errors.cardNumber
+                        }
+                        onChange={(event) => {
+                          const input = event.target.value;
+                          let formattedNumber = input.replace(/\s/g, ""); // Remove existing spaces
 
-    if (formattedNumber.length > 0) {
-      formattedNumber = formattedNumber.match(new RegExp('.{1,4}', 'g')).join(' ');
-    }
+                          if (formattedNumber.length > 0) {
+                            formattedNumber = formattedNumber
+                              .match(new RegExp(".{1,4}", "g"))
+                              .join(" ");
+                          }
 
-    formik.setFieldValue('cardNumber', formattedNumber);
-  }}
-  onBlur={formik.handleBlur}
-  value={formik.values.cardNumber}
-/>
+                          formik.setFieldValue("cardNumber", formattedNumber);
+                        }}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.cardNumber}
+                      />
+                      {formik.touched.cardNumber && formik.errors.cardNumber && (
+                      <div className="text-[red] mt-2 font-medium">
+                        {formik.errors.cardNumber}
+                      </div>
+                    )}
                     </div>
                     {/* <!-- Expiry and CVC --> */}
                     <div className="flex space-x-4">
