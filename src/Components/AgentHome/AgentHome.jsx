@@ -1,6 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
 import Navbar from "../../layout/Navbar";
 import { AiOutlineArrowDown } from "react-icons/ai";
+import { AiOutlineSearch } from "react-icons/ai";
+import InputAdornment from "@mui/material/InputAdornment";
+// import IconButton from "@mui/material/IconButton";
+// import SearchIcon from "@mui/icons-material/Search";
+import TextField from "@mui/material/TextField";
 import agent from "/src/Assets/agent.png";
 import { Link } from "react-router-dom";
 import commonApi from "../../api/common";
@@ -23,7 +28,7 @@ const AgentHome = () => {
           status: !active ? "In-progress" : "Completed",
         },
         options: {
-          sort:{createdAt:-1}
+          sort: { createdAt: -1 },
         },
       };
       await commonApi({
@@ -70,13 +75,27 @@ const AgentHome = () => {
                 Completed
               </button>
             </div>
-            <button className="bg-pr px-20 py-2 rounded-md text-white flex items-center gap-1 text-lg">
-              Search <AiOutlineArrowDown className="w-5 h-5" />
-            </button>
+            {/* <button className="bg-pr px-32 py-2  rounded-md text-white flex items-center gap-1 text-lg">
+              Search <AiOutlineSearch className="w-5 h-5" />
+            </button> */}
+            <TextField
+              id="search-bar"
+              className="bg-[#fff] border-none outline-none text-lg px-5 py-2 "
+              size="small"
+              type="text"
+              placeholder="Search..."
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <AiOutlineSearch className="w-5 h-5  cursor-pointer" />
+                  </InputAdornment>
+                ),
+              }}
+            />
+
             <button className="bg-pr px-5 py-2 rounded-md text-white flex items-center gap-1 text-lg">
               Sort <AiOutlineArrowDown className="w-5 h-5" />
             </button>
-            
           </div>
           {appointments.map((appointment, index) => {
             return (
@@ -115,16 +134,15 @@ const AgentHome = () => {
             );
           })}
           {appointments.length == 0 && (
-            
             <div className="mt-10 shadow shadow-slate-300 rounded-xl text-center pt-20 pb-20 lg:pt-56 lg:pb-56 p-6 bg-white flex flex-col items-center justify-center">
-            <BsPostcard className="w-32 h-32 text-[#4F5C78]" />
-            <div>
-              <h1 className="text-4xl font_ab text-[#4F5C78]">No Appointments</h1>
-              {/* <h1 className="text-lg mt-1">Member Since : 2020</h1> */}
+              <BsPostcard className="w-32 h-32 text-[#4F5C78]" />
+              <div>
+                <h1 className="text-4xl font_ab text-[#4F5C78]">
+                  No Appointments
+                </h1>
+                {/* <h1 className="text-lg mt-1">Member Since : 2020</h1> */}
+              </div>
             </div>
-          </div>
-          
-           
           )}
         </div>
       </div>
