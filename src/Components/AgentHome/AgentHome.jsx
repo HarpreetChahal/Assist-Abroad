@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import Navbar from "../../layout/Navbar";
-import { AiOutlineArrowDown } from "react-icons/ai";
+import { AiOutlineArrowDown, AiOutlineArrowUp } from "react-icons/ai";
 import { AiOutlineSearch } from "react-icons/ai";
 import InputAdornment from "@mui/material/InputAdornment";
 import TextField from "@mui/material/TextField";
@@ -15,6 +15,7 @@ import { BsPostcard } from "react-icons/bs";
 const AgentHome = () => {
   const [active, setActive] = useState(false);
   const [appointments, setAppointments] = useState([]);
+  const [sortOrder, setSortOrder] = useState("desc");
   const { dispatch, user, isFetching } = useContext(Context);
   const navigate = useNavigate();
 
@@ -26,7 +27,7 @@ const AgentHome = () => {
           status: !active ? "In-progress" : "Completed",
         },
         options: {
-          sort: { createdAt: -1 },
+          sort: { createdAt: sortOrder === "asc" ? 1 : -1 },
         },
       };
       await commonApi({
@@ -36,15 +37,26 @@ const AgentHome = () => {
           authToken: true,
         },
       })
-        .then(({ DATA = {}, MESSAGE }) => {
-          setAppointments(DATA.data);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    };
-    fetchAppointments();
-  }, [active]);
+      .then(({ DATA = {}, MESSAGE }) => {
+        // Sort the appointments based on createdAt field
+        const sortedAppointments = DATA.data.sort((a, b) =>
+          sortOrder === "asc"
+            ? a.createdAt.localeCompare(b.createdAt)
+            : b.createdAt.localeCompare(a.createdAt)
+        );
+        setAppointments(sortedAppointments);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+  fetchAppointments();
+}, [active, sortOrder]); // Update useEffect dependencies
+
+const handleSort = () => {
+  const newSortOrder = sortOrder === "desc" ? "asc" : "desc"; // Toggle sort order
+  setSortOrder(newSortOrder);
+};
 
   return (
     <div className="min-h-screen px-4 lg:px-0 bg-[#f8f8fa]">
@@ -89,8 +101,8 @@ const AgentHome = () => {
                   ),
                 }}
               />
-              <button className="bg-pr px-5 py-2 rounded-md text-white flex items-center gap-1 text-lg">
-                Sort <AiOutlineArrowDown className="w-5 h-5" />
+              <button  onClick={handleSort} className="bg-pr px-5 py-2 rounded-md text-white flex items-center gap-1 text-lg">
+                Sort {sortOrder === "asc" ? <AiOutlineArrowDown className="w-5 h-5" /> : <AiOutlineArrowUp className="w-5 h-5" />} 
               </button>
             </div>
           </div>
