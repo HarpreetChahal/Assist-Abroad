@@ -56,7 +56,7 @@ const PaymentCard = (params) => {
       cardEmail: "",
     },
     validationSchema: Yup.object({
-      cardNumber: Yup.number().required("Required"),
+      cardNumber: Yup.number().typeError("Must be a number").required("Required"),
       expiryDate: Yup.string().min(5, "").required("Required"),
       cvv: Yup.string()
         .matches(/^\d+$/, "CVV must contain only numbers")
@@ -180,21 +180,7 @@ const PaymentCard = (params) => {
                       >
                         Card Number
                       </label>
-                      {/* <TextField
-                        fullWidth
-                        size="small"
-                        id="cardNumber"
-                        variant="outlined"
-                        placeholder="1234-1234-1234"
-                        name="cardNumber"
-                        inputProps={{ maxLength: 16 }}
-                        error={
-                          formik.touched.cardNumber && formik.errors.cardNumber
-                        }
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                        value={formik.values.cardNumber}
-                      /> */}
+                     
                       <TextField
                         fullWidth
                         size="small"
@@ -203,6 +189,11 @@ const PaymentCard = (params) => {
                         placeholder="1234 1234 1234 1234"
                         name="cardNumber"
                         InputProps={{
+                          inputProps: {
+                            inputMode: "numeric",
+                            pattern: "[0-9]*",
+                            maxLength: 19,
+                          },
                           endAdornment: (
                             <InputAdornment position="end">
         {formik.values.cardNumber && (
