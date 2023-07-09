@@ -16,6 +16,8 @@ const AgentHome = () => {
   const [active, setActive] = useState(false);
   const [appointments, setAppointments] = useState([]);
   const [sortOrder, setSortOrder] = useState("desc");
+  const [searchQuery, setSearchQuery] = useState("");
+
   const { dispatch, user, isFetching } = useContext(Context);
   const navigate = useNavigate();
 
@@ -93,6 +95,8 @@ const handleSort = () => {
                 size="small"
                 type="text"
                 placeholder="Search..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
@@ -106,7 +110,13 @@ const handleSort = () => {
               </button>
             </div>
           </div>
-          {appointments.map((appointment, index) => {
+          {appointments
+           .filter((appointment) =>
+           appointment.userObj?.name?.firstName
+             .toLowerCase()
+             .includes(searchQuery.toLowerCase())
+         )
+          .map((appointment, index) => {
             return (
               <div
                 className="mt-10 shadow shadow-slate-300 rounded-xl flex items-center gap-5 p-6 bg-white"
