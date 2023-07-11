@@ -71,7 +71,7 @@ const Login = () => {
       <Navbar />
 
       <div className=" max-w-7xl bg-[white] mt-32 sm:mt-36  mx-auto px-5 lg:px-0 shadow-lg sm:border-2   rounded-md  grid grid-cols-1  lg:grid-cols-2  "
-      // style={{height:"79vh"}}
+      style={{height:"79vh"}}
       >
         <div className="flex  items-center justify-center mx-auto h-full w-full  bg-pr  rounded-l-md">
           <img
@@ -107,7 +107,7 @@ const Login = () => {
               </h3>
             </div>
            
-            <div
+            {/* <div
               className="  text-[#ffffff] cursor-pointer  rounded-md bg-[#23314c] py-3 flex items-center mt-10 justify-center gap-3 "
               style={{ border: "1px solid #bfbfbf" }}
             >
@@ -124,7 +124,7 @@ const Login = () => {
                 className="w-44 h-[1px] "
                 style={{ border: "1px solid rgba(0, 0, 0, 0.1)" }}
               ></div>
-            </div>
+            </div> */}
             <div className="  ">
               
               <div className="flex items-center mt-2 rounded-md">
@@ -189,7 +189,7 @@ const Login = () => {
                     ),
                   }}
                 ></TextField>
-                 <p className="text-mdd  lg:text-md  font_ab  mt-2 ">
+                 <p className="text-md  lg:text-md  font_ab  mt-2 text-slate-600">
                 Forgot Password?
               </p>
               </div>
@@ -207,7 +207,7 @@ const Login = () => {
                   color: "#fff",
                   borderRadius: 10,
                   padding: 8,
-                  marginTop: 18,
+                  marginTop: 15,
                   textTransform: "none",
                   fontSize: 14,
                   border: "2px solid #6d81fe",

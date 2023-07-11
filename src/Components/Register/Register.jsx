@@ -84,7 +84,9 @@ const Register = () => {
     <div className=" w-full">
       <Navbar />
 
-      <div className=" max-w-7xl bg-[white] mt-32   mx-auto px-5 lg:px-0 shadow-lg border-2 rounded-md  grid grid-cols-1  lg:grid-cols-2  ">
+      <div className=" max-w-7xl bg-[white] mt-32   mx-auto px-5 lg:px-0 shadow-lg border-2 rounded-md  grid grid-cols-1  lg:grid-cols-2  "
+       style={{height:"79vh"}}
+       >
         <div className="flex  items-center justify-center mx-auto h-full w-full  bg-pr  rounded-l-md">
           <img
             src={image}
@@ -93,7 +95,7 @@ const Register = () => {
           />
         </div>
 
-        <div className="lg:border-r-2 lg:hidden mt-10 ">
+        <div className="lg:border-r-2 lg:hidden mt-5 ">
           <div className=" lg:hidden">
             <div className="text-pr text-5xl lg:text-7xl  text-center font_ab ">
               Assist Abroad
@@ -114,14 +116,14 @@ const Register = () => {
               <div className="text-pr text-4xl text-center lg:text-6xl font_ab mt-20 ">
                 Assist Abroad
               </div>
-              <h3 className="text-xl text-center lg:text-2xl font_ab text-[#4F5C78]  ">
+              <h3 className="text-xl text-center lg:text-2xl font_ab text-[#4F5C78] mb-8 ">
                 Let's get started
               </h3>
             </div>
             {/* <div className="w-96 text-white rounded-md bg-gray-800 py-3 text-center">
           Authentication error display
         </div> */}
-            <div
+            {/* <div
               className="  text-[#ffffff] cursor-pointer  rounded-md bg-[#23314c] py-3 flex items-center mt-5 justify-center gap-3 "
               style={{ border: "1px solid #bfbfbf" }}
             >
@@ -138,7 +140,7 @@ const Register = () => {
                 className="w-44 h-[1px] "
                 style={{ border: "1px solid rgba(0, 0, 0, 0.1)" }}
               ></div>
-            </div>
+            </div> */}
             <div className="  ">
               <div className="flex items-center  rounded-md">
                 <TextField
