@@ -20,6 +20,7 @@
     "axios": "^1.4.0",
     "card-validator": "^8.1.1",
     "credit-card-type": "^9.1.0",
+    "flowbite": "^1.7.0",
     "flowbite-datepicker": "^1.2.2",
     "formik": "^2.4.1",
     "glamor": "^2.20.40",
