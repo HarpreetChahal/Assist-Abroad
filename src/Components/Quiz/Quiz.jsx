@@ -143,7 +143,7 @@ const Quiz = () => {
               </div>
             </fieldset>
 
-            <div className="mt-10 flex items-center justify-between">
+            <div className="mt-10 flex items-center justify-start gap-2">
               <Button
                 variant="contained"
                 sx={{
@@ -157,7 +157,7 @@ const Quiz = () => {
                   setCurrentIndex(currentIndex - 1);
                 }}
               >
-                Previous
+                Last
               </Button>
 
               <Button
