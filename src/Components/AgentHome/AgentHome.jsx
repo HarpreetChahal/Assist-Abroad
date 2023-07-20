@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 import commonApi from "../../api/common";
 import { Context } from "../context/Context";
 import { useNavigate } from "react-router-dom";
-
 import { BsPostcard } from "react-icons/bs";
 
 const AgentHome = () => {
@@ -17,15 +16,17 @@ const AgentHome = () => {
   const [appointments, setAppointments] = useState([]);
   const [sortOrder, setSortOrder] = useState("desc");
   const [searchQuery, setSearchQuery] = useState("");
-
   const { dispatch, user, isFetching } = useContext(Context);
   const navigate = useNavigate();
-
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const toggleDropdown = () => {
     setIsDropdownOpen((prevState) => !prevState);
   };
-  
+  const [sortByName, setSortByName] = useState(false);
+
+  const handleSortByName = () => {
+    setSortByName((prevSortByName) => !prevSortByName);
+  };
 
   useEffect(() => {
     const fetchAppointments = async () => {
@@ -47,11 +48,25 @@ const AgentHome = () => {
       })
         .then(({ DATA = {}, MESSAGE }) => {
           // Sort the appointments based on createdAt field
-          const sortedAppointments = DATA.data.sort((a, b) =>
+          let sortedAppointments = DATA.data.sort((a, b) =>
             sortOrder === "asc"
               ? a.createdAt.localeCompare(b.createdAt)
               : b.createdAt.localeCompare(a.createdAt)
           );
+
+          // If the sortByName checkbox is checked, sort by name instead
+          if (sortByName) {
+            sortedAppointments = DATA.data.sort((a, b) =>
+              sortOrder === "asc"
+                ? a.userObj?.name?.firstName.localeCompare(
+                    b.userObj?.name?.firstName
+                  )
+                : b.userObj?.name?.firstName.localeCompare(
+                    a.userObj?.name?.firstName
+                  )
+            );
+          }
+
           setAppointments(sortedAppointments);
         })
         .catch((error) => {
@@ -59,7 +74,7 @@ const AgentHome = () => {
         });
     };
     fetchAppointments();
-  }, [active, sortOrder]); // Update useEffect dependencies
+  }, [active, sortOrder, sortByName]); // Update useEffect dependencies
 
   const handleSort = () => {
     const newSortOrder = sortOrder === "desc" ? "asc" : "desc"; // Toggle sort order
@@ -115,121 +130,212 @@ const AgentHome = () => {
                 Sort {sortOrder === "asc" ? <AiOutlineArrowDown className="w-5 h-5" /> : <AiOutlineArrowUp className="w-5 h-5" />} 
               </button> */}
               <div className="relative">
-              <button
-                onClick={toggleDropdown}
-                className="text-white bg-pr font-medium px-4 py-2 rounded-md  text-center inline-flex items-center"
-                type="button"
-              >
-                Filter by category
-                <svg
-                  class="w-4 h-4 ml-2"
-                  aria-hidden="true"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
+                <button
+                  onClick={toggleDropdown}
+                  className="text-white bg-pr font-medium px-4 py-2 rounded-md text-center inline-flex items-center"
+                  type="button"
                 >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M19 9l-7 7-7-7"
-                  ></path>
-                </svg>
-              </button>
-              {isDropdownOpen && (
-              <div
-                
-                class="absolute top-12 right-0 z-10 w-56 p-3 bg-white rounded-md shadow shadow-slate-300"
-              >
-                <h6 class="mb-3 text-sm font-medium text-gray-900 dark:text-white">
-                  Appointment Type
-                </h6>
-                <ul class="space-y-2 text-sm" aria-labelledby="dropdownDefault">
-                  <li class="flex items-center">
-                    <input
-                      id="apple"
-                      type="checkbox"
-                      value=""
-                      class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-                    />
-
-                    <label
-                      for="apple"
-                      class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
+                  Filter by category
+                  <svg
+                    className="w-4 h-4 ml-2"
+                    aria-hidden="true"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M19 9l-7 7-7-7"
+                    ></path>
+                  </svg>
+                </button>
+                {isDropdownOpen && (
+                  <div className="absolute top-12 right-0 z-10 w-56 p-3 bg-white rounded-md shadow shadow-slate-300">
+                    <ul
+                      className="space-y-2 text-sm"
+                      aria-labelledby="dropdownDefault"
                     >
-                      Apple (56)
-                    </label>
-                  </li>
+                      <h6 className="mb-3 text-md font-medium text-gray-900 dark:text-white">
+                        Appointment Type
+                      </h6>
+                      <li class="flex items-center">
+                        <input
+                          id="airport"
+                          type="checkbox"
+                          value=""
+                          class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-pr focus:ring-pr "
+                        />
 
-                  <li class="flex items-center">
-                    <input
-                      id="fitbit"
-                      type="checkbox"
-                      value=""
-                      class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-                    />
+                        <label
+                          for="airport"
+                          class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
+                        >
+                          Airport Pickup
+                        </label>
+                      </li>
 
-                    <label
-                      for="fitbit"
-                      class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
-                    >
-                      Fitbit (56)
-                    </label>
-                  </li>
+                      <li class="flex items-center">
+                        <input
+                          id="BusPass"
+                          type="checkbox"
+                          value=""
+                          class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-pr focus:ring-pr"
+                        />
 
-                  <li class="flex items-center">
-                    <input
-                      id="dell"
-                      type="checkbox"
-                      value=""
-                      class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-                    />
+                        <label
+                          for="BusPass"
+                          class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
+                        >
+                          Bus Pass
+                        </label>
+                      </li>
+                      <li class="flex items-center">
+                        <input
+                          id="HotelStay"
+                          type="checkbox"
+                          value=""
+                          class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-pr focus:ring-pr "
+                        />
 
-                    <label
-                      for="dell"
-                      class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
-                    >
-                      Dell (56)
-                    </label>
-                  </li>
+                        <label
+                          for="HotelStay"
+                          class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
+                        >
+                          Hotel Stay
+                        </label>
+                      </li>
+                      <li class="flex items-center">
+                        <input
+                          id="CityTour"
+                          type="checkbox"
+                          value=""
+                          class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-pr focus:ring-pr "
+                        />
 
-                  <li class="flex items-center">
-                    <input
-                      id="airport"
-                      type="checkbox"
-                      value=""
-                      class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 "
-                    />
+                        <label
+                          for="CityTour"
+                          class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
+                        >
+                          City Tour
+                        </label>
+                      </li>
+                      <li class="flex items-center">
+                        <input
+                          id="GovtId"
+                          type="checkbox"
+                          value=""
+                          class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-pr focus:ring-pr "
+                        />
 
-                    <label
-                      for="airport"
-                      class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
-                    >
-                      Airport Pickup
-                    </label>
-                  </li>
+                        <label
+                          for="GovtId"
+                          class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
+                        >
+                          Government Id
+                        </label>
+                      </li>
+                      <li class="flex items-center">
+                        <input
+                          id="HealthCard"
+                          type="checkbox"
+                          value=""
+                          class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-pr focus:ring-pr "
+                        />
 
-                  <li class="flex items-center">
-                    <input
-                      id="BusPass"
-                      type="checkbox"
-                      value=""
-                      class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 "
-                    />
+                        <label
+                          for="HealthCard"
+                          class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
+                        >
+                          Health Card
+                        </label>
+                      </li>
+                      <li class="flex items-center">
+                        <input
+                          id="Housing"
+                          type="checkbox"
+                          value=""
+                          class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-pr focus:ring-pr "
+                        />
 
-                    <label
-                      for="BusPass"
-                      class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
-                    >
-                      Bus Pass
-                    </label>
-                  </li>
+                        <label
+                          for="Housing"
+                          class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
+                        >
+                          Housing
+                        </label>
+                      </li>
+                      <li class="flex items-center">
+                        <input
+                          id="Banking"
+                          type="checkbox"
+                          value=""
+                          class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-pr focus:ring-pr "
+                        />
 
-                </ul>
+                        <label
+                          for="Banking"
+                          class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
+                        >
+                          Banking
+                        </label>
+                      </li>
+                      <li class="flex items-center">
+                        <input
+                          id="MobileIssue"
+                          type="checkbox"
+                          value=""
+                          class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-pr focus:ring-pr "
+                        />
+
+                        <label
+                          for="MobileIssue"
+                          class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
+                        >
+                          Mobile Issue
+                        </label>
+                      </li>
+                      <h6 className="mb-3 text-md font-medium text-gray-900 ">
+                        Sort by
+                      </h6>
+                      <li className="flex items-center">
+                        <input
+                          id="sortTime"
+                          type="checkbox"
+                          onClick={handleSort}
+                          value=""
+                          className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-pr focus:ring-pr "
+                        />
+                        <label
+                          htmlFor="sortTime"
+                          className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
+                        >
+                          Time{" "}
+                          {sortOrder === "asc"}
+                        </label>
+                      </li>
+                      <li className="flex items-center">
+                        <input
+                          id="sortName"
+                          type="checkbox"
+                          checked={sortByName}
+                          onChange={handleSortByName}
+                          value=""
+                          className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-pr focus:ring-pr "
+                        />
+                        <label
+                          htmlFor="sortName"
+                          className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
+                        >
+                          Name
+                        </label>
+                      </li>
+                    </ul>
+                  </div>
+                )}
               </div>
-              )}
-            </div>
             </div>
           </div>
           {appointments
