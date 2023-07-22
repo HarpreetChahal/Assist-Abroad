@@ -59,6 +59,10 @@ const apiList = {
       uploadProfileImage:{
         url:()=>"web/api/v1/file/upload",
         method:"post"
+      },
+      forgotPassword:{
+        url:()=>"web/api/v1/auth/forgot-password",
+        method:"post"
       }
   };
   export default apiList;

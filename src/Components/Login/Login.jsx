@@ -41,7 +41,7 @@ const Login = () => {
       password: Yup.string().required("Required"),
       email: Yup.string().email("Invalid email address").required("Required"),
     }),
-    onSubmit: async (values,{ setErrors }) => {
+    onSubmit: async (values, { setErrors }) => {
       await commonApi({
         action: "login",
         data: values,
@@ -53,11 +53,11 @@ const Login = () => {
         })
         .catch((error) => {
           dispatch({ type: "LOGIN_FAILURE" });
-          if(error?.response?.data?.MESSAGE == "INCORRECT")
-          {
-            
-            setErrors({ password: "Email or Password is incorrect" ,email: " Email or password is incorrect"});
-
+          if (error?.response?.data?.MESSAGE == "INCORRECT") {
+            setErrors({
+              password: "Email or Password is incorrect",
+              email: " Email or password is incorrect",
+            });
           }
           console.error(error);
         });
@@ -70,8 +70,9 @@ const Login = () => {
     <div className=" w-full ">
       <Navbar />
 
-      <div className=" max-w-7xl bg-[white] mt-32 sm:mt-36  mx-auto px-5 lg:px-0 shadow-lg sm:border-2   rounded-md  grid grid-cols-1  lg:grid-cols-2  "
-      style={{height:"79vh"}}
+      <div
+        className=" max-w-7xl bg-[white] mt-32 sm:mt-36  mx-auto px-5 lg:px-0 shadow-lg sm:border-2   rounded-md  grid grid-cols-1  lg:grid-cols-2  "
+        style={{ height: "79vh" }}
       >
         <div className="flex  items-center justify-center mx-auto h-full w-full  bg-pr  rounded-l-md">
           <img
@@ -96,8 +97,6 @@ const Login = () => {
         </div>
         <div className="flex flex-col items-center justify-center lg:mt-0">
           <form onSubmit={formik.handleSubmit} className="form grid " id="form">
-          
-
             <div className="hidden lg:block">
               <div className="text-pr text-4xl text-center lg:text-6xl font_ab mt-32 ">
                 Assist Abroad
@@ -106,7 +105,7 @@ const Login = () => {
                 Welcome back
               </h3>
             </div>
-           
+
             {/* <div
               className="  text-[#ffffff] cursor-pointer  rounded-md bg-[#23314c] py-3 flex items-center mt-10 justify-center gap-3 "
               style={{ border: "1px solid #bfbfbf" }}
@@ -126,12 +125,9 @@ const Login = () => {
               ></div>
             </div> */}
             <div className="  ">
-              
               <div className="flex items-center mt-2 rounded-md">
-              
                 <TextField
                   className="bg-[#fff] border-none outline-none text-lg px-2 py-2 w-full"
-                 
                   size="small"
                   type="text"
                   id="email"
@@ -150,11 +146,10 @@ const Login = () => {
                   }}
                 ></TextField>
               </div>
-              
+
               {/* { formik.touched.email && formik.errors.email && 
            <div className="text-[red]">{formik.errors.email}</div>} */}
               <div className=" mt-4 items-center  rounded-md">
-              
                 <TextField
                   className="bg-[#fff] border-none outline-none text-lg  w-full"
                   size="small"
@@ -177,7 +172,7 @@ const Login = () => {
                         {showPassword ? (
                           <AiFillEye
                             className="w-5 h-6 text-[#4F5C78] cursor-pointer"
-                            onClick={() => setShowPassword(!showPassword)} 
+                            onClick={() => setShowPassword(!showPassword)}
                           />
                         ) : (
                           <AiFillEyeInvisible
@@ -189,38 +184,39 @@ const Login = () => {
                     ),
                   }}
                 ></TextField>
-                 <p className="text-md  lg:text-md  font_ab  mt-2 text-slate-600">
-                Forgot Password?
-              </p>
+                <Link to="/forgetPassword">
+             
+                  <p className="text-md  lg:text-md  font_ab  mt-2 text-slate-600">
+                    Forgot Password?
+                  </p>
+                </Link>
               </div>
-              { formik.touched.password && formik.errors.password && 
-           <div className="text-[red] mt-2 font-medium"
-         
-           >{formik.errors.password}</div>}
-             <div className="mb-32">
-              <Button
-                type="submit"
-                className=" mt-8 rounded-md shadow-md w-full bg-pr text-center  text-white font-medium cursor-pointer"
-                disabled={!(formik.isValid && formik.dirty)}
-                style={{
-                  backgroundColor: "#6d81fe",
-                  color: "#fff",
-                  borderRadius: 10,
-                  padding: 8,
-                  marginTop: 15,
-                  textTransform: "none",
-                  fontSize: 14,
-                  border: "2px solid #6d81fe",
-                  marginBottom: 30,
-                
-                }}
-              >
-                Log In
-              </Button>
+              {formik.touched.password && formik.errors.password && (
+                <div className="text-[red] mt-2 font-medium">
+                  {formik.errors.password}
+                </div>
+              )}
+              <div className="mb-32">
+                <Button
+                  type="submit"
+                  className=" mt-8 rounded-md shadow-md w-full bg-pr text-center  text-white font-medium cursor-pointer"
+                  disabled={!(formik.isValid && formik.dirty)}
+                  style={{
+                    backgroundColor: "#6d81fe",
+                    color: "#fff",
+                    borderRadius: 10,
+                    padding: 8,
+                    marginTop: 15,
+                    textTransform: "none",
+                    fontSize: 14,
+                    border: "2px solid #6d81fe",
+                    marginBottom: 30,
+                  }}
+                >
+                  Log In
+                </Button>
               </div>
-              
             </div>
-           
           </form>
         </div>
       </div>

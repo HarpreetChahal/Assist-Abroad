@@ -1,10 +1,39 @@
-import React from "react";
+import React,{useState} from "react";
 import Navbar from "../../layout/Navbar";
 import { Link } from "react-router-dom";
 import image from "../../Assets/forgot.svg";
 import imageLogo from "../../Assets/LoginPageLogoMobile.png";
 import { Button, TextField } from "@mui/material";
+import commonApi from "../../api/common";
+
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { useNavigate } from "react-router-dom";
+
+
 const ForgetPassword = () => {
+  const navigate=useNavigate()
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+    },
+    validationSchema: Yup.object({
+      email: Yup.string().email("Invalid email address").required("Required"),
+    }),
+    onSubmit: async (values, { setErrors }) => {
+      await commonApi({
+        action: "forgotPassword",
+        data: values,
+      })
+        .then(({ DATA = {}, MESSAGE }) => {
+          navigate("/passwordPin");
+        })
+        .catch((error) => {
+          
+          console.error(error);
+        });
+    },
+  });
   return (
     <div className="w-full">
       <Navbar />
@@ -35,7 +64,7 @@ const ForgetPassword = () => {
           </div>
         </div>
         <div className="flex flex-col items-center justify-center lg:mt-0 px-20">
-          <form className="form grid ">
+          <form className="form grid " onSubmit={formik.handleSubmit}>
             <div className="hidden lg:block">
               <div className="text-pr text-2xl text-center lg:text-4xl font_ab mt-48 ">
               Forgot your password?
@@ -53,6 +82,10 @@ const ForgetPassword = () => {
                   size="small"
                   type="text"
                   id="email"
+                  name="email"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values.email}
                   placeholder="Enter your email"
                 ></TextField>
               </div>
