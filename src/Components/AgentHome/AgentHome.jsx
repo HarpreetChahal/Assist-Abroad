@@ -14,7 +14,7 @@ import { BsPostcard } from "react-icons/bs";
 const AgentHome = () => {
   const [active, setActive] = useState(false);
   const [appointments, setAppointments] = useState([]);
-  const [sortOrder, setSortOrder] = useState("desc");
+  const [sortOrder, setSortOrder] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const { dispatch, user, isFetching } = useContext(Context);
   const navigate = useNavigate();
@@ -37,7 +37,7 @@ const AgentHome = () => {
           search:searchQuery
         },
         options: {
-          sort: { createdAt: sortOrder === "asc" ? 1 : -1 },
+          sort: { createdAt: sortOrder ?-1:1},
           populate:[{
             path:"agentId",
             model:"user",
@@ -62,28 +62,28 @@ const AgentHome = () => {
         },
       })
         .then(({ DATA = {}, MESSAGE }) => {
-          console.log("DATA",DATA.data)
+      
           // Sort the appointments based on createdAt field
-          let sortedAppointments = DATA.data.sort((a, b) =>
-            sortOrder === "asc"
-              ? a.createdAt.localeCompare(b.createdAt)
-              : b.createdAt.localeCompare(a.createdAt)
-          );
+          // let sortedAppointments = DATA.data.sort((a, b) =>
+          //   sortOrder === "asc"
+          //     ? a.createdAt.localeCompare(b.createdAt)
+          //     : b.createdAt.localeCompare(a.createdAt)
+          // );
 
-          // If the sortByName checkbox is checked, sort by name instead
-          if (sortByName) {
-            sortedAppointments = DATA.data.sort((a, b) =>
-              sortOrder === "asc"
-                ? a.userObj?.name?.firstName.localeCompare(
-                    b.userObj?.name?.firstName
-                  )
-                : b.userObj?.name?.firstName.localeCompare(
-                    a.userObj?.name?.firstName
-                  )
-            );
-          }
+          // // If the sortByName checkbox is checked, sort by name instead
+          // if (sortByName) {
+          //   sortedAppointments = DATA.data.sort((a, b) =>
+          //     sortOrder === "asc"
+          //       ? a.userObj?.name?.firstName.localeCompare(
+          //           b.userObj?.name?.firstName
+          //         )
+          //       : b.userObj?.name?.firstName.localeCompare(
+          //           a.userObj?.name?.firstName
+          //         )
+          //   );
+          // }
 
-          setAppointments(sortedAppointments);
+          setAppointments(DATA.data);
         })
         .catch((error) => {
           console.error(error);
@@ -92,10 +92,6 @@ const AgentHome = () => {
     fetchAppointments();
   }, [active, sortOrder, searchQuery]); // Update useEffect dependencies
 
-  const handleSort = () => {
-    const newSortOrder = sortOrder === "desc" ? "asc" : "desc"; // Toggle sort order
-    setSortOrder(newSortOrder);
-  };
 
   return (
     <div className="min-h-screen px-4 lg:px-0 bg-[#f8f8fa]">
@@ -320,15 +316,17 @@ const AgentHome = () => {
                         <input
                           id="sortTime"
                           type="checkbox"
-                          onClick={handleSort}
-                          value=""
+                          onClick={()=>{
+                            setSortOrder(!sortOrder)
+                          }}
+                          checked={sortOrder}
                           className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-pr focus:ring-pr "
                         />
                         <label
                           htmlFor="sortTime"
                           className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
                         >
-                          Time {sortOrder === "asc"}
+                          Time 
                         </label>
                       </li>
                       <li className="flex items-center">
