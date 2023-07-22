@@ -123,7 +123,7 @@ const Profile = () => {
                      
                         // Add any additional attributes or event handlers as needed
                       />
-                      <Button
+                    {edit&&  <Button
                         variant="contained"
                         onClick={() => fileInput.current.click()}
                         sx={{
@@ -138,7 +138,7 @@ const Profile = () => {
                         }}
                       >
                         Choose Image
-                      </Button>
+                      </Button>}
 
                       {/* <label
                         htmlFor="myfile"
