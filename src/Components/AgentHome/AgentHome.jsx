@@ -345,6 +345,18 @@ const AgentHome = () => {
                 .includes(searchQuery.toLowerCase())
             )
             .map((appointment, index) => {
+              console.log("appointment",appointment)
+              let totalTasks=appointment?.tasksList?.length ?appointment?.tasksList?.length : 0
+              let completedTasks=appointment?.tasksList?.filter((task)=>task.status ==="Completed")?.length ? appointment?.tasksList?.filter((task)=>task.status ==="Completed")?.length  :0
+              
+              const latestCompleted = appointment?.tasksList?.reduce((acc, current) => {
+                if (!acc || new Date(current.completedAt) > new Date(acc.completedAt)) {
+                  return current;
+                }
+                return acc;
+              }, null);
+              
+              console.log(latestCompleted);
               return (
                 <div
                   className="mt-10 shadow shadow-slate-300 rounded-xl flex items-center gap-5 p-6 bg-white"
@@ -376,6 +388,24 @@ const AgentHome = () => {
                         Phone :{" "}
                         <p className="flex pl-2 text-black">
                           {appointment.userObj?.phone?.phone}
+                        </p>
+                      </h1>
+                    </div>
+
+                    <div className="w-full flex">
+                      <h1 className="text-sm lg:text-lg font_ab text-gray-500 text-bold flex">
+                        Task Completed :{" "}
+                        <p className="flex pl-2 text-black">
+                          {completedTasks+"/"+totalTasks}
+                        </p>
+                      </h1>
+                    </div>
+
+                    <div className="w-full flex">
+                      <h1 className="text-sm lg:text-lg font_ab text-gray-500 text-bold flex">
+                        Last Completed :{" "}
+                        <p className="flex pl-2 text-black">
+                          {latestCompleted?.name || "Noting for now"}
                         </p>
                       </h1>
                     </div>
