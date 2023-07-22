@@ -24,8 +24,9 @@ import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
 const PaymentCard = (params) => {
-  const { dispatch, isFetching } = useContext(Context);
+  const { dispatch, isFetching,user } = useContext(Context);
   const [showDiv, setShowDiv] = useState(false);
+
 
   const navigate = useNavigate();
 
@@ -52,8 +53,8 @@ const PaymentCard = (params) => {
       cardNumber: "",
       expiryDate: "",
       cvv: "",
-      cardName: "",
-      cardEmail: "",
+      cardName: user.name.fullName,
+      cardEmail: user.email,
     },
     validationSchema: Yup.object({
       cardNumber: Yup.number().required("Required"),

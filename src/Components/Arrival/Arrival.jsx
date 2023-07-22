@@ -40,7 +40,15 @@ const Arrival = () => {
           userId: user._id,
           // status: "In-progress",
         },
-        options: {},
+        options: {
+          populate:[{
+            path:"agentId",
+            model:"user",
+            "select":{
+              password:0
+            }
+          }]
+        },
       };
       await commonApi({
         action: "listTask",
@@ -516,7 +524,7 @@ function Modal({ open, setOpen, appointment }) {
 
   let addFeddback = async () => {
     let data = {
-      agentId: appointment.agentId,
+      agentId: appointment.agentId._id,
       rating: value4,
       feedback: feedback,
     };
