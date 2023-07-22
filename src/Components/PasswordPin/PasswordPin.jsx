@@ -1,10 +1,45 @@
-import React from "react";
+import React,{useState} from "react";
 import Navbar from "../../layout/Navbar";
 import { Link } from "react-router-dom";
 import image from "../../Assets/forgot.svg";
 import imageLogo from "../../Assets/LoginPageLogoMobile.png";
 import { Button, TextField } from "@mui/material";
+
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import commonApi from "../../api/common";
+
 const PasswordPin = () => {
+  const search = useLocation().search;
+  const name = new URLSearchParams(search).get("email");
+  const navigate=useNavigate()
+  const [showError,setShowError]=useState(false)
+  const formik = useFormik({
+    initialValues: {
+      email: name,
+      emailCode:""
+    },
+    validationSchema: Yup.object({
+      emailCode: Yup.string().min(6).max(6).required("Required"),
+    }),
+    onSubmit: async (values, { setErrors }) => {
+     
+      await commonApi({
+        action: "forgotPasswordOTP",
+        data: values,
+      })
+        .then(({ DATA = {}, MESSAGE }) => {
+       
+          navigate("/changePassword/?email=" + values.email+"&code="+values.emailCode);
+        })
+        .catch((error) => {
+          setShowError(true)
+          console.error(error);
+        });
+    },
+  });
   return (
     <div className="w-full">
       <Navbar />
@@ -35,7 +70,7 @@ const PasswordPin = () => {
           </div>
         </div>
         <div className="flex flex-col items-center justify-center lg:mt-0 px-20">
-          <form className="form grid ">
+          <form className="form grid " onSubmit={formik.handleSubmit}>
             <div className="hidden lg:block">
               <div className="text-pr text-2xl text-center lg:text-4xl font_ab mt-48 ">
               Confirm Password Change
@@ -44,7 +79,7 @@ const PasswordPin = () => {
               Enter the code you received on your email to change the password
               </h3>
             </div>
-
+   {showError&& <div>Email or OTP is not correct.</div>}
             <div className="  ">
               <div className="flex items-center mt-2 rounded-md">
                 <TextField
@@ -52,8 +87,12 @@ const PasswordPin = () => {
                   className="bg-[#fff] border-none outline-none text-lg px-2 py-2 w-full"
                   size="small"
                   type="text"
-                  id="email"
-                  placeholder="Enter your email"
+                  id="emailCode"
+                  name="emailCode"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values.emailCode}
+                  placeholder="Enter your code"
                 ></TextField>
               </div>
 

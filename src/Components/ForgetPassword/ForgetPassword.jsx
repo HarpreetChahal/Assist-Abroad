@@ -11,8 +11,10 @@ import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
 
 
+
 const ForgetPassword = () => {
   const navigate=useNavigate()
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -26,7 +28,9 @@ const ForgetPassword = () => {
         data: values,
       })
         .then(({ DATA = {}, MESSAGE }) => {
-          navigate("/passwordPin");
+          
+          navigate("/passwordPin/?email=" + values.email);
+        
         })
         .catch((error) => {
           

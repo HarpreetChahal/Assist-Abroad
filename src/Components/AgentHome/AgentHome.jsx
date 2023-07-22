@@ -414,7 +414,7 @@ const AgentHome = () => {
             //     .includes(searchQuery.toLowerCase())
             // )
             .map((appointment, index) => {
-              console.log("appointment", appointment);
+           
               let totalTasks = appointment?.tasksList?.length
                 ? appointment?.tasksList?.length
                 : 0;
@@ -459,7 +459,7 @@ const AgentHome = () => {
                 (item) => !item.completedAt
               );
 
-              console.log(sortedData);
+             
               return (
                 <div
                   className="mt-10 shadow shadow-slate-300 rounded-xl flex items-center gap-5 p-6 bg-white"

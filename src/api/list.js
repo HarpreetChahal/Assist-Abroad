@@ -63,7 +63,12 @@ const apiList = {
       forgotPassword:{
         url:()=>"web/api/v1/auth/forgot-password",
         method:"post"
-      }
+      },
+      forgotPasswordOTP:{
+        url:()=>"web/api/v1/auth/verify-forgot-password-otp",
+        method:"post"
+      },
+      
   };
   export default apiList;
   
