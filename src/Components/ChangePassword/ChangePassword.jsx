@@ -4,7 +4,47 @@ import { Link } from "react-router-dom";
 import image from "../../Assets/changePassword.svg";
 import imageLogo from "../../Assets/LoginPageLogoMobile.png";
 import { Button, TextField } from "@mui/material";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import commonApi from "../../api/common";
+
 const ChangePassword = () => {
+  const search = useLocation().search;
+  const email = new URLSearchParams(search).get("email");
+  const emailCode = new URLSearchParams(search).get("code");
+
+  const navigate = useNavigate();
+  const formik = useFormik({
+    initialValues: {
+      password: "",
+      confirmPassword: "",
+    },
+    validationSchema: Yup.object({
+      password: Yup.string().required("Required"),
+      confirmPassword: Yup.string()
+        .required("Required")
+        .oneOf([Yup.ref("password"), null], "Passwords must match"),
+    }),
+    onSubmit: async (values, { setErrors }) => {
+      let { confirmPassword, ...value } = values;
+      await commonApi({
+        action: "resetPassword",
+        data: {
+          password:values.password,
+          email:email,
+          OTP:emailCode
+        },
+      })
+        .then(({ DATA = {}, MESSAGE }) => {
+          navigate("/login");
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    },
+  });
   return (
     <div className="w-full">
       <Navbar />
@@ -32,7 +72,7 @@ const ChangePassword = () => {
           </div>
         </div>
         <div className="flex flex-col items-center justify-center lg:mt-0 px-20">
-          <form className="form grid ">
+          <form className="form grid " onSubmit={formik.handleSubmit}>
             <div className="hidden lg:block">
               <div className="text-pr text-2xl text-center lg:text-4xl font_ab  mb-2 ">
                 Reset your password?
@@ -46,15 +86,10 @@ const ChangePassword = () => {
                   size="small"
                   type="text"
                   id="email"
-                  placeholder="Enter old password"
-                ></TextField>
-              </div>
-              <div className="flex items-center mt-2 rounded-md">
-                <TextField
-                  className="bg-[#fff] border-none outline-none text-lg px-2 py-2 w-full"
-                  size="small"
-                  type="text"
-                  id="email"
+                  name="password"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values.password}
                   placeholder="Enter new password"
                 ></TextField>
               </div>
@@ -63,7 +98,10 @@ const ChangePassword = () => {
                   className="bg-[#fff] border-none outline-none text-lg px-2 py-2 w-full"
                   size="small"
                   type="text"
-                  id="email"
+                  name="confirmPassword"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values.confirmPassword}
                   placeholder="Confirm new password"
                 ></TextField>
               </div>
@@ -77,28 +115,8 @@ const ChangePassword = () => {
                   marginTop: 15,
                 }}
               >
-                <div className="flex-1">
-                  <Button
-                    type="submit"
-                    className="rounded-md shadow-md w-full bg-pr text-center text-white font-medium cursor-pointer"
-                    style={{
-                      borderRadius: 10,
-                      padding: 6,
-                      fontSize: 14,
-                      border: "2px solid #6d81fe",
-                      color: "#6d81fc",
-                      bgcolor: "#ffffff",
-                      textTransform: "none",
-                      "&:hover": {
-                        bgcolor: "#ffffff",
-                        color: "#6d81fc",
-                      },
-                    }}
-                  >
-                    Cancel
-                  </Button>
-                </div>
-                <div className="flex-1" style={{ marginLeft: "10px" }}>
+            
+                <div className="flex-1" style={{ }}>
                   <Button
                     type="submit"
                     className="rounded-md shadow-md w-full bg-pr text-center text-white font-medium cursor-pointer"

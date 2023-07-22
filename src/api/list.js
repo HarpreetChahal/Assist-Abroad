@@ -68,7 +68,10 @@ const apiList = {
         url:()=>"web/api/v1/auth/verify-forgot-password-otp",
         method:"post"
       },
-      
+      resetPassword:{
+        url:()=>"web/api/v1/auth/reset-password",
+        method:"post"
+      },
   };
   export default apiList;
   
