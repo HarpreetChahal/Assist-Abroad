@@ -36,7 +36,9 @@ const AgentHome = () => {
         query: {
           agentId: user._id,
           status: !active ? "In-progress" : "Completed",
-          search:searchQuery
+          search:searchQuery,
+
+         
         },
         options: {
           sort: { createdAt: sortOrder ?-1:1},
@@ -56,6 +58,18 @@ const AgentHome = () => {
           }]
         },
       };
+
+      if(selectedTasks.length!=0)
+      {
+        console.log("selectedTasks",selectedTasks)
+        data.query={
+          ...data.query,
+         
+              tasksList:{$elemMatch:{name:{$in:selectedTasks}}}
+            
+          
+        }
+      }
       await commonApi({
         action: "listTask",
         data: data,
@@ -230,9 +244,9 @@ const AgentHome = () => {
                           id="HotelStay"
                           type="checkbox"
                           onChange={()=>{
-                            filterAppointmentType("Hotel Stay")
+                            filterAppointmentType("Hotel Stay ")
                           }}
-                          checked={selectedTasks.includes("Hotel Stay")}
+                          checked={selectedTasks.includes("Hotel Stay ")}
                           class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-pr focus:ring-pr "
                         />
 
@@ -248,9 +262,9 @@ const AgentHome = () => {
                           id="CityTour"
                           type="checkbox"
                           onChange={()=>{
-                            filterAppointmentType("City Tour")
+                            filterAppointmentType("City Tour ")
                           }}
-                          checked={selectedTasks.includes("City Tour")}
+                          checked={selectedTasks.includes("City Tour ")}
                           class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-pr focus:ring-pr "
                         />
 
@@ -266,9 +280,9 @@ const AgentHome = () => {
                           id="GovtId"
                           type="checkbox"
                           onChange={()=>{
-                            filterAppointmentType("Government id issue")
+                            filterAppointmentType("Government id issue ")
                           }}
-                          checked={selectedTasks.includes("Government id issue")}
+                          checked={selectedTasks.includes("Government id issue ")}
                           class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-pr focus:ring-pr "
                         />
 
@@ -284,9 +298,9 @@ const AgentHome = () => {
                           id="HealthCard"
                           type="checkbox"
                           onChange={()=>{
-                            filterAppointmentType("Health Card")
+                            filterAppointmentType("Health Card ")
                           }}
-                          checked={selectedTasks.includes("Health Card")}
+                          checked={selectedTasks.includes("Health Card ")}
                           class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-pr focus:ring-pr "
                         />
 
@@ -320,9 +334,9 @@ const AgentHome = () => {
                           id="Banking"
                           type="checkbox"
                           onChange={()=>{
-                            filterAppointmentType("Banking")
+                            filterAppointmentType("Banking ")
                           }}
-                          checked={selectedTasks.includes("Banking")}
+                          checked={selectedTasks.includes("Banking ")}
                           class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-pr focus:ring-pr "
                         />
 
@@ -338,9 +352,9 @@ const AgentHome = () => {
                           id="MobileIssue"
                           type="checkbox"
                           onChange={()=>{
-                            filterAppointmentType("Mobile/Sim Issue")
+                            filterAppointmentType("Mobile/Sim Issue ")
                           }}
-                          checked={selectedTasks.includes("Mobile/Sim Issue")}
+                          checked={selectedTasks.includes("Mobile/Sim Issue ")}
                           class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-pr focus:ring-pr "
                         />
 
