@@ -1,4 +1,4 @@
-import React ,{ useRef } from "react";
+import React, { useRef } from "react";
 import Navbar from "../../layout/Navbar";
 import agent1 from "/src/Assets/agent.png";
 import agent2 from "/src/Assets/avatar2.jpg";
@@ -17,11 +17,14 @@ const Profile = () => {
   const { dispatch, isFetching, user } = useContext(Context);
   const [edit, setEdit] = useState(false);
   const fileInput = useRef(null);
+  const [file, setFile] = useState(null);
   const formik = useFormik({
     initialValues: {
       email: user?.email || "",
       name: user?.name?.firstName || "",
-      dob:user.dob ? moment(user.dob).format("YYYY-MM-DD") : moment().format("YYYY-MM-DD"),
+      dob: user.dob
+        ? moment(user.dob).format("YYYY-MM-DD")
+        : moment().format("YYYY-MM-DD"),
       phone: user?.phone?.phone || "",
     },
     validationSchema: Yup.object({
@@ -43,17 +46,41 @@ const Profile = () => {
           },
           dob: values.dob,
         };
+        if (file != null) {
+          let fileData = new FormData();
+          fileData.append("name", file.name);
 
-        await commonApi({
-          action: "updateProfile",
-          data: data,
-          config: {
-            authToken: true,
-          },
-        }).then(({ DATA = {}, MESSAGE }) => {
-          dispatch({ type: "UPDATE_USER", payload: DATA });
-          setEdit(false);
-        });
+          fileData.append("file", file);
+          await commonApi({
+            action: "uploadProfileImage",
+            data: fileData,
+          }).then(async ({ DATA = {}, MESSAGE }) => {
+           
+            data.profilePicture = DATA;
+            
+            await commonApi({
+              action: "updateProfile",
+              data: data,
+              config: {
+                authToken: true,
+              },
+            }).then(({ DATA = {}, MESSAGE }) => {
+              dispatch({ type: "UPDATE_USER", payload: DATA });
+              setEdit(false);
+            });
+          });
+        } else {
+          await commonApi({
+            action: "updateProfile",
+            data: data,
+            config: {
+              authToken: true,
+            },
+          }).then(({ DATA = {}, MESSAGE }) => {
+            dispatch({ type: "UPDATE_USER", payload: DATA });
+            setEdit(false);
+          });
+        }
       } catch (error) {
         dispatch({ type: "LOGIN_FAILURE" });
         console.error(error);
@@ -71,18 +98,31 @@ const Profile = () => {
               <div className="w-full flex items-start gap-2 justify-between">
                 <div className="flex items-start lg:items-center flex-col lg:flex-row gap-10">
                   {/* <img className="w-32 lg:w-auto rounded-md" src={agent} alt="" /> */}
-                  <img className="w-32 h-32 lg:w-auto rounded-md" src={user.role === 0 ? agent1 : agent2} alt="" />
+                  <img
+                    className="w-32 h-32 lg:w-auto rounded-md"
+                    src={(file &&
+                      URL.createObjectURL(file)) || user.profilePicture || agent1}
+                    
+                  />
                   <div>
-                    <h1 className="text-4xl font_ab">{user?.name?.firstName}</h1>
-                    <h1 className="text-lg mt-1 mb-4 font_ab ">Member Since : 2023</h1>
+                    <h1 className="text-4xl font_ab">
+                      {user?.name?.firstName}
+                    </h1>
+                    <h1 className="text-lg mt-1 mb-4 font_ab ">
+                      Member Since : 2023
+                    </h1>
                     <div className=" items-center  rounded-md">
-                    <input
-        type="file"
-        accept="image/*"
-        ref={fileInput}
-        style={{ display: "none" }}
-        // Add any additional attributes or event handlers as needed
-      />
+                      <input
+                        type="file"
+                        accept="image/*"
+                        ref={fileInput}
+                        style={{ display: "none" }}
+                        onChange={(e) => {
+                          setFile(e.target.files[0]);
+                        }}
+                     
+                        // Add any additional attributes or event handlers as needed
+                      />
                       <Button
                         variant="contained"
                         onClick={() => fileInput.current.click()}
@@ -99,7 +139,7 @@ const Profile = () => {
                       >
                         Choose Image
                       </Button>
-                      
+
                       {/* <label
                         htmlFor="myfile"
                         className="text-white mt-8 text-center items-center bg-pr px-7 py-2 rounded-md"
@@ -145,7 +185,6 @@ const Profile = () => {
                         Cancel
                       </Button>
                       <Button
-                      
                         onClick={formik.handleSubmit}
                         variant="contained"
                         sx={{
@@ -173,8 +212,11 @@ const Profile = () => {
                       </p>
                       <div className="space-x-4">
                         <div className="flex-1">
-                          <label className="block text-sm font-medium mb-1" htmlFor="firstname">
-                            Name 
+                          <label
+                            className="block text-sm font-medium mb-1"
+                            htmlFor="firstname"
+                          >
+                            Name
                           </label>
                           <TextField
                             fullWidth
@@ -187,13 +229,15 @@ const Profile = () => {
                             onBlur={formik.handleBlur}
                             value={formik.values.name}
                             error={formik.touched.name && formik.errors.name}
-                           
                           />
                         </div>
                       </div>
                       <div className="flex-1">
-                        <label className="block text-sm font-medium mb-1" htmlFor="email">
-                          Email 
+                        <label
+                          className="block text-sm font-medium mb-1"
+                          htmlFor="email"
+                        >
+                          Email
                         </label>
                         <TextField
                           fullWidth
@@ -206,13 +250,15 @@ const Profile = () => {
                           onBlur={formik.handleBlur}
                           value={formik.values.email}
                           error={formik.touched.email && formik.errors.email}
-                        
                         />
                       </div>
                       <div className="flex space-x-4">
                         <div className="flex-1">
-                          <label className="block text-sm font-medium mb-1" htmlFor="phone">
-                            Contact No 
+                          <label
+                            className="block text-sm font-medium mb-1"
+                            htmlFor="phone"
+                          >
+                            Contact No
                           </label>
                           <TextField
                             fullWidth
@@ -228,12 +274,14 @@ const Profile = () => {
                             inputProps={{
                               maxLength: 10,
                             }}
-                          
                           />
                         </div>
                         <div className="flex-1">
-                          <label className="block text-sm font-medium mb-1" htmlFor="dob">
-                            Date of Birth 
+                          <label
+                            className="block text-sm font-medium mb-1"
+                            htmlFor="dob"
+                          >
+                            Date of Birth
                           </label>
                           <TextField
                             fullWidth
@@ -247,7 +295,6 @@ const Profile = () => {
                             onBlur={formik.handleBlur}
                             value={formik.values.dob}
                             error={formik.touched.dob && formik.errors.dob}
-                           
                           />
                         </div>
                       </div>

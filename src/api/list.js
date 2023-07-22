@@ -55,6 +55,10 @@ const apiList = {
       getProfile:{
         url:()=>"web/api/v1/user",
         method:"get"
+      },
+      uploadProfileImage:{
+        url:()=>"web/api/v1/file/upload",
+        method:"post"
       }
   };
   export default apiList;
