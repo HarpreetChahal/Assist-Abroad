@@ -34,9 +34,27 @@ const AgentHome = () => {
         query: {
           agentId: user._id,
           status: !active ? "In-progress" : "Completed",
+          "userObj.name.fullName" :{
+              $regex:searchQuery,
+              $option:i
+          }
         },
         options: {
           sort: { createdAt: sortOrder === "asc" ? 1 : -1 },
+          populate:[{
+            path:"agentId",
+            model:"user",
+            select:{
+              password:0
+            }
+          },
+          {
+            path:"userId",
+            model:"user",
+            select:{
+              password:0
+            }
+          }]
         },
       };
       await commonApi({
@@ -47,6 +65,7 @@ const AgentHome = () => {
         },
       })
         .then(({ DATA = {}, MESSAGE }) => {
+          console.log("DATA",DATA.data)
           // Sort the appointments based on createdAt field
           let sortedAppointments = DATA.data.sort((a, b) =>
             sortOrder === "asc"
@@ -74,7 +93,7 @@ const AgentHome = () => {
         });
     };
     fetchAppointments();
-  }, [active, sortOrder, sortByName]); // Update useEffect dependencies
+  }, [active, sortOrder, sortByName,searchQuery]); // Update useEffect dependencies
 
   const handleSort = () => {
     const newSortOrder = sortOrder === "desc" ? "asc" : "desc"; // Toggle sort order
