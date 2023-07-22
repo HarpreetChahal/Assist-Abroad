@@ -406,7 +406,7 @@ const Arrival = () => {
                       <div className="w-full md:w-1/2  space-x-3">
                         <div className="flex pb-1">
                           <h2 className="text-gray-500 pr-2">Car Plate</h2>
-                          <p>S4S NAX</p>
+                          <p>{appointment?.agentId?.vehicleInfo?.numberPlate}</p>
                         </div>
                       </div>
                     </div>
@@ -422,7 +422,7 @@ const Arrival = () => {
                       <h2 className="text-gray-500 mr-2 font-bold">Hotel Stay: </h2>
                       <p>JW Marriot, Regina</p>
                     </div> */}
-                    <Link to={"/view-profile"}>
+                    <Link to={"/view-profile?id="+appointment.agentId._id}>
                       <a className="mt-3 text-indigo-500 inline-flex items-center">
                         View Profile
                         <svg

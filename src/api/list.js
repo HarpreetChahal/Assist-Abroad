@@ -72,6 +72,10 @@ const apiList = {
         url:()=>"web/api/v1/auth/reset-password",
         method:"post"
       },
+      getUserById:{
+        url:()=>"web/api/v1/user/id",
+        method:"post"
+      },
   };
   export default apiList;
   
