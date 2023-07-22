@@ -21,7 +21,7 @@ const AgentTask = () => {
           {
             path: "userId",
             model: "user",
-            select: ["name", "arrival", "email", "phone"],
+            select: ["name", "arrival", "email", "phone","profilePicture"],
           },
         ],
       },
@@ -34,6 +34,7 @@ const AgentTask = () => {
       },
     })
       .then(({ DATA = {}, MESSAGE }) => {
+        console.log("DTAAT",DATA)
         setAppointment(DATA.data[0]);
         let tasks = DATA.data[0].tasksList;
         let count = 0;
