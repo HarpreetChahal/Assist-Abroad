@@ -22,6 +22,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ViewProfile from "./Components/ViewProfile/ViewProfile";
 import ForgetPassword from "./Components/ForgetPassword/ForgetPassword";
 import ChangePassword from "./Components/ChangePassword/ChangePassword";
+import PasswordPin from "./Components/PasswordPin/PasswordPin";
 
 function App() {
   const { user, dispatch, token } = useContext(Context);
@@ -107,6 +108,10 @@ function App() {
           exact
           path="/forgetPassword"
           element={<ForgetPassword/>} />
+           <Route
+          exact
+          path="/passwordPin"
+          element={<PasswordPin/>} />
           <Route
           exact
           path="/changePassword"

@@ -1,4 +1,4 @@
-import React from "react";
+import React ,{ useRef } from "react";
 import Navbar from "../../layout/Navbar";
 import agent1 from "/src/Assets/agent.png";
 import agent2 from "/src/Assets/avatar2.jpg";
@@ -16,7 +16,7 @@ import { useNavigate } from "react-router-dom";
 const Profile = () => {
   const { dispatch, isFetching, user } = useContext(Context);
   const [edit, setEdit] = useState(false);
-
+  const fileInput = useRef(null);
   const formik = useFormik({
     initialValues: {
       email: user?.email || "",
@@ -76,6 +76,13 @@ const Profile = () => {
                     <h1 className="text-4xl font_ab">{user?.name?.firstName}</h1>
                     <h1 className="text-lg mt-1 mb-4 font_ab ">Member Since : 2023</h1>
                     <div className=" items-center  rounded-md">
+                    <input
+        type="file"
+        accept="image/*"
+        ref={fileInput}
+        style={{ display: "none" }}
+        // Add any additional attributes or event handlers as needed
+      />
                       <Button
                         variant="contained"
                         onClick={() => fileInput.current.click()}
