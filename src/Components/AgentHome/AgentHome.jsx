@@ -312,8 +312,7 @@ const AgentHome = () => {
                           htmlFor="sortTime"
                           className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
                         >
-                          Time{" "}
-                          {sortOrder === "asc"}
+                          Time {sortOrder === "asc"}
                         </label>
                       </li>
                       <li className="flex items-center">
@@ -345,18 +344,52 @@ const AgentHome = () => {
                 .includes(searchQuery.toLowerCase())
             )
             .map((appointment, index) => {
-              console.log("appointment",appointment)
-              let totalTasks=appointment?.tasksList?.length ?appointment?.tasksList?.length : 0
-              let completedTasks=appointment?.tasksList?.filter((task)=>task.status ==="Completed")?.length ? appointment?.tasksList?.filter((task)=>task.status ==="Completed")?.length  :0
-              
-              const latestCompleted = appointment?.tasksList?.reduce((acc, current) => {
-                if (!acc || new Date(current.completedAt) > new Date(acc.completedAt)) {
-                  return current;
-                }
-                return acc;
-              }, null);
-              
-              console.log(latestCompleted);
+              console.log("appointment", appointment);
+              let totalTasks = appointment?.tasksList?.length
+                ? appointment?.tasksList?.length
+                : 0;
+              let completedTasks = appointment?.tasksList?.filter(
+                (task) => task.status === "Completed"
+              )?.length
+                ? appointment?.tasksList?.filter(
+                    (task) => task.status === "Completed"
+                  )?.length
+                : 0;
+
+              const latestCompleted = appointment?.tasksList?.reduce(
+                (acc, current) => {
+                  if (
+                    !acc ||
+                    new Date(current.completedAt) > new Date(acc.completedAt)
+                  ) {
+                    return current;
+                  }
+                  return acc;
+                },
+                null
+              );
+
+              function customSort(a, b) {
+                // First, sort by completedAt in descending order (latest to earliest)
+                const completedAtA = new Date(a.completedAt);
+                const completedAtB = new Date(b.completedAt);
+                if (completedAtA > completedAtB) return -1;
+                if (completedAtA < completedAtB) return 1;
+
+                // If the completedAt is the same, then sort by _id in ascending order
+                if (a._id < b._id) return -1;
+                if (a._id > b._id) return 1;
+
+                return 0;
+              }
+
+              // Sort the data using the custom comparison function
+              const sortedData = appointment?.tasksList.sort(customSort);
+              const firstObjectWithoutCompletedAt = sortedData.find(
+                (item) => !item.completedAt
+              );
+
+              console.log(sortedData);
               return (
                 <div
                   className="mt-10 shadow shadow-slate-300 rounded-xl flex items-center gap-5 p-6 bg-white"
@@ -367,7 +400,7 @@ const AgentHome = () => {
                 >
                   <img
                     className="w-32 lg:w-auto rounded-md"
-                    src={appointment?.userId?.profilePicture ||agent}
+                    src={appointment?.userId?.profilePicture || agent}
                     alt=""
                   />
                   <div>
@@ -396,7 +429,7 @@ const AgentHome = () => {
                       <h1 className="text-sm lg:text-lg font_ab text-gray-500 text-bold flex">
                         Task Completed :{" "}
                         <p className="flex pl-2 text-black">
-                          {completedTasks+"/"+totalTasks}
+                          {completedTasks + "/" + totalTasks}
                         </p>
                       </h1>
                     </div>
@@ -406,6 +439,15 @@ const AgentHome = () => {
                         Last Completed :{" "}
                         <p className="flex pl-2 text-black">
                           {latestCompleted?.name || "Noting for now"}
+                        </p>
+                      </h1>
+                    </div>
+
+                    <div className="w-full flex">
+                      <h1 className="text-sm lg:text-lg font_ab text-gray-500 text-bold flex">
+                        Next Activity :{" "}
+                        <p className="flex pl-2 text-black">
+                          {firstObjectWithoutCompletedAt?.name || "All Done"}
                         </p>
                       </h1>
                     </div>
