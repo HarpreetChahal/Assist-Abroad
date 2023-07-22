@@ -355,7 +355,7 @@ const AgentHome = () => {
                 >
                   <img
                     className="w-32 lg:w-auto rounded-md"
-                    src={agent}
+                    src={appointment?.userId?.profilePicture ||agent}
                     alt=""
                   />
                   <div>

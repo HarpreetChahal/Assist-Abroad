@@ -85,7 +85,7 @@ const Navbar = () => {
                 <Avatar
                   onClick={toggleProfileDropdown}
                   className={`cursor-pointer ${anchorEl ? "text-pr" : ""}`}
-                  src={user.role === 0 ? agent1 : agent2}
+                  src={user.profilePicture || agent1}
                   alt="Rounded avatar"
                 />
                 <Popper

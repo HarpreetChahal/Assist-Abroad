@@ -117,7 +117,7 @@ const AgentTask = () => {
               </div>
             </div>
             <div className="sm:w-40 sm:h-32 h-20 w-20 p-2 inline-flex items-center justify-center  flex-shrink-0">
-              <img src={agent} style={{ borderRadius: 10 }} />
+              <img src={appointment?.userId?.profilePicture ||agent} style={{ borderRadius: 10 }} />
             </div>
           </div>
         </div>
