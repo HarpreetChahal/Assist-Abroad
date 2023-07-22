@@ -34,10 +34,7 @@ const AgentHome = () => {
         query: {
           agentId: user._id,
           status: !active ? "In-progress" : "Completed",
-          "userObj.name.fullName" :{
-              $regex:searchQuery,
-              $option:i
-          }
+          search:searchQuery
         },
         options: {
           sort: { createdAt: sortOrder === "asc" ? 1 : -1 },
@@ -93,7 +90,7 @@ const AgentHome = () => {
         });
     };
     fetchAppointments();
-  }, [active, sortOrder, sortByName,searchQuery]); // Update useEffect dependencies
+  }, [active, sortOrder, searchQuery]); // Update useEffect dependencies
 
   const handleSort = () => {
     const newSortOrder = sortOrder === "desc" ? "asc" : "desc"; // Toggle sort order
@@ -357,11 +354,11 @@ const AgentHome = () => {
             </div>
           </div>
           {appointments
-            .filter((appointment) =>
-              appointment.userObj?.name?.firstName
-                .toLowerCase()
-                .includes(searchQuery.toLowerCase())
-            )
+            // .filter((appointment) =>
+            //   appointment.userObj?.name?.firstName
+            //     .toLowerCase()
+            //     .includes(searchQuery.toLowerCase())
+            // )
             .map((appointment, index) => {
               console.log("appointment", appointment);
               let totalTasks = appointment?.tasksList?.length
