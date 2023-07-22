@@ -19,6 +19,8 @@ const AgentHome = () => {
   const { dispatch, user, isFetching } = useContext(Context);
   const navigate = useNavigate();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const [selectedTasks,setSelectedTasks]=useState([])
   const toggleDropdown = () => {
     setIsDropdownOpen((prevState) => !prevState);
   };
@@ -90,9 +92,22 @@ const AgentHome = () => {
         });
     };
     fetchAppointments();
-  }, [active, sortOrder, searchQuery]); // Update useEffect dependencies
+  }, [active, sortOrder, searchQuery,selectedTasks]); // Update useEffect dependencies
 
 
+  const filterAppointmentType=(taskName)=>{
+    if(selectedTasks.includes(taskName))
+    {
+      const indexToRemove = selectedTasks.indexOf(taskName);
+      const updatedSelectedTasks = [...selectedTasks];
+      updatedSelectedTasks.splice(indexToRemove, 1);
+      setSelectedTasks(updatedSelectedTasks);
+    }
+    else
+    {
+      setSelectedTasks([...selectedTasks, taskName]);
+    }
+  }
   return (
     <div className="min-h-screen px-4 lg:px-0 bg-[#f8f8fa]">
       <Navbar />
@@ -177,7 +192,10 @@ const AgentHome = () => {
                         <input
                           id="airport"
                           type="checkbox"
-                          value=""
+                          onChange={()=>{
+                            filterAppointmentType("Airport Pickup")
+                          }}
+                          checked={selectedTasks.includes("Airport Pickup")}
                           class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-pr focus:ring-pr "
                         />
 
@@ -193,7 +211,10 @@ const AgentHome = () => {
                         <input
                           id="BusPass"
                           type="checkbox"
-                          value=""
+                          onChange={()=>{
+                            filterAppointmentType("Bus Pass")
+                          }}
+                          checked={selectedTasks.includes("Bus Pass")}
                           class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-pr focus:ring-pr"
                         />
 
@@ -208,7 +229,10 @@ const AgentHome = () => {
                         <input
                           id="HotelStay"
                           type="checkbox"
-                          value=""
+                          onChange={()=>{
+                            filterAppointmentType("Hotel Stay")
+                          }}
+                          checked={selectedTasks.includes("Hotel Stay")}
                           class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-pr focus:ring-pr "
                         />
 
@@ -223,7 +247,10 @@ const AgentHome = () => {
                         <input
                           id="CityTour"
                           type="checkbox"
-                          value=""
+                          onChange={()=>{
+                            filterAppointmentType("City Tour")
+                          }}
+                          checked={selectedTasks.includes("City Tour")}
                           class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-pr focus:ring-pr "
                         />
 
@@ -238,7 +265,10 @@ const AgentHome = () => {
                         <input
                           id="GovtId"
                           type="checkbox"
-                          value=""
+                          onChange={()=>{
+                            filterAppointmentType("Government id issue")
+                          }}
+                          checked={selectedTasks.includes("Government id issue")}
                           class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-pr focus:ring-pr "
                         />
 
@@ -246,14 +276,17 @@ const AgentHome = () => {
                           for="GovtId"
                           class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
                         >
-                          Government Id
+                          Government id issue
                         </label>
                       </li>
                       <li class="flex items-center">
                         <input
                           id="HealthCard"
                           type="checkbox"
-                          value=""
+                          onChange={()=>{
+                            filterAppointmentType("Health Card")
+                          }}
+                          checked={selectedTasks.includes("Health Card")}
                           class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-pr focus:ring-pr "
                         />
 
@@ -268,7 +301,10 @@ const AgentHome = () => {
                         <input
                           id="Housing"
                           type="checkbox"
-                          value=""
+                          onChange={()=>{
+                            filterAppointmentType("Housing")
+                          }}
+                          checked={selectedTasks.includes("Housing")}
                           class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-pr focus:ring-pr "
                         />
 
@@ -283,7 +319,10 @@ const AgentHome = () => {
                         <input
                           id="Banking"
                           type="checkbox"
-                          value=""
+                          onChange={()=>{
+                            filterAppointmentType("Banking")
+                          }}
+                          checked={selectedTasks.includes("Banking")}
                           class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-pr focus:ring-pr "
                         />
 
@@ -298,7 +337,10 @@ const AgentHome = () => {
                         <input
                           id="MobileIssue"
                           type="checkbox"
-                          value=""
+                          onChange={()=>{
+                            filterAppointmentType("Mobile/Sim Issue")
+                          }}
+                          checked={selectedTasks.includes("Mobile/Sim Issue")}
                           class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-pr focus:ring-pr "
                         />
 
@@ -306,7 +348,7 @@ const AgentHome = () => {
                           for="MobileIssue"
                           class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
                         >
-                          Mobile Issue
+                          Mobile/Sim Issue
                         </label>
                       </li>
                       <h6 className="mb-3 text-md font-medium text-gray-900 ">
@@ -329,7 +371,7 @@ const AgentHome = () => {
                           Time 
                         </label>
                       </li>
-                      <li className="flex items-center">
+                      {/* <li className="flex items-center">
                         <input
                           id="sortName"
                           type="checkbox"
@@ -344,7 +386,7 @@ const AgentHome = () => {
                         >
                           Name
                         </label>
-                      </li>
+                      </li> */}
                     </ul>
                   </div>
                 )}
