@@ -186,7 +186,7 @@ const Login = () => {
                 ></TextField>
                 <Link to="/forgetPassword">
              
-                  <p className="text-md  lg:text-md  font_ab  mt-2 text-slate-600">
+                  <p className="text-md  lg:text-md  font_ab  mt-2 text-slate-600 hover:text-pr">
                     Forgot Password?
                   </p>
                 </Link>

@@ -47,10 +47,10 @@ const ViewProfile = () => {
           
           <div className="w-full flex items-center gap-2 border-2 justify-center rounded-2xl">
             <div className="flex items-center lg:items-center flex-col lg:flex-col gap-5 px-4 py-4">
-              <img className="w-32 lg:w-auto rounded-md" src={user?.profilePicture || agent} alt="" />
+              <img className="w-40 h-40  rounded-md" src={user?.profilePicture || agent} alt="" />
               <div>
                 <h1 className="text-3xl">{user?.name?.fullName}</h1>
-                <h1 className="text-lg mt-1">Member Since : { moment(user?.createdAt).format('YYYY')}</h1>
+                <h1 className="text-lg mt-1 justify-center">Member Since : { moment(user?.createdAt).format('YYYY-MM-DD')}</h1>
               </div>
             </div>
 
@@ -59,13 +59,13 @@ const ViewProfile = () => {
           <div className="relative flex flex-col items-center rounded-[20px] mx-auto  bg-clip-border shadow-3xl shadow-shadow-500 ">
             <div className="mt-2 mb-8 w-full">
               <h4 className="px-2 text-xl font-bold mt-5">General Information</h4>
-              <p className="mt-2 px-2 text-base text-gray-600">
+              {/* <p className="mt-2 px-2 text-base text-gray-600">
                 As we live, our hearts turn colder. Cause pain is what we go
                 through as we become older. We get insulted by others, lose
                 trust for those others. We get back stabbed by friends. It
                 becomes harder for us to give others a hand. We get our heart
                 broken by people we love, even that we give them all...
-              </p>
+              </p> */}
             </div>
             <div className="grid grid-cols-2 gap-4 px-2 w-full">
               <div className="flex flex-col items-start justify-center rounded-2xl bg-white border-2 bg-clip-border px-3 py-4 shadow-3xl shadow-shadow-500 ">
@@ -80,7 +80,7 @@ const ViewProfile = () => {
 
               <div className="flex flex-col items-start justify-center rounded-2xl bg-white border-2 bg-clip-border px-3 py-4 shadow-3xl shadow-shadow-500 ">
                 <p className="text-sm text-gray-600">Date of Birth</p>
-                <p className="text-base font-medium text-navy-700 ">{user?.dob}</p>
+                <p className="text-base font-medium text-navy-700 "> { moment(user?.dob).format('YYYY-MM-DD')}</p>
               </div>
 
               <div className="flex flex-col justify-center rounded-2xl bg-white border-2 bg-clip-border px-3 py-4 shadow-3xl shadow-shadow-500 ">

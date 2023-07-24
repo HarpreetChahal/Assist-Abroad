@@ -99,7 +99,7 @@ const Profile = () => {
                 <div className="flex items-start lg:items-center flex-col lg:flex-row gap-10">
                   {/* <img className="w-32 lg:w-auto rounded-md" src={agent} alt="" /> */}
                   <img
-                    className="w-32 h-32 lg:w-auto rounded-md"
+                    className="w-auto h-auto lg:w-36 lg:h-36 rounded-md"
                     src={(file &&
                       URL.createObjectURL(file)) || user.profilePicture || agent1}
                     
@@ -109,7 +109,7 @@ const Profile = () => {
                       {user?.name?.firstName}
                     </h1>
                     <h1 className="text-lg mt-1 mb-4 font_ab ">
-                      Member Since : 2023
+                      Member Since : { moment(user?.createdAt).format('YYYY-MM-DD')}
                     </h1>
                     <div className=" items-center  rounded-md">
                       <input

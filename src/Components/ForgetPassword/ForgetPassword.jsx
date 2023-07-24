@@ -1,7 +1,7 @@
 import React,{useState} from "react";
 import Navbar from "../../layout/Navbar";
 import { Link } from "react-router-dom";
-import image from "../../Assets/forgot.svg";
+import image from "../../Assets/forgotPassword.svg";
 import imageLogo from "../../Assets/LoginPageLogoMobile.png";
 import { Button, TextField } from "@mui/material";
 import commonApi from "../../api/common";
@@ -60,7 +60,7 @@ const ForgetPassword = () => {
             Forgot your password?
             </div>
             <h3 className="text-sm lg:text-sm justify-center text-[#4F5C78] text-center mb-10  ">
-              Just enter your email below and we'll send you link to reset your password
+              Just enter your email below and we'll send you code to reset your password
             </h3>
           </div>
           <div className="flex  items-center justify-center mx-auto flex-col ">
@@ -74,7 +74,7 @@ const ForgetPassword = () => {
               Forgot your password?
               </div>
               <h3 className="text-lg text-center justify-center lg:text-md mt-5 mb-5 font_ab text-[#4F5C78]  ">
-              We get it, stuff happens. Just enter your email below and we'll send you link to reset your password!
+              We get it, stuff happens. Just enter your email below and we'll send you code to reset your password!
               </h3>
             </div>
 
@@ -94,8 +94,8 @@ const ForgetPassword = () => {
                 ></TextField>
               </div>
 
-              {/* { formik.touched.email && formik.errors.email && 
-           <div className="text-[red]">{formik.errors.email}</div>} */}
+              { formik.touched.email && formik.errors.email && 
+           <div className="text-[red]">{formik.errors.email}</div>}
               
 
               <div className="mb-32">
@@ -115,7 +115,7 @@ const ForgetPassword = () => {
                     marginBottom: 62,
                   }}
                 >
-                  Reset Password
+                  Send Email
                 </Button>
               </div>
             </div>

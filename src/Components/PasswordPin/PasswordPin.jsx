@@ -59,10 +59,10 @@ const PasswordPin = () => {
         <div className="lg:border-r-2 lg:hidden mt-10 ">
           <div className=" lg:hidden">
             <div className="text-pr text-2xl lg:text-3xl  text-center font_ab ">
-            Forgot your password?
+            OTP Verification
             </div>
             <h3 className="text-sm lg:text-sm justify-center text-[#4F5C78] text-center mb-10  ">
-              Just enter your email below and we'll send you link to reset your password
+            Enter the code you received on your email to change the password
             </h3>
           </div>
           <div className="flex  items-center justify-center mx-auto flex-col ">
@@ -73,13 +73,13 @@ const PasswordPin = () => {
           <form className="form grid " onSubmit={formik.handleSubmit}>
             <div className="hidden lg:block">
               <div className="text-pr text-2xl text-center lg:text-4xl font_ab mt-48 ">
-              Confirm Password Change
+              OTP Verification
               </div>
               <h3 className="text-lg text-center justify-center lg:text-md mt-5 mb-5 font_ab text-[#4F5C78]  ">
               Enter the code you received on your email to change the password
               </h3>
             </div>
-   {showError&& <div>Email or OTP is not correct.</div>}
+   
             <div className="  ">
               <div className="flex items-center mt-2 rounded-md">
                 <TextField
@@ -89,6 +89,7 @@ const PasswordPin = () => {
                   type="text"
                   id="emailCode"
                   name="emailCode"
+                  
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   value={formik.values.emailCode}
@@ -96,15 +97,15 @@ const PasswordPin = () => {
                 ></TextField>
               </div>
 
-              {/* { formik.touched.email && formik.errors.email && 
-           <div className="text-[red]">{formik.errors.email}</div>} */}
+              { formik.touched.emailCode && formik.errors.emailCode && 
+           <div className="text-[red] mt-2 ">Email code can be maximum of 6 numbers</div>}
               
-
+              {showError&& <div className="text-[red] mt-1">OTP is not correct</div>}
               <div className="mb-32">
                 <Button
                 
                   type="submit"
-                  className=" mt-8 rounded-md shadow-md w-full bg-pr text-center  text-white font-medium cursor-pointer"
+                  className=" mt-4 rounded-md shadow-md w-full bg-pr text-center  text-white font-medium cursor-pointer"
                   style={{
                     backgroundColor: "#6d81fe",
                     color: "#fff",

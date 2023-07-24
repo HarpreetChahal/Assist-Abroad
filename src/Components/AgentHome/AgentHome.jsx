@@ -469,7 +469,7 @@ const AgentHome = () => {
                   }}
                 >
                   <img
-                    className="w-32 lg:w-auto rounded-md"
+                    className="w-44 h-48  rounded-md"
                     src={appointment?.userId?.profilePicture || agent}
                     alt=""
                   />
@@ -508,7 +508,7 @@ const AgentHome = () => {
                       <h1 className="text-sm lg:text-lg font_ab text-gray-500 text-bold flex">
                         Last Completed :{" "}
                         <p className="flex pl-2 text-black">
-                          {latestCompleted?.name || "Noting for now"}
+                          {latestCompleted?.name || "Nothing for now"}
                         </p>
                       </h1>
                     </div>
