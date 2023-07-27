@@ -82,7 +82,7 @@ const ChangePassword = () => {
         </div>
         <div className="flex flex-col items-center justify-center lg:mt-0 px-20">
           <form className="form grid " onSubmit={formik.handleSubmit}>
-            <div className="">
+            <div className="hidden lg:block">
               <div className="text-pr text-2xl text-center lg:text-4xl font_ab  mb-2 ">
                 Reset your password?
               </div>

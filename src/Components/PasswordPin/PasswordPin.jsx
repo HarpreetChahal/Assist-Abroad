@@ -98,7 +98,7 @@ const PasswordPin = () => {
               </div>
 
               { formik.touched.emailCode && formik.errors.emailCode && 
-           <div className="text-[red] mt-2 ">Email code can be maximum of 6 numbers</div>}
+           <div className="text-[red] mt-2 ">Email code has to be 6 digits</div>}
               
               {showError&& <div className="text-[red] mt-1">OTP is not correct</div>}
               <div className="mb-32">

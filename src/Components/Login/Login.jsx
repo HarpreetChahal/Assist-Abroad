@@ -7,17 +7,10 @@ import moment from "moment";
 //Assets
 import image from "../../Assets/SIGNUP7.svg";
 import imageLogo from "../../Assets/LoginPageLogoMobile.png";
-import logo from "../../Assets/LOGO.png";
-import video from "../../Assets/video.mp4";
 
 //Icons
-import { FcGoogle } from "react-icons/Fc";
-import { FaRegAddressCard } from "react-icons/fa";
 import { MdOutlineEmail } from "react-icons/Md";
-import { BiUserPin } from "react-icons/bi";
-import { FiPhone } from "react-icons/fi";
 import { RiLockPasswordLine } from "react-icons/Ri";
-import { SlCalender } from "react-icons/sl";
 import { AiFillEyeInvisible } from "react-icons/ai";
 import { AiFillEye } from "react-icons/ai";
 
