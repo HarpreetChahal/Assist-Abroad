@@ -439,6 +439,8 @@ const AgentHome = () => {
                 null
               );
 
+              
+
               function customSort(a, b) {
                 // First, sort by completedAt in descending order (latest to earliest)
                 const completedAtA = new Date(a.completedAt);
@@ -508,7 +510,7 @@ const AgentHome = () => {
                       <h1 className="text-sm lg:text-lg font_ab text-gray-500 text-bold flex">
                         Last Completed :{" "}
                         <p className="flex pl-2 text-black">
-                          {latestCompleted?.name || "Nothing for now"}
+                          {latestCompleted?.completed ? latestCompleted?.name : "Nothing for now"}
                         </p>
                       </h1>
                     </div>
