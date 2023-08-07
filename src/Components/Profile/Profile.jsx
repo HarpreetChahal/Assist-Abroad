@@ -99,7 +99,7 @@ const Profile = () => {
                 <div className="flex items-start lg:items-center flex-col lg:flex-row gap-10">
                   {/* <img className="w-32 lg:w-auto rounded-md" src={agent} alt="" /> */}
                   <img
-                    className="w-auto h-auto lg:w-36 lg:h-36 rounded-md"
+                    className="object-cover w-auto h-auto lg:w-36 lg:h-36 rounded-md"
                     src={(file &&
                       URL.createObjectURL(file)) || user.profilePicture || agent1}
                     
