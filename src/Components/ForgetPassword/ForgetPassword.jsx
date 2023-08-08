@@ -2,7 +2,7 @@ import React,{useState} from "react";
 import Navbar from "../../layout/Navbar";
 import { Link } from "react-router-dom";
 import image from "../../Assets/forgotPassword.svg";
-import imageLogo from "../../Assets/resetPasswordMobile.png";
+import imageLogo from "../../Assets/LoginPageLogoMobile.png";
 import { Button, TextField } from "@mui/material";
 import commonApi from "../../api/common";
 

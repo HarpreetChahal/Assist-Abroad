@@ -471,7 +471,7 @@ const AgentHome = () => {
                   }}
                 >
                   <img
-                    className="w-44 h-48  rounded-md"
+                    className="object-cover w-44 h-48  rounded-md"
                     src={appointment?.userId?.profilePicture || agent}
                     alt=""
                   />
