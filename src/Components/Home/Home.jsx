@@ -8,13 +8,13 @@ import taxi from "/src/Assets/taxi.png";
 import city from "/src/Assets/city.png";
 import document from "/src/Assets/document.png";
 import bank from "/src/Assets/bank.png";
+import healthcard from "/src/Assets/healthcard.png";
+import buspass from "/src/Assets/buspass.png";
+import phone from "/src/Assets/phone.png";
 
 import Footer from "../../layout/Footer";
 import { Link } from "react-router-dom";
 import { Button, TextField } from "@mui/material";
-
-
-
 
 import emailjs from "@emailjs/browser";
 import { ToastContainer, toast } from "react-toastify";
@@ -94,7 +94,7 @@ const Home = () => {
         <div className="mx-auto mt-10 grid grid-cols-1 pb-10 lg:grid-cols-3 gap-x-16 gap-y-10 w-full lg:max-w-7xl">
           <div className="bg-white border-2 px-5 py-10 rounded-xl  ">
             <div className="flex items-center justify-center">
-              <img src={taxi} alt="" className="w-16 h-16 "/>
+              <img src={taxi} alt="" className="w-16 h-16 " />
             </div>
             <h1 className="text-3xl font-semibold text-pr py-7 pl-5 text-center font_ab">
               Airport Pickup
@@ -110,7 +110,7 @@ const Home = () => {
           </div>
           <div className="bg-white border-2 px-5 py-10 rounded-xl  ">
             <div className="flex items-center justify-center">
-              <img src={hotel} alt="" className="w-16 h-16 "/>
+              <img src={hotel} alt="" className="w-16 h-16 " />
             </div>
             <h1 className="text-3xl font-semibold text-pr py-7 pl-5 text-center font_ab">
               Hotel Stay
@@ -126,7 +126,7 @@ const Home = () => {
           </div>
           <div className="bg-white border-2 px-5 py-10 rounded-xl  ">
             <div className="flex items-center justify-center">
-              <img src={city} alt="" className="w-16 h-16 "/>
+              <img src={city} alt="" className="w-16 h-16 " />
             </div>
             <h1 className="text-3xl font-semibold text-pr py-7 pl-5 text-center font_ab">
               City Tour
@@ -142,10 +142,10 @@ const Home = () => {
           </div>
           <div className="bg-white border-2 px-5 py-10 rounded-xl  ">
             <div className="flex items-center justify-center">
-              <img src={document} alt="" className="w-16 h-16 "/>
+              <img src={document} alt="" className="w-16 h-16 " />
             </div>
             <h1 className="text-3xl font-semibold text-pr py-7 pl-5 font_ab text-center ">
-              Official Documents
+              Government Id
             </h1>
             <p className=" text-[#747474] px-5 font_ab">
               Getting government documents like official documents, such as
@@ -158,7 +158,7 @@ const Home = () => {
           </div>
           <div className="bg-white border-2 px-5 py-10 rounded-xl  ">
             <div className="flex items-center justify-center">
-              <img src={bank} alt="" className="w-16 h-16 "/>
+              <img src={bank} alt="" className="w-16 h-16 " />
             </div>
             <h1 className="text-3xl font-semibold text-pr py-7 pl-5 font_ab text-center">
               Banking
@@ -174,7 +174,7 @@ const Home = () => {
           </div>
           <div className="bg-white border-2 px-5 py-10 rounded-xl  ">
             <div className="flex items-center justify-center">
-              < img src={house} alt="" className="w-16 h-16 "/>
+              <img src={house} alt="" className="w-16 h-16 " />
             </div>
             <h1 className="text-3xl font-semibold text-pr py-7 pl-5 font_ab text-center">
               Housing
@@ -186,6 +186,54 @@ const Home = () => {
               provide support and resources to help individuals find, secure,
               and transition into their new home, whether it's renting an
               apartment or a house when relocating to a new city.
+            </p>
+          </div>
+          <div className="bg-white border-2 px-5 py-10 rounded-xl  ">
+            <div className="flex items-center justify-center">
+              <img src={buspass} alt="" className="w-16 h-16 " />
+            </div>
+            <h1 className="text-3xl font-semibold text-pr py-7 pl-5 font_ab text-center ">
+              Bus Pass
+            </h1>
+            <p className=" text-[#747474] px-5 font_ab">
+              Whether you're a student embarking on an academic adventure or a
+              professional venturing into new work opportunities, having a
+              reliable mode of transportation is paramount. This is where our
+              dedicated team of agents steps in to ensure your travel experience
+              is seamless and stress-free. A bus pass will help you with all
+              travel needs.
+            </p>
+          </div>
+          <div className="bg-white border-2 px-5 py-10 rounded-xl  ">
+            <div className="flex items-center justify-center">
+              <img src={healthcard} alt="" className="w-16 h-16 " />
+            </div>
+            <h1 className="text-3xl font-semibold text-pr py-7 pl-5 font_ab text-center">
+              Health Card
+            </h1>
+            <p className=" text-[#747474] px-5 font_ab">
+              The adage "prevention is better than cure" holds true, and a
+              health card acts as a shield against unforeseen health issues. Our
+              agent will help you aquire the health card a powerful tool that
+              not only offers financial security but also grants you access to
+              timely medical care ensuring that you and your loved ones are
+              prepared for any health-related emergency.
+            </p>
+          </div>
+          <div className="bg-white border-2 px-5 py-10 rounded-xl  ">
+            <div className="flex items-center justify-center">
+              <img src={phone} alt="" className="w-16 h-16 " />
+            </div>
+            <h1 className="text-3xl font-semibold text-pr py-7 pl-5 font_ab text-center">
+              Mobile/Sim Issue
+            </h1>
+            <p className=" text-[#747474] px-5 font_ab">
+              Our team of experienced agents is dedicated to providing
+              assistance for all your mobile needs, whether it's acquiring SIM
+              cards or selecting the perfect mobile phone. With their knowledge
+              and expertise, our agents are committed to guiding you through
+              every step, ensuring that you make informed decisions that align
+              with your requirements.
             </p>
           </div>
         </div>

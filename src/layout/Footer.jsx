@@ -19,7 +19,7 @@ const Footer = () => {
             </p>
             <p className="text-white font_ab italic">Fax: +1 999 999 9999</p>
           </div>
-          <div className="flex items-center gap-3 mt-5 lg:mt-0">
+          {/* <div className="flex items-center gap-3 mt-5 lg:mt-0">
             <a target="_blank" href="https://settleout.onrender.com/login">
               <FaLinkedin className="w-12 h-12 text-white" />
             </a>
@@ -29,7 +29,7 @@ const Footer = () => {
             <a target="_blank" href="https://settleout.onrender.com/login">
   <FaTwitterSquare className="w-12 h-12 text-white"/>
 </a>
-          </div>
+          </div> */}
         </div>
 
         <p className="w-full text-center text-white mt-10 text-sm">
