@@ -35,7 +35,7 @@ const Navbar = () => {
       <div className="lg:max-w-7xl px-5 lg:px-0 w-full mx-auto">
         <div className="lg:grid grid-cols-2 hidden">
           <div className="w-full">
-            <div className="py-5">
+            <div className="py-5" >
               <Link to="/" className="text-pr text-4xl font_ab">
                 Assist Abroad
               </Link>
@@ -62,7 +62,7 @@ const Navbar = () => {
 
                 <div
                   onClick={() => {
-                    window.scrollTo(0, 1370);
+                    window.scrollTo(0, 1770);
                   }}
                   className="text-[#23314C] cursor-pointer hover:text-pr text-lg font_ab"
                 >
