@@ -256,7 +256,7 @@ const PaymentCard = (params) => {
                       />
                       {formik.touched.cardNumber && formik.errors.cardNumber && (
                         <div className="text-[red] mt-2 font-medium">
-                          {formik.errors.cardNumber}
+                          {formik.errors.cardNumber} 
                         </div>
                       )}
                     </div>

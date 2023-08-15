@@ -371,7 +371,10 @@ const Arrival = () => {
               <div className="container   mx-auto bg-white rounded-2xl">
                 <div className="p-5 bg-white flex items-center mx-auto  border-2   rounded-lg sm:flex-row flex-col">
                   <div className="sm:w-48 sm:h-48 h-20 w-20 sm:mr-10 p-2 inline-flex items-center justify-center flex-shrink-0">
-                    <img src={appointment?.agentId?.profilePicture || agent} className="w-44 h-48  rounded-md" />
+                    <img src={appointment?.agentId?.profilePicture || agent} className="w-44 h-48  rounded-md" style={{
+    maxWidth: '100%',
+    height: 'auto', // Allow the height to adjust proportionally
+  }}/>
                   </div>
                   <div className="flex-grow sm:text-left text-center mt-6 sm:mt-0">
                     <h1 className="text-3xl font-medium font_ab mb-2 mt-3">
